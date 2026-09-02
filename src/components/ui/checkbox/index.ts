@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 export { default as Checkbox } from './Checkbox.vue'
 
 export const checkboxVariants = cva(
-  'peer shrink-0 rounded-sm border ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+  'peer shrink-0 rounded-radius-sm border ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -11,14 +11,14 @@ export const checkboxVariants = cva(
         secondary: 'border-secondary-border-subtle data-[state=checked]:bg-secondary-solid-default data-[state=checked]:text-secondary-text-on-solid',
       },
       size: {
-        sm: 'h-4 w-4',
-        md: 'h-5 w-5',
-        lg: 'h-6 w-6',
+        sm: 'h-[14px] w-[14px]',
+        md: 'h-sizing-7 w-sizing-7',
+        lg: 'h-sizing-8 w-sizing-8',
       },
     },
     defaultVariants: {
       variant: 'primary',
-      size: 'sm',
+      size: 'md',
     },
   }
 )
