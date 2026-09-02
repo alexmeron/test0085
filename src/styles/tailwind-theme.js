@@ -460,5 +460,9 @@ export const figmaTheme = {
     "leading-64": "var(--line-height-leading-64)",
     "leading-76": "var(--line-height-leading-76)",
     "leading-32": "var(--line-height-leading-32)"
+  },
+  "fontFamily": {
+    "heading": "var(--font-family-heading)",
+    "body": "var(--font-family-body)"
   }
 };
