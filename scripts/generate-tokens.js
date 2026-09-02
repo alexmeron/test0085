@@ -7,28 +7,69 @@ const __dirname = path.dirname(__filename);
 
 const rawData = JSON.parse(fs.readFileSync(path.join(__dirname, '../tokens/figma-raw-tokens.json'), 'utf8'));
 
-let css = ':root {\n';
+const groups = {
+  colors: [],
+  spacing: [],
+  radius: [],
+  typography: [],
+  sizing: [],
+  other: []
+};
 
 const cssVarName = (name) => '--' + name.replace(/\//g, '-').replace(/\s+/g, '-').toLowerCase();
 
-for (const key in rawData.variables) {
-  const v = rawData.variables[key];
+for (const v of rawData.variables) {
   if (!v.resolvedValuesByMode) continue;
   
-  // We'll just grab the first mode's value for now
   const modeKey = Object.keys(v.resolvedValuesByMode)[0];
   const resolved = v.resolvedValuesByMode[modeKey];
   
   if (resolved && resolved.value !== undefined) {
     let val = resolved.value;
     if (v.resolvedType === 'FLOAT') {
-      val = val + 'px'; // basic assumption for spacing/radius
+      val = val + 'px';
     }
-    css += `  ${cssVarName(v.name)}: ${val};\n`;
+    
+    const cssLine = `  ${cssVarName(v.name)}: ${val};`;
+    
+    if (v.name.startsWith('color/')) {
+      groups.colors.push(cssLine);
+    } else if (v.name.startsWith('spacing/')) {
+      groups.spacing.push(cssLine);
+    } else if (v.name.startsWith('radius/')) {
+      groups.radius.push(cssLine);
+    } else if (v.name.startsWith('font-') || v.name.startsWith('line-height/')) {
+      groups.typography.push(cssLine);
+    } else if (v.name.startsWith('sizing/')) {
+      groups.sizing.push(cssLine);
+    } else {
+      groups.other.push(cssLine);
+    }
   }
+}
+
+let css = ':root {\n';
+
+if (groups.colors.length) {
+  css += '\n  /* Colors */\n' + groups.colors.sort().join('\n') + '\n';
+}
+if (groups.typography.length) {
+  css += '\n  /* Typography */\n' + groups.typography.sort().join('\n') + '\n';
+}
+if (groups.spacing.length) {
+  css += '\n  /* Spacing */\n' + groups.spacing.sort().join('\n') + '\n';
+}
+if (groups.sizing.length) {
+  css += '\n  /* Sizing */\n' + groups.sizing.sort().join('\n') + '\n';
+}
+if (groups.radius.length) {
+  css += '\n  /* Radius */\n' + groups.radius.sort().join('\n') + '\n';
+}
+if (groups.other.length) {
+  css += '\n  /* Other */\n' + groups.other.sort().join('\n') + '\n';
 }
 
 css += '}\n';
 
 fs.writeFileSync(path.join(__dirname, '../src/styles/tokens.css'), css);
-console.log('Generated src/styles/tokens.css');
+console.log('Generated sorted and grouped src/styles/tokens.css');
