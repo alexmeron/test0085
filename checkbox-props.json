@@ -1,0 +1,45 @@
+{
+  "Size": {
+    "type": "VARIANT",
+    "defaultValue": "sm",
+    "variantOptions": [
+      "sm",
+      "md",
+      "lg"
+    ]
+  },
+  "Checked": {
+    "type": "VARIANT",
+    "defaultValue": "False",
+    "variantOptions": [
+      "False",
+      "True"
+    ]
+  },
+  "Indeterminate": {
+    "type": "VARIANT",
+    "defaultValue": "False",
+    "variantOptions": [
+      "False",
+      "True"
+    ]
+  },
+  "State": {
+    "type": "VARIANT",
+    "defaultValue": "Default",
+    "variantOptions": [
+      "Default",
+      "Hover",
+      "Focused",
+      "Disabled"
+    ]
+  },
+  "Variant": {
+    "type": "VARIANT",
+    "defaultValue": "primary",
+    "variantOptions": [
+      "primary",
+      "secondary"
+    ]
+  }
+}
