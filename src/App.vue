@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import ButtonDocs from './docs/ButtonDocs.vue'
 import InputDocs from './docs/InputDocs.vue'
 import CheckboxDocs from './docs/CheckboxDocs.vue'
 import RadioDocs from './docs/RadioDocs.vue'
 import ColorsDocs from './docs/ColorsDocs.vue'
 import TypographyDocs from './docs/TypographyDocs.vue'
+import SpacingDocs from './docs/SpacingDocs.vue'
+import ShadowsDocs from './docs/ShadowsDocs.vue'
 
 const sections = [
   {
@@ -13,6 +15,8 @@ const sections = [
     items: [
       { name: 'Colors', component: ColorsDocs },
       { name: 'Typography', component: TypographyDocs },
+      { name: 'Spacing & Radius', component: SpacingDocs },
+      { name: 'Shadows', component: ShadowsDocs },
     ]
   },
   {
