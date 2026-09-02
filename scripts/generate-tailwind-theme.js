@@ -14,6 +14,7 @@ const theme = {
   fontSize: {},
   fontWeight: {},
   lineHeight: {},
+  fontFamily: {},
 };
 
 const cssVarName = (name) => 'var(--' + name.replace(/\//g, '-').replace(/\s+/g, '-').toLowerCase() + ')';
@@ -39,6 +40,8 @@ for (const v of rawData.variables) {
     theme.fontWeight[name] = varVal;
   } else if (category === 'line-height') {
     theme.lineHeight[name] = varVal;
+  } else if (category === 'font-family') {
+    theme.fontFamily[name] = varVal;
   }
 }
 
@@ -47,4 +50,3 @@ export const figmaTheme = ${JSON.stringify(theme, null, 2)};
 `;
 
 fs.writeFileSync(path.join(__dirname, '../src/styles/tailwind-theme.js'), fileContent);
-console.log('Generated src/styles/tailwind-theme.js');

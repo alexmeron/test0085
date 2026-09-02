@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 export { default as Input } from './Input.vue'
 
 export const inputVariants = cva(
-  'flex w-full rounded-md border bg-transparent text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-text-placeholder focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50',
+  'flex w-full rounded-md border bg-transparent font-body shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-text-placeholder focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       state: {
@@ -16,9 +16,9 @@ export const inputVariants = cva(
         destructive: 'border-destructive-border-default text-destructive-text-default focus-visible:ring-destructive-border-strong',
       },
       size: {
-        sm: 'h-8 px-3 text-xs',
-        md: 'h-10 px-4 py-2',
-        lg: 'h-12 px-4 text-lg',
+        sm: 'h-8 px-3 text-text-small',
+        md: 'h-10 px-4 py-2 text-text-medium',
+        lg: 'h-12 px-4 text-text-large',
       },
     },
     defaultVariants: {

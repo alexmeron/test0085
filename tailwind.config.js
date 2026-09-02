@@ -14,6 +14,7 @@ export default {
       fontSize: figmaTheme.fontSize,
       fontWeight: figmaTheme.fontWeight,
       lineHeight: figmaTheme.lineHeight,
+      fontFamily: figmaTheme.fontFamily,
     },
   },
   plugins: [],
