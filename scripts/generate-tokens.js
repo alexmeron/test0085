@@ -18,6 +18,22 @@ const groups = {
 
 const cssVarName = (name) => '--' + name.replace(/\//g, '-').replace(/\s+/g, '-').toLowerCase();
 
+const weightMap = {
+  'thin': '100',
+  'extralight': '200',
+  'extra light': '200',
+  'light': '300',
+  'regular': '400',
+  'normal': '400',
+  'medium': '500',
+  'semibold': '600',
+  'semi bold': '600',
+  'bold': '700',
+  'extrabold': '800',
+  'extra bold': '800',
+  'black': '900'
+};
+
 for (const v of rawData.variables) {
   if (!v.resolvedValuesByMode) continue;
   
@@ -26,8 +42,18 @@ for (const v of rawData.variables) {
   
   if (resolved && resolved.value !== undefined) {
     let val = resolved.value;
-    if (v.resolvedType === 'FLOAT') {
-      val = val + 'px';
+    
+    if (resolved.aliasTo) {
+      val = `var(${cssVarName(resolved.aliasTo)})`;
+    } else {
+      if (v.resolvedType === 'FLOAT') {
+        val = val + 'px';
+      } else if (v.resolvedType === 'STRING' && v.name.includes('font-weight')) {
+        const lowerVal = String(val).toLowerCase();
+        if (weightMap[lowerVal]) {
+          val = weightMap[lowerVal];
+        }
+      }
     }
     
     const cssLine = `  ${cssVarName(v.name)}: ${val};`;
@@ -72,4 +98,4 @@ if (groups.other.length) {
 css += '}\n';
 
 fs.writeFileSync(path.join(__dirname, '../src/styles/tokens.css'), css);
-console.log('Generated sorted and grouped src/styles/tokens.css');
+console.log('Generated sorted and grouped src/styles/tokens.css with aliases preserved');
