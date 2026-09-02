@@ -1,0 +1,47 @@
+{
+  "leading-icon#4031:0": {
+    "type": "BOOLEAN",
+    "defaultValue": false
+  },
+  "trailing-icon#4031:76": {
+    "type": "BOOLEAN",
+    "defaultValue": false
+  },
+  "Text#4619:212": {
+    "type": "TEXT",
+    "defaultValue": "Label"
+  },
+  "variant": {
+    "type": "VARIANT",
+    "defaultValue": "primary",
+    "variantOptions": [
+      "primary",
+      "secondary",
+      "tertiary",
+      "danger",
+      "outlined",
+      "ghost",
+      "on-inverse"
+    ]
+  },
+  "size": {
+    "type": "VARIANT",
+    "defaultValue": "sm",
+    "variantOptions": [
+      "sm",
+      "md",
+      "lg"
+    ]
+  },
+  "state": {
+    "type": "VARIANT",
+    "defaultValue": "default",
+    "variantOptions": [
+      "default",
+      "hover",
+      "pressed",
+      "focus",
+      "disabled"
+    ]
+  }
+}
