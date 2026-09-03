@@ -3,11 +3,11 @@ import { Button } from '../components/ui/button'
 </script>
 
 <template>
-  <div class="flex flex-col gap-12">
+  <div class="flex flex-col gap-spacing-11">
     
     <section>
-      <h3 class="text-heading-small font-semibold mb-4 text-text-primary">Variants</h3>
-      <div class="flex flex-wrap gap-4 p-6 bg-surface-subtle rounded-md border border-border-default">
+      <h3 class="text-heading-small font-semibold mb-spacing-5 text-text-primary">Variants</h3>
+      <div class="flex flex-wrap gap-spacing-5 p-spacing-7 bg-surface-subtle rounded-radius-md border border-border-default">
         <Button variant="primary">Primary</Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="tertiary">Tertiary</Button>
@@ -19,8 +19,8 @@ import { Button } from '../components/ui/button'
     </section>
 
     <section>
-      <h3 class="text-heading-small font-semibold mb-4 text-text-primary">Sizes</h3>
-      <div class="flex flex-wrap items-center gap-4 p-6 bg-surface-subtle rounded-md border border-border-default">
+      <h3 class="text-heading-small font-semibold mb-spacing-5 text-text-primary">Sizes</h3>
+      <div class="flex flex-wrap items-center gap-spacing-5 p-spacing-7 bg-surface-subtle rounded-radius-md border border-border-default">
         <Button size="sm">Small</Button>
         <Button size="md">Medium</Button>
         <Button size="lg">Large</Button>
@@ -28,8 +28,8 @@ import { Button } from '../components/ui/button'
     </section>
 
     <section>
-      <h3 class="text-heading-small font-semibold mb-4 text-text-primary">Usage</h3>
-      <pre class="bg-basic-black text-basic-white p-4 rounded-md text-sm overflow-x-auto"><code>&lt;script setup&gt;
+      <h3 class="text-heading-small font-semibold mb-spacing-5 text-text-primary">Usage</h3>
+      <pre class="bg-basic-black text-basic-white p-spacing-5 rounded-radius-md text-sm overflow-x-auto"><code>&lt;script setup&gt;
 import { Button } from '@/components/ui/button'
 &lt;/script&gt;
 

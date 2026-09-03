@@ -5,14 +5,14 @@ const colors = Object.entries(figmaTheme.colors)
 </script>
 
 <template>
-  <div class="flex flex-col gap-8">
+  <div class="flex flex-col gap-spacing-9">
     <h3 class="text-heading-small font-semibold text-text-primary">Color Palette</h3>
     <p class="text-text-medium text-text-secondary">Extracted automatically from Figma Primitives and Semantic collections.</p>
     
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-spacing-7">
       <div v-for="[name, val] in colors" :key="name" class="flex flex-col gap-2">
         <div 
-          class="h-16 w-full rounded-md border border-border-default shadow-sm"
+          class="h-16 w-full rounded-radius-md border border-border-default shadow-sm"
           :style="{ backgroundColor: val }"
         ></div>
         <div class="text-text-small font-mono text-text-primary">

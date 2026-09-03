@@ -7,10 +7,10 @@ const val2 = ref('1')
 </script>
 
 <template>
-  <div class="flex flex-col gap-12">
+  <div class="flex flex-col gap-spacing-11">
     <section>
-      <h3 class="text-heading-small font-semibold mb-4 text-text-primary">Primary Variant</h3>
-      <div class="p-6 bg-surface-subtle rounded-md border border-border-default max-w-sm">
+      <h3 class="text-heading-small font-semibold mb-spacing-5 text-text-primary">Primary Variant</h3>
+      <div class="p-spacing-7 bg-surface-subtle rounded-radius-md border border-border-default max-w-sm">
         <RadioGroup v-model="val1">
           <div class="flex items-center gap-2">
             <RadioGroupItem value="1" id="r1" variant="primary" />
@@ -26,8 +26,8 @@ const val2 = ref('1')
     </section>
 
     <section>
-      <h3 class="text-heading-small font-semibold mb-4 text-text-primary">Secondary Variant</h3>
-      <div class="p-6 bg-surface-subtle rounded-md border border-border-default max-w-sm">
+      <h3 class="text-heading-small font-semibold mb-spacing-5 text-text-primary">Secondary Variant</h3>
+      <div class="p-spacing-7 bg-surface-subtle rounded-radius-md border border-border-default max-w-sm">
         <RadioGroup v-model="val2">
           <div class="flex items-center gap-2">
             <RadioGroupItem value="1" id="r3" variant="secondary" />
