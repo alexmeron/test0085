@@ -5,20 +5,19 @@ import { figmaTheme } from '../styles/tailwind-theme.js'
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
-      'font-size': [{ text: Object.keys(figmaTheme.fontSize) }],
-      'text-color': [{ text: Object.keys(figmaTheme.colors) }],
-      'bg-color': [{ bg: Object.keys(figmaTheme.colors) }],
-      'border-color': [{ border: Object.keys(figmaTheme.colors) }],
-      'rounded': [{ rounded: Object.keys(figmaTheme.borderRadius) }],
-      'p': [{ p: Object.keys(figmaTheme.spacing) }],
-      'px': [{ px: Object.keys(figmaTheme.spacing) }],
-      'py': [{ py: Object.keys(figmaTheme.spacing) }],
-      'w': [{ w: Object.keys(figmaTheme.spacing) }],
-      'h': [{ h: Object.keys(figmaTheme.spacing) }],
-      'font-family': [{ font: Object.keys(figmaTheme.fontFamily) }],
-      'font-weight': [{ font: Object.keys(figmaTheme.fontWeight) }],
-      'leading': [{ leading: Object.keys(figmaTheme.lineHeight) }],
-      'shadow': [{ shadow: Object.keys(figmaTheme.boxShadow) }]
+      'font-size': [{ text: Object.keys(figmaTheme.fontSize || {}) }],
+      'text-color': [{ text: Object.keys(figmaTheme.colors || {}) }],
+      'bg-color': [{ bg: Object.keys(figmaTheme.colors || {}) }],
+      'border-color': [{ border: Object.keys(figmaTheme.colors || {}) }],
+      'rounded': [{ rounded: Object.keys(figmaTheme.borderRadius || {}) }],
+      'p': [{ p: Object.keys(figmaTheme.spacing || {}) }],
+      'px': [{ px: Object.keys(figmaTheme.spacing || {}) }],
+      'py': [{ py: Object.keys(figmaTheme.spacing || {}) }],
+      'w': [{ w: Object.keys(figmaTheme.spacing || {}) }],
+      'h': [{ h: Object.keys(figmaTheme.spacing || {}) }],
+      'font-family': [{ font: Object.keys(figmaTheme.fontFamily || {}) }],
+      'font-weight': [{ font: Object.keys(figmaTheme.fontWeight || {}) }],
+      'leading': [{ leading: Object.keys(figmaTheme.lineHeight || {}) }]
     }
   }
 })
