@@ -59,6 +59,54 @@ export const Secondary: Story = {
   render: Primary.render,
 }
 
+export const Tertiary: Story = {
+  args: {
+    ...Primary.args,
+    variant: 'tertiary',
+    default: 'Tertiary Button',
+  },
+  render: Primary.render,
+}
+
+export const Danger: Story = {
+  args: {
+    ...Primary.args,
+    variant: 'danger',
+    default: 'Danger Button',
+  },
+  render: Primary.render,
+}
+
+export const Outlined: Story = {
+  args: {
+    ...Primary.args,
+    variant: 'outlined',
+    default: 'Outlined Button',
+  },
+  render: Primary.render,
+}
+
+export const Ghost: Story = {
+  args: {
+    ...Primary.args,
+    variant: 'ghost',
+    default: 'Ghost Button',
+  },
+  render: Primary.render,
+}
+
+export const OnInverse: Story = {
+  args: {
+    ...Primary.args,
+    variant: 'on-inverse',
+    default: 'On Inverse Button',
+  },
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
+  render: Primary.render,
+}
+
 export const WithLeadingIcon: Story = {
   args: {
     ...Primary.args,

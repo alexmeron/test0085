@@ -14,9 +14,9 @@ export const buttonIconVariants = cva(
         'on-inverse': 'bg-surface-inverse-default text-text-inverse-primary hover:bg-surface-inverse-subtle',
       },
       size: {
-        sm: 'h-sizing-6 w-sizing-6 p-spacing-2',
-        md: 'h-sizing-8 w-sizing-8 p-spacing-3',
-        lg: 'h-sizing-10 w-sizing-10 p-spacing-4',
+        sm: 'h-sizing-9 w-sizing-9 p-spacing-3',
+        md: 'h-sizing-10 w-sizing-10 p-spacing-5',
+        lg: 'h-sizing-11 w-sizing-11 p-spacing-5-5',
       },
     },
     defaultVariants: {
