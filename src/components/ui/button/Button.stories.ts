@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import Button from './Button.vue'
+import { Search, ArrowRight } from 'lucide-vue-next'
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -120,4 +121,47 @@ export const OnInverse: Story = {
     backgrounds: { default: 'dark' },
   },
   render: Primary.render,
+}
+
+
+export const WithLeadingIcon: Story = {
+  args: {
+    ...Primary.args,
+    default: 'Search',
+  },
+  render: (args) => ({
+    components: { Button, Search },
+    setup() {
+      return { args }
+    },
+    template: `
+      <Button v-bind="args">
+        <template #leading-icon>
+          <Search class="w-4 h-4" />
+        </template>
+        {{ args.default }}
+      </Button>
+    `,
+  }),
+}
+
+export const WithTrailingIcon: Story = {
+  args: {
+    ...Primary.args,
+    default: 'Next Step',
+  },
+  render: (args) => ({
+    components: { Button, ArrowRight },
+    setup() {
+      return { args }
+    },
+    template: `
+      <Button v-bind="args">
+        {{ args.default }}
+        <template #trailing-icon>
+          <ArrowRight class="w-4 h-4" />
+        </template>
+      </Button>
+    `,
+  }),
 }

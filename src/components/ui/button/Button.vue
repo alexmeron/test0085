@@ -26,6 +26,8 @@ const computedClass = computed(() => {
     :as-child="asChild"
     :class="computedClass"
   >
+    <slot name="leading-icon" />
     <slot />
+    <slot name="trailing-icon" />
   </Primitive>
 </template>
