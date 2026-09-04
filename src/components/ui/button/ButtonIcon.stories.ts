@@ -13,13 +13,13 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: ['icon-sm', 'icon-md', 'icon-lg'],
+      options: ['sm', 'md', 'lg'],
     },
     disabled: { control: 'boolean' },
   },
   args: {
     variant: 'primary',
-    size: 'icon-md',
+    size: 'md',
     disabled: false,
   },
   render: (args) => ({
