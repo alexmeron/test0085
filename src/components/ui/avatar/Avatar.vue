@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
       v-if="type === 'photo' && src" 
       :src="src" 
       :alt="alt" 
-      class="aspect-square h-full w-full object-cover" 
+      class="aspect-square h-full w-full object-cover rounded-radius-full overflow-hidden" 
     />
     <AvatarFallback 
       v-if="type === 'name' || !src"

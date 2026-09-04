@@ -3,11 +3,14 @@ import { computed } from 'vue'
 import { Primitive, type PrimitiveProps } from 'radix-vue'
 import { buttonVariants, type ButtonVariants } from './buttonVariants'
 import { cn } from '../../../lib/utils'
+import { Search, ArrowRight } from 'lucide-vue-next'
 
 interface Props extends PrimitiveProps {
   variant?: ButtonVariants['variant']
   size?: ButtonVariants['size']
   disabled?: boolean
+  leadingIcon?: boolean | any
+  trailingIcon?: boolean | any
   class?: string
 }
 
@@ -16,8 +19,13 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const computedClass = computed(() => {
-  console.log("Button computedClass:", cn(buttonVariants({ variant: props.variant, size: props.size }), props.class)); return cn(buttonVariants({ variant: props.variant, size: props.size }), props.class)
+  return cn(buttonVariants({ variant: props.variant, size: props.size }), props.class)
 })
+
+const resolveIcon = (icon: boolean | any, defaultIcon: any) => {
+  if (icon === true) return defaultIcon
+  return icon
+}
 </script>
 
 <template>
@@ -26,8 +34,16 @@ const computedClass = computed(() => {
     :as-child="asChild"
     :class="computedClass"
   >
-    <slot name="leading-icon" />
+    <component 
+      :is="resolveIcon(leadingIcon, Search)" 
+      v-if="leadingIcon" 
+      class="w-sizing-7 h-sizing-7 shrink-0" 
+    />
     <slot />
-    <slot name="trailing-icon" />
+    <component 
+      :is="resolveIcon(trailingIcon, ArrowRight)" 
+      v-if="trailingIcon" 
+      class="w-sizing-7 h-sizing-7 shrink-0" 
+    />
   </Primitive>
 </template>
