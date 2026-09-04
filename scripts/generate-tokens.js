@@ -46,7 +46,14 @@ for (const v of rawData.variables) {
     if (resolved.aliasTo) {
       val = `var(${cssVarName(resolved.aliasTo)})`;
     } else {
-      if (v.resolvedType === 'FLOAT') {
+      if (v.resolvedType === 'COLOR' && typeof val === 'object') {
+        const toHex = (n) => Math.round(n * 255).toString(16).padStart(2, '0');
+        if (val.a === 1 || val.a === undefined) {
+          val = `#${toHex(val.r)}${toHex(val.g)}${toHex(val.b)}`;
+        } else {
+          val = `rgba(${Math.round(val.r*255)}, ${Math.round(val.g*255)}, ${Math.round(val.b*255)}, ${val.a})`;
+        }
+      } else if (v.resolvedType === 'FLOAT') {
         val = val + 'px';
       } else if (v.resolvedType === 'STRING' && v.name.includes('font-family')) {
         val = `"${val}", sans-serif`;

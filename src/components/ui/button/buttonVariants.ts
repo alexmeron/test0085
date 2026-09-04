@@ -16,6 +16,9 @@ export const buttonVariants = cva(
         sm: 'h-sizing-9 px-spacing-5 py-spacing-3 text-caption-big leading-leading-16',
         md: 'h-sizing-10 px-spacing-5 py-spacing-4 text-text-small leading-leading-20',
         lg: 'h-sizing-11 px-spacing-6 py-spacing-5-5 text-text-small leading-leading-20',
+        'icon-sm': 'h-sizing-6 w-sizing-6 p-spacing-2',
+        'icon-md': 'h-sizing-8 w-sizing-8 p-spacing-3',
+        'icon-lg': 'h-sizing-10 w-sizing-10 p-spacing-4',
       },
     },
     defaultVariants: {
