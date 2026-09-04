@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useVModel } from '@vueuse/core'
-import { inputVariants, type InputVariants } from '.'
+import { inputVariants, type InputVariants } from './inputVariants'
 import { cn } from '../../../lib/utils'
 
 const props = defineProps<{

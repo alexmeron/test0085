@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Primitive, type PrimitiveProps } from 'radix-vue'
-import { buttonVariants, type ButtonVariants } from '.'
+import { buttonVariants, type ButtonVariants } from './buttonVariants'
 import { cn } from '../../../lib/utils'
 
 interface Props extends PrimitiveProps {
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const computedClass = computed(() => {
-  return cn(buttonVariants({ variant: props.variant, size: props.size }), props.class)
+  console.log("Button computedClass:", cn(buttonVariants({ variant: props.variant, size: props.size }), props.class)); return cn(buttonVariants({ variant: props.variant, size: props.size }), props.class)
 })
 </script>
 

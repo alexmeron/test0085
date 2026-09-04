@@ -1,0 +1,128 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Spacing" />
+
+<style>{`
+.table-preview { border-collapse: collapse; width: 100%; margin-top: 1rem; margin-bottom: 3rem; }
+.table-preview th, .table-preview td { border: 1px solid var(--color-border-default, #e5e7eb); padding: 12px; text-align: left; }
+.table-preview th { background: var(--color-surface-subtle, #f9fafb); font-weight: bold; }
+.copy-btn { 
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-surface-subtle, #f3f4f6); 
+  border: 1px solid var(--color-border-default, #e5e7eb); 
+  border-radius: 4px; 
+  padding: 4px 8px; 
+  cursor: pointer; 
+  font-family: monospace;
+  font-size: 10px !important;
+  color: var(--color-brand-text-light, #111827);
+  transition: all 0.2s;
+}
+.copy-btn:hover { background: var(--color-brand-surface-subtle, #dbeafe); border-color: var(--color-brand-solid-default, #3b82f6); color: var(--color-brand-solid-default, #3b82f6); }
+.copy-btn:active { background: var(--color-brand-solid-default, #3b82f6); color: white; }
+.copy-btn svg { width: 14px; height: 14px; }
+.copy-btn span { font-size: 10px !important; line-height: 1; }
+`}</style>
+
+export const copyText = (e, text) => {
+  navigator.clipboard.writeText(text);
+  const span = e.currentTarget.querySelector('span');
+  if (!span) return;
+  const originalText = span.innerText;
+  span.innerText = 'Copied!';
+  setTimeout(() => { span.innerText = originalText; }, 1000);
+}
+
+# Spacing
+
+<table className="table-preview">
+  <thead><tr><th>Token Name</th><th>CSS Variable</th><th>Value</th><th>Preview</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>spacing/spacing-0</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-0)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-0)</span></button></td>
+      <td>0px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-0)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-1</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-1)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-1)</span></button></td>
+      <td>1px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-1)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-2</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-2)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-2)</span></button></td>
+      <td>2px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-2)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-3</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-3)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-3)</span></button></td>
+      <td>4px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-3)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-4</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-4)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-4)</span></button></td>
+      <td>6px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-4)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-5</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-5)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-5)</span></button></td>
+      <td>8px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-5)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-5-5</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-5-5)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-5-5)</span></button></td>
+      <td>10px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-5-5)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-6</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-6)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-6)</span></button></td>
+      <td>12px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-6)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-7</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-7)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-7)</span></button></td>
+      <td>16px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-7)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-8</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-8)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-8)</span></button></td>
+      <td>20px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-8)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-9</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-9)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-9)</span></button></td>
+      <td>24px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-9)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-10</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-10)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-10)</span></button></td>
+      <td>32px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-10)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-11</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-11)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-11)</span></button></td>
+      <td>40px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-11)', borderRadius: '4px' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>spacing/spacing-12</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--spacing-spacing-12)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--spacing-spacing-12)</span></button></td>
+      <td>48px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', height: '16px', width: 'var(--spacing-spacing-12)', borderRadius: '4px' }}></div></td>
+    </tr>
+  </tbody>
+</table>

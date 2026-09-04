@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "sync-figma": "node scripts/sync-figma.js && node scripts/generate-tokens.js && node scripts/generate-tailwind-theme.js && node scripts/generate-docs.js"
   },
   "dependencies": {
     "@vueuse/core": "^14.4.0",
@@ -27,6 +30,17 @@
     "tailwindcss": "^3.4.19",
     "typescript": "~5.9.3",
     "vite": "^8.0.1",
-    "vue-tsc": "^3.2.5"
+    "vue-tsc": "^3.2.5",
+    "storybook": "^10.6.0",
+    "@storybook/vue3-vite": "^10.6.0",
+    "@chromatic-com/storybook": "latest",
+    "@storybook/addon-vitest": "^10.6.0",
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/addon-onboarding": "^10.6.0",
+    "vitest": "latest",
+    "playwright": "latest",
+    "@vitest/browser-playwright": "latest",
+    "@vitest/coverage-v8": "latest"
   }
 }

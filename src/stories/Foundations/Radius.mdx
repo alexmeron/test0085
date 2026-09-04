@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Radius" />
+
+<style>{`
+.table-preview { border-collapse: collapse; width: 100%; margin-top: 1rem; margin-bottom: 3rem; }
+.table-preview th, .table-preview td { border: 1px solid var(--color-border-default, #e5e7eb); padding: 12px; text-align: left; }
+.table-preview th { background: var(--color-surface-subtle, #f9fafb); font-weight: bold; }
+.copy-btn { 
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-surface-subtle, #f3f4f6); 
+  border: 1px solid var(--color-border-default, #e5e7eb); 
+  border-radius: 4px; 
+  padding: 4px 8px; 
+  cursor: pointer; 
+  font-family: monospace;
+  font-size: 10px !important;
+  color: var(--color-brand-text-light, #111827);
+  transition: all 0.2s;
+}
+.copy-btn:hover { background: var(--color-brand-surface-subtle, #dbeafe); border-color: var(--color-brand-solid-default, #3b82f6); color: var(--color-brand-solid-default, #3b82f6); }
+.copy-btn:active { background: var(--color-brand-solid-default, #3b82f6); color: white; }
+.copy-btn svg { width: 14px; height: 14px; }
+.copy-btn span { font-size: 10px !important; line-height: 1; }
+`}</style>
+
+export const copyText = (e, text) => {
+  navigator.clipboard.writeText(text);
+  const span = e.currentTarget.querySelector('span');
+  if (!span) return;
+  const originalText = span.innerText;
+  span.innerText = 'Copied!';
+  setTimeout(() => { span.innerText = originalText; }, 1000);
+}
+
+# Border Radius
+
+<table className="table-preview">
+  <thead><tr><th>Token Name</th><th>CSS Variable</th><th>Value</th><th>Preview</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>radius/radius-none</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-none)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-none)</span></button></td>
+      <td>0px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-none)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>radius/radius-2xs</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-2xs)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-2xs)</span></button></td>
+      <td>1px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-2xs)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>radius/radius-xs</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-xs)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-xs)</span></button></td>
+      <td>2px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-xs)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>radius/radius-sm</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-sm)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-sm)</span></button></td>
+      <td>4px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-sm)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>radius/radius-md</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-md)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-md)</span></button></td>
+      <td>6px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-md)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>radius/radius-focus</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-focus)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-focus)</span></button></td>
+      <td>7px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-focus)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>radius/radius-lg</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-lg)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-lg)</span></button></td>
+      <td>8px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-lg)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>radius/radius-xl</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-xl)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-xl)</span></button></td>
+      <td>10px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-xl)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>radius/radius-2xl</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-2xl)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-2xl)</span></button></td>
+      <td>12px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-2xl)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>radius/radius-3xl</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-3xl)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-3xl)</span></button></td>
+      <td>16px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-3xl)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>radius/radius-full</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--radius-radius-full)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--radius-radius-full)</span></button></td>
+      <td>999px</td>
+      <td><div style={{ background: 'var(--color-brand-solid-default, #3b82f6)', width: '64px', height: '64px', borderRadius: 'var(--radius-radius-full)' }}></div></td>
+    </tr>
+  </tbody>
+</table>

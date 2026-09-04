@@ -1,0 +1,253 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Typography" />
+
+<style>{`
+.table-preview { border-collapse: collapse; width: 100%; margin-top: 1rem; margin-bottom: 3rem; }
+.table-preview th, .table-preview td { border: 1px solid var(--color-border-default, #e5e7eb); padding: 12px; text-align: left; }
+.table-preview th { background: var(--color-surface-subtle, #f9fafb); font-weight: bold; }
+.copy-btn { 
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-surface-subtle, #f3f4f6); 
+  border: 1px solid var(--color-border-default, #e5e7eb); 
+  border-radius: 4px; 
+  padding: 4px 8px; 
+  cursor: pointer; 
+  font-family: monospace;
+  font-size: 10px !important;
+  color: var(--color-brand-text-light, #111827);
+  transition: all 0.2s;
+}
+.copy-btn:hover { background: var(--color-brand-surface-subtle, #dbeafe); border-color: var(--color-brand-solid-default, #3b82f6); color: var(--color-brand-solid-default, #3b82f6); }
+.copy-btn:active { background: var(--color-brand-solid-default, #3b82f6); color: white; }
+.copy-btn svg { width: 14px; height: 14px; }
+.copy-btn span { font-size: 10px !important; line-height: 1; }
+`}</style>
+
+export const copyText = (e, text) => {
+  navigator.clipboard.writeText(text);
+  const span = e.currentTarget.querySelector('span');
+  if (!span) return;
+  const originalText = span.innerText;
+  span.innerText = 'Copied!';
+  setTimeout(() => { span.innerText = originalText; }, 1000);
+}
+
+# Typography
+
+## Font Family
+<table className="table-preview">
+  <thead><tr><th>Token Name</th><th>CSS Variable</th><th>Value</th><th>Preview</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>font-family/heading</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-family-heading)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-family-heading)</span></button></td>
+      <td>Inter</td>
+      <td><div style={{ fontFamily: 'var(--font-family-heading)', fontSize: '16px', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-family/body</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-family-body)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-family-body)</span></button></td>
+      <td>Inter</td>
+      <td><div style={{ fontFamily: 'var(--font-family-body)', fontSize: '16px', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+  </tbody>
+</table>
+
+## Font Size
+<table className="table-preview">
+  <thead><tr><th>Token Name</th><th>CSS Variable</th><th>Value</th><th>Preview</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>font-size/caption-small</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-caption-small)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-caption-small)</span></button></td>
+      <td>10</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-caption-small)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/caption-medium</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-caption-medium)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-caption-medium)</span></button></td>
+      <td>11</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-caption-medium)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/caption-big</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-caption-big)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-caption-big)</span></button></td>
+      <td>12</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-caption-big)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/text-small</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-text-small)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-text-small)</span></button></td>
+      <td>14</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-text-small)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/text-medium</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-text-medium)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-text-medium)</span></button></td>
+      <td>16</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-text-medium)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/text-big</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-text-big)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-text-big)</span></button></td>
+      <td>18</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-text-big)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/text-large</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-text-large)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-text-large)</span></button></td>
+      <td>20</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-text-large)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/heading-tiny</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-heading-tiny)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-heading-tiny)</span></button></td>
+      <td>24</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-heading-tiny)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/heading-small</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-heading-small)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-heading-small)</span></button></td>
+      <td>32</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-heading-small)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/heading-medium</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-heading-medium)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-heading-medium)</span></button></td>
+      <td>40</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-heading-medium)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/heading-big</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-heading-big)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-heading-big)</span></button></td>
+      <td>48</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-heading-big)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/heading-large</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-heading-large)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-heading-large)</span></button></td>
+      <td>56</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-heading-large)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-size/heading-giant</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-size-heading-giant)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-size-heading-giant)</span></button></td>
+      <td>64</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'var(--font-size-heading-giant)', fontWeight: 'normal', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+  </tbody>
+</table>
+
+## Font Weight
+<table className="table-preview">
+  <thead><tr><th>Token Name</th><th>CSS Variable</th><th>Value</th><th>Preview</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>font-weight/regular</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-weight-regular)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-weight-regular)</span></button></td>
+      <td>Regular</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'var(--font-weight-regular)', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-weight/medium</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-weight-medium)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-weight-medium)</span></button></td>
+      <td>Medium</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'var(--font-weight-medium)', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-weight/semibold</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-weight-semibold)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-weight-semibold)</span></button></td>
+      <td>Semi bold</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'var(--font-weight-semibold)', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>font-weight/bold</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--font-weight-bold)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--font-weight-bold)</span></button></td>
+      <td>Bold</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'var(--font-weight-bold)', lineHeight: 'normal' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+  </tbody>
+</table>
+
+## Line Height
+<table className="table-preview">
+  <thead><tr><th>Token Name</th><th>CSS Variable</th><th>Value</th><th>Preview</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>line-height/leading-14</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-14)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-14)</span></button></td>
+      <td>14</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-14)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-16</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-16)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-16)</span></button></td>
+      <td>16</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-16)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-20</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-20)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-20)</span></button></td>
+      <td>20</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-20)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-24</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-24)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-24)</span></button></td>
+      <td>24</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-24)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-26</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-26)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-26)</span></button></td>
+      <td>26</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-26)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-28</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-28)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-28)</span></button></td>
+      <td>28</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-28)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-32</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-32)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-32)</span></button></td>
+      <td>32</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-32)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-40</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-40)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-40)</span></button></td>
+      <td>40</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-40)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-48</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-48)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-48)</span></button></td>
+      <td>48</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-48)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-56</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-56)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-56)</span></button></td>
+      <td>56</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-56)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-64</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-64)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-64)</span></button></td>
+      <td>64</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-64)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+    <tr>
+      <td><code>line-height/leading-76</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--line-height-leading-76)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--line-height-leading-76)</span></button></td>
+      <td>76</td>
+      <td><div style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 'normal', lineHeight: 'var(--line-height-leading-76)' }}>Sphinx of black quartz, judge my vow</div></td>
+    </tr>
+  </tbody>
+</table>
+

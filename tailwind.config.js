@@ -7,16 +7,16 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      colors: figmaTheme.colors,
-      spacing: figmaTheme.spacing,
-      borderRadius: figmaTheme.borderRadius,
-      fontSize: figmaTheme.fontSize,
-      fontWeight: figmaTheme.fontWeight,
-      lineHeight: figmaTheme.lineHeight,
-      fontFamily: figmaTheme.fontFamily,
-      boxShadow: figmaTheme.boxShadow,
-    },
+    // Definimos directamente en theme (y NO en extend) para FORZAR a que 
+    // SOLO existan las variables de Figma y se elimine todo rastro de Tailwind por defecto.
+    colors: figmaTheme.colors,
+    spacing: figmaTheme.spacing,
+    borderRadius: figmaTheme.borderRadius,
+    fontSize: figmaTheme.fontSize,
+    fontWeight: figmaTheme.fontWeight,
+    lineHeight: figmaTheme.lineHeight,
+    fontFamily: figmaTheme.fontFamily,
+    boxShadow: figmaTheme.boxShadow,
   },
   plugins: [],
 }

@@ -48,6 +48,8 @@ for (const v of rawData.variables) {
     } else {
       if (v.resolvedType === 'FLOAT') {
         val = val + 'px';
+      } else if (v.resolvedType === 'STRING' && v.name.includes('font-family')) {
+        val = `"${val}", sans-serif`;
       } else if (v.resolvedType === 'STRING' && v.name.includes('font-weight')) {
         const lowerVal = String(val).toLowerCase();
         if (weightMap[lowerVal]) {
@@ -76,26 +78,23 @@ for (const v of rawData.variables) {
 
 let css = ':root {\n';
 
-if (groups.colors.length) {
-  css += '\n  /* Colors */\n' + groups.colors.sort().join('\n') + '\n';
-}
-if (groups.typography.length) {
-  css += '\n  /* Typography */\n' + groups.typography.sort().join('\n') + '\n';
-}
-if (groups.spacing.length) {
-  css += '\n  /* Spacing */\n' + groups.spacing.sort().join('\n') + '\n';
-}
-if (groups.sizing.length) {
-  css += '\n  /* Sizing */\n' + groups.sizing.sort().join('\n') + '\n';
-}
-if (groups.radius.length) {
-  css += '\n  /* Radius */\n' + groups.radius.sort().join('\n') + '\n';
-}
-if (groups.other.length) {
-  css += '\n  /* Other */\n' + groups.other.sort().join('\n') + '\n';
-}
+if (groups.colors.length) css += '\n  /* Colors */\n' + groups.colors.sort().join('\n') + '\n';
+if (groups.typography.length) css += '\n  /* Typography */\n' + groups.typography.sort().join('\n') + '\n';
+if (groups.spacing.length) css += '\n  /* Spacing */\n' + groups.spacing.sort().join('\n') + '\n';
+if (groups.sizing.length) css += '\n  /* Sizing */\n' + groups.sizing.sort().join('\n') + '\n';
+if (groups.radius.length) css += '\n  /* Radius */\n' + groups.radius.sort().join('\n') + '\n';
+if (groups.other.length) css += '\n  /* Other */\n' + groups.other.sort().join('\n') + '\n';
+
+// APPEND SHADOWS
+try {
+  const shadowsData = JSON.parse(fs.readFileSync(path.join(__dirname, '../tokens/shadows.json'), 'utf8'));
+  css += `\n  /* Shadows (Elevations) */\n`;
+  shadowsData.shadows.forEach(s => {
+    css += `  ${s.cssVar}: ${s.value};\n`;
+  });
+} catch(e) {}
 
 css += '}\n';
 
 fs.writeFileSync(path.join(__dirname, '../src/styles/tokens.css'), css);
-console.log('Generated sorted and grouped src/styles/tokens.css with aliases preserved');
+console.log('Generated sorted and grouped src/styles/tokens.css with aliases preserved and shadows included');

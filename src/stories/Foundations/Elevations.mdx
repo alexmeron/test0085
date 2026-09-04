@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Elevations" />
+
+<style>{`
+.table-preview { border-collapse: collapse; width: 100%; margin-top: 1rem; margin-bottom: 3rem; }
+.table-preview th, .table-preview td { border: 1px solid var(--color-border-default, #e5e7eb); padding: 12px; text-align: left; }
+.table-preview th { background: var(--color-surface-subtle, #f9fafb); font-weight: bold; }
+.copy-btn { 
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-surface-subtle, #f3f4f6); 
+  border: 1px solid var(--color-border-default, #e5e7eb); 
+  border-radius: 4px; 
+  padding: 4px 8px; 
+  cursor: pointer; 
+  font-family: monospace;
+  font-size: 10px !important;
+  color: var(--color-brand-text-light, #111827);
+  transition: all 0.2s;
+}
+.copy-btn:hover { background: var(--color-brand-surface-subtle, #dbeafe); border-color: var(--color-brand-solid-default, #3b82f6); color: var(--color-brand-solid-default, #3b82f6); }
+.copy-btn:active { background: var(--color-brand-solid-default, #3b82f6); color: white; }
+.copy-btn svg { width: 14px; height: 14px; }
+.copy-btn span { font-size: 10px !important; line-height: 1; }
+`}</style>
+
+export const copyText = (e, text) => {
+  navigator.clipboard.writeText(text);
+  const span = e.currentTarget.querySelector('span');
+  if (!span) return;
+  const originalText = span.innerText;
+  span.innerText = 'Copied!';
+  setTimeout(() => { span.innerText = originalText; }, 1000);
+}
+
+# Elevations (Shadows)
+
+Figma API currently does not support exporting Effect Styles as Local Variables. These shadows are sourced from `tokens/shadows.json`.
+
+<table className="table-preview">
+  <thead><tr><th>Token Name</th><th>CSS Variable</th><th>Value</th><th>Preview</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><code>elevation/sm</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--shadow-elevation-sm)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--shadow-elevation-sm)</span></button></td>
+      <td>0 1px 2px 0 rgba(0, 0, 0, 0.05)</td>
+      <td style={{ padding: '32px' }}><div style={{ background: 'var(--color-surface-default, white)', height: '64px', width: '64px', borderRadius: '8px', boxShadow: 'var(--shadow-elevation-sm)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>elevation/md</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--shadow-elevation-md)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--shadow-elevation-md)</span></button></td>
+      <td>0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)</td>
+      <td style={{ padding: '32px' }}><div style={{ background: 'var(--color-surface-default, white)', height: '64px', width: '64px', borderRadius: '8px', boxShadow: 'var(--shadow-elevation-md)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>elevation/lg</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--shadow-elevation-lg)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--shadow-elevation-lg)</span></button></td>
+      <td>0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)</td>
+      <td style={{ padding: '32px' }}><div style={{ background: 'var(--color-surface-default, white)', height: '64px', width: '64px', borderRadius: '8px', boxShadow: 'var(--shadow-elevation-lg)' }}></div></td>
+    </tr>
+    <tr>
+      <td><code>elevation/xl</code></td>
+      <td><button className="copy-btn" onClick={(e) => copyText(e, 'var(--shadow-elevation-xl)')}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span>var(--shadow-elevation-xl)</span></button></td>
+      <td>0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)</td>
+      <td style={{ padding: '32px' }}><div style={{ background: 'var(--color-surface-default, white)', height: '64px', width: '64px', borderRadius: '8px', boxShadow: 'var(--shadow-elevation-xl)' }}></div></td>
+    </tr>
+  </tbody>
+</table>

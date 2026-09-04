@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { RadioGroupIndicator, RadioGroupItem, type RadioGroupItemProps, useForwardProps } from 'radix-vue'
 import { Circle } from 'lucide-vue-next'
-import { radioVariants, type RadioVariants } from '.'
+import { radioVariants, type RadioVariants } from './radioVariants'
 import { cn } from '../../../lib/utils'
 
 const props = defineProps<RadioGroupItemProps & { class?: string, variant?: RadioVariants['variant'], size?: RadioVariants['size'] }>()

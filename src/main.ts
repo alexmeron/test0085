@@ -1,6 +1,3 @@
-import "./styles/tokens.css";
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-
-createApp(App).mount('#app')
+// Just a placeholder since this is now a component library
+import './style.css';
+import './styles/tokens.css';

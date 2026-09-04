@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { CheckboxRoot, type CheckboxRootProps, CheckboxIndicator, type CheckboxRootEmits, useForwardPropsEmits } from 'radix-vue'
 import { Check, Minus } from 'lucide-vue-next'
-import { checkboxVariants, type CheckboxVariants } from '.'
+import { checkboxVariants, type CheckboxVariants } from './checkboxVariants'
 import { cn } from '../../../lib/utils'
 
 const props = defineProps<CheckboxRootProps & { class?: string, variant?: CheckboxVariants['variant'], size?: CheckboxVariants['size'] }>()

@@ -1,6 +1,8 @@
 import { type ClassValue, clsx } from 'clsx'
 import { extendTailwindMerge } from 'tailwind-merge'
-import { figmaTheme } from '../styles/tailwind-theme.js'
+import * as tailwindTheme from '../styles/tailwind-theme.js'
+
+const figmaTheme = (tailwindTheme as any).figmaTheme || (tailwindTheme as any).default?.figmaTheme || {};
 
 const twMerge = extendTailwindMerge({
   extend: {
