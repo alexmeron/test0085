@@ -10,6 +10,9 @@ const props = defineProps<{
   class?: string
   state?: InputVariants['state']
   size?: InputVariants['size']
+  placeholder?: string
+  disabled?: boolean
+  type?: string
 }>()
 
 const emits = defineEmits<{
@@ -29,6 +32,9 @@ const computedClass = computed(() => {
 <template>
   <input
     v-model="modelValue"
+    :type="type"
+    :placeholder="placeholder"
+    :disabled="disabled || state === 'disabled'"
     :class="computedClass"
   >
 </template>
