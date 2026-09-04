@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { ButtonIcon } from '.'
+import ButtonIcon from './ButtonIcon.vue'
 import { Search } from 'lucide-vue-next'
 
 const meta = {
