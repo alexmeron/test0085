@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { Avatar, AvatarImage, AvatarFallback } from '.'
+import Avatar from './Avatar.vue'
 
 const meta = {
   title: 'Components/Avatar',
@@ -10,40 +10,32 @@ const meta = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
+    type: {
+      control: 'radio',
+      options: ['photo', 'name'],
+    },
+    label: {
+      control: 'text',
+    },
     src: {
       control: 'text',
-      description: 'Image URL for type=photo',
-    },
-    fallback: {
-      control: 'text',
-      description: 'Text initials for type=name',
     }
   },
   args: {
     size: 'md',
+    type: 'photo',
     src: 'https://github.com/shadcn.png',
-    fallback: 'AS'
+    label: 'AS',
   },
-  render: (args) => ({
-    components: { Avatar, AvatarImage, AvatarFallback },
-    setup() {
-      return { args }
-    },
-    template: `
-      <Avatar :size="args.size">
-        <AvatarImage :src="args.src" alt="Avatar" />
-        <AvatarFallback>{{ args.fallback }}</AvatarFallback>
-      </Avatar>
-    `,
-  }),
-} satisfies Meta<any>
+} satisfies Meta<typeof Avatar>
 
 export default meta
-type Story = StoryObj<any>
+type Story = StoryObj<typeof meta>
 
 export const Photo: Story = {
   args: {
     size: 'md',
+    type: 'photo',
     src: 'https://github.com/shadcn.png',
   }
 }
@@ -51,7 +43,8 @@ export const Photo: Story = {
 export const Name: Story = {
   args: {
     size: 'md',
-    src: '',
-    fallback: 'AS'
+    type: 'name',
+    label: 'AS',
+    src: ''
   }
 }
