@@ -16,6 +16,7 @@ interface Props extends PrimitiveProps {
 
 const props = withDefaults(defineProps<Props>(), {
   as: 'button',
+  size: 'md',
 })
 
 const computedClass = computed(() => {
@@ -26,6 +27,13 @@ const resolveIcon = (icon: boolean | any, defaultIcon: any) => {
   if (icon === true) return defaultIcon
   return icon
 }
+
+const iconClass = computed(() => {
+  if (props.size === 'lg') {
+    return 'w-sizing-8 h-sizing-8 shrink-0'
+  }
+  return 'w-sizing-7 h-sizing-7 shrink-0'
+})
 </script>
 
 <template>
@@ -37,13 +45,13 @@ const resolveIcon = (icon: boolean | any, defaultIcon: any) => {
     <component 
       :is="resolveIcon(leadingIcon, Search)" 
       v-if="leadingIcon" 
-      class="w-sizing-7 h-sizing-7 shrink-0" 
+      :class="iconClass"
     />
     <slot />
     <component 
       :is="resolveIcon(trailingIcon, ArrowRight)" 
       v-if="trailingIcon" 
-      class="w-sizing-7 h-sizing-7 shrink-0" 
+      :class="iconClass"
     />
   </Primitive>
 </template>
