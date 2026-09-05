@@ -9,6 +9,7 @@ interface Props {
   totalPages?: number
   totalItems?: number
   itemsPerPage?: number
+  text?: string
   class?: string
 }
 
@@ -17,6 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
   totalPages: 1,
   totalItems: 0,
   itemsPerPage: 10,
+  text: '',
 })
 
 const emits = defineEmits<{
@@ -44,7 +46,7 @@ function next() {
   <div :class="cn(styles.bottomBar, props.class)">
     <p :class="styles.paginationText">
       <slot name="text">
-        Mostrando {{ (page - 1) * itemsPerPage + 1 }}–{{ Math.min(page * itemsPerPage, totalItems) }} de {{ totalItems }} resultados
+        {{ text || `Total: ${totalItems} resultados` }}
       </slot>
     </p>
 

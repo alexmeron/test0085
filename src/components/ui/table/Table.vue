@@ -27,8 +27,12 @@ interface Props {
   selectedRows?: (string | number)[]
   rowKey?: string
   title?: string
+  showTitle?: boolean
+  showFilters?: boolean
   showTop?: boolean
+  showBottom?: boolean
   showPagination?: boolean
+  paginationText?: string
   page?: number
   totalPages?: number
   totalItems?: number
@@ -39,13 +43,17 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   columns: () => [],
   data: () => [],
-  checkbox: false,
-  actions: false,
+  checkbox: true,
+  actions: true,
   selectedRows: () => [],
   rowKey: 'id',
-  title: '',
-  showTop: false,
-  showPagination: false,
+  title: 'Solicitudes',
+  showTitle: true,
+  showFilters: true,
+  showTop: true,
+  showBottom: true,
+  showPagination: true,
+  paginationText: '',
   page: 1,
   totalPages: 1,
   totalItems: 0,
@@ -92,9 +100,17 @@ function toggleSelectRow(row: Record<string, any>, index: number) {
 
 <template>
   <div :class="cn(styles.wrapper, props.class)">
-    <!-- Optional Top Bar -->
+    <!-- Optional Top Bar (Figma Atom Top) -->
     <slot name="top">
-      <TableTop v-if="showTop || title" :title="title">
+      <TableTop
+        v-if="showTop"
+        :title="title"
+        :show-title="showTitle"
+        :show-filters="showFilters"
+      >
+        <template v-if="$slots.title" #title>
+          <slot name="title" />
+        </template>
         <template v-if="$slots.filters" #filters>
           <slot name="filters" />
         </template>
@@ -178,16 +194,23 @@ function toggleSelectRow(row: Record<string, any>, index: number) {
       </table>
     </div>
 
-    <!-- Optional Bottom Bar (Pagination) -->
+    <!-- Optional Bottom Bar (Figma Atom Bottom) -->
     <slot name="bottom">
       <TablePagination
-        v-if="showPagination"
+        v-if="showBottom || showPagination"
         :page="page"
         :total-pages="totalPages"
         :total-items="totalItems"
         :items-per-page="itemsPerPage"
+        :text="paginationText"
         @update:page="emits('update:page', $event)"
-      />
+      >
+        <template v-if="$slots.paginationText || $slots.text" #text>
+          <slot name="paginationText">
+            <slot name="text" />
+          </slot>
+        </template>
+      </TablePagination>
     </slot>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowUpDown } from 'lucide-vue-next'
+import { ChevronsUpDown } from 'lucide-vue-next'
 import { cn } from '../../../lib/utils'
 import styles from './Table.module.css'
 
@@ -24,10 +24,10 @@ const emits = defineEmits<{
       @click="emits('sort')"
       @keydown.enter="emits('sort')"
     >
-      <slot />
       <span :class="styles.sortIcon">
-        <ArrowUpDown style="width: var(--sizing-6); height: var(--sizing-6);" />
+        <ChevronsUpDown style="width: var(--sizing-6); height: var(--sizing-6);" />
       </span>
+      <slot />
     </div>
     <template v-else>
       <slot />
