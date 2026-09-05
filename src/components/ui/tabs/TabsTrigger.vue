@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { TabsTrigger, type TabsTriggerProps } from 'radix-vue'
 import { tabTriggerVariants, type TabTriggerVariants } from './tabTriggerVariants'
 import { Chip } from '../chip'
+import { Image01Icon, Icon } from '../icon'
 import styles from './Tabs.module.css'
 import { cn } from '../../../lib/utils'
 
 interface Props extends TabsTriggerProps {
   label?: string
   icon?: any
+  leadingIcon?: boolean | any
   chip?: string | number
   chipState?: 'destructive' | 'info' | 'ready' | 'warning' | 'success' | 'neutral'
   state?: TabTriggerVariants['state']
@@ -18,6 +21,12 @@ const props = withDefaults(defineProps<Props>(), {
   chipState: 'destructive',
   state: 'default',
 })
+
+const resolvedIcon = computed(() => {
+  const ic = props.leadingIcon ?? props.icon
+  if (ic === true) return Image01Icon
+  return ic
+})
 </script>
 
 <template>
@@ -26,10 +35,19 @@ const props = withDefaults(defineProps<Props>(), {
     :disabled="disabled"
     :class="cn(tabTriggerVariants({ state }), props.class)"
   >
-    <!-- Optional Leading Icon -->
-    <span v-if="icon || $slots.icon" :class="styles.icon">
+    <!-- Optional Leading Icon (12×12px, token --sizing-6 / size=2xs) -->
+    <span v-if="resolvedIcon || $slots.icon" :class="styles.icon">
       <slot name="icon">
-        <component :is="icon" style="width: var(--sizing-6); height: var(--sizing-6);" />
+        <Icon
+          v-if="typeof resolvedIcon === 'string'"
+          :name="resolvedIcon"
+          style="width: 100%; height: 100%;"
+        />
+        <component
+          :is="resolvedIcon"
+          v-else-if="resolvedIcon"
+          style="width: 100%; height: 100%;"
+        />
       </slot>
     </span>
 
@@ -38,7 +56,7 @@ const props = withDefaults(defineProps<Props>(), {
       <slot>{{ label }}</slot>
     </span>
 
-    <!-- Optional Chip Badge -->
+    <!-- Optional Chip Badge (sub-component Chip size="badge") -->
     <span v-if="chip !== undefined || $slots.chip" :class="styles.chip">
       <slot name="chip">
         <Chip size="badge" :state="chipState" variant="subtle">

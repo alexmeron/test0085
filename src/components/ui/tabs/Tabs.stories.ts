@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { ref } from 'vue'
-import { UserIcon, BellIcon, ShieldIcon, StarIcon } from '../icon'
+import { Image01Icon, UserIcon, BellIcon } from '../icon'
 import Tabs from './Tabs.vue'
 import TabsList from './TabsList.vue'
 import TabsTrigger from './TabsTrigger.vue'
@@ -22,8 +22,8 @@ import TabsContent from './TabsContent.vue'
  * |---|---|---|---|---|
  * | **TabsList (Contenedor)** | `--sizing-11` (40px) | `--spacing-3` (4px) | `--radius-xl` (10px) | Background `--color-surface-subtle`, gap `--spacing-0` (0px) |
  * | **TabTrigger (Botón)** | `--sizing-10` (32px) | `--spacing-5` (8px) vert, `--spacing-6` (12px) horiz | `--radius-lg` (8px) | `--font-size-caption-big` (12px), gap `--spacing-4` (6px) |
- * | **Icono** | `--sizing-6` (12px) | - | - | Alineado al texto |
- * | **Badge (Chip)** | 20px | Sub-componente Chip `size="badge"` | `--radius-full` | Margen izquierdo `--spacing-1` |
+ * | **Icono** | `--sizing-6` (12px) | - | - | Token `--sizing-6` (`size=2xs`), icono Figma `Media/Image_01` |
+ * | **Badge (Chip)** | 20px | Componente Chip `size="badge"` (`Chip.vue`) | `--radius-full` | Instancia 1:1 del componente Chip de la librería |
  *
  * ---
  *
@@ -90,18 +90,18 @@ export const Default: Story = {
 
 export const WithIcons: Story = {
   render: () => ({
-    components: { Tabs, TabsList, TabsTrigger, TabsContent },
+    components: { Tabs, TabsList, TabsTrigger },
     setup() {
-      const activeTab = ref('profile')
-      return { activeTab, UserIcon, BellIcon, ShieldIcon }
+      const activeTab = ref('figma')
+      return { activeTab, Image01Icon, UserIcon, BellIcon }
     },
     template: `
       <div style="max-width: 500px; padding: var(--spacing-6);">
         <Tabs v-model="activeTab">
           <TabsList>
-            <TabsTrigger value="profile" label="Perfil" :icon="UserIcon" />
+            <TabsTrigger value="figma" label="Figma Icon" :icon="Image01Icon" />
+            <TabsTrigger value="users" label="Usuarios" :icon="UserIcon" />
             <TabsTrigger value="alerts" label="Alertas" :icon="BellIcon" />
-            <TabsTrigger value="privacy" label="Privacidad" :icon="ShieldIcon" />
           </TabsList>
         </Tabs>
       </div>
@@ -111,18 +111,39 @@ export const WithIcons: Story = {
 
 export const WithChips: Story = {
   render: () => ({
-    components: { Tabs, TabsList, TabsTrigger, TabsContent },
+    components: { Tabs, TabsList, TabsTrigger },
     setup() {
       const activeTab = ref('inbox')
-      return { activeTab, BellIcon, StarIcon }
+      return { activeTab }
     },
     template: `
       <div style="max-width: 500px; padding: var(--spacing-6);">
         <Tabs v-model="activeTab">
           <TabsList>
-            <TabsTrigger value="inbox" label="Bandeja" :chip="3" chip-state="destructive" />
+            <TabsTrigger value="inbox" label="Bandeja" :chip="1" chip-state="destructive" />
             <TabsTrigger value="updates" label="Actualizaciones" :chip="12" chip-state="info" />
             <TabsTrigger value="archived" label="Archivados" />
+          </TabsList>
+        </Tabs>
+      </div>
+    `,
+  }),
+}
+
+export const WithIconsAndChips: Story = {
+  render: () => ({
+    components: { Tabs, TabsList, TabsTrigger },
+    setup() {
+      const activeTab = ref('tab1')
+      return { activeTab, Image01Icon }
+    },
+    template: `
+      <div style="max-width: 500px; padding: var(--spacing-6);">
+        <Tabs v-model="activeTab">
+          <TabsList>
+            <TabsTrigger value="tab1" label="Label" :icon="Image01Icon" :chip="1" chip-state="destructive" />
+            <TabsTrigger value="tab2" label="Label" :icon="Image01Icon" :chip="1" chip-state="destructive" />
+            <TabsTrigger value="tab3" label="Label" :icon="Image01Icon" :chip="1" chip-state="destructive" />
           </TabsList>
         </Tabs>
       </div>
@@ -139,7 +160,7 @@ export const AllStates: Story = {
           <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary); font-family: var(--font-family-body);">Default:</span>
           <Tabs default-value="other">
             <TabsList>
-              <TabsTrigger value="def" state="default" label="Tab label" />
+              <TabsTrigger value="def" state="default" label="Label" :chip="1" chip-state="destructive" />
             </TabsList>
           </Tabs>
         </div>
@@ -147,7 +168,7 @@ export const AllStates: Story = {
           <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary); font-family: var(--font-family-body);">Hover:</span>
           <Tabs default-value="other">
             <TabsList>
-              <TabsTrigger value="hov" state="hover" label="Tab label" />
+              <TabsTrigger value="hov" state="hover" label="Label" :chip="1" chip-state="destructive" />
             </TabsList>
           </Tabs>
         </div>
@@ -155,7 +176,7 @@ export const AllStates: Story = {
           <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary); font-family: var(--font-family-body);">Pressed:</span>
           <Tabs default-value="other">
             <TabsList>
-              <TabsTrigger value="pre" state="pressed" label="Tab label" />
+              <TabsTrigger value="pre" state="pressed" label="Label" :chip="1" chip-state="destructive" />
             </TabsList>
           </Tabs>
         </div>
@@ -163,7 +184,7 @@ export const AllStates: Story = {
           <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary); font-family: var(--font-family-body);">Focus:</span>
           <Tabs default-value="other">
             <TabsList>
-              <TabsTrigger value="foc" state="focus" label="Tab label" />
+              <TabsTrigger value="foc" state="focus" label="Label" :chip="1" chip-state="destructive" />
             </TabsList>
           </Tabs>
         </div>
@@ -171,7 +192,7 @@ export const AllStates: Story = {
           <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary); font-family: var(--font-family-body);">Current:</span>
           <Tabs default-value="cur">
             <TabsList>
-              <TabsTrigger value="cur" state="current" label="Tab label" />
+              <TabsTrigger value="cur" state="current" label="Label" :chip="1" chip-state="destructive" />
             </TabsList>
           </Tabs>
         </div>
