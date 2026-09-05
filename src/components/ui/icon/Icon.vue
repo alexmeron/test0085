@@ -172,9 +172,6 @@ const computedStyle = computed(() => {
       style.width = String(props.size)
       style.height = String(props.size)
     }
-  } else {
-    style.width = '100%'
-    style.height = '100%'
   }
 
   return style
@@ -191,6 +188,8 @@ const computedStyle = computed(() => {
 
 <style scoped>
 .ds-icon {
+  width: 1em;
+  height: 1em;
   vertical-align: middle;
 }
 .ds-icon :deep(svg) {
