@@ -9,23 +9,57 @@ const meta: Meta<typeof Checkbox> = {
     docs: {
       description: {
         component: `
-Componente **Checkbox** basado en Radix Vue y Tailwind CSS, mapeado 1:1 a Figma.
+Componente **Checkbox** basado en Radix Vue y Figma Design Tokens. Estilizado con **CSS Modules** y **CSS Variables**.
 
-### Token mapping
+---
 
-| Propiedad | Figma variable | CSS variable | Tailwind class |
+### 📐 Layout & Sizing
+
+| Propiedad | Tamaño | Token / Figma Variable | CSS Variable | Valor |
+|---|---|---|---|---|
+| **Width / Height** | sm | \`Size/size-formControll-sm\` | *Missing token* | 14×14px |
+| | md | \`Size/size-formControll-md\` / \`sizing/7\` | \`--sizing-7\` | 16×16px |
+| | lg | \`Size/size-formControll-lg\` / \`sizing/8\` | \`--sizing-8\` | 20×20px |
+
+---
+
+### ⬛ Shape
+
+| Propiedad | Token / Figma Variable | CSS Variable | Valor |
 |---|---|---|---|
-| Border radius | \`radius/radius-sm\` | \`--radius-sm\` | \`rounded-radius-sm\` |
-| **sm** (14px) | \`Size/size-formControll-sm\` | *Missing token* | \`h-[14px] w-[14px]\` |
-| **md** (16px) | \`Size/size-formControll-md\` / \`sizing/7\` | \`--sizing-7\` | \`h-sizing-7 w-sizing-7\` |
-| **lg** (20px) | \`Size/size-formControll-lg\` / \`sizing/8\` | \`--sizing-8\` | \`h-sizing-8 w-sizing-8\` |
-| Unchecked BG | \`color/surface/default\` | \`--color-surface-default\` | \`bg-surface-default\` |
-| Unchecked Border | \`color/border/default\` | \`--color-border-default\` | \`border-border-default\` |
-| Unchecked Hover Border | \`color/border/strong\` | \`--color-border-strong\` | \`hover:border-border-strong\` |
-| Primary Checked BG | \`color/brand/solid/default\` | \`--color-brand-solid-default\` | \`data-[state=checked]:bg-brand-solid-default\` |
-| Secondary Checked BG | \`color/secondary/solid/default\` | \`--color-secondary-solid-default\` | \`data-[state=checked]:bg-secondary-solid-default\` |
-| Focus ring | \`color/border/focus\` | \`--color-border-focus\` | \`ring-border-focus\` |
-| Disabled | \`Opacity/disabled\` | — | \`opacity-50\` |
+| **Border Radius** | \`radius/radius-sm\` | \`--radius-sm\` | 4px |
+
+---
+
+### 🎨 Colors & States
+
+| Variante | Estado | Propiedad | Token / Figma Variable | CSS Variable |
+|---|---|---|---|---|
+| **todos** | Unchecked Default | Background | \`color/surface/default\` | \`--color-surface-default\` |
+| | | Border | \`color/border/default\` | \`--color-border-default\` |
+| | Unchecked Hover | Border | \`color/border/strong\` | \`--color-border-strong\` |
+| **primary** | Checked Default | Background | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
+| | | Border | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
+| | | Icon | \`color/brand/text/on-solid\` | \`--color-brand-text-on-solid\` |
+| | Checked Hover | Background | \`color/brand/solid/hover\` | \`--color-brand-solid-hover\` |
+| | | Border | \`color/brand/solid/hover\` | \`--color-brand-solid-hover\` |
+| **secondary** | Checked Default | Background | \`color/secondary/solid/default\` | \`--color-secondary-solid-default\` |
+| | | Border | \`color/secondary/solid/default\` | \`--color-secondary-solid-default\` |
+| | | Icon | \`color/secondary/text/on-solid\` | \`--color-secondary-text-on-solid\` |
+| | Checked Hover | Background | \`color/secondary/solid/hover\` | \`--color-secondary-solid-hover\` |
+| | | Border | \`color/secondary/solid/hover\` | \`--color-secondary-solid-hover\` |
+| **todos** | Focus | Ring / Outline | \`color/border/focus\` | \`--color-border-focus\` |
+| **todos** | Disabled | Opacity | \`Opacity/disabled\` | 0.5 |
+
+---
+
+### 🔘 Icons
+
+| Tamaño Contenedor | Icono Check / Minus | Ancho Trazo |
+|---|---|---|
+| sm (14×14px) | 10×10px | 3px |
+| md (16×16px) | 12×12px | 3px |
+| lg (20×20px) | 14×14px | 2.5px |
         `,
       },
     },
@@ -77,25 +111,25 @@ export const Secondary: Story = {
   args: { variant: 'secondary', checked: true },
 }
 
-// ─── Sizes (agrupados sm, md, lg en una sola historia) ─────────────────────
+// ─── Sizes ──────────────────────────────────────────────────────────────────
 
 export const Sizes: Story = {
   render: (args) => ({
     components: { Checkbox },
     setup() { return { args } },
     template: `
-      <div class="flex items-center gap-6">
-        <div class="flex items-center gap-2">
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
           <Checkbox v-bind="args" size="sm" id="c-sm" />
-          <label for="c-sm" class="text-caption-big">Small (14px)</label>
+          <label for="c-sm" style="font-size: var(--font-size-caption-big); font-family: var(--font-family-body);">Small (14px)</label>
         </div>
-        <div class="flex items-center gap-2">
+        <div style="display: flex; align-items: center; gap: 8px;">
           <Checkbox v-bind="args" size="md" id="c-md" />
-          <label for="c-md" class="text-text-small">Medium (16px)</label>
+          <label for="c-md" style="font-size: var(--font-size-text-small); font-family: var(--font-family-body);">Medium (16px)</label>
         </div>
-        <div class="flex items-center gap-2">
+        <div style="display: flex; align-items: center; gap: 8px;">
           <Checkbox v-bind="args" size="lg" id="c-lg" />
-          <label for="c-lg" class="text-text-small">Large (20px)</label>
+          <label for="c-lg" style="font-size: var(--font-size-text-small); font-family: var(--font-family-body);">Large (20px)</label>
         </div>
       </div>
     `,
@@ -121,18 +155,18 @@ export const Disabled: Story = {
     components: { Checkbox },
     setup() { return { args } },
     template: `
-      <div class="flex items-center gap-6">
-        <div class="flex items-center gap-2">
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
           <Checkbox v-bind="args" :checked="false" disabled id="d-un" />
-          <label for="d-un" class="text-text-small text-text-disabled">Unchecked Disabled</label>
+          <label for="d-un" style="font-size: var(--font-size-text-small); color: var(--color-text-disabled); font-family: var(--font-family-body);">Unchecked Disabled</label>
         </div>
-        <div class="flex items-center gap-2">
+        <div style="display: flex; align-items: center; gap: 8px;">
           <Checkbox v-bind="args" :checked="true" disabled id="d-chk" />
-          <label for="d-chk" class="text-text-small text-text-disabled">Checked Disabled</label>
+          <label for="d-chk" style="font-size: var(--font-size-text-small); color: var(--color-text-disabled); font-family: var(--font-family-body);">Checked Disabled</label>
         </div>
-        <div class="flex items-center gap-2">
+        <div style="display: flex; align-items: center; gap: 8px;">
           <Checkbox v-bind="args" checked="indeterminate" disabled id="d-ind" />
-          <label for="d-ind" class="text-text-small text-text-disabled">Indeterminate Disabled</label>
+          <label for="d-ind" style="font-size: var(--font-size-text-small); color: var(--color-text-disabled); font-family: var(--font-family-body);">Indeterminate Disabled</label>
         </div>
       </div>
     `,

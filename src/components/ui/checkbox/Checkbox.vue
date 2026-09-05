@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { CheckboxRoot, type CheckboxRootProps, CheckboxIndicator, type CheckboxRootEmits, useForwardPropsEmits } from 'radix-vue'
 import { Check, Minus } from 'lucide-vue-next'
 import { checkboxVariants, type CheckboxVariants } from './checkboxVariants'
+import styles from './Checkbox.module.css'
 import { cn } from '../../../lib/utils'
 
 interface Props extends CheckboxRootProps {
@@ -19,14 +20,14 @@ const emits = defineEmits<CheckboxRootEmits>()
 
 const forwarded = useForwardPropsEmits(props, emits)
 
-const computedClass = computed(() => {
-  return cn(checkboxVariants({ variant: props.variant, size: props.size }), props.class)
-})
+const computedClass = computed(() =>
+  cn(checkboxVariants({ variant: props.variant, size: props.size }), props.class)
+)
 
 const iconClass = computed(() => {
-  if (props.size === 'sm') return 'h-2.5 w-2.5 stroke-[3]'
-  if (props.size === 'lg') return 'h-3.5 w-3.5 stroke-[2.5]'
-  return 'h-3 w-3 stroke-[3]'
+  if (props.size === 'sm') return styles['icon-sm']
+  if (props.size === 'lg') return styles['icon-lg']
+  return styles['icon-md']
 })
 </script>
 
@@ -36,7 +37,7 @@ const iconClass = computed(() => {
     :class="computedClass"
     v-slot="{ checked: isChecked }"
   >
-    <CheckboxIndicator class="flex h-full w-full items-center justify-center text-current">
+    <CheckboxIndicator :class="styles.indicator">
       <slot :checked="isChecked">
         <Minus v-if="isChecked === 'indeterminate'" :class="iconClass" />
         <Check v-else :class="iconClass" />

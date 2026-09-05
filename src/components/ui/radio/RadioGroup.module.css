@@ -1,0 +1,103 @@
+/* RadioGroup Root */
+.root {
+  display: grid;
+  gap: var(--spacing-3);
+}
+
+/* Base RadioGroup Item */
+.item {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  background-color: var(--color-surface-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface-default), 0 0 0 4px var(--color-border-focus);
+}
+
+.item:disabled,
+.item[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ─── Sizes ────────────────────────────────────────────────────────────── */
+
+/* MISSING TOKEN: Size/size-formControll-sm (14px) not present in Foundations */
+.size-sm {
+  width: 14px;
+  height: 14px;
+}
+
+.size-md {
+  width: var(--sizing-7);
+  height: var(--sizing-7);
+}
+
+.size-lg {
+  width: var(--sizing-8);
+  height: var(--sizing-8);
+}
+
+/* ─── Variants ─────────────────────────────────────────────────────────── */
+
+/* Primary Variant */
+.variant-primary[data-state="checked"] {
+  border-color: var(--color-brand-solid-default);
+  color: var(--color-brand-solid-default);
+}
+
+.variant-primary[data-state="checked"]:hover {
+  border-color: var(--color-brand-solid-hover);
+  color: var(--color-brand-solid-hover);
+}
+
+/* Secondary Variant */
+.variant-secondary[data-state="checked"] {
+  border-color: var(--color-secondary-solid-default);
+  color: var(--color-secondary-solid-default);
+}
+
+.variant-secondary[data-state="checked"]:hover {
+  border-color: var(--color-secondary-solid-hover);
+  color: var(--color-secondary-solid-hover);
+}
+
+/* ─── Indicator & Inner Dot ────────────────────────────────────────────── */
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  border-radius: var(--radius-full);
+  background-color: currentColor;
+}
+
+.dot-sm {
+  width: 6px;
+  height: 6px;
+}
+
+.dot-md {
+  width: 7px;
+  height: 7px;
+}
+
+.dot-lg {
+  width: 9px;
+  height: 9px;
+}
