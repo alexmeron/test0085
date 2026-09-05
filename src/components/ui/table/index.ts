@@ -1,0 +1,8 @@
+export { default as Table, type TableColumn } from './Table.vue'
+export { default as TableHeader } from './TableHeader.vue'
+export { default as TableBody } from './TableBody.vue'
+export { default as TableRow } from './TableRow.vue'
+export { default as TableHead } from './TableHead.vue'
+export { default as TableCell } from './TableCell.vue'
+export { default as TableTop } from './TableTop.vue'
+export { default as TablePagination } from './TablePagination.vue'

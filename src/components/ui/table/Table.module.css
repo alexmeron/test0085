@@ -1,0 +1,156 @@
+/* Table Component Styles */
+/* Strictly mapped 1:1 to Figma Table component (node 4129:3958) */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  width: 100%;
+  font-family: var(--font-family-body);
+}
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-default);
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────── */
+.header {
+  height: 28px;
+  background-color: var(--color-surface-default);
+}
+
+.headCell {
+  padding: 0 var(--spacing-5);
+  height: 28px;
+  font-size: var(--font-size-caption-medium);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-16);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--color-border-subtle);
+  white-space: nowrap;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.sortableHeader {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.sortableHeader:hover {
+  color: var(--color-text-primary);
+}
+
+.sortIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sizing-6);
+  height: var(--sizing-6);
+  color: var(--color-text-secondary);
+}
+
+/* ─── Row ───────────────────────────────────────────────────────────────── */
+.row {
+  height: 52px;
+  background-color: var(--color-surface-default);
+  transition: background-color 150ms ease;
+}
+
+.row:hover {
+  background-color: var(--color-surface-subtle);
+}
+
+.rowSelected {
+  background-color: var(--color-surface-subtle);
+}
+
+/* ─── Cell ──────────────────────────────────────────────────────────────── */
+.cell {
+  padding: var(--spacing-4) var(--spacing-5);
+  height: 52px;
+  font-size: var(--font-size-text-small);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-20);
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border-subtle);
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.checkboxCell {
+  width: var(--sizing-10);
+  padding: 0 var(--spacing-4);
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.actionCell {
+  width: var(--sizing-11);
+  padding: 0 var(--spacing-5);
+  text-align: right;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* ─── Top Bar (Title & Filters) ─────────────────────────────────────────── */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-7);
+  width: 100%;
+}
+
+.title {
+  font-size: var(--font-size-text-medium);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-24);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-5);
+}
+
+/* ─── Bottom Bar (Pagination) ───────────────────────────────────────────── */
+.bottomBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-5);
+  width: 100%;
+}
+
+.paginationText {
+  font-size: var(--font-size-caption-big);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-16);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
