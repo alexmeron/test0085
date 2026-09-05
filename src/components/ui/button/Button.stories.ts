@@ -9,34 +9,92 @@ const meta: Meta<typeof Button> = {
     docs: {
       description: {
         component: `
-Botón de acción. Mapeado 1:1 al componente **Button** de Figma.
+Botón de acción. Mapeado 1:1 al componente **Button** de Figma. Estilizado con **CSS Modules** y **CSS Variables** de Figma.
 
-### Token mapping
+---
 
-| Propiedad | Figma variable | CSS variable | Tailwind class |
+### 📐 Layout & Sizing
+
+| Propiedad | Tamaño | Token / Figma Variable | CSS Variable | Valor |
+|---|---|---|---|---|
+| **Height** | sm | \`sizing/sizing-9\` | \`--sizing-9\` | 24px |
+| | md | \`sizing/sizing-10\` | \`--sizing-10\` | 32px |
+| | lg | \`sizing/sizing-11\` | \`--sizing-11\` | 40px |
+| **Padding Horizontal** | sm | \`spacing/spacing-5\` | \`--spacing-5\` | 8px |
+| | md | \`spacing/spacing-5\` | \`--spacing-5\` | 8px |
+| | lg | \`spacing/spacing-6\` | \`--spacing-6\` | 12px |
+| **Padding Vertical** | sm | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
+| | md | \`spacing/spacing-4\` | \`--spacing-4\` | 6px |
+| | lg | \`spacing/spacing-5-5\` | \`--spacing-5-5\` | 10px |
+| **Gap** | todos | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
+
+---
+
+### ⬛ Shape
+
+| Propiedad | Token / Figma Variable | CSS Variable | Valor |
 |---|---|---|---|
-| Border radius | \`radius/radius-lg\` | \`--radius-lg\` | \`rounded-radius-lg\` |
-| Gap | \`spacing/spacing-3\` | \`--spacing-3\` | \`gap-spacing-3\` |
-| Font family | \`font-family/body\` | \`--font-family-body\` | \`font-body\` |
-| Font weight | \`font-weight/regular\` | \`--font-weight-regular\` | \`font-regular\` |
-| Focus ring | \`color/border/focus\` | \`--color-border-focus\` | \`ring-border-focus\` |
-| **sm** height | \`sizing/sizing-9\` | \`--sizing-9\` | \`h-sizing-9\` |
-| **sm** padding H | \`spacing/spacing-5\` | \`--spacing-5\` | \`px-spacing-5\` |
-| **sm** padding V | \`spacing/spacing-3\` | \`--spacing-3\` | \`py-spacing-3\` |
-| **sm** font size | \`font-size/caption/big\` | \`--font-size-caption-big\` | \`text-caption-big\` |
-| **sm** line height | \`line-height/leading-16\` | \`--leading-16\` | \`leading-leading-16\` |
-| **md** height | \`sizing/sizing-10\` | \`--sizing-10\` | \`h-sizing-10\` |
-| **md** padding H | \`spacing/spacing-5\` | \`--spacing-5\` | \`px-spacing-5\` |
-| **md** padding V | \`spacing/spacing-4\` | \`--spacing-4\` | \`py-spacing-4\` |
-| **md** font size | \`font-size/text/small\` | \`--font-size-text-small\` | \`text-text-small\` |
-| **md** line height | \`line-height/leading-20\` | \`--leading-20\` | \`leading-leading-20\` |
-| **lg** height | \`sizing/sizing-11\` | \`--sizing-11\` | \`h-sizing-11\` |
-| **lg** padding H | \`spacing/spacing-6\` | \`--spacing-6\` | \`px-spacing-6\` |
-| **lg** padding V | \`spacing/spacing-5-5\` | \`--spacing-5-5\` | \`py-spacing-5-5\` |
-| **lg** font size | \`font-size/text/small\` | \`--font-size-text-small\` | \`text-text-small\` |
-| **lg** line height | \`line-height/leading-20\` | \`--leading-20\` | \`leading-leading-20\` |
-| icon sm/md | \`sizing/sizing-7\` | \`--sizing-7\` | \`w-sizing-7 h-sizing-7\` |
-| icon lg | \`sizing/sizing-8\` | \`--sizing-8\` | \`w-sizing-8 h-sizing-8\` |
+| **Border Radius** | \`radius/radius-lg\` | \`--radius-lg\` | 8px |
+
+---
+
+### 🔤 Typography
+
+| Propiedad | Tamaño | Token / Figma Variable | CSS Variable | Valor |
+|---|---|---|---|---|
+| **Font Family** | todos | \`font-family/body\` | \`--font-family-body\` | "Inter", sans-serif |
+| **Font Weight** | todos | \`font-weight/regular\` | \`--font-weight-regular\` | 400 |
+| **Font Size** | sm | \`font-size/caption/big\` | \`--font-size-caption-big\` | 12px |
+| | md, lg | \`font-size/text/small\` | \`--font-size-text-small\` | 14px |
+| **Line Height** | sm | \`line-height/leading-16\` | \`--leading-16\` | 16px |
+| | md, lg | \`line-height/leading-20\` | \`--leading-20\` | 20px |
+
+---
+
+### 🎨 Colors & States
+
+| Variante | Estado | Propiedad | Token / Figma Variable | CSS Variable |
+|---|---|---|---|---|
+| **primary** | Default | Background | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
+| | | Text / Icon | \`color/brand/text/on-solid\` | \`--color-brand-text-on-solid\` |
+| | Hover | Background | \`color/brand/solid/hover\` | \`--color-brand-solid-hover\` |
+| | Pressed | Background | \`color/brand/solid/pressed\` | \`--color-brand-solid-pressed\` |
+| **secondary** | Default | Background | \`color/secondary/solid/default\` | \`--color-secondary-solid-default\` |
+| | | Text / Icon | \`color/secondary/text/on-solid\` | \`--color-secondary-text-on-solid\` |
+| | Hover | Background | \`color/secondary/solid/hover\` | \`--color-secondary-solid-hover\` |
+| | Pressed | Background | \`color/secondary/solid/pressed\` | \`--color-secondary-solid-pressed\` |
+| **tertiary** | Default | Background | \`color/subtle/solid/default\` | \`--color-subtle-solid-default\` |
+| | | Text / Icon | \`color/subtle/text/on-solid\` | \`--color-subtle-text-on-solid\` |
+| | Hover | Background | \`color/subtle/solid/hover\` | \`--color-subtle-solid-hover\` |
+| | Pressed | Background | \`color/subtle/solid/pressed\` | \`--color-subtle-solid-pressed\` |
+| **danger** | Default | Background | \`color/destructive/solid/default\` | \`--color-destructive-solid-default\` |
+| | | Text / Icon | \`color/destructive/text/on-solid\` | \`--color-destructive-text-on-solid\` |
+| | Hover | Background | \`color/destructive/solid/hover\` | \`--color-destructive-solid-hover\` |
+| | Pressed | Background | \`color/destructive/solid/pressed\` | \`--color-destructive-solid-pressed\` |
+| **outlined** | Default | Background | transparent | transparent |
+| | | Border | \`color/subtle/border/default\` | \`--color-subtle-border-default\` |
+| | | Text / Icon | \`color/subtle/text/on-solid\` | \`--color-subtle-text-on-solid\` |
+| | Hover | Background | \`color/subtle/solid/hover\` | \`--color-subtle-solid-hover\` |
+| | Pressed | Background | \`color/subtle/solid/pressed\` | \`--color-subtle-solid-pressed\` |
+| **ghost** | Default | Background | transparent | transparent |
+| | | Text / Icon | \`color/subtle/text/on-solid\` | \`--color-subtle-text-on-solid\` |
+| | Hover | Background | \`color/subtle/solid/hover\` | \`--color-subtle-solid-hover\` |
+| | Pressed | Background | \`color/subtle/solid/pressed\` | \`--color-subtle-solid-pressed\` |
+| **on-inverse** | Default | Background | \`color/surface/default\` | \`--color-surface-default\` |
+| | | Text / Icon | \`color/text/primary\` | \`--color-text-primary\` |
+| | Hover | Background | \`color/surface/subtle\` | \`--color-surface-subtle\` |
+| | Pressed | Background | \`color/surface/muted\` | \`--color-surface-muted\` |
+| **todos** | Focus | Ring / Outline | \`color/border/focus\` | \`--color-border-focus\` |
+| **todos** | Disabled | Opacity | \`Opacity/disabled\` | 0.5 |
+
+---
+
+### 🔘 Icons
+
+| Tamaño | Token / Figma Variable | CSS Variable | Valor |
+|---|---|---|---|
+| sm, md | \`sizing/sizing-7\` | \`--sizing-7\` | 16×16px |
+| lg | \`sizing/sizing-8\` | \`--sizing-8\` | 20×20px |
         `,
       },
     },
@@ -95,14 +153,14 @@ export const OnInverse: Story = {
   parameters: { backgrounds: { default: 'dark' } },
 }
 
-// ─── Sizes (agrupados sm, md, lg en una sola historia) ─────────────────────
+// ─── Sizes ──────────────────────────────────────────────────────────────────
 
 export const Sizes: Story = {
   render: (args) => ({
     components: { Button },
     setup() { return { args } },
     template: `
-      <div class="flex items-center gap-4">
+      <div style="display: flex; align-items: center; gap: 16px;">
         <Button v-bind="args" size="sm">Small</Button>
         <Button v-bind="args" size="md">Medium</Button>
         <Button v-bind="args" size="lg">Large</Button>

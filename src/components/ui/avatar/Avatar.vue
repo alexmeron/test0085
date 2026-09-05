@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { AvatarRoot, AvatarImage, AvatarFallback } from 'radix-vue'
 import { type AvatarVariants, avatarVariants } from './avatarVariants'
+import styles from './Avatar.module.css'
 import { cn } from '../../../lib/utils'
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
   alt?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   size: 'md',
   type: 'photo',
   label: 'AS',
@@ -21,16 +22,16 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <AvatarRoot :class="cn(avatarVariants({ size }), props.class)">
+  <AvatarRoot :class="cn(avatarVariants({ size }), $props.class)">
     <AvatarImage 
       v-if="type === 'photo' && src" 
       :src="src" 
       :alt="alt" 
-      class="aspect-square h-full w-full object-cover rounded-full overflow-hidden" 
+      :class="styles.image" 
     />
     <AvatarFallback 
       v-if="type === 'name' || !src"
-      class="flex h-full w-full items-center justify-center rounded-full bg-surface-muted text-text-primary"
+      :class="styles.fallback"
     >
       {{ label }}
     </AvatarFallback>

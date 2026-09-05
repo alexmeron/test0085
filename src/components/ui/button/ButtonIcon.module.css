@@ -1,0 +1,137 @@
+/* Base ButtonIcon Styles */
+.button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-icon:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface-default), 0 0 0 4px var(--color-border-focus);
+}
+
+.button-icon:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ─── Variants ─────────────────────────────────────────────────────────── */
+
+.variant-primary {
+  background-color: var(--color-brand-solid-default);
+  color: var(--color-brand-text-on-solid);
+}
+
+.variant-primary:hover {
+  background-color: var(--color-brand-solid-hover);
+}
+
+.variant-primary:active {
+  background-color: var(--color-brand-solid-pressed);
+}
+
+.variant-secondary {
+  background-color: var(--color-secondary-solid-default);
+  color: var(--color-secondary-text-on-solid);
+}
+
+.variant-secondary:hover {
+  background-color: var(--color-secondary-solid-hover);
+}
+
+.variant-secondary:active {
+  background-color: var(--color-secondary-solid-pressed);
+}
+
+.variant-tertiary {
+  background-color: var(--color-subtle-solid-default);
+  color: var(--color-subtle-text-on-solid);
+}
+
+.variant-tertiary:hover {
+  background-color: var(--color-subtle-solid-hover);
+}
+
+.variant-tertiary:active {
+  background-color: var(--color-subtle-solid-pressed);
+}
+
+.variant-danger {
+  background-color: var(--color-destructive-solid-default);
+  color: var(--color-destructive-text-on-solid);
+}
+
+.variant-danger:hover {
+  background-color: var(--color-destructive-solid-hover);
+}
+
+.variant-danger:active {
+  background-color: var(--color-destructive-solid-pressed);
+}
+
+.variant-outlined {
+  background-color: transparent;
+  border-color: var(--color-subtle-border-default);
+  color: var(--color-subtle-text-on-solid);
+}
+
+.variant-outlined:hover {
+  background-color: var(--color-subtle-solid-hover);
+}
+
+.variant-outlined:active {
+  background-color: var(--color-subtle-solid-pressed);
+}
+
+.variant-ghost {
+  background-color: transparent;
+  color: var(--color-subtle-text-on-solid);
+}
+
+.variant-ghost:hover {
+  background-color: var(--color-subtle-solid-hover);
+}
+
+.variant-ghost:active {
+  background-color: var(--color-subtle-solid-pressed);
+}
+
+.variant-on-inverse {
+  background-color: var(--color-secondary-solid-default);
+  color: var(--color-secondary-text-on-solid);
+}
+
+.variant-on-inverse:hover {
+  background-color: var(--color-secondary-solid-hover);
+}
+
+.variant-on-inverse:active {
+  background-color: var(--color-secondary-solid-pressed);
+}
+
+/* ─── Sizes ────────────────────────────────────────────────────────────── */
+
+.size-sm {
+  width: var(--sizing-9);
+  height: var(--sizing-9);
+  padding: var(--spacing-3);
+}
+
+.size-md {
+  width: var(--sizing-10);
+  height: var(--sizing-10);
+  padding: var(--spacing-5);
+}
+
+.size-lg {
+  width: var(--sizing-11);
+  height: var(--sizing-11);
+  padding: var(--spacing-5-5);
+}
