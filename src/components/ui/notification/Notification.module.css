@@ -1,0 +1,241 @@
+/* Notification Component Styles */
+/* Strictly mapped 1:1 to Figma node 4237:123980 */
+
+.notification {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-5);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  border-width: 1px;
+  border-style: solid;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: var(--font-family-body);
+  transition: all 150ms ease;
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sizing-8);
+  height: var(--sizing-8);
+  flex-shrink: 0;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  min-width: 0;
+}
+
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-7);
+}
+
+.titleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  flex: 1;
+}
+
+.title {
+  font-size: var(--font-size-text-small);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-20);
+  margin: 0;
+}
+
+.description {
+  font-size: var(--font-size-text-small);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-20);
+  margin: 0;
+}
+
+.inlineAction {
+  flex-shrink: 0;
+}
+
+.progressWrap {
+  width: 100%;
+  margin-top: var(--spacing-4);
+}
+
+.statusMessage {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-size: var(--font-size-caption-big);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-16);
+  margin-top: var(--spacing-3);
+}
+
+.statusMessageIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sizing-7);
+  height: var(--sizing-7);
+  flex-shrink: 0;
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-7);
+  margin-top: var(--spacing-5);
+}
+
+.controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex-shrink: 0;
+}
+
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 150ms ease;
+}
+
+.controlButton:hover {
+  opacity: 1;
+}
+
+/* ─── Type: Muted ───────────────────────────────────────────────────────── */
+.type-muted .title {
+  color: var(--color-text-primary);
+}
+
+.type-muted .description {
+  color: var(--color-text-secondary);
+}
+
+.type-muted .statusMessage {
+  color: var(--color-text-secondary);
+}
+
+/* Muted statuses */
+.type-muted.status-default {
+  background-color: var(--color-subtle-surface-default);
+  border-color: var(--color-subtle-border-default);
+}
+.type-muted.status-default .iconWrap {
+  color: var(--color-subtle-icon-default);
+}
+
+.type-muted.status-success {
+  background-color: var(--color-success-surface-default);
+  border-color: var(--color-success-border-default);
+}
+.type-muted.status-success .iconWrap {
+  color: var(--color-success-icon-default);
+}
+
+.type-muted.status-warning {
+  background-color: var(--color-warning-surface-default);
+  border-color: var(--color-warning-border-default);
+}
+.type-muted.status-warning .iconWrap {
+  color: var(--color-warning-icon-default);
+}
+
+.type-muted.status-destructive {
+  background-color: var(--color-destructive-surface-default);
+  border-color: var(--color-destructive-border-default);
+}
+.type-muted.status-destructive .iconWrap {
+  color: var(--color-destructive-icon-default);
+}
+
+.type-muted.status-info {
+  background-color: var(--color-info-surface-default);
+  border-color: var(--color-info-border-default);
+}
+.type-muted.status-info .iconWrap {
+  color: var(--color-info-icon-default);
+}
+
+.type-muted.status-ready {
+  background-color: var(--color-ready-surface-default);
+  border-color: var(--color-ready-border-default);
+}
+.type-muted.status-ready .iconWrap {
+  color: var(--color-ready-icon-default);
+}
+
+/* ─── Type: Solid ───────────────────────────────────────────────────────── */
+.type-solid {
+  border-color: transparent;
+}
+
+.type-solid .title {
+  color: var(--color-basic-white);
+}
+
+.type-solid .description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.type-solid .iconWrap {
+  color: var(--color-basic-white);
+}
+
+.type-solid .statusMessage {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.type-solid.status-default {
+  background-color: var(--color-subtle-surface-strong);
+}
+
+.type-solid.status-success {
+  background-color: var(--color-success-surface-strong);
+}
+
+.type-solid.status-warning {
+  background-color: var(--color-warning-surface-strong);
+}
+.type-solid.status-warning .title {
+  color: var(--color-wolf-950);
+}
+.type-solid.status-warning .description {
+  color: var(--color-wolf-800);
+}
+.type-solid.status-warning .iconWrap {
+  color: var(--color-wolf-950);
+}
+.type-solid.status-warning .statusMessage {
+  color: var(--color-wolf-800);
+}
+
+.type-solid.status-destructive {
+  background-color: var(--color-destructive-surface-strong);
+}
+
+.type-solid.status-info {
+  background-color: var(--color-info-surface-strong);
+}
+
+.type-solid.status-ready {
+  background-color: var(--color-ready-surface-strong);
+}
