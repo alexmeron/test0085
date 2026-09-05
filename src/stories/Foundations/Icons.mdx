@@ -58,63 +58,61 @@ export const copyText = (e, text) => {
   const span = e.currentTarget.querySelector('span');
   if (!span) return;
   const originalText = span.innerText;
-  span.innerText = 'Copied!';
+  span.innerText = '¡Copiado!';
   setTimeout(() => { span.innerText = originalText; }, 1000);
 }
 
-# Foundations / Icons guidelines
+# Foundations / Guía de Iconos
 
-🔗 **[Figma Foundations - Icons (node 14:1534)](https://www.figma.com/design/CF42I4tCscSnq4oiOSPgKP/Foundations?node-id=14-1534)**  
-🔗 **[Figma Foundations - Icon Sizes (node 75:167)](https://www.figma.com/design/CF42I4tCscSnq4oiOSPgKP/Foundations?node-id=75-167)**  
-🔗 **[Figma Foundations - Icon Library (node 46:5055)](https://www.figma.com/design/CF42I4tCscSnq4oiOSPgKP/Foundations?node-id=46-5055)**
-
----
-
-## Why do we use size variants?
-
-To maintain visual consistency, scalability, and a user-centered design approach, our design system does not allow arbitrary icon sizing. Instead, we use a system of predefined size variants that govern icon usage according to UI context.
+🔗 **[Figma Foundations - Iconos (nodo 14:1534)](https://www.figma.com/design/CF42I4tCscSnq4oiOSPgKP/Foundations?node-id=14-1534)**  
+🔗 **[Figma Foundations - Tamaños de Iconos (nodo 75:167)](https://www.figma.com/design/CF42I4tCscSnq4oiOSPgKP/Foundations?node-id=75-167)**  
+🔗 **[Figma Foundations - Librería de Iconos (nodo 46:5055)](https://www.figma.com/design/CF42I4tCscSnq4oiOSPgKP/Foundations?node-id=46-5055)**
 
 ---
 
-## Key reasons
+## ¿Por qué usamos variantes de tamaño?
+
+Para mantener la coherencia visual, la escalabilidad y un enfoque de diseño centrado en el usuario, nuestro sistema de diseño no permite tamaños de icono arbitrarios. En su lugar, utilizamos un sistema de variantes de tamaño predefinidas que regulan el uso de los iconos según el contexto de la interfaz.
+
+---
+
+## Razones clave
 
 <div className="principles-grid">
   <div className="principle-card">
-    <h4>Visual consistency</h4>
-    <p>A system without controlled sizes leads to cluttered and inconsistent interfaces.
-Variants ensure icons are properly aligned with other UI elements like buttons, inputs, and headings.</p>
+    <h4>Consistencia visual</h4>
+    <p>Un sistema sin tamaños controlados produce interfaces desordenadas e inconsistentes. Las variantes aseguran que los iconos queden correctamente alineados y proporcionados con botones, campos de entrada y encabezados.</p>
   </div>
   <div className="principle-card">
-    <h4>Design scalability</h4>
-    <p>By limiting available sizes, we make it easier to adapt the design across platforms and resolutions without having to redesign icons individually.</p>
+    <h4>Escalabilidad del diseño</h4>
+    <p>Al limitar los tamaños disponibles, se facilita la adaptación del diseño a múltiples plataformas y resoluciones sin tener que rediseñar los iconos caso por caso.</p>
   </div>
   <div className="principle-card">
-    <h4>Maintainability</h4>
-    <p>Using variants simplifies UI maintenance and reviews by keeping all icons within a clear set of rules.
-It also allows for automated visual testing and consistent theming adjustments (e.g., color changes, padding).</p>
+    <h4>Mantenibilidad</h4>
+    <p>El uso de variantes simplifica el mantenimiento y las revisiones al ceñirse a un conjunto claro de reglas. Facilita las pruebas visuales automatizadas y los ajustes de tematización globales.</p>
   </div>
   <div className="principle-card">
-    <h4>Accesibility</h4>
-    <p>Predefined minimum sizes ensure that icons remain legible and functional even on small screens or in low-contrast situations.</p>
+    <h4>Accesibilidad</h4>
+    <p>Los tamaños mínimos predefinidos aseguran que los iconos permanezcan legibles, nítidos y funcionales tanto en pantallas reducidas como en condiciones de bajo contraste.</p>
   </div>
   <div className="principle-card">
-    <h4>Preventing misuse</h4>
-    <p>Variants prevent the same icon from being used at inappropriate sizes, which could negatively impact usability or clarity.</p>
+    <h4>Prevención de mal uso</h4>
+    <p>Las variantes previenen que un icono se utilice en proporciones inadecuadas que comprometan la claridad o la jerarquía visual de la interfaz.</p>
   </div>
 </div>
 
 ---
 
-## Example of defined variants (Figma Node 75:167)
+## Variantes de tamaño definidas (Nodo Figma 75:167)
 
 <table className="table-preview">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Value</th>
-      <th>CSS Token</th>
-      <th>Primary use</th>
-      <th>Preview</th>
+      <th>Nombre</th>
+      <th>Valor</th>
+      <th>Token CSS</th>
+      <th>Uso principal</th>
+      <th>Vista previa</th>
     </tr>
   </thead>
   <tbody>
@@ -127,7 +125,7 @@ It also allows for automated visual testing and consistent theming adjustments (
           <span>var(--sizing-6)</span>
         </button>
       </td>
-      <td>Micro badges, tabs, compact indicators</td>
+      <td>Micro badges, pestañas (tabs), indicadores compactos</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
@@ -143,7 +141,7 @@ It also allows for automated visual testing and consistent theming adjustments (
           <span>var(--sizing-7)</span>
         </button>
       </td>
-      <td>Small labels, inline icons in text</td>
+      <td>Etiquetas pequeñas, iconos inline en texto, botones sm/md, chips</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
@@ -159,7 +157,7 @@ It also allows for automated visual testing and consistent theming adjustments (
           <span>var(--sizing-8)</span>
         </button>
       </td>
-      <td>Icons in secondary buttons</td>
+      <td>Botones lg, inputs lg, select md/lg, notificaciones, chips lg</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
@@ -175,7 +173,7 @@ It also allows for automated visual testing and consistent theming adjustments (
           <span>var(--sizing-9)</span>
         </button>
       </td>
-      <td>Standard size, navigation, actions</td>
+      <td>Tamaño estándar de iconos, navegación y barras de herramientas</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '36px', height: '36px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
@@ -191,7 +189,7 @@ It also allows for automated visual testing and consistent theming adjustments (
           <span>var(--sizing-10)</span>
         </button>
       </td>
-      <td>Small illustrations, section headers</td>
+      <td>Ilustraciones pequeñas, cabeceras de sección, avatares</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '44px', height: '44px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
@@ -207,7 +205,7 @@ It also allows for automated visual testing and consistent theming adjustments (
           <span>var(--sizing-11)</span>
         </button>
       </td>
-      <td>Highlighted or illustrative use cases</td>
+      <td>Casos destacados, estados vacíos (empty states) o uso ilustrativo</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '52px', height: '52px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
