@@ -134,28 +134,49 @@ export const AllStates: Story = {
   render: () => ({
     components: { Tabs, TabsList, TabsTrigger },
     template: `
-      <div style="display: flex; flex-direction: column; gap: var(--spacing-6); padding: var(--spacing-6);">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-6); padding: var(--spacing-6); max-width: 600px;">
         <div style="display: flex; align-items: center; gap: var(--spacing-6);">
-          <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary);">Default:</span>
-          <TabsTrigger value="def" state="default" label="Tab label" />
+          <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary); font-family: var(--font-family-body);">Default:</span>
+          <Tabs default-value="other">
+            <TabsList>
+              <TabsTrigger value="def" state="default" label="Tab label" />
+            </TabsList>
+          </Tabs>
         </div>
         <div style="display: flex; align-items: center; gap: var(--spacing-6);">
-          <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary);">Hover:</span>
-          <TabsTrigger value="hov" state="hover" label="Tab label" />
+          <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary); font-family: var(--font-family-body);">Hover:</span>
+          <Tabs default-value="other">
+            <TabsList>
+              <TabsTrigger value="hov" state="hover" label="Tab label" />
+            </TabsList>
+          </Tabs>
         </div>
         <div style="display: flex; align-items: center; gap: var(--spacing-6);">
-          <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary);">Pressed:</span>
-          <TabsTrigger value="pre" state="pressed" label="Tab label" />
+          <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary); font-family: var(--font-family-body);">Pressed:</span>
+          <Tabs default-value="other">
+            <TabsList>
+              <TabsTrigger value="pre" state="pressed" label="Tab label" />
+            </TabsList>
+          </Tabs>
         </div>
         <div style="display: flex; align-items: center; gap: var(--spacing-6);">
-          <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary);">Focus:</span>
-          <TabsTrigger value="foc" state="focus" label="Tab label" />
+          <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary); font-family: var(--font-family-body);">Focus:</span>
+          <Tabs default-value="other">
+            <TabsList>
+              <TabsTrigger value="foc" state="focus" label="Tab label" />
+            </TabsList>
+          </Tabs>
         </div>
         <div style="display: flex; align-items: center; gap: var(--spacing-6);">
-          <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary);">Current:</span>
-          <TabsTrigger value="cur" state="current" label="Tab label" />
+          <span style="width: 100px; font-size: var(--font-size-caption-big); color: var(--color-text-secondary); font-family: var(--font-family-body);">Current:</span>
+          <Tabs default-value="cur">
+            <TabsList>
+              <TabsTrigger value="cur" state="current" label="Tab label" />
+            </TabsList>
+          </Tabs>
         </div>
       </div>
     `,
   }),
 }
+
