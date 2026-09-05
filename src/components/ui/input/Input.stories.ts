@@ -120,13 +120,13 @@ type Story = StoryObj<typeof Input>
 
 export const Default: Story = {}
 
-export const BorderFocus: Story = {
-  name: 'Focus (2px solid border, no box-shadow)',
+export const FocusState: Story = {
+  name: 'Focus',
   args: {
     state: 'focus',
     label: 'Focus State',
-    placeholder: 'Focus state with 2px border...',
-    helperText: 'Figma focus border is 2px color/border/focus without drop-shadow',
+    placeholder: 'Focused input...',
+    helperText: 'Focus state with 2px border',
   },
 }
 

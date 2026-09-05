@@ -20,7 +20,7 @@ import DropdownItem from './DropdownItem.vue'
  * | Menu padding | `--spacing-3` (4px) | Container inner padding |
  * | Menu min-width | `180px` / `152px` | Figma default width is 152px (big) / 141px (small) |
  * | Item min-height (big) | `--sizing-10` (32px) | Height for `size="big"` |
- * | Item min-height (small) | `28px` | Height for `size="small"` |
+ * | Item min-height (small) | `calc(var(--sizing-7) + var(--sizing-6))` (28px) | Height for `size="small"` |
  * | Item padding (big) | horizontal: `--spacing-5` (8px), vertical: `--spacing-4` (6px) | Padding for `size="big"` |
  * | Item padding (small) | horizontal: `--spacing-5` (8px), vertical: `--spacing-3` (4px) | Padding for `size="small"` |
  * | Item gap | `--spacing-5` (8px) | Space between icon and label |
@@ -32,7 +32,7 @@ import DropdownItem from './DropdownItem.vue'
  * | Menu radius | `--radius-lg` (8px) | Container border-radius |
  * | Item radius | `--radius-sm` (4px) | Hover / focus item border-radius |
  * | Menu border | `1px solid var(--color-border-default)` | Border outline |
- * | Menu shadow | `0 1px 2px 0 rgba(0, 0, 0, 0.05)` | Elevation shadow matching Figma drop-shadow |
+ * | Menu shadow | `--shadow-elevation-sm` | Elevation shadow matching Figma drop-shadow |
  *
  * #### 🔤 Typography
  * | Element | Token / Value | Description |
@@ -46,16 +46,17 @@ import DropdownItem from './DropdownItem.vue'
  * |---|---|---|
  * | Menu background | `--color-surface-default` | Card surface |
  * | Item default bg | `transparent` | Rest state |
- * | Item hovered bg | `--color-surface-subtle` | Hovered state |
- * | Item selected bg | `--color-surface-subtle` | Selected state |
+ * | Item hovered bg | `--color-subtle-link-hover` | Hovered state |
+ * | Item selected bg | `transparent` | Selected state |
+ * | Item selected+hovered bg | `--color-subtle-link-hover` | Selected and hovered state |
  * | Item text | `--color-text-primary` | Standard text color |
  * | Item disabled | `opacity: 0.5` | Disabled state |
  *
  * #### 🔘 Icons / Indicators
  * | Element | Token / Value | Description |
  * |---|---|---|
- * | Leading / Trailing icon | 16×16px, `--color-text-secondary` | Decorative or status icon |
- * | Check indicator | 14×14px, `--color-brand-solid-default` | Selected check mark indicator |
+ * | Leading / Trailing icon | `--sizing-7` (16px), `--color-text-secondary` | Decorative or status icon |
+ * | Check indicator | `--sizing-7` (16px), `--color-brand-icon-default` | Selected check mark indicator |
  * | Checkbox | `size="sm"` | Sub-component checkbox indicator |
  */
 const meta: Meta<typeof Dropdown> = {

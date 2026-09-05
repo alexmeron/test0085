@@ -81,7 +81,7 @@ Construido con **Radix Vue** (\`ProgressRoot\`, \`ProgressIndicator\`), **CSS Mo
     modelValue: 36,
     mode: 'default',
     state: 'info',
-    label: 'right',
+    label: 'hidden',
   },
   render: (args) => ({
     components: { ProgressBar },
