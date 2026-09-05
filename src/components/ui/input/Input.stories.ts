@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import Input from './Input.vue'
-import { Search } from 'lucide-vue-next'
+import { Search, Eye, Mail, CheckCircle2 } from 'lucide-vue-next'
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Input',
@@ -10,9 +10,9 @@ const meta: Meta<typeof Input> = {
     docs: {
       description: {
         component: `
-Componente **Input** para formularios. Mapeado 1:1 a Figma. Estilizado con **CSS Modules** y **CSS Variables**.
+Componente **Input** (Input Text) para formularios. Mapeado 1:1 a Figma. Estilizado con **CSS Modules** y **Design Tokens (CSS Variables)**.
 
-🔗 **[Ver en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4115-21221)**
+🔗 **[Ver en Figma (node 4115:21221)](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4115-21221)**
 
 ---
 
@@ -28,10 +28,14 @@ Componente **Input** para formularios. Mapeado 1:1 a Figma. Estilizado con **CSS
 | **Padding Vertical** | sm | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
 | | md | \`spacing/spacing-4\` | \`--spacing-4\` | 6px |
 | | lg | \`spacing/spacing-5-5\` | \`--spacing-5-5\` | 10px |
+| **Wrapper Gap** | todos | \`spacing/spacing-4\` | \`--spacing-4\` | 6px |
+| **Header / Icon Gap** | todos | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
+| **Icons Size** | leading / trailing | - | - | 16×16px |
+| **Helper Icon Size** | status-icon | - | - | 12×12px |
 
 ---
 
-### ⬛ Shape
+### ⬛ Shape & Radius
 
 | Propiedad | Token / Figma Variable | CSS Variable | Valor |
 |---|---|---|---|
@@ -41,62 +45,73 @@ Componente **Input** para formularios. Mapeado 1:1 a Figma. Estilizado con **CSS
 
 ### 🔤 Typography
 
-| Propiedad | Tamaño | Token / Figma Variable | CSS Variable | Valor |
+| Elemento | Tamaño | Token / Figma Variable | CSS Variable | Valor |
 |---|---|---|---|---|
-| **Font Family** | todos | \`font-family/body\` | \`--font-family-body\` | "Inter", sans-serif |
-| **Font Size** | sm | \`font-size/caption/big\` | \`--font-size-caption-big\` | 12px |
-| | md, lg | \`font-size/text/small\` | \`--font-size-text-small\` | 14px |
-| **Line Height** | sm | \`line-height/leading-16\` | \`--leading-16\` | 16px |
-| | md, lg | \`line-height/leading-20\` | \`--leading-20\` | 20px |
+| **Label** | todos | \`font-size/text/small\` | \`--font-size-text-small\` | 14px (w500) |
+| **Hint text** | todos | \`font-size/text/small\` | \`--font-size-text-small\` | 14px (w400) |
+| **Input text** | sm | \`font-size/caption/big\` | \`--font-size-caption-big\` | 12px (line-height 16px) |
+| | md, lg | \`font-size/text/small\` | \`--font-size-text-small\` | 14px (line-height 20px) |
+| **Helper text** | todos | \`font-size/caption/big\` | \`--font-size-caption-big\` | 12px (line-height 16px) |
 
 ---
 
 ### 🎨 Colors & States
 
-| Variante / Estado | Propiedad | Token / Figma Variable | CSS Variable |
-|---|---|---|---|
-| **Default** | Background | \`color/surface/subtle\` | \`--color-surface-subtle\` |
-| | Border | \`color/border/default\` | \`--color-border-default\` |
-| | Text | \`color/text/primary\` | \`--color-text-primary\` |
-| | Placeholder | \`color/text/placeholder\` | \`--color-text-placeholder\` |
-| | Hover Border | \`color/border/strong\` | \`--color-border-strong\` |
-| | Focus Ring | \`color/border/focus\` | \`--color-border-focus\` |
-| **Error (destructive)** | Border | \`color/destructive/border/default\` | \`--color-destructive-border-default\` |
-| | Focus Ring | \`color/destructive/border/strong\` | \`--color-destructive-border-strong\` |
-| **Success** | Border | \`color/success/border/default\` | \`--color-success-border-default\` |
-| | Focus Ring | \`color/success/border/strong\` | \`--color-success-border-strong\` |
-| **Disabled** | Background | \`color/surface/disabled\` | \`--color-surface-disabled\` |
-| | Border | \`color/border/disabled\` | \`--color-border-disabled\` |
-| | Opacity | \`Opacity/disabled\` | 0.5 |
+> **Nota sobre Focus:** En Figma el estado \`focus\` utiliza exclusivamente un borde de **2px** con el token \`color/border/focus\`. No tiene ningún box-shadow / ring exterior.
+
+| Estado | Fondo (Fill) | Borde (Stroke) | Grosor Borde | Texto / Icono |
+|---|---|---|---|---|
+| **default** | \`color/surface/subtle\` (\`--color-surface-subtle\`) | \`color/border/default\` (\`--color-border-default\`) | 1px | \`color/text/primary\` (\`--color-text-primary\`) |
+| **hover** | \`color/surface/subtle\` (\`--color-surface-subtle\`) | \`color/border/strong\` (\`--color-border-strong\`) | 1px | \`color/text/primary\` (\`--color-text-primary\`) |
+| **focus** | \`color/surface/subtle\` (\`--color-surface-subtle\`) | \`color/border/focus\` (\`--color-border-focus\`) | **2px** | \`color/text/primary\` (\`--color-text-primary\`) |
+| **filled** | \`color/surface/subtle\` (\`--color-surface-subtle\`) | \`color/border/default\` (\`--color-border-default\`) | 1px | \`color/text/primary\` (\`--color-text-primary\`) |
+| **disabled** | \`color/surface/disabled\` (\`--color-surface-disabled\`) | \`color/border/disabled\` (\`--color-border-disabled\`) | 1px (opacity 0.5) | \`color/text/placeholder\` |
+| **success** | \`color/success/surface/default\` (\`--color-success-surface-default\`) | \`color/success/border/strong\` (\`--color-success-border-strong\`) | **2px** | \`color/success/text/default\` (\`--color-success-text-default\`) |
+| **destructive** | \`color/destructive/surface/default\` (\`--color-destructive-surface-default\`) | \`color/destructive/border/strong\` (\`--color-destructive-border-strong\`) | **2px** | \`color/destructive/text/default\` (\`--color-destructive-text-default\`) |
         `,
       },
     },
   },
   argTypes: {
-    variant: {
+    state: {
       control: 'select',
-      options: ['default', 'error', 'success'],
-      description: 'Variante de estado del input',
+      options: ['default', 'hover', 'focus', 'filled', 'disabled', 'success', 'destructive'],
+      description: 'Estado del input según Figma',
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
-      description: 'Tamaño del input',
+      description: 'Tamaño del componente (altura sm=24px, md=32px, lg=40px)',
     },
-    disabled: { control: 'boolean' },
-    type: { control: 'text' },
-    placeholder: { control: 'text' },
+    label: { control: 'text', description: 'Texto del label' },
+    isMandatory: { control: 'boolean', description: 'Indica si el campo es obligatorio (muestra asterisco rojo)' },
+    hint: { control: 'text', description: 'Texto explicativo adicional bajo el label' },
+    placeholder: { control: 'text', description: 'Texto placeholder del input' },
+    helperText: { control: 'text', description: 'Texto del helper row inferior' },
+    showHelper: { control: 'boolean', description: 'Mostrar u ocultar la fila de helper' },
+    showHelperIcon: { control: 'boolean', description: 'Mostrar icono de estado en la fila de helper' },
+    disabled: { control: 'boolean', description: 'Deshabilitar el input' },
+    type: { control: 'text', description: 'Tipo de input HTML (text, password, email, etc.)' },
   },
   args: {
-    variant: 'default',
+    state: 'default',
     size: 'md',
-    disabled: false,
+    label: 'Label',
+    isMandatory: true,
+    hint: 'This is a hint text to help user.',
     placeholder: 'Placeholder text...',
+    helperText: 'Helper text',
+    showHelper: true,
+    showHelperIcon: true,
+    disabled: false,
+    type: 'text',
   },
   render: (args) => ({
     components: { Input },
-    setup() { return { args } },
-    template: '<Input v-bind="args" style="max-width: 320px;" />',
+    setup() {
+      return { args }
+    },
+    template: '<Input v-bind="args" style="max-width: 360px;" />',
   }),
 }
 
@@ -105,62 +120,202 @@ type Story = StoryObj<typeof Input>
 
 export const Default: Story = {}
 
-export const ErrorState: Story = {
-  name: 'Error',
+export const BorderFocus: Story = {
+  name: 'Focus (2px solid border, no box-shadow)',
   args: {
-    variant: 'error',
-    placeholder: 'Error state...',
+    state: 'focus',
+    label: 'Focus State',
+    placeholder: 'Focus state with 2px border...',
+    helperText: 'Figma focus border is 2px color/border/focus without drop-shadow',
   },
 }
 
+export const WithLeadingIcon: Story = {
+  render: (args) => ({
+    components: { Input, Search },
+    setup() {
+      return { args, Search }
+    },
+    template: `
+      <Input
+        v-bind="args"
+        :leadingIcon="Search"
+        label="Search"
+        placeholder="Search components..."
+        helperText="Leading icon 16x16px"
+        style="max-width: 360px;"
+      />
+    `,
+  }),
+}
+
+export const WithTrailingIcon: Story = {
+  render: (args) => ({
+    components: { Input, Eye },
+    setup() {
+      return { args, Eye }
+    },
+    template: `
+      <Input
+        v-bind="args"
+        :trailingIcon="Eye"
+        type="password"
+        label="Password"
+        placeholder="••••••••"
+        helperText="Trailing icon 16x16px"
+        style="max-width: 360px;"
+      />
+    `,
+  }),
+}
+
+export const WithBothIcons: Story = {
+  render: (args) => ({
+    components: { Input, Mail, CheckCircle2 },
+    setup() {
+      return { args, Mail, CheckCircle2 }
+    },
+    template: `
+      <Input
+        v-bind="args"
+        :leadingIcon="Mail"
+        :trailingIcon="CheckCircle2"
+        label="Email"
+        placeholder="user@example.com"
+        helperText="Both leading and trailing icons"
+        style="max-width: 360px;"
+      />
+    `,
+  }),
+}
+
 export const SuccessState: Story = {
-  name: 'Success',
   args: {
-    variant: 'success',
-    placeholder: 'Success state...',
+    state: 'success',
+    label: 'Success Input',
+    modelValue: 'valid.username',
+    helperText: 'Username is available!',
+  },
+}
+
+export const DestructiveState: Story = {
+  args: {
+    state: 'destructive',
+    label: 'Destructive / Error Input',
+    modelValue: 'invalid-email@',
+    helperText: 'Please enter a valid email address.',
   },
 }
 
 export const Disabled: Story = {
   args: {
     disabled: true,
-    placeholder: 'Disabled input...',
+    label: 'Disabled Input',
+    placeholder: 'Disabled content...',
+    helperText: 'This field cannot be edited.',
   },
 }
 
-export const Sizes: Story = {
-  render: (args) => ({
-    components: { Input },
-    setup() { return { args } },
+export const AllStates: Story = {
+  render: () => ({
+    components: { Input, Search },
+    setup() {
+      return { Search }
+    },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 320px;">
-        <div>
-          <label style="font-size: var(--font-size-caption-big); font-family: var(--font-family-body); display: block; margin-bottom: 4px;">Small (24px)</label>
-          <Input v-bind="args" size="sm" placeholder="Small input..." />
-        </div>
-        <div>
-          <label style="font-size: var(--font-size-text-small); font-family: var(--font-family-body); display: block; margin-bottom: 4px;">Medium (32px)</label>
-          <Input v-bind="args" size="md" placeholder="Medium input..." />
-        </div>
-        <div>
-          <label style="font-size: var(--font-size-text-small); font-family: var(--font-family-body); display: block; margin-bottom: 4px;">Large (40px)</label>
-          <Input v-bind="args" size="lg" placeholder="Large input..." />
-        </div>
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 400px;">
+        <Input
+          label="Default State"
+          isMandatory
+          placeholder="Default placeholder..."
+          helperText="Default state with 1px border"
+          :leadingIcon="Search"
+        />
+        <Input
+          state="hover"
+          label="Hover State"
+          placeholder="Hovered input..."
+          helperText="Hover state with color/border/strong"
+          :leadingIcon="Search"
+        />
+        <Input
+          state="focus"
+          label="Focus State"
+          placeholder="Focused input..."
+          helperText="Focus state with 2px color/border/focus"
+          :leadingIcon="Search"
+        />
+        <Input
+          state="filled"
+          label="Filled State"
+          modelValue="Filled value text"
+          helperText="Filled with primary text color"
+          :leadingIcon="Search"
+        />
+        <Input
+          state="success"
+          label="Success State"
+          modelValue="Everything is good"
+          helperText="Success with bambi surface & 2px border"
+          :leadingIcon="Search"
+        />
+        <Input
+          state="destructive"
+          label="Destructive State"
+          modelValue="Invalid input value"
+          helperText="Destructive with brooklyn surface & 2px border"
+          :leadingIcon="Search"
+        />
+        <Input
+          state="disabled"
+          label="Disabled State"
+          modelValue="Disabled text"
+          helperText="Disabled with 0.5 opacity"
+          :leadingIcon="Search"
+        />
       </div>
     `,
   }),
 }
 
-export const WithIcon: Story = {
-  render: (args) => ({
+export const Sizes: Story = {
+  render: () => ({
     components: { Input, Search },
-    setup() { return { args } },
+    setup() {
+      return { Search }
+    },
     template: `
-      <div style="position: relative; max-width: 320px; display: flex; align-items: center;">
-        <span style="position: absolute; left: 10px; display: flex; align-items: center; color: var(--color-text-placeholder); pointer-events: none;">
-          <Search style="width: 16px; height: 16px;" />
-        </span>
-        <Input v-bind="args" style="padding-left: 32px;" placeholder="Search..." />
+      <div style="display: flex; flex-direction: column; gap: 24px; max-width: 400px;">
+        <div>
+          <span style="font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; display: block; margin-bottom: 6px;">Small (24px field height)</span>
+          <Input
+            size="sm"
+            label="Small Input"
+            placeholder="Small input field..."
+            helperText="Field height: 24px, font 12px"
+            :leadingIcon="Search"
+          />
+        </div>
+        <div>
+          <span style="font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; display: block; margin-bottom: 6px;">Medium (32px field height) - Default</span>
+          <Input
+            size="md"
+            label="Medium Input"
+            placeholder="Medium input field..."
+            helperText="Field height: 32px, font 14px"
+            :leadingIcon="Search"
+          />
+        </div>
+        <div>
+          <span style="font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; display: block; margin-bottom: 6px;">Large (40px field height)</span>
+          <Input
+            size="lg"
+            label="Large Input"
+            placeholder="Large input field..."
+            helperText="Field height: 40px, font 14px"
+            :leadingIcon="Search"
+          />
+        </div>
       </div>
     `,
   }),
