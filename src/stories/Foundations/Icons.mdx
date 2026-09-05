@@ -1,11 +1,14 @@
 import { Meta } from '@storybook/addon-docs/blocks';
+import IconGallery from './IconGallery.vue';
 
 <Meta title="Foundations/Icons" />
 
 <style>{`
 .table-preview { border-collapse: collapse; width: 100%; margin-top: 1rem; margin-bottom: 2.5rem; }
-.table-preview th, .table-preview td { border: 1px solid var(--color-border-default, #e5e7eb); padding: 12px; text-align: left; }
-.table-preview th { background: var(--color-surface-subtle, #f9fafb); font-weight: bold; }
+.table-preview th, .table-preview td { border: 1px solid var(--color-border-default, #e5e7eb); padding: 12px 16px; text-align: left; }
+.table-preview th { background: var(--color-surface-subtle, #f9fafb); font-weight: 600; font-size: 14px; }
+.table-preview td { font-size: 14px; }
+
 .copy-btn { 
   display: inline-flex;
   align-items: center;
@@ -16,68 +19,38 @@ import { Meta } from '@storybook/addon-docs/blocks';
   padding: 4px 8px; 
   cursor: pointer; 
   font-family: monospace;
-  font-size: 10px !important;
+  font-size: 11px !important;
   color: var(--color-brand-text-light, #111827);
   transition: all 0.2s;
 }
 .copy-btn:hover { background: var(--color-brand-surface-subtle, #dbeafe); border-color: var(--color-brand-solid-default, #3b82f6); color: var(--color-brand-solid-default, #3b82f6); }
 .copy-btn:active { background: var(--color-brand-solid-default, #3b82f6); color: white; }
 .copy-btn svg { width: 14px; height: 14px; }
-.copy-btn span { font-size: 10px !important; line-height: 1; }
+.copy-btn span { font-size: 11px !important; line-height: 1; }
 
 .principles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
   margin: 1.5rem 0 2.5rem 0;
 }
 .principle-card {
   border: 1px solid var(--color-border-default, #e5e7eb);
   border-radius: 8px;
-  padding: 16px;
+  padding: 18px;
   background: var(--color-surface-default, #ffffff);
 }
 .principle-card h4 {
   margin: 0 0 8px 0;
   color: var(--color-text-primary, #111827);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
 }
 .principle-card p {
   margin: 0;
   color: var(--color-text-secondary, #4b5563);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.icon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 12px;
-  margin: 1rem 0 2rem 0;
-}
-.icon-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 8px 12px;
-  background: var(--color-surface-default, #ffffff);
-  border: 1px solid var(--color-border-default, #e5e7eb);
-  border-radius: 8px;
-  gap: 10px;
-  transition: all 0.15s ease;
-  text-align: center;
-}
-.icon-card:hover {
-  border-color: var(--color-brand-solid-default, #3b82f6);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-.icon-card span {
-  font-size: 11px;
-  font-family: monospace;
-  color: var(--color-text-secondary, #4b5563);
-  word-break: break-word;
+  font-size: 13.5px;
+  line-height: 1.55;
 }
 `}</style>
 
@@ -90,67 +63,70 @@ export const copyText = (e, text) => {
   setTimeout(() => { span.innerText = originalText; }, 1000);
 }
 
-# Icons
-
-Guía de fundamentos, tamaños de icono predefinidos y biblioteca iconográfica del sistema de diseño.
+# Foundations / Icons guidelines
 
 🔗 **[Figma Foundations - Icons (node 14:1534)](https://www.figma.com/design/CF42I4tCscSnq4oiOSPgKP/Foundations?node-id=14-1534)**  
-🔗 **[Figma Foundations - Icon Sizes (node 75:167)](https://www.figma.com/design/CF42I4tCscSnq4oiOSPgKP/Foundations?node-id=75-167)**
+🔗 **[Figma Foundations - Icon Sizes (node 75:167)](https://www.figma.com/design/CF42I4tCscSnq4oiOSPgKP/Foundations?node-id=75-167)**  
+🔗 **[Figma Foundations - Icon Library (node 46:5055)](https://www.figma.com/design/CF42I4tCscSnq4oiOSPgKP/Foundations?node-id=46-5055)**
 
 ---
 
-## 📐 Why do we use size variants?
+## Why do we use size variants?
 
-> To maintain visual consistency, scalability, and a user-centered design approach, our design system does not allow arbitrary icon sizing. Instead, we use a system of predefined size variants that govern icon usage according to UI context.
+To maintain visual consistency, scalability, and a user-centered design approach, our design system does not allow arbitrary icon sizing. Instead, we use a system of predefined size variants that govern icon usage according to UI context.
+
+---
+
+## Key reasons
 
 <div className="principles-grid">
   <div className="principle-card">
-    <h4>✨ Visual consistency</h4>
+    <h4>Visual consistency</h4>
     <p>A system without controlled sizes leads to cluttered and inconsistent interfaces. Variants ensure icons are properly aligned with other UI elements like buttons, inputs, and headings.</p>
   </div>
   <div className="principle-card">
-    <h4>📈 Design scalability</h4>
+    <h4>Design scalability</h4>
     <p>By limiting available sizes, we make it easier to adapt the design across platforms and resolutions without having to redesign icons individually.</p>
   </div>
   <div className="principle-card">
-    <h4>🛠️ Maintainability</h4>
-    <p>Using variants simplifies UI maintenance and reviews by keeping all icons within a clear set of rules. It also allows for automated visual testing and consistent theming adjustments.</p>
+    <h4>Maintainability</h4>
+    <p>Using variants simplifies UI maintenance and reviews by keeping all icons within a clear set of rules. It also allows for automated visual testing and consistent theming adjustments (e.g., color changes, padding).</p>
   </div>
   <div className="principle-card">
-    <h4>♿ Accessibility</h4>
+    <h4>Accesibility</h4>
     <p>Predefined minimum sizes ensure that icons remain legible and functional even on small screens or in low-contrast situations.</p>
   </div>
   <div className="principle-card">
-    <h4>🛡️ Preventing misuse</h4>
+    <h4>Preventing misuse</h4>
     <p>Variants prevent the same icon from being used at inappropriate sizes, which could negatively impact usability or clarity.</p>
   </div>
 </div>
 
 ---
 
-## 📏 Icon Sizes (Figma Node 75:167)
+## Example of defined variants (Figma Node 75:167)
 
 <table className="table-preview">
   <thead>
     <tr>
-      <th>Size Name</th>
-      <th>CSS Token</th>
+      <th>Name</th>
       <th>Value</th>
-      <th>Primary Use</th>
+      <th>CSS Token</th>
+      <th>Primary use</th>
       <th>Preview</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><strong>2xs</strong></td>
+      <td>12px</td>
       <td>
         <button className="copy-btn" onClick={(e) => copyText(e, 'var(--sizing-6)')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           <span>var(--sizing-6)</span>
         </button>
       </td>
-      <td><code>12px</code></td>
-      <td>Micro badges, tab button icons, compact indicators</td>
+      <td>Micro badges, tabs, compact indicators</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
@@ -159,13 +135,13 @@ Guía de fundamentos, tamaños de icono predefinidos y biblioteca iconográfica 
     </tr>
     <tr>
       <td><strong>xs</strong></td>
+      <td>16px</td>
       <td>
         <button className="copy-btn" onClick={(e) => copyText(e, 'var(--sizing-7)')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           <span>var(--sizing-7)</span>
         </button>
       </td>
-      <td><code>16px</code></td>
       <td>Small labels, inline icons in text</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
@@ -175,13 +151,13 @@ Guía de fundamentos, tamaños de icono predefinidos y biblioteca iconográfica 
     </tr>
     <tr>
       <td><strong>sm</strong></td>
+      <td>20px</td>
       <td>
         <button className="copy-btn" onClick={(e) => copyText(e, 'var(--sizing-8)')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           <span>var(--sizing-8)</span>
         </button>
       </td>
-      <td><code>20px</code></td>
       <td>Icons in secondary buttons</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
@@ -191,13 +167,13 @@ Guía de fundamentos, tamaños de icono predefinidos y biblioteca iconográfica 
     </tr>
     <tr>
       <td><strong>md</strong></td>
+      <td>24px</td>
       <td>
         <button className="copy-btn" onClick={(e) => copyText(e, 'var(--sizing-9)')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           <span>var(--sizing-9)</span>
         </button>
       </td>
-      <td><code>24px</code></td>
       <td>Standard size, navigation, actions</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '36px', height: '36px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
@@ -207,13 +183,13 @@ Guía de fundamentos, tamaños de icono predefinidos y biblioteca iconográfica 
     </tr>
     <tr>
       <td><strong>lg</strong></td>
+      <td>32px</td>
       <td>
         <button className="copy-btn" onClick={(e) => copyText(e, 'var(--sizing-10)')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           <span>var(--sizing-10)</span>
         </button>
       </td>
-      <td><code>32px</code></td>
       <td>Small illustrations, section headers</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '44px', height: '44px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
@@ -223,13 +199,13 @@ Guía de fundamentos, tamaños de icono predefinidos y biblioteca iconográfica 
     </tr>
     <tr>
       <td><strong>xl</strong></td>
+      <td>40px</td>
       <td>
         <button className="copy-btn" onClick={(e) => copyText(e, 'var(--sizing-11)')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           <span>var(--sizing-11)</span>
         </button>
       </td>
-      <td><code>40px</code></td>
       <td>Highlighted or illustrative use cases</td>
       <td>
         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '52px', height: '52px', background: 'var(--color-surface-subtle, #f8fafc)', borderRadius: '6px', border: '1px solid var(--color-border-default, #e2e8f0)' }}>
@@ -242,90 +218,9 @@ Guía de fundamentos, tamaños de icono predefinidos y biblioteca iconográfica 
 
 ---
 
-## 📂 Icon Categories (Figma Node 46:5055)
+## Foundations / Icons / Library (456 Iconos - Node 46:5055)
 
-Biblioteca de iconos organizada por categorías temáticas según la estructura oficial de Figma:
+Explorador interactivo con los **456 componentes de icono extraídos 1:1 de Figma** con sus vectores SVG originales, categorías, selector de tamaño y buscador:
 
-### 1. Arrow & Navigation
-Iconos direccionales, chevrons, carets y ordenamiento:
-<div className="icon-grid">
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"></polyline></svg><span>Chevron_Right</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"></polyline></svg><span>Chevron_Left</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="18 15 12 9 6 15"></polyline></svg><span>Chevron_Up</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"></polyline></svg><span>Chevron_Down</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m7 15 5 5 5-5"></path><path d="m7 9 5-5 5 5"></path></svg><span>Unfold_More</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path></svg><span>Arrows_Reload</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg><span>Arrow_Right</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg><span>Arrow_Left</span></div>
-</div>
+<IconGallery />
 
-### 2. Interface & Controls
-Controles interactivos, buscadores, filtros, ajustes y marcadores:
-<div className="icon-grid">
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><span>Search</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg><span>Filter</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg><span>Settings</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span>Lock</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Check</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Close / X</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span>Trash</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span>External_Link</span></div>
-</div>
-
-### 3. Feedback & Warning
-Estados de alerta, información, confirmación y ayuda:
-<div className="icon-grid">
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span>Circle_Check</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#eab308" strokeWidth="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg><span>Triangle_Warning</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg><span>Circle_Warning</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg><span>Info</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg><span>Circle_Help</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span>Shield</span></div>
-</div>
-
-### 4. Communication & User
-Perfiles de usuario, notificaciones, mensajería y contacto:
-<div className="icon-grid">
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>User_01</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span>Users</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg><span>Bell_Notification</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg><span>Mail</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span>Chat</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span>Phone</span></div>
-</div>
-
-### 5. File & Documents
-Gestión de ficheros, carpetas, documentos y almacenamiento:
-<div className="icon-grid">
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span>File_Document</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path></svg><span>Folder</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg><span>Cloud</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><span>Download</span></div>
-  <div className="icon-card"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg><span>Upload</span></div>
-</div>
-
----
-
-## 💻 Vue Component Usage
-
-Todos los iconos se integran nativamente con `lucide-vue-next` y tokens del sistema de diseño:
-
-```vue
-<script setup lang="ts">
-import { Search, ChevronRight, Bell, AlertCircle } from 'lucide-vue-next'
-</script>
-
-<template>
-  <!-- xs: 16px (var(--sizing-7)) -->
-  <Search style="width: var(--sizing-7); height: var(--sizing-7);" />
-
-  <!-- sm: 20px (var(--sizing-8)) -->
-  <ChevronRight style="width: var(--sizing-8); height: var(--sizing-8);" />
-
-  <!-- md: 24px (var(--sizing-9)) -->
-  <Bell style="width: var(--sizing-9); height: var(--sizing-9);" />
-
-  <!-- lg: 32px (var(--sizing-10)) -->
-  <AlertCircle style="width: var(--sizing-10); height: var(--sizing-10);" />
-</template>
-```
