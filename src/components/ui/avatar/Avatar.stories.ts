@@ -11,6 +11,8 @@ const meta: Meta<typeof Avatar> = {
         component: `
 Componente **Avatar** basado en Radix Vue y Figma Design Tokens. Estilizado con **CSS Modules** y **CSS Variables**.
 
+🔗 **[Ver en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components)**
+
 ---
 
 ### 📐 Layout & Sizing

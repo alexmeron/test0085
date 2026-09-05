@@ -1,0 +1,237 @@
+/* Chip Component Styles */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+  border: 1px solid transparent;
+}
+
+/* ─── Sizes ────────────────────────────────────────────────────────────── */
+
+.size-badge {
+  height: var(--sizing-8); /* 20px */
+  min-width: var(--sizing-8);
+  padding-inline: var(--spacing-3);
+  font-size: var(--font-size-caption-big);
+  line-height: var(--leading-16);
+}
+
+.size-xs {
+  height: var(--sizing-8); /* 20px */
+  padding-inline: var(--spacing-5);
+  padding-block: var(--spacing-3);
+  font-size: var(--font-size-caption-big);
+  line-height: var(--leading-16);
+}
+
+.size-sm {
+  height: var(--sizing-9); /* 24px */
+  padding-inline: var(--spacing-5);
+  padding-block: var(--spacing-3);
+  font-size: var(--font-size-text-small);
+  line-height: var(--leading-20);
+}
+
+.size-md {
+  height: var(--sizing-10); /* 32px */
+  padding-inline: var(--spacing-5-5);
+  padding-block: var(--spacing-4);
+  font-size: var(--font-size-text-small);
+  line-height: var(--leading-20);
+}
+
+.size-lg {
+  height: var(--sizing-11); /* 40px */
+  padding-inline: var(--spacing-6);
+  padding-block: var(--spacing-5);
+  font-size: var(--font-size-text-medium);
+  line-height: var(--leading-24);
+}
+
+/* ─── Destructive ──────────────────────────────────────────────────────── */
+
+.state-destructive-subtle {
+  background-color: var(--color-destructive-surface-default);
+  color: var(--color-destructive-text-default);
+  border-color: transparent;
+}
+
+.state-destructive-solid {
+  background-color: var(--color-destructive-solid-default);
+  color: var(--color-destructive-text-on-solid);
+  border-color: transparent;
+}
+
+.state-destructive-outline {
+  background-color: transparent;
+  color: var(--color-destructive-text-default);
+  border-color: var(--color-destructive-border-default);
+}
+
+.state-destructive-ghost {
+  background-color: transparent;
+  color: var(--color-destructive-text-default);
+  border-color: transparent;
+}
+
+/* ─── Info ─────────────────────────────────────────────────────────────── */
+
+.state-info-subtle {
+  background-color: var(--color-info-surface-default);
+  color: var(--color-info-text-default);
+  border-color: transparent;
+}
+
+.state-info-solid {
+  background-color: var(--color-info-solid-default);
+  color: var(--color-info-text-on-solid);
+  border-color: transparent;
+}
+
+.state-info-outline {
+  background-color: transparent;
+  color: var(--color-info-text-default);
+  border-color: var(--color-info-border-default);
+}
+
+.state-info-ghost {
+  background-color: transparent;
+  color: var(--color-info-text-default);
+  border-color: transparent;
+}
+
+/* ─── Ready ────────────────────────────────────────────────────────────── */
+
+.state-ready-subtle {
+  background-color: var(--color-ready-surface-default);
+  color: var(--color-ready-text-default);
+  border-color: transparent;
+}
+
+.state-ready-solid {
+  background-color: var(--color-ready-solid-default);
+  color: var(--color-ready-text-on-solid);
+  border-color: transparent;
+}
+
+.state-ready-outline {
+  background-color: transparent;
+  color: var(--color-ready-text-default);
+  border-color: var(--color-ready-border-default);
+}
+
+.state-ready-ghost {
+  background-color: transparent;
+  color: var(--color-ready-text-default);
+  border-color: transparent;
+}
+
+/* ─── Warning ──────────────────────────────────────────────────────────── */
+
+.state-warning-subtle {
+  background-color: var(--color-warning-surface-default);
+  color: var(--color-warning-text-default);
+  border-color: transparent;
+}
+
+.state-warning-solid {
+  background-color: var(--color-warning-solid-default);
+  color: var(--color-warning-text-on-solid);
+  border-color: transparent;
+}
+
+.state-warning-outline {
+  background-color: transparent;
+  color: var(--color-warning-text-default);
+  border-color: var(--color-warning-border-default);
+}
+
+.state-warning-ghost {
+  background-color: transparent;
+  color: var(--color-warning-text-default);
+  border-color: transparent;
+}
+
+/* ─── Success ──────────────────────────────────────────────────────────── */
+
+.state-success-subtle {
+  background-color: var(--color-success-surface-default);
+  color: var(--color-success-text-default);
+  border-color: transparent;
+}
+
+.state-success-solid {
+  background-color: var(--color-success-solid-default);
+  color: var(--color-success-text-on-solid);
+  border-color: transparent;
+}
+
+.state-success-outline {
+  background-color: transparent;
+  color: var(--color-success-text-default);
+  border-color: var(--color-success-border-default);
+}
+
+.state-success-ghost {
+  background-color: transparent;
+  color: var(--color-success-text-default);
+  border-color: transparent;
+}
+
+/* ─── Neutral ──────────────────────────────────────────────────────────── */
+
+.state-neutral-subtle {
+  background-color: var(--color-secondary-surface-default);
+  color: var(--color-secondary-text-default);
+  border-color: transparent;
+}
+
+.state-neutral-solid {
+  background-color: var(--color-secondary-solid-default);
+  color: var(--color-secondary-text-on-solid);
+  border-color: transparent;
+}
+
+.state-neutral-outline {
+  background-color: transparent;
+  color: var(--color-secondary-text-default);
+  border-color: var(--color-secondary-border-default);
+}
+
+.state-neutral-ghost {
+  background-color: transparent;
+  color: var(--color-secondary-text-default);
+  border-color: transparent;
+}
+
+/* ─── Ended ────────────────────────────────────────────────────────────── */
+
+.state-ended-subtle {
+  background-color: var(--color-subtle-surface-default);
+  color: var(--color-subtle-text-default);
+  border-color: transparent;
+}
+
+.state-ended-solid {
+  background-color: var(--color-subtle-solid-default);
+  color: var(--color-subtle-text-on-solid);
+  border-color: transparent;
+}
+
+.state-ended-outline {
+  background-color: transparent;
+  color: var(--color-subtle-text-default);
+  border-color: var(--color-subtle-border-default);
+}
+
+.state-ended-ghost {
+  background-color: transparent;
+  color: var(--color-subtle-text-default);
+  border-color: transparent;
+}

@@ -12,6 +12,8 @@ const meta: Meta<typeof Input> = {
         component: `
 Componente **Input** para formularios. Mapeado 1:1 a Figma. Estilizado con **CSS Modules** y **CSS Variables**.
 
+🔗 **[Ver en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4115-21221)**
+
 ---
 
 ### 📐 Layout & Sizing
@@ -21,8 +23,7 @@ Componente **Input** para formularios. Mapeado 1:1 a Figma. Estilizado con **CSS
 | **Height** | sm | \`sizing/sizing-9\` | \`--sizing-9\` | 24px |
 | | md | \`sizing/sizing-10\` | \`--sizing-10\` | 32px |
 | | lg | \`sizing/sizing-11\` | \`--sizing-11\` | 40px |
-| **Padding Horizontal** | sm | \`spacing/spacing-5\` | \`--spacing-5\` | 8px |
-| | md | \`spacing/spacing-5\` | \`--spacing-5\` | 8px |
+| **Padding Horizontal** | sm, md | \`spacing/spacing-5\` | \`--spacing-5\` | 8px |
 | | lg | \`spacing/spacing-6\` | \`--spacing-6\` | 12px |
 | **Padding Vertical** | sm | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
 | | md | \`spacing/spacing-4\` | \`--spacing-4\` | 6px |
@@ -54,17 +55,19 @@ Componente **Input** para formularios. Mapeado 1:1 a Figma. Estilizado con **CSS
 
 | Variante / Estado | Propiedad | Token / Figma Variable | CSS Variable |
 |---|---|---|---|
-| **Default** | Background | \`color/surface/default\` | \`--color-surface-default\` |
+| **Default** | Background | \`color/surface/subtle\` | \`--color-surface-subtle\` |
 | | Border | \`color/border/default\` | \`--color-border-default\` |
 | | Text | \`color/text/primary\` | \`--color-text-primary\` |
 | | Placeholder | \`color/text/placeholder\` | \`--color-text-placeholder\` |
 | | Hover Border | \`color/border/strong\` | \`--color-border-strong\` |
 | | Focus Ring | \`color/border/focus\` | \`--color-border-focus\` |
-| **Error** | Border | \`color/destructive/border/default\` | \`--color-destructive-border-default\` |
+| **Error (destructive)** | Border | \`color/destructive/border/default\` | \`--color-destructive-border-default\` |
 | | Focus Ring | \`color/destructive/border/strong\` | \`--color-destructive-border-strong\` |
 | **Success** | Border | \`color/success/border/default\` | \`--color-success-border-default\` |
 | | Focus Ring | \`color/success/border/strong\` | \`--color-success-border-strong\` |
-| **Disabled** | Opacity | \`Opacity/disabled\` | 0.5 |
+| **Disabled** | Background | \`color/surface/disabled\` | \`--color-surface-disabled\` |
+| | Border | \`color/border/disabled\` | \`--color-border-disabled\` |
+| | Opacity | \`Opacity/disabled\` | 0.5 |
         `,
       },
     },

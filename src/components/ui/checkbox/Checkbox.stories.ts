@@ -11,6 +11,8 @@ const meta: Meta<typeof Checkbox> = {
         component: `
 Componente **Checkbox** basado en Radix Vue y Figma Design Tokens. Estilizado con **CSS Modules** y **CSS Variables**.
 
+🔗 **[Ver en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4082-1902)**
+
 ---
 
 ### 📐 Layout & Sizing

@@ -12,6 +12,8 @@ const meta: Meta<typeof ButtonIcon> = {
         component: `
 Botón de icono único (sin label). Mapeado 1:1 al componente **Button-icon** de Figma. Estilizado con **CSS Modules** y **CSS Variables** de Figma.
 
+🔗 **[Ver en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4031-1331)**
+
 ---
 
 ### 📐 Layout & Sizing
