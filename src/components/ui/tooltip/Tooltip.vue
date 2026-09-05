@@ -29,7 +29,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   label: '',
   arrow: 'bottom-center',
-  delayDuration: 250,
+  delayDuration: 200,
   disabled: false,
   sideOffset: 6,
 })

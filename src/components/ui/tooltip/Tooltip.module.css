@@ -14,26 +14,99 @@
   white-space: nowrap;
   user-select: none;
   z-index: 60;
-  animation-duration: 150ms;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
   will-change: transform, opacity;
 }
 
-.content[data-state="delayed-open"] {
-  animation-name: fadeIn;
+/* Entrada suave: delayed-open e instant-open */
+.content[data-state="delayed-open"],
+.content[data-state="instant-open"] {
+  animation-duration: 220ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: forwards;
+}
+
+.content[data-state="delayed-open"][data-side="top"],
+.content[data-state="instant-open"][data-side="top"] {
+  animation-name: slideUpAndFade;
+}
+
+.content[data-state="delayed-open"][data-side="bottom"],
+.content[data-state="instant-open"][data-side="bottom"] {
+  animation-name: slideDownAndFade;
+}
+
+.content[data-state="delayed-open"][data-side="left"],
+.content[data-state="instant-open"][data-side="left"] {
+  animation-name: slideLeftAndFade;
+}
+
+.content[data-state="delayed-open"][data-side="right"],
+.content[data-state="instant-open"][data-side="right"] {
+  animation-name: slideRightAndFade;
+}
+
+/* Salida suave */
+.content[data-state="closed"] {
+  animation: fadeOut 140ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .arrow {
   fill: var(--color-surface-inverse-default);
 }
 
-@keyframes fadeIn {
+/* ─── Keyframes suaves con micro-desplazamiento y escala delicada ─────── */
+@keyframes slideUpAndFade {
   from {
     opacity: 0;
-    transform: scale(0.96);
+    transform: translateY(4px) scale(0.98);
   }
   to {
     opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
     transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.98);
   }
 }
