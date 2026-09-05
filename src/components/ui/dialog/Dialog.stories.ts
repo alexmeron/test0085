@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import Dialog from './Dialog.vue'
 import { Button } from '../button'
 import { Input } from '../input'
+import { Overlay } from '../overlay'
 
 const meta: Meta<typeof Dialog> = {
   title: 'Components/Dialog',
@@ -12,9 +13,9 @@ const meta: Meta<typeof Dialog> = {
     docs: {
       description: {
         component: `
-Componente **Dialog / Drawer** mapeado 1:1 al componente de Figma. Estilizado con **CSS Modules**, **CSS Variables** y **Drop Shadows** exactos de Figma.
+Componente **Dialog / Drawer** mapeado 1:1 al componente de Figma. Estilizado con **CSS Modules**, **CSS Variables**, **Drop Shadows** exactos de Figma y respaldado por el componente **Overlay**.
 
-🔗 **[Ver en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4246-17453)**
+🔗 **[Ver Dialog en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4246-17453)** | 🔗 **[Ver Overlay en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=2052-759)**
 
 ---
 
@@ -51,12 +52,12 @@ Componente **Dialog / Drawer** mapeado 1:1 al componente de Figma. Estilizado co
 
 ---
 
-### 🎨 Colors & States
+### 🎨 Colors & Tokens
 
 | Elemento | Propiedad | Token / Figma Variable | CSS Variable |
 |---|---|---|---|
 | **Panel Surface** | Background | \`color/surface/raised\` | \`--color-surface-raised\` |
-| **Overlay Fondo** | Background | \`color/surface/overlay\` | \`--color-surface-overlay\` |
+| **Overlay (Backdrop)** | Background | \`color/surface/overlay\` | \`--color-surface-overlay\` |
 | **Título** | Color | \`color/text/primary\` | \`--color-text-primary\` |
 | **Descripción** | Color | \`color/text/secondary\` | \`--color-text-secondary\` |
 | **Líneas Divisoras** | Background | \`color/surface/muted\` | \`--color-surface-muted\` |
@@ -164,6 +165,22 @@ export const WithFormContent: Story = {
   }),
 }
 
+// Visual Preview of Dialog with Overlay directly visible in Docs
+export const WithOverlayPreview: Story = {
+  render: (args) => ({
+    components: { Dialog, Overlay },
+    setup() { return { args } },
+    template: `
+      <div style="position: relative; width: 100%; min-height: 440px; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        <Overlay position="absolute">
+          <Dialog v-bind="args" />
+        </Overlay>
+      </div>
+    `,
+  }),
+}
+
+// Full interactive modal with Teleport to body
 export const InteractiveModal: Story = {
   render: () => ({
     components: { Dialog, Button },
@@ -172,19 +189,22 @@ export const InteractiveModal: Story = {
       return { isOpen }
     },
     template: `
-      <div style="padding: 40px; display: flex; justify-content: center;">
+      <div style="padding: 40px; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;">
         <Button variant="primary" @click="isOpen = true">Open Dialog Modal</Button>
+        <span style="font-size: 12px; color: var(--color-text-tertiary);">
+          Opens an accessible full-screen modal using Teleport and the Overlay component
+        </span>
         <Dialog
           v-if="isOpen"
           :as-modal="true"
           title="Interactive Dialog Modal"
-          description="This is rendered inside a fixed modal overlay with backdrop."
+          description="Rendered with Teleport to body, centered on top of the Overlay component."
           @close="isOpen = false"
           @cancel="isOpen = false"
           @confirm="isOpen = false"
         >
           <p style="margin: 0; color: var(--color-text-secondary);">
-            Click outside on the backdrop or click Cancel/Confirm to dismiss.
+            The modal floats over the entire screen using the Figma Overlay component. Click outside or use Cancel/Confirm to close.
           </p>
         </Dialog>
       </div>
