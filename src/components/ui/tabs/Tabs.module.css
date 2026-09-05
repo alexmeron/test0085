@@ -1,0 +1,115 @@
+/* Tabs Component Styles */
+/* Strictly mapped 1:1 to Figma Tabs component (node 4003:515) */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--font-family-body);
+}
+
+.list {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  height: var(--sizing-11); /* 40px */
+  padding: var(--spacing-3); /* 4px */
+  border-radius: var(--radius-lg); /* 8px/10px */
+  background-color: var(--color-surface-subtle);
+  box-sizing: border-box;
+  width: fit-content;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4); /* 6px */
+  height: var(--sizing-10); /* 32px */
+  padding: var(--spacing-4) var(--spacing-6); /* 6px 12px */
+  border-radius: var(--radius-lg); /* 8px */
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-text-small); /* 14px */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-20);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: transparent;
+  box-sizing: border-box;
+  transition: all 150ms ease;
+  user-select: none;
+  outline: none;
+}
+
+.trigger:hover:not([data-disabled]):not([data-state="active"]) {
+  background-color: var(--color-wolf-100);
+  color: var(--color-text-secondary);
+}
+
+.trigger:active:not([data-disabled]):not([data-state="active"]) {
+  background-color: var(--color-wolf-200);
+  color: var(--color-text-primary);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 1px;
+}
+
+/* ─── Trigger Active / Current State ─────────────────────────────────────── */
+.trigger[data-state="active"],
+.state-current {
+  background-color: var(--color-surface-default);
+  border-color: var(--color-border-default);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  box-shadow: var(--shadow-elevation-sm);
+}
+
+/* ─── Specific state classes for storybook previews ──────────────────────── */
+.state-default {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+}
+
+.state-hover {
+  background-color: var(--color-wolf-100);
+  color: var(--color-text-secondary);
+}
+
+.state-pressed {
+  background-color: var(--color-wolf-200);
+  color: var(--color-text-primary);
+}
+
+.state-focus {
+  background-color: var(--color-surface-default);
+  border-color: var(--color-border-default);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 1px;
+}
+
+/* ─── Elements inside trigger ────────────────────────────────────────────── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sizing-6);
+  height: var(--sizing-6);
+  flex-shrink: 0;
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.chip {
+  flex-shrink: 0;
+}
+
+/* ─── Content Panel ──────────────────────────────────────────────────────── */
+.content {
+  padding-top: var(--spacing-6);
+  outline: none;
+}
