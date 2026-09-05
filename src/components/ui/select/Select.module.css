@@ -1,0 +1,143 @@
+/* Select Component Styles */
+/* Strictly mapped 1:1 to Figma Select component (node 4115:21930) */
+
+.wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  width: 100%;
+  position: relative;
+  font-family: var(--font-family-body);
+}
+
+.inputField {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+  user-select: none;
+}
+
+/* ─── Sizes ─────────────────────────────────────────────────────────────── */
+.size-sm {
+  min-height: var(--sizing-9);
+  padding: var(--spacing-3) var(--spacing-5);
+  font-size: var(--font-size-caption-big);
+}
+
+.size-md {
+  min-height: var(--sizing-10);
+  padding: var(--spacing-4) var(--spacing-5);
+  font-size: var(--font-size-text-small);
+}
+
+.size-lg {
+  min-height: var(--sizing-11);
+  padding: var(--spacing-5-5) var(--spacing-6);
+  font-size: var(--font-size-text-small);
+}
+
+/* ─── States ────────────────────────────────────────────────────────────── */
+.state-default {
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border-default);
+}
+
+.state-hover,
+.inputField:hover:not(.state-disabled):not(:disabled) {
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border-strong);
+}
+
+.state-focus,
+.state-opened {
+  background-color: var(--color-surface-subtle);
+  border: 2px solid var(--color-border-focus);
+}
+
+.state-filled {
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border-default);
+}
+
+.state-disabled,
+.inputField:disabled {
+  background-color: var(--color-surface-disabled);
+  border: 1px solid var(--color-border-disabled);
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.state-success {
+  background-color: var(--color-success-surface-default);
+  border: 2px solid var(--color-success-border-strong);
+}
+
+.state-destructive {
+  background-color: var(--color-destructive-surface-default);
+  border: 2px solid var(--color-destructive-border-strong);
+}
+
+/* ─── Elements ──────────────────────────────────────────────────────────── */
+.leftContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex: 1;
+  min-width: 0;
+}
+
+.leadingIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sizing-7);
+  height: var(--sizing-7);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.inputText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-family-body);
+  line-height: var(--leading-20);
+}
+
+.placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.valueText {
+  color: var(--color-text-primary);
+}
+
+.trailingIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sizing-7);
+  height: var(--sizing-7);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+  transition: transform 150ms ease;
+}
+
+.trailingIconOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownPopover {
+  position: absolute;
+  top: calc(100% + var(--spacing-3));
+  left: 0;
+  z-index: 50;
+  width: 100%;
+}
