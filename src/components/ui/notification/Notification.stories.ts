@@ -4,46 +4,29 @@ import Notification from './Notification.vue'
 /**
  * ## Notification Component
  *
- * Componente unificado 1:1 con Figma que cubre tres patrones de notificación:
- * - **Alert**: inline, persistente en el flujo del documento.
- * - **Toast**: flotante, efímero con auto-dismiss.
- * - **Progress Alert**: inline con barra de progreso para procesos en curso.
+ * Componente unificado 1:1 con Figma (nodo 4237:123980 y documentación 4237:124615).
+ * Sin bordes visibles (strokes visible: false en Figma), con textos exactos del diseño.
  *
  * 🔗 **[Ver Componente en Figma (node 4237:123980)](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4237-123980)**  
  * 🔗 **[Ver Documentación Oficial en Figma (node 4237:124615)](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4237-124615)**
  *
  * ---
  *
- * ### 📐 Layout & Estructura de Capas (Figma 4237:123980)
+ * ### 📐 Layout & Propiedades en Figma (4237:123980)
  *
- * | Capa en Figma | Prop en Vue | Valor por Defecto | Descripción |
+ * | Capa / Propiedad en Figma | Prop en Vue | Valor por Defecto | Texto Oficial en Figma |
  * |---|---|---|---|
- * | `Icon-Placeholder` | `showIcon` | `true` | Icono semántico según `status` (20×20px) |
- * | `body / top+progress` | — | — | Contenedor vertical superior con gap de 12px |
- * | `body / title-wrap` | `title`, `description` | Título / Descripción | Tipografía 14px semibold / 12px medium |
- * | `body / action-inline` | `showInlineAction` | `false` | Enlace ligero inline a la derecha del título |
- * | `body / progress-bar` | `showProgress`, `progress` | `true`, `45` | Barra de progreso con altura de 6px |
- * | `body / status-message` | `showStatusMessage`, `statusMessage` | `true`, `'Mensaje progress-bar'` | Icono 16×16 + texto caption 12px regular |
- * | `body / two-actions` | `showActionsTwo` | `true` | Fila con dos acciones principales |
- * | `two-actions / primary` | `showPrimaryButton`, `primaryButtonLabel` | `true`, `'Acción principal'` | Botón sm (secondary en muted / tertiary en solid) |
- * | `two-actions / secondary` | `showActionOne`, `secondaryButtonLabel` | `true`, `'Descartar'` | Botón sm ghost |
- * | `body / one-action` | `showSecondaryAction`, `secondaryActionLabel` | `true`, `'Cancelar'` | Acción secundaria tipo texto/enlace |
+ * | `Icon-Placeholder` | `showIcon` | `true` | Icono semántico 20×20px |
+ * | `title` | `title` | `'Título del alert'` | "Título del alert" |
+ * | `description` | `description`, `showDescription` | `'Descripción del mensaje...'` | "Descripción del mensaje con información relevante para el usuario." |
+ * | `action-inline` | `inlineActionLabel`, `showInlineAction` | `false` | "Cancelar" |
+ * | `progress-bar` | `showProgress`, `progress` | `true`, `45` | Altura 6px, mode inverse en muted / default en solid, state info |
+ * | `status-message` | `statusMessage`, `showStatusMessage` | `true` | "Mensaje progress-bar" |
+ * | `two-actions / Button` | `primaryButtonLabel`, `showPrimaryButton` | `true` | "Acción principal" |
+ * | `two-actions / Button` | `secondaryButtonLabel`, `showSecondaryAction` | `true` | "Descartar" |
+ * | `one-action / action-secondary` | `secondaryActionLabel`, `showActionOne` | `true` | "Cancelar" |
  * | `Button-icon (Minimize)` | `showMinimize` | `true` | Botón icono minimizar 24×24px |
  * | `Button-icon (Close)` | `showClose` | `true` | Botón icono cerrar 24×24px |
- *
- * ---
- *
- * ### 🎨 Tokens de Diseño Asociados
- *
- * | Token | Uso |
- * |---|---|
- * | `color/{status}/surface/*` | Fondo de la notificación (subtle / solid) |
- * | `color/{status}/border/*` | Borde de la notificación en variante muted |
- * | `color/{status}/icon/*` | Color del icono semántico |
- * | `color/text/primary` / `color/text-on-solid` | Color de títulos y textos |
- * | `spacing/spacing-5` (8px) | Espaciado interno horizontal y entre elementos |
- * | `spacing/spacing-3` (4px) | Espaciado vertical entre título y descripción |
- * | `radius/radius-md` (8px) | Redondeo del contenedor principal |
  */
 const meta: Meta<typeof Notification> = {
   title: 'Components/Notification',
@@ -58,7 +41,7 @@ const meta: Meta<typeof Notification> = {
     type: {
       control: 'select',
       options: ['muted', 'solid'],
-      description: 'Estilo visual (muted = suave con borde, solid = fondo sólido de alto contraste)',
+      description: 'Estilo visual (muted = suave sin borde, solid = fondo sólido de alto contraste)',
     },
     actionType: {
       control: 'select',
@@ -117,17 +100,17 @@ const meta: Meta<typeof Notification> = {
       control: 'text',
       description: 'Etiqueta del botón de acción principal',
     },
-    showActionOne: {
+    showSecondaryAction: {
       control: 'boolean',
-      description: 'Muestra la segunda acción del grupo (show-action-one)',
+      description: 'Muestra la segunda acción del grupo (show-secondary-action)',
     },
     secondaryButtonLabel: {
       control: 'text',
       description: 'Etiqueta del botón de descartar',
     },
-    showSecondaryAction: {
+    showActionOne: {
       control: 'boolean',
-      description: 'Muestra la acción secundaria inferior (show-secondary-action)',
+      description: 'Muestra la acción secundaria inferior (show-action-one)',
     },
     secondaryActionLabel: {
       control: 'text',
@@ -159,9 +142,9 @@ const meta: Meta<typeof Notification> = {
     showActionsTwo: true,
     showPrimaryButton: true,
     primaryButtonLabel: 'Acción principal',
-    showActionOne: true,
-    secondaryButtonLabel: 'Descartar',
     showSecondaryAction: true,
+    secondaryButtonLabel: 'Descartar',
+    showActionOne: true,
     secondaryActionLabel: 'Cancelar',
     showInlineAction: false,
     inlineActionLabel: 'Cancelar',
@@ -172,43 +155,44 @@ export default meta
 type Story = StoryObj<typeof Notification>
 
 /**
- * Estado por defecto de Figma (node 4237:123980: status=default, type=muted, action-type=button, todos los toggles por defecto en true salvo inline-action).
+ * Estado por defecto de Figma (node 4387:131: status=default, action-type=button, type=muted).
+ * Sin bordes, con barra de progreso (track oscuro, indicador azul), botones exactos de Figma y textos oficiales.
  */
 export const Default: Story = {}
 
 /**
- * Los 6 estados semánticos oficiales en variante suave (muted con borde).
+ * Los 6 estados oficiales en variante suave (muted), 100% idénticos a Figma (sin bordes y con textos oficiales).
  */
 export const AllStatesMuted: Story = {
   render: () => ({
     components: { Notification },
     template: `
-      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 500px;">
-        <Notification status="default" type="muted" title="Estado Default" description="Mensaje con información general para el usuario." />
-        <Notification status="success" type="muted" title="Operación Exitosa" description="Los cambios se han guardado correctamente." />
-        <Notification status="warning" type="muted" title="Advertencia de Sistema" description="Esta acción no se puede deshacer una vez confirmada." />
-        <Notification status="destructive" type="muted" title="Error Crítico" description="No se ha podido conectar con el servidor central." />
-        <Notification status="info" type="muted" title="Nueva Información" description="Hay una actualización disponible para esta sección." />
-        <Notification status="ready" type="muted" title="Listo para Ejecutar" description="Todos los requisitos han sido completados exitosamente." />
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 480px;">
+        <Notification status="default" type="muted" />
+        <Notification status="success" type="muted" />
+        <Notification status="warning" type="muted" />
+        <Notification status="destructive" type="muted" />
+        <Notification status="info" type="muted" />
+        <Notification status="ready" type="muted" />
       </div>
     `,
   }),
 }
 
 /**
- * Los 6 estados semánticos oficiales en variante sólida de alto contraste (solid).
+ * Los 6 estados oficiales en variante sólida de alto contraste (solid), 100% idénticos a Figma con textos oficiales.
  */
 export const AllStatesSolid: Story = {
   render: () => ({
     components: { Notification },
     template: `
-      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 500px;">
-        <Notification status="default" type="solid" title="Estado Default Sólido" description="Mensaje general en fondo de alto contraste." />
-        <Notification status="success" type="solid" title="Completado con Éxito" description="El paciente ha sido registrado en la base de datos." />
-        <Notification status="warning" type="solid" title="Atención Requerida" description="Revisa los campos obligatorios antes de continuar." />
-        <Notification status="destructive" type="solid" title="Error de Autenticación" description="Tu sesión ha expirado. Inicia sesión nuevamente." />
-        <Notification status="info" type="solid" title="Aviso Informativo" description="El mantenimiento del sistema comenzará en 15 minutos." />
-        <Notification status="ready" type="solid" title="Planificación Lista" description="El caso OST-234985 está listo para ser planificado." />
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 480px;">
+        <Notification status="default" type="solid" />
+        <Notification status="success" type="solid" />
+        <Notification status="warning" type="solid" />
+        <Notification status="destructive" type="solid" />
+        <Notification status="info" type="solid" />
+        <Notification status="ready" type="solid" />
       </div>
     `,
   }),
@@ -221,25 +205,24 @@ export const Destructive: Story = {
   render: () => ({
     components: { Notification },
     template: `
-      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 500px;">
-        <Notification
-          status="destructive"
-          type="muted"
-          title="Fallo en la importación de datos"
-          description="El archivo DICOM seleccionado no contiene metadatos válidos de paciente."
-          primary-button-label="Reintentar subida"
-          secondary-button-label="Ver registro de errores"
-          secondary-action-label="Cancelar operación"
-        />
-        <Notification
-          status="destructive"
-          type="solid"
-          title="Fallo en la importación de datos"
-          description="El archivo DICOM seleccionado no contiene metadatos válidos de paciente."
-          primary-button-label="Reintentar subida"
-          secondary-button-label="Ver registro de errores"
-          secondary-action-label="Cancelar operación"
-        />
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 480px;">
+        <Notification status="destructive" type="muted" />
+        <Notification status="destructive" type="solid" />
+      </div>
+    `,
+  }),
+}
+
+/**
+ * Estado Warning en ambas variantes (muted y solid).
+ */
+export const Warning: Story = {
+  render: () => ({
+    components: { Notification },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 480px;">
+        <Notification status="warning" type="muted" />
+        <Notification status="warning" type="solid" />
       </div>
     `,
   }),
@@ -252,87 +235,50 @@ export const Success: Story = {
   render: () => ({
     components: { Notification },
     template: `
-      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 500px;">
-        <Notification
-          status="success"
-          type="muted"
-          title="Segmentación 3D completada"
-          description="El modelo anatómico ha sido generado y verificado correctamente."
-          :show-progress="false"
-          :show-status-message="false"
-          primary-button-label="Abrir visualizador"
-          secondary-button-label="Exportar STL"
-          :show-secondary-action="false"
-        />
-        <Notification
-          status="success"
-          type="solid"
-          title="Segmentación 3D completada"
-          description="El modelo anatómico ha sido generado y verificado correctamente."
-          :show-progress="false"
-          :show-status-message="false"
-          primary-button-label="Abrir visualizador"
-          secondary-button-label="Exportar STL"
-          :show-secondary-action="false"
-        />
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 480px;">
+        <Notification status="success" type="muted" />
+        <Notification status="success" type="solid" />
       </div>
     `,
   }),
 }
 
 /**
- * Patrón Alert Banner estándar (sin barra de progreso, con acciones principales).
+ * Estado Info en ambas variantes (muted y solid).
  */
-export const AlertBanner: Story = {
-  args: {
-    status: 'warning',
-    type: 'muted',
-    title: 'Modo sin conexión',
-    description: 'Los cambios se sincronizarán localmente hasta recuperar la conexión a red.',
-    showProgress: false,
-    showStatusMessage: false,
-    showActionsTwo: true,
-    primaryButtonLabel: 'Reconectar ahora',
-    secondaryButtonLabel: 'Ignorar',
-    showSecondaryAction: false,
-    showMinimize: false,
-  },
+export const Info: Story = {
+  render: () => ({
+    components: { Notification },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 480px;">
+        <Notification status="info" type="muted" />
+        <Notification status="info" type="solid" />
+      </div>
+    `,
+  }),
 }
 
 /**
- * Patrón Toast flotante (compacto, sin acciones ni progreso, con botón cerrar).
+ * Estado Ready en ambas variantes (muted y solid).
  */
-export const Toast: Story = {
-  args: {
-    status: 'success',
-    type: 'solid',
-    title: 'Expediente actualizado',
-    description: 'Los datos del caso OST-234985 han sido sincronizados.',
-    showProgress: false,
-    showStatusMessage: false,
-    showActionsTwo: false,
-    showSecondaryAction: false,
-    showMinimize: false,
-    showClose: true,
-  },
+export const Ready: Story = {
+  render: () => ({
+    components: { Notification },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 480px;">
+        <Notification status="ready" type="muted" />
+        <Notification status="ready" type="solid" />
+      </div>
+    `,
+  }),
 }
 
 /**
- * Patrón con acción inline a la derecha del título (showInlineAction=true).
+ * Con acción inline (showInlineAction: true, texto "Cancelar").
  */
 export const WithInlineAction: Story = {
   args: {
-    status: 'info',
-    type: 'muted',
-    title: 'Sincronizando modelos anatómicos',
-    description: 'Descargando datos tomográficos de alta resolución.',
     showInlineAction: true,
-    inlineActionLabel: 'Detener sincronización',
-    showProgress: true,
-    progress: 65,
-    showStatusMessage: true,
-    statusMessage: 'Descargando lote 3 de 5 (45.2 MB)...',
-    showActionsTwo: false,
-    showSecondaryAction: false,
+    inlineActionLabel: 'Cancelar',
   },
 }

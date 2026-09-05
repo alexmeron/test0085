@@ -7,8 +7,7 @@
   gap: 8px; /* Figma: itemSpacing: 8 */
   padding: 12px; /* Figma: padding: 12px */
   border-radius: 8px; /* Figma: cornerRadius: 8 */
-  border-width: 1px;
-  border-style: solid;
+  border: none; /* Figma: NO BORDER (strokes visible: false) */
   box-sizing: border-box;
   width: 100%;
   max-width: 480px; /* Figma: width: 480 */
@@ -183,7 +182,11 @@
   opacity: 0.75;
 }
 
-/* ─── Type: Muted ───────────────────────────────────────────────────────── */
+/* ─── Type: Muted (No border in Figma) ──────────────────────────────────── */
+.type-muted {
+  border: none;
+}
+
 .type-muted .title {
   color: var(--color-text-primary);
 }
@@ -212,10 +215,9 @@
   color: var(--color-text-primary);
 }
 
-/* Muted Statuses */
+/* Muted Status Backgrounds and Icon Colors (1:1 with Figma boundVariables) */
 .type-muted.status-default {
   background-color: var(--color-subtle-surface-default);
-  border-color: var(--color-border-default);
 }
 .type-muted.status-default .iconWrap {
   color: var(--color-subtle-icon-default);
@@ -223,7 +225,6 @@
 
 .type-muted.status-success {
   background-color: var(--color-success-surface-default);
-  border-color: var(--color-success-border-default);
 }
 .type-muted.status-success .iconWrap {
   color: var(--color-success-icon-default);
@@ -231,7 +232,6 @@
 
 .type-muted.status-warning {
   background-color: var(--color-warning-surface-default);
-  border-color: var(--color-warning-border-default);
 }
 .type-muted.status-warning .iconWrap {
   color: var(--color-warning-icon-default);
@@ -239,7 +239,6 @@
 
 .type-muted.status-destructive {
   background-color: var(--color-destructive-surface-default);
-  border-color: var(--color-destructive-border-default);
 }
 .type-muted.status-destructive .iconWrap {
   color: var(--color-destructive-icon-default);
@@ -247,7 +246,6 @@
 
 .type-muted.status-info {
   background-color: var(--color-info-surface-default);
-  border-color: var(--color-info-border-default);
 }
 .type-muted.status-info .iconWrap {
   color: var(--color-info-icon-default);
@@ -255,15 +253,14 @@
 
 .type-muted.status-ready {
   background-color: var(--color-ready-surface-default);
-  border-color: var(--color-ready-border-default);
 }
 .type-muted.status-ready .iconWrap {
   color: var(--color-ready-icon-default);
 }
 
-/* ─── Type: Solid ───────────────────────────────────────────────────────── */
+/* ─── Type: Solid (No border in Figma) ──────────────────────────────────── */
 .type-solid {
-  border-color: transparent;
+  border: none;
 }
 
 .type-solid .title {
@@ -294,7 +291,12 @@
   color: var(--color-basic-white, #ffffff);
 }
 
-/* Solid Statuses */
+/* Ghost button inside solid notifications */
+.type-solid:not(.status-warning) .twoActions button:last-child {
+  color: var(--color-basic-white, #ffffff);
+}
+
+/* Solid Status Backgrounds and Icon Colors (1:1 with Figma boundVariables) */
 .type-solid.status-default {
   background-color: var(--color-subtle-surface-strong);
 }
@@ -342,9 +344,12 @@
 .type-solid.status-warning .controlButton {
   color: var(--color-wolf-950);
 }
+.type-solid.status-warning .twoActions button:last-child {
+  color: var(--color-wolf-950);
+}
 
 .type-solid.status-destructive {
-  background-color: var(--color-brooklyn-500, var(--color-destructive-surface-strong));
+  background-color: var(--color-brooklyn-500, #de1135);
 }
 .type-solid.status-destructive .iconWrap {
   color: var(--color-destructive-icon-on-solid, #ffffff);
@@ -365,7 +370,6 @@
 
 .type-solid.status-ready {
   background-color: var(--color-ready-surface-strong);
-  border-color: var(--color-ready-border-default);
 }
 .type-solid.status-ready .iconWrap {
   color: var(--color-ready-icon-on-solid, #ffffff);

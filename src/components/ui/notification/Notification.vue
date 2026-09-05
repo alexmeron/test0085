@@ -20,7 +20,7 @@ export interface NotificationProps {
    */
   status?: NotificationVariants['status']
   /**
-   * Estilo visual de Figma: muted (suave con borde) | solid (relleno sólido de alto contraste)
+   * Estilo visual de Figma: muted (suave sin borde) | solid (relleno sólido de alto contraste)
    */
   type?: NotificationVariants['type']
   /**
@@ -28,11 +28,11 @@ export interface NotificationProps {
    */
   actionType?: 'button' | 'link'
   /**
-   * Título principal de la notificación
+   * Título principal de la notificación (Figma: "Título del alert")
    */
   title?: string
   /**
-   * Descripción del mensaje
+   * Descripción del mensaje (Figma: "Descripción del mensaje con información relevante para el usuario.")
    */
   description?: string
   /**
@@ -60,7 +60,7 @@ export interface NotificationProps {
    */
   showProgress?: boolean
   /**
-   * Valor del progreso (0 a 100)
+   * Valor del progreso (0 a 100) (Figma: 45)
    */
   progress?: number
   /**
@@ -68,7 +68,7 @@ export interface NotificationProps {
    */
   showStatusMessage?: boolean
   /**
-   * Texto del mensaje de estado del progreso
+   * Texto del mensaje de estado del progreso (Figma: "Mensaje progress-bar")
    */
   statusMessage?: string
   /**
@@ -80,23 +80,23 @@ export interface NotificationProps {
    */
   showPrimaryButton?: boolean
   /**
-   * Etiqueta del botón primario
+   * Etiqueta del botón primario (Figma: "Acción principal")
    */
   primaryButtonLabel?: string
   /**
-   * Controla la visibilidad del botón secundario / acción 1 (show-action-one en Figma)
-   */
-  showActionOne?: boolean
-  /**
-   * Etiqueta del botón secundario
-   */
-  secondaryButtonLabel?: string
-  /**
-   * Controla la visibilidad de la acción secundaria inferior (show-secondary-action en Figma)
+   * Controla la visibilidad del botón secundario (show-secondary-action en Figma)
    */
   showSecondaryAction?: boolean
   /**
-   * Etiqueta de la acción secundaria inferior
+   * Etiqueta del botón secundario (Figma: "Descartar")
+   */
+  secondaryButtonLabel?: string
+  /**
+   * Controla la visibilidad de la acción secundaria inferior (show-action-one en Figma)
+   */
+  showActionOne?: boolean
+  /**
+   * Etiqueta de la acción secundaria inferior (Figma: "Cancelar")
    */
   secondaryActionLabel?: string
   /**
@@ -104,7 +104,7 @@ export interface NotificationProps {
    */
   showInlineAction?: boolean
   /**
-   * Etiqueta de la acción inline
+   * Etiqueta de la acción inline (Figma: "Cancelar")
    */
   inlineActionLabel?: string
   /**
@@ -131,9 +131,9 @@ const props = withDefaults(defineProps<NotificationProps>(), {
   showActionsTwo: true,
   showPrimaryButton: true,
   primaryButtonLabel: 'Acción principal',
-  showActionOne: true,
-  secondaryButtonLabel: 'Descartar',
   showSecondaryAction: true,
+  secondaryButtonLabel: 'Descartar',
+  showActionOne: true,
   secondaryActionLabel: 'Cancelar',
   showInlineAction: false,
   inlineActionLabel: 'Cancelar',
@@ -149,6 +149,10 @@ const emits = defineEmits<{
 
 // Default icons strictly mapped from Figma instances (node 4237:123980)
 const defaultIcon = computed(() => {
+  if (props.icon) return props.icon
+  if (props.type === 'solid' && props.status === 'destructive') {
+    return InfoIcon // Figma node 4337:11729 uses Warning/Info
+  }
   switch (props.status) {
     case 'success':
       return CircleCheckIcon
@@ -165,23 +169,27 @@ const defaultIcon = computed(() => {
   }
 })
 
-const effectiveIcon = computed(() => props.icon || defaultIcon.value)
+const effectiveIcon = computed(() => defaultIcon.value)
 
-// Progress bar semantic state mapping
-const progressState = computed(() => {
-  switch (props.status) {
-    case 'destructive':
-      return 'danger'
-    case 'warning':
-      return 'warning'
-    case 'success':
-    case 'ready':
-      return 'success'
-    case 'info':
-      return 'info'
-    default:
-      return 'neutral'
+// Progress bar mode mapped 1:1 to Figma (node 4237:123980)
+// In muted and in warning solid: mode="inverse" (dark track #374151)
+// In other solids: mode="default" (subtle light track)
+// State is ALWAYS "info" in Figma (blue indicator #276ef1)
+const progressMode = computed(() => {
+  if (props.type === 'muted' || (props.type === 'solid' && props.status === 'warning')) {
+    return 'inverse'
   }
+  return 'default'
+})
+
+// Primary button variant mapped 1:1 to Figma:
+// In muted and warning solid: secondary (dark button)
+// In other solid states: tertiary (white button)
+const primaryButtonVariant = computed(() => {
+  if (props.type === 'solid' && props.status !== 'warning') {
+    return 'tertiary'
+  }
+  return 'secondary'
 })
 </script>
 
@@ -228,8 +236,8 @@ const progressState = computed(() => {
         <div v-if="showProgress" :class="styles.progressWrap">
           <ProgressBar
             :model-value="progress"
-            :state="progressState"
-            :mode="type === 'solid' ? 'inverse' : 'default'"
+            state="info"
+            :mode="progressMode"
             label="hidden"
           />
         </div>
@@ -246,19 +254,19 @@ const progressState = computed(() => {
       </div>
 
       <!-- two-actions (Figma two-actions, controlled by showActionsTwo) -->
-      <div v-if="showActionsTwo && (showPrimaryButton || showActionOne)" :class="styles.twoActions">
+      <div v-if="showActionsTwo && (showPrimaryButton || showSecondaryAction)" :class="styles.twoActions">
         <slot name="two-actions">
           <template v-if="actionType === 'button'">
             <Button
               v-if="showPrimaryButton"
               size="sm"
-              :variant="type === 'solid' ? 'tertiary' : 'secondary'"
+              :variant="primaryButtonVariant"
               @click="emits('primaryAction')"
             >
               {{ primaryButtonLabel }}
             </Button>
             <Button
-              v-if="showActionOne"
+              v-if="showSecondaryAction"
               size="sm"
               variant="ghost"
               @click="emits('secondaryAction')"
@@ -276,7 +284,7 @@ const progressState = computed(() => {
               {{ primaryButtonLabel }}
             </button>
             <button
-              v-if="showActionOne"
+              v-if="showSecondaryAction"
               type="button"
               :class="styles.actionSecondary"
               @click="emits('secondaryAction')"
@@ -287,8 +295,8 @@ const progressState = computed(() => {
         </slot>
       </div>
 
-      <!-- one-action (Figma one-action, controlled by showSecondaryAction) -->
-      <div v-if="showSecondaryAction && (secondaryActionLabel || $slots['secondary-action'])" :class="styles.oneAction">
+      <!-- one-action (Figma one-action, controlled by showActionOne) -->
+      <div v-if="showActionOne && (secondaryActionLabel || $slots['secondary-action'])" :class="styles.oneAction">
         <slot name="secondary-action">
           <button
             type="button"
@@ -301,7 +309,7 @@ const progressState = computed(() => {
       </div>
     </div>
 
-    <!-- Header Controls (Figma Minimize & Close button-icons) -->
+    <!-- Header Controls (Figma Minimize & Close button-icons, 24x24) -->
     <div v-if="showMinimize || showClose" :class="styles.controls">
       <button
         v-if="showMinimize"
