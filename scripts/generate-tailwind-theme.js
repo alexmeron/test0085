@@ -7,7 +7,23 @@ const __dirname = path.dirname(__filename);
 
 const rawData = JSON.parse(fs.readFileSync(path.join(__dirname, '../tokens/figma-raw-tokens.json'), 'utf8'));
 
-const cssVarName = (name) => 'var(--' + name.replace(/\//g, '-').replace(/\s+/g, '-').toLowerCase() + ')';
+// CSS var reference: token name → var(--css-var-name)
+const cssVar = (name) => 'var(--' + name.replace(/\//g, '-').replace(/\s+/g, '-').toLowerCase() + ')';
+
+// The Figma component bound variables use names like:
+//   spacing/spacing-5, sizing/sizing-9, radius/radius-lg, line-height/leading-16, font-size/text/small
+// These come from the Components file where tokens have an extra prefix segment.
+// The Foundations file (source of figma-raw-tokens.json) has cleaner names:
+//   spacing/5, sizing/9, radius/lg, leading/16, font-size/text/small
+//
+// Strategy: for each Foundation token, generate BOTH forms in the Tailwind theme:
+//   spacing/5   → spacing key "5" AND "spacing-5"
+//   sizing/9    → spacing key "sizing-9" AND "sizing-sizing-9"
+//   radius/lg   → borderRadius key "lg" AND "radius-lg"
+//   leading/16  → lineHeight key "leading-16" (already includes prefix)
+//   font-size/text/small → fontSize key "text-small"
+//
+// This ensures components referencing either naming convention work.
 
 const theme = {
   colors: {},
@@ -17,45 +33,84 @@ const theme = {
   fontWeight: {},
   fontFamily: {},
   lineHeight: {},
-  boxShadow: {}
+  boxShadow: {},
 };
 
 for (const v of rawData.variables) {
   const parts = v.name.split('/');
-  const cssVar = cssVarName(v.name);
-  
-  let targetMap = null;
-  if (parts[0] === 'color') targetMap = theme.colors;
-  else if (parts[0] === 'spacing') targetMap = theme.spacing;
-  else if (parts[0] === 'sizing') {
-    let current = theme.spacing;
-    current['sizing-' + parts[parts.length - 1]] = cssVar;
-    continue;
-  }
-  else if (parts[0] === 'radius') targetMap = theme.borderRadius;
-  else if (parts[0] === 'font-family') targetMap = theme.fontFamily;
-  else if (parts[0] === 'font-size') targetMap = theme.fontSize;
-  else if (parts[0] === 'font-weight') targetMap = theme.fontWeight;
-  else if (parts[0] === 'line-height' || parts[0] === 'leading') targetMap = theme.lineHeight;
-  
-  if (targetMap) {
-    let current = targetMap;
-    for (let i = 1; i < parts.length - 1; i++) {
-      if (!current[parts[i]]) current[parts[i]] = {};
-      current = current[parts[i]];
+  const root = parts[0];
+  const rest = parts.slice(1);
+  const cv = cssVar(v.name);
+
+  if (root === 'color') {
+    // Nested: color/brand/solid/default → colors.brand.solid.default
+    let cur = theme.colors;
+    for (let i = 0; i < rest.length - 1; i++) {
+      if (!cur[rest[i]]) cur[rest[i]] = {};
+      cur = cur[rest[i]];
     }
-    current[parts[parts.length - 1]] = cssVar;
+    cur[rest[rest.length - 1]] = cv;
+
+  } else if (root === 'spacing') {
+    // spacing/5 → key "5" → utility px-5
+    //          → also key "spacing-5" → utility px-spacing-5 (used by Components-file BVs)
+    const bare = rest.join('-');       // e.g. "5" or "5-5"
+    const prefixed = `spacing-${bare}`; // e.g. "spacing-5"
+    theme.spacing[bare] = cv;
+    theme.spacing[prefixed] = cv;
+
+  } else if (root === 'sizing') {
+    // sizing/9 → key "sizing-9" → utility h-sizing-9
+    //         → also key "sizing-sizing-9" → utility h-sizing-sizing-9 (Components BV form)
+    const bare = rest.join('-');
+    const prefixed = `sizing-${bare}`;
+    const doublePrefixed = `sizing-sizing-${bare}`;
+    theme.spacing[prefixed] = cv;
+    theme.spacing[doublePrefixed] = cv;
+
+  } else if (root === 'radius') {
+    // radius/lg → key "lg" → utility rounded-lg
+    //          → also key "radius-lg" → utility rounded-radius-lg (Components BV form)
+    const bare = rest.join('-');
+    const prefixed = `radius-${bare}`;
+    theme.borderRadius[bare] = cv;
+    theme.borderRadius[prefixed] = cv;
+
+  } else if (root === 'font-size') {
+    // font-size/text/small → key "text-small" → utility text-text-small
+    // font-size/caption/big → key "caption-big" → utility text-caption-big
+    const key = rest.join('-');
+    theme.fontSize[key] = cv;
+
+  } else if (root === 'font-weight') {
+    // font-weight/regular → key "regular" → utility font-regular
+    const key = rest.join('-');
+    theme.fontWeight[key] = cv;
+
+  } else if (root === 'font-family') {
+    // font-family/body → key "body" → utility font-body
+    const key = rest.join('-');
+    theme.fontFamily[key] = cv;
+
+  } else if (root === 'leading') {
+    // leading/16 → key "leading-16" → utility leading-leading-16
+    // Also key "16" for plain leading-16 usage
+    const bare = rest.join('-');
+    const prefixed = `leading-${bare}`;
+    theme.lineHeight[bare] = cv;
+    theme.lineHeight[prefixed] = cv;
   }
 }
 
+// Shadows
 try {
   const shadowsData = JSON.parse(fs.readFileSync(path.join(__dirname, '../tokens/shadows.json'), 'utf8'));
   shadowsData.shadows.forEach(s => {
     const key = s.name.split('/').pop();
     theme.boxShadow[key] = `var(${s.cssVar})`;
   });
-} catch(e) {}
+} catch (e) {}
 
-const output = `export const figmaTheme = ${JSON.stringify(theme, null, 2)};\n`;
+const output = `// Auto-generated by scripts/generate-tailwind-theme.js — DO NOT EDIT MANUALLY\nexport const figmaTheme = ${JSON.stringify(theme, null, 2)};\n`;
 fs.writeFileSync(path.join(__dirname, '../src/styles/tailwind-theme.js'), output);
-console.log('Generated src/styles/tailwind-theme.js successfully with nested properties!');
+console.log('✓ Generated tailwind-theme.js');
