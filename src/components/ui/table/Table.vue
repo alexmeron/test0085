@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { MoreHorizontal } from 'lucide-vue-next'
+import { MoreVertical } from 'lucide-vue-next'
 import { Checkbox } from '../checkbox'
 import TableHeader from './TableHeader.vue'
 import TableBody from './TableBody.vue'
@@ -168,7 +168,7 @@ function toggleSelectRow(row: Record<string, any>, index: number) {
                     aria-label="More options"
                     @click="emits('action', row)"
                   >
-                    <MoreHorizontal style="width: var(--sizing-7); height: var(--sizing-7);" />
+                    <MoreVertical style="width: var(--sizing-7); height: var(--sizing-7);" />
                   </ButtonIcon>
                 </slot>
               </td>

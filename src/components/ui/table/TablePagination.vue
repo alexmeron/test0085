@@ -50,22 +50,22 @@ function next() {
 
     <div :class="styles.paginationControls">
       <Button
-        variant="secondary"
-        size="sm"
+        variant="outlined"
+        size="md"
         :disabled="page <= 1"
+        :leading-icon="ChevronLeft"
         @click="prev"
       >
-        <ChevronLeft style="width: var(--sizing-6); height: var(--sizing-6); margin-right: var(--spacing-2);" />
         Anterior
       </Button>
       <Button
-        variant="secondary"
-        size="sm"
+        variant="outlined"
+        size="md"
         :disabled="page >= totalPages"
+        :trailing-icon="ChevronRight"
         @click="next"
       >
         Siguiente
-        <ChevronRight style="width: var(--sizing-6); height: var(--sizing-6); margin-left: var(--spacing-2);" />
       </Button>
     </div>
   </div>
