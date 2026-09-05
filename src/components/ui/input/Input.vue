@@ -5,6 +5,7 @@ import { inputVariants, type InputVariants } from './inputVariants'
 import { cn } from '../../../lib/utils'
 import styles from './Input.module.css'
 import { Check, AlertCircle, Info } from 'lucide-vue-next'
+import { Label } from '../label'
 
 const props = withDefaults(
   defineProps<{
@@ -28,6 +29,8 @@ const props = withDefaults(
     showHelperIcon?: boolean
     leadingIcon?: Component
     trailingIcon?: Component
+    labelLeadingIcon?: boolean | Component
+    labelTrailingIcon?: boolean | Component
   }>(),
   {
     size: 'md',
@@ -37,6 +40,8 @@ const props = withDefaults(
     showHelper: true,
     showHelperIcon: true,
     isMandatory: false,
+    labelLeadingIcon: false,
+    labelTrailingIcon: false,
   }
 )
 
@@ -78,18 +83,29 @@ const fieldClasses = computed(() => {
 
 <template>
   <div :class="cn(styles.wrapper, props.class)">
-    <!-- Label Header -->
-    <div v-if="label || hint || $slots.label || $slots.hint" :class="styles.labelHeader">
-      <div :class="styles.labelTop">
-        <label v-if="label || $slots.label" :for="id" :class="styles.label">
-          <slot name="label">{{ label }}</slot>
-          <span v-if="isMandatory" :class="styles.mandatory">*</span>
-        </label>
-      </div>
-      <div v-if="hint || $slots.hint" :class="styles.hintText">
-        <slot name="hint">{{ hint }}</slot>
-      </div>
-    </div>
+    <!-- Label Component from Figma (node 4099:5009) -->
+    <Label
+      v-if="label || hint || $slots.label || $slots.hint"
+      :for="id"
+      :label="label"
+      :is-mandatory="isMandatory"
+      :hint-text="hint"
+      :leading-icon="labelLeadingIcon"
+      :trailing-icon="labelTrailingIcon"
+    >
+      <template v-if="$slots.label" #default>
+        <slot name="label" />
+      </template>
+      <template v-if="$slots.hint" #hint>
+        <slot name="hint" />
+      </template>
+      <template v-if="$slots['label-leading-icon']" #leading-icon>
+        <slot name="label-leading-icon" />
+      </template>
+      <template v-if="$slots['label-trailing-icon']" #trailing-icon>
+        <slot name="label-trailing-icon" />
+      </template>
+    </Label>
 
     <!-- Input Field -->
     <div :class="fieldClasses">

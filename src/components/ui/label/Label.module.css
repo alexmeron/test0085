@@ -1,0 +1,64 @@
+/* Label Component Styles - Mapped 1:1 to Figma (node 4099:5549) */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3); /* 4px */
+  font-family: var(--font-family-body);
+  width: 100%;
+}
+
+.topWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3); /* 4px */
+}
+
+.labelWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1-5); /* 2px */
+}
+
+.label {
+  font-size: var(--font-size-text-small); /* 14px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  line-height: var(--leading-20); /* 20px */
+  color: var(--color-text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.mandatory {
+  font-size: var(--font-size-text-small); /* 14px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  line-height: var(--leading-20); /* 20px */
+  color: var(--color-destructive-text-default);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.hintText {
+  font-size: var(--font-size-text-small); /* 14px */
+  font-weight: var(--font-weight-regular); /* 400 */
+  line-height: var(--leading-20); /* 20px */
+  color: var(--color-text-tertiary);
+}
