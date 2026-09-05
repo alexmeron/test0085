@@ -4,7 +4,7 @@ import { useVModel } from '@vueuse/core'
 import { inputVariants, type InputVariants } from './inputVariants'
 import { cn } from '../../../lib/utils'
 import styles from './Input.module.css'
-import { Check, AlertCircle, Info } from 'lucide-vue-next'
+import { CheckIcon, CircleWarningIcon, InfoIcon } from '../icon'
 import { Label } from '../label'
 
 const props = withDefaults(
@@ -146,9 +146,9 @@ const fieldClasses = computed(() => {
     >
       <span v-if="showHelperIcon" :class="styles.helperIcon">
         <slot name="helper-icon">
-          <AlertCircle v-if="isDestructive" />
-          <Check v-else-if="isSuccess" />
-          <Info v-else />
+          <CircleWarningIcon v-if="isDestructive" />
+          <CheckIcon v-else-if="isSuccess" />
+          <InfoIcon v-else />
         </slot>
       </span>
       <span :class="styles.helperText">

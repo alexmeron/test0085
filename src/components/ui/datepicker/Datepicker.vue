@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import { ChevronLeftIcon, ChevronRightIcon } from '../icon'
 import ButtonIcon from '../button/ButtonIcon.vue'
 import styles from './Datepicker.module.css'
 import { cn } from '../../../lib/utils'
@@ -204,7 +204,7 @@ function getCellClasses(day: DayItem) {
             aria-label="Mes anterior"
             @click="prevMonth"
           >
-            <ChevronLeft style="width: 16px; height: 16px;" />
+            <ChevronLeftIcon style="width: 16px; height: 16px;" />
           </ButtonIcon>
           <span :class="styles.title">{{ monthNames[currentMonth] }}</span>
           <ButtonIcon
@@ -214,7 +214,7 @@ function getCellClasses(day: DayItem) {
             aria-label="Mes siguiente"
             @click="nextMonth"
           >
-            <ChevronRight style="width: 16px; height: 16px;" />
+            <ChevronRightIcon style="width: 16px; height: 16px;" />
           </ButtonIcon>
         </div>
 
@@ -252,7 +252,7 @@ function getCellClasses(day: DayItem) {
               aria-label="Mes anterior"
               @click="prevMonth"
             >
-              <ChevronLeft style="width: 16px; height: 16px;" />
+              <ChevronLeftIcon style="width: 16px; height: 16px;" />
             </ButtonIcon>
             <span :class="styles.title">{{ monthNames[currentMonth] }}</span>
             <ButtonIcon
@@ -262,7 +262,7 @@ function getCellClasses(day: DayItem) {
               aria-label="Mes siguiente"
               @click="nextMonth"
             >
-              <ChevronRight style="width: 16px; height: 16px;" />
+              <ChevronRightIcon style="width: 16px; height: 16px;" />
             </ButtonIcon>
           </div>
 
@@ -296,7 +296,7 @@ function getCellClasses(day: DayItem) {
               aria-label="Mes anterior"
               @click="prevMonth"
             >
-              <ChevronLeft style="width: 16px; height: 16px;" />
+              <ChevronLeftIcon style="width: 16px; height: 16px;" />
             </ButtonIcon>
             <span :class="styles.title">{{ monthNames[nextMonthDate.getMonth()] }}</span>
             <ButtonIcon
@@ -306,7 +306,7 @@ function getCellClasses(day: DayItem) {
               aria-label="Mes siguiente"
               @click="nextMonth"
             >
-              <ChevronRight style="width: 16px; height: 16px;" />
+              <ChevronRightIcon style="width: 16px; height: 16px;" />
             </ButtonIcon>
           </div>
 

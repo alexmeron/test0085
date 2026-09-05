@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { X } from 'lucide-vue-next'
+import { CloseIcon } from '../icon'
 import { Button } from '../button'
 import { Overlay } from '../overlay'
 import { dialogVariants, type DialogVariants } from './dialogVariants'
@@ -48,6 +48,7 @@ const emits = defineEmits<{
   (e: 'close'): void
   (e: 'cancel'): void
   (e: 'confirm'): void
+  (e: 'update:open', value: boolean): void
 }>()
 
 const computedPanelClass = computed(() =>
@@ -77,7 +78,7 @@ const computedPanelClass = computed(() =>
             aria-label="Cerrar"
             @click="emits('close')"
           >
-            <X style="width: 16px; height: 16px;" />
+            <CloseIcon style="width: 16px; height: 16px;" />
           </button>
         </div>
 
@@ -138,7 +139,7 @@ const computedPanelClass = computed(() =>
         aria-label="Cerrar"
         @click="emits('close')"
       >
-        <X style="width: 16px; height: 16px;" />
+        <CloseIcon style="width: 16px; height: 16px;" />
       </button>
     </div>
 

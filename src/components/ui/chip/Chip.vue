@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { X, Sparkles } from 'lucide-vue-next'
+import { CloseSmIcon, StarIcon } from '../icon'
 import { chipVariants, type ChipVariants } from './chipVariants'
 import styles from './Chip.module.css'
 import { cn } from '../../../lib/utils'
@@ -39,7 +39,7 @@ const showIcons = computed(() => props.size !== 'badge')
     <!-- Leading Icon -->
     <span v-if="showIcons && leadingIcon" :class="styles.iconLeading">
       <slot name="leading">
-        <Sparkles style="width: 100%; height: 100%;" />
+        <StarIcon style="width: 100%; height: 100%;" />
       </slot>
     </span>
 
@@ -56,7 +56,7 @@ const showIcons = computed(() => props.size !== 'badge')
       @click.stop="emits('click:trailing')"
     >
       <slot name="trailing">
-        <X style="width: 100%; height: 100%;" />
+        <CloseSmIcon style="width: 100%; height: 100%;" />
       </slot>
     </span>
   </span>

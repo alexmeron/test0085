@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { ref } from 'vue'
-import { User, Bell, Shield, Sparkles } from 'lucide-vue-next'
+import { UserIcon, BellIcon, ShieldIcon, StarIcon } from '../icon'
 import Tabs from './Tabs.vue'
 import TabsList from './TabsList.vue'
 import TabsTrigger from './TabsTrigger.vue'
@@ -93,15 +93,15 @@ export const WithIcons: Story = {
     components: { Tabs, TabsList, TabsTrigger, TabsContent },
     setup() {
       const activeTab = ref('profile')
-      return { activeTab, User, Bell, Shield }
+      return { activeTab, UserIcon, BellIcon, ShieldIcon }
     },
     template: `
       <div style="max-width: 500px; padding: var(--spacing-6);">
         <Tabs v-model="activeTab">
           <TabsList>
-            <TabsTrigger value="profile" label="Perfil" :icon="User" />
-            <TabsTrigger value="alerts" label="Alertas" :icon="Bell" />
-            <TabsTrigger value="privacy" label="Privacidad" :icon="Shield" />
+            <TabsTrigger value="profile" label="Perfil" :icon="UserIcon" />
+            <TabsTrigger value="alerts" label="Alertas" :icon="BellIcon" />
+            <TabsTrigger value="privacy" label="Privacidad" :icon="ShieldIcon" />
           </TabsList>
         </Tabs>
       </div>
@@ -114,7 +114,7 @@ export const WithChips: Story = {
     components: { Tabs, TabsList, TabsTrigger, TabsContent },
     setup() {
       const activeTab = ref('inbox')
-      return { activeTab, Bell, Sparkles }
+      return { activeTab, BellIcon, StarIcon }
     },
     template: `
       <div style="max-width: 500px; padding: var(--spacing-6);">
@@ -179,4 +179,3 @@ export const AllStates: Story = {
     `,
   }),
 }
-

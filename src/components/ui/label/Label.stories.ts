@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import Label from './Label.vue'
-import { Info, HelpCircle } from 'lucide-vue-next'
+import { InfoIcon, CircleHelpIcon } from '../icon'
 
 const meta: Meta<typeof Label> = {
   title: 'Components/Label',
@@ -105,21 +105,21 @@ export const WithTrailingIcon: Story = {
 
 export const CustomIcons: Story = {
   render: () => ({
-    components: { Label, Info, HelpCircle },
+    components: { Label, InfoIcon, CircleHelpIcon },
     setup() {
-      return { Info, HelpCircle }
+      return { InfoIcon, CircleHelpIcon }
     },
     template: `
       <div style="display: flex; flex-direction: column; gap: var(--spacing-8); max-width: 320px;">
         <Label
           label="Password"
           isMandatory
-          :trailingIcon="HelpCircle"
+          :trailingIcon="CircleHelpIcon"
           hintText="Must be at least 8 characters long."
         />
         <Label
           label="Security Question"
-          :leadingIcon="Info"
+          :leadingIcon="InfoIcon"
           hintText="Used for account recovery purposes."
         />
       </div>

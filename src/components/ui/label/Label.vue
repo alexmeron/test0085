@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type Component } from 'vue'
 import { Label as RadixLabel } from 'radix-vue'
-import { CircleHelp } from 'lucide-vue-next'
+import { CircleHelpIcon } from '../icon'
 import { cn } from '../../../lib/utils'
 import styles from './Label.module.css'
 
@@ -37,7 +37,7 @@ const props = withDefaults(
         >
           <slot name="leading-icon">
             <component :is="leadingIcon" v-if="typeof leadingIcon === 'object'" />
-            <CircleHelp v-else />
+            <CircleHelpIcon v-else />
           </slot>
         </span>
 
@@ -56,7 +56,7 @@ const props = withDefaults(
         >
           <slot name="trailing-icon">
             <component :is="trailingIcon" v-if="typeof trailingIcon === 'object'" />
-            <CircleHelp v-else />
+            <CircleHelpIcon v-else />
           </slot>
         </span>
       </div>

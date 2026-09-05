@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import ButtonIcon from './ButtonIcon.vue'
-import { Search } from 'lucide-vue-next'
+import { SearchIcon } from '../icon'
 
 const meta: Meta<typeof ButtonIcon> = {
   title: 'Components/Button-icon',
@@ -108,9 +108,9 @@ Botón de icono único (sin label). Mapeado 1:1 al componente **Button-icon** de
     disabled: false,
   },
   render: (args) => ({
-    components: { ButtonIcon, Search },
+    components: { ButtonIcon, SearchIcon },
     setup() { return { args } },
-    template: `<ButtonIcon v-bind="args"><Search style="width: 100%; height: 100%;" /></ButtonIcon>`,
+    template: `<ButtonIcon v-bind="args"><SearchIcon style="width: 100%; height: 100%;" /></ButtonIcon>`,
   }),
 }
 
@@ -134,13 +134,13 @@ export const OnInverse: Story = {
 
 export const Sizes: Story = {
   render: (args) => ({
-    components: { ButtonIcon, Search },
+    components: { ButtonIcon, SearchIcon },
     setup() { return { args } },
     template: `
       <div style="display: flex; align-items: center; gap: var(--spacing-7);">
-        <ButtonIcon v-bind="args" size="sm"><Search style="width: 100%; height: 100%;" /></ButtonIcon>
-        <ButtonIcon v-bind="args" size="md"><Search style="width: 100%; height: 100%;" /></ButtonIcon>
-        <ButtonIcon v-bind="args" size="lg"><Search style="width: 100%; height: 100%;" /></ButtonIcon>
+        <ButtonIcon v-bind="args" size="sm"><SearchIcon style="width: 100%; height: 100%;" /></ButtonIcon>
+        <ButtonIcon v-bind="args" size="md"><SearchIcon style="width: 100%; height: 100%;" /></ButtonIcon>
+        <ButtonIcon v-bind="args" size="lg"><SearchIcon style="width: 100%; height: 100%;" /></ButtonIcon>
       </div>
     `,
   }),

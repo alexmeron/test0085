@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { ChevronDown } from 'lucide-vue-next'
+import { CaretDownIcon } from '../icon'
 import { selectVariants, type SelectVariants } from './selectVariants'
 import { Label } from '../label'
 import { Dropdown, type DropdownOption } from '../dropdown'
@@ -45,6 +45,7 @@ const emits = defineEmits<{
   (e: 'change', value: any): void
   (e: 'open'): void
   (e: 'close'): void
+  (e: 'update:open', value: boolean): void
 }>()
 
 const isOpen = ref(false)
@@ -195,7 +196,7 @@ onUnmounted(() => {
 
       <!-- Trailing Chevron -->
       <span :class="cn(styles.trailingIcon, isOpen && styles.trailingIconOpen)">
-        <ChevronDown style="width: var(--sizing-7); height: var(--sizing-7);" />
+        <CaretDownIcon style="width: var(--sizing-7); height: var(--sizing-7);" />
       </span>
     </div>
 

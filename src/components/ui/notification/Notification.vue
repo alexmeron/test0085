@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import {
-  CheckCircle2,
-  AlertTriangle,
-  AlertCircle,
-  Info,
-  Sparkles,
-  Bell,
-  X,
-  Minus,
-} from 'lucide-vue-next'
+  CircleCheckIcon,
+  TriangleWarningIcon,
+  CircleWarningIcon,
+  InfoIcon,
+  StarIcon,
+  BellIcon,
+  CloseIcon,
+  RemoveMinusIcon,
+} from '../icon'
 import { notificationVariants, type NotificationVariants } from './notificationVariants'
 import { ProgressBar } from '../progress-bar'
 import { Button } from '../button'
@@ -72,17 +72,17 @@ const emits = defineEmits<{
 const defaultIcon = computed(() => {
   switch (props.status) {
     case 'success':
-      return CheckCircle2
+      return CircleCheckIcon
     case 'warning':
-      return AlertTriangle
+      return TriangleWarningIcon
     case 'destructive':
-      return AlertCircle
+      return CircleWarningIcon
     case 'info':
-      return Info
+      return InfoIcon
     case 'ready':
-      return Sparkles
+      return StarIcon
     default:
-      return Bell
+      return BellIcon
   }
 })
 
@@ -156,7 +156,7 @@ const progressState = computed(() => {
       <!-- Optional Status Message -->
       <div v-if="showStatusMessage && (statusMessage || $slots['status-message'])" :class="styles.statusMessage">
         <span :class="styles.statusMessageIcon">
-          <AlertCircle style="width: var(--sizing-7); height: var(--sizing-7);" />
+          <CircleWarningIcon style="width: var(--sizing-7); height: var(--sizing-7);" />
         </span>
         <span>
           <slot name="status-message">{{ statusMessage }}</slot>
@@ -213,7 +213,7 @@ const progressState = computed(() => {
         aria-label="Minimize notification"
         @click="emits('minimize')"
       >
-        <Minus style="width: var(--sizing-7); height: var(--sizing-7);" />
+        <RemoveMinusIcon style="width: var(--sizing-7); height: var(--sizing-7);" />
       </button>
       <button
         v-if="showClose"
@@ -222,7 +222,7 @@ const progressState = computed(() => {
         aria-label="Close notification"
         @click="emits('close')"
       >
-        <X style="width: var(--sizing-7); height: var(--sizing-7);" />
+        <CloseIcon style="width: var(--sizing-7); height: var(--sizing-7);" />
       </button>
     </div>
   </div>

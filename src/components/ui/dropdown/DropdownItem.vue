@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Check } from 'lucide-vue-next'
+import { CheckIcon } from '../icon'
 import { Checkbox } from '../checkbox'
 import { dropdownItemVariants, type DropdownItemVariants } from './dropdownVariants'
 import styles from './Dropdown.module.css'
@@ -76,7 +76,7 @@ const isSelected = computed(() => props.state === 'selected' || props.state === 
 
     <!-- Check indicator when selected and no checkbox -->
     <span v-if="isSelected && !checkbox" :class="styles.checkIndicator">
-      <Check style="width: 14px; height: 14px;" />
+      <CheckIcon style="width: 14px; height: 14px;" />
     </span>
   </button>
 </template>

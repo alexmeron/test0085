@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronsUpDown } from 'lucide-vue-next'
+import { ArrowDownUpIcon } from '../icon'
 import { cn } from '../../../lib/utils'
 import styles from './Table.module.css'
 
@@ -25,7 +25,7 @@ const emits = defineEmits<{
       @keydown.enter="emits('sort')"
     >
       <span :class="styles.sortIcon">
-        <ChevronsUpDown style="width: var(--sizing-6); height: var(--sizing-6);" />
+        <ArrowDownUpIcon style="width: var(--sizing-6); height: var(--sizing-6);" />
       </span>
       <slot />
     </div>

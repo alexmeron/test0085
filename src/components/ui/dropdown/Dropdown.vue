@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { Search } from 'lucide-vue-next'
+import { SearchIcon } from '../icon'
 import DropdownItem from './DropdownItem.vue'
 import type { DropdownItemVariants } from './dropdownVariants'
 import styles from './Dropdown.module.css'
@@ -85,7 +85,7 @@ function onSearchInput(event: Event) {
     <!-- Optional Search Header -->
     <div v-if="searchable" :class="styles.searchHeader">
       <span :class="styles.searchIcon">
-        <Search style="width: 14px; height: 14px;" />
+        <SearchIcon style="width: 14px; height: 14px;" />
       </span>
       <input
         type="text"

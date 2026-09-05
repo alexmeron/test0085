@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { CheckboxRoot, type CheckboxRootProps, CheckboxIndicator, type CheckboxRootEmits, useForwardPropsEmits } from 'radix-vue'
-import { Check, Minus } from 'lucide-vue-next'
+import { CheckIcon, RemoveMinusIcon } from '../icon'
 import { checkboxVariants, type CheckboxVariants } from './checkboxVariants'
 import styles from './Checkbox.module.css'
 import { cn } from '../../../lib/utils'
@@ -39,8 +39,8 @@ const iconClass = computed(() => {
   >
     <CheckboxIndicator :class="styles.indicator">
       <slot :checked="isChecked">
-        <Minus v-if="isChecked === 'indeterminate'" :class="iconClass" />
-        <Check v-else :class="iconClass" />
+        <RemoveMinusIcon v-if="isChecked === 'indeterminate'" :class="iconClass" />
+        <CheckIcon v-else :class="iconClass" />
       </slot>
     </CheckboxIndicator>
   </CheckboxRoot>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { ref } from 'vue'
-import { Globe } from 'lucide-vue-next'
+import { GlobeIcon } from '../icon'
 import Select from './Select.vue'
 
 const sampleOptions = [
@@ -130,17 +130,17 @@ export const WithLabelAndHint: Story = {
 
 export const WithLeadingIcon: Story = {
   render: (args) => ({
-    components: { Select, Globe },
+    components: { Select, GlobeIcon },
     setup() {
       const selected = ref('vue')
-      return { args, selected, Globe }
+      return { args, selected, GlobeIcon }
     },
     template: `
       <div style="padding-bottom: 220px; max-width: 320px;">
         <Select
           v-bind="args"
           v-model="selected"
-          :leading-icon="Globe"
+          :leading-icon="GlobeIcon"
           label="Country / Region"
           placeholder="Select country..."
         />

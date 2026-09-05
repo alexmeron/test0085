@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import Input from './Input.vue'
-import { Search, Eye, Mail, CheckCircle2 } from 'lucide-vue-next'
+import { SearchIcon, MailIcon, CircleCheckIcon } from '../icon'
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Input',
@@ -132,14 +132,14 @@ export const FocusState: Story = {
 
 export const WithLeadingIcon: Story = {
   render: (args) => ({
-    components: { Input, Search },
+    components: { Input, SearchIcon },
     setup() {
-      return { args, Search }
+      return { args, SearchIcon }
     },
     template: `
       <Input
         v-bind="args"
-        :leadingIcon="Search"
+        :leadingIcon="SearchIcon"
         label="Search"
         placeholder="Search components..."
         helperText="Leading icon 16x16px"
@@ -151,17 +151,16 @@ export const WithLeadingIcon: Story = {
 
 export const WithTrailingIcon: Story = {
   render: (args) => ({
-    components: { Input, Eye },
+    components: { Input, SearchIcon },
     setup() {
-      return { args, Eye }
+      return { args, SearchIcon }
     },
     template: `
       <Input
         v-bind="args"
-        :trailingIcon="Eye"
-        type="password"
-        label="Password"
-        placeholder="••••••••"
+        :trailingIcon="SearchIcon"
+        label="Search"
+        placeholder="Search..."
         helperText="Trailing icon 16x16px"
         style="max-width: 360px;"
       />
@@ -171,15 +170,15 @@ export const WithTrailingIcon: Story = {
 
 export const WithBothIcons: Story = {
   render: (args) => ({
-    components: { Input, Mail, CheckCircle2 },
+    components: { Input, MailIcon, CircleCheckIcon },
     setup() {
-      return { args, Mail, CheckCircle2 }
+      return { args, MailIcon, CircleCheckIcon }
     },
     template: `
       <Input
         v-bind="args"
-        :leadingIcon="Mail"
-        :trailingIcon="CheckCircle2"
+        :leadingIcon="MailIcon"
+        :trailingIcon="CircleCheckIcon"
         label="Email"
         placeholder="user@example.com"
         helperText="Both leading and trailing icons"
@@ -218,9 +217,9 @@ export const Disabled: Story = {
 
 export const AllStates: Story = {
   render: () => ({
-    components: { Input, Search },
+    components: { Input, SearchIcon },
     setup() {
-      return { Search }
+      return { SearchIcon }
     },
     template: `
       <div style="display: flex; flex-direction: column; gap: var(--spacing-8); max-width: 400px;">
@@ -229,49 +228,49 @@ export const AllStates: Story = {
           isMandatory
           placeholder="Default placeholder..."
           helperText="Default state with 1px border"
-          :leadingIcon="Search"
+          :leadingIcon="SearchIcon"
         />
         <Input
           state="hover"
           label="Hover State"
           placeholder="Hovered input..."
           helperText="Hover state with color/border/strong"
-          :leadingIcon="Search"
+          :leadingIcon="SearchIcon"
         />
         <Input
           state="focus"
           label="Focus State"
           placeholder="Focused input..."
           helperText="Focus state with 2px color/border/focus"
-          :leadingIcon="Search"
+          :leadingIcon="SearchIcon"
         />
         <Input
           state="filled"
           label="Filled State"
           modelValue="Filled value text"
           helperText="Filled with primary text color"
-          :leadingIcon="Search"
+          :leadingIcon="SearchIcon"
         />
         <Input
           state="success"
           label="Success State"
           modelValue="Everything is good"
           helperText="Success with bambi surface & 2px border"
-          :leadingIcon="Search"
+          :leadingIcon="SearchIcon"
         />
         <Input
           state="destructive"
           label="Destructive State"
           modelValue="Invalid input value"
           helperText="Destructive with brooklyn surface & 2px border"
-          :leadingIcon="Search"
+          :leadingIcon="SearchIcon"
         />
         <Input
           state="disabled"
           label="Disabled State"
           modelValue="Disabled text"
           helperText="Disabled with 0.5 opacity"
-          :leadingIcon="Search"
+          :leadingIcon="SearchIcon"
         />
       </div>
     `,
@@ -280,9 +279,9 @@ export const AllStates: Story = {
 
 export const Sizes: Story = {
   render: () => ({
-    components: { Input, Search },
+    components: { Input, SearchIcon },
     setup() {
-      return { Search }
+      return { SearchIcon }
     },
     template: `
       <div style="display: flex; flex-direction: column; gap: var(--spacing-9); max-width: 400px;">
@@ -293,7 +292,7 @@ export const Sizes: Story = {
             label="Small Input"
             placeholder="Small input field..."
             helperText="Field height: 24px, font 12px"
-            :leadingIcon="Search"
+            :leadingIcon="SearchIcon"
           />
         </div>
         <div>
@@ -303,7 +302,7 @@ export const Sizes: Story = {
             label="Medium Input"
             placeholder="Medium input field..."
             helperText="Field height: 32px, font 14px"
-            :leadingIcon="Search"
+            :leadingIcon="SearchIcon"
           />
         </div>
         <div>
@@ -313,7 +312,7 @@ export const Sizes: Story = {
             label="Large Input"
             placeholder="Large input field..."
             helperText="Field height: 40px, font 14px"
-            :leadingIcon="Search"
+            :leadingIcon="SearchIcon"
           />
         </div>
       </div>

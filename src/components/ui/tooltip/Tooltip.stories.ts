@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { Plus, Trash2, HelpCircle } from 'lucide-vue-next'
+import { AddPlusIcon, TrashIcon, CircleHelpIcon } from '../icon'
 import Tooltip from './Tooltip.vue'
 import { Button, ButtonIcon } from '../button'
 
@@ -94,27 +94,27 @@ export const Default: Story = {}
 
 export const OnIconButton: Story = {
   render: () => ({
-    components: { Tooltip, ButtonIcon, Plus, Trash2, HelpCircle },
+    components: { Tooltip, ButtonIcon, AddPlusIcon, TrashIcon, CircleHelpIcon },
     setup() {
-      return { Plus, Trash2, HelpCircle }
+      return { AddPlusIcon, TrashIcon, CircleHelpIcon }
     },
     template: `
       <div style="padding: 60px; display: flex; gap: var(--spacing-6); justify-content: center;">
         <Tooltip label="Crear nuevo elemento" arrow="bottom-center">
           <ButtonIcon variant="secondary" aria-label="Crear">
-            <Plus style="width: var(--sizing-7); height: var(--sizing-7);" />
+            <AddPlusIcon style="width: var(--sizing-7); height: var(--sizing-7);" />
           </ButtonIcon>
         </Tooltip>
 
         <Tooltip label="Eliminar permanentemente" arrow="bottom-center">
-          <ButtonIcon variant="destructive" aria-label="Eliminar">
-            <Trash2 style="width: var(--sizing-7); height: var(--sizing-7);" />
+          <ButtonIcon variant="danger" aria-label="Eliminar">
+            <TrashIcon style="width: var(--sizing-7); height: var(--sizing-7);" />
           </ButtonIcon>
         </Tooltip>
 
         <Tooltip label="Centro de ayuda y soporte" arrow="bottom-center">
           <ButtonIcon variant="ghost" aria-label="Ayuda">
-            <HelpCircle style="width: var(--sizing-7); height: var(--sizing-7);" />
+            <CircleHelpIcon style="width: var(--sizing-7); height: var(--sizing-7);" />
           </ButtonIcon>
         </Tooltip>
       </div>

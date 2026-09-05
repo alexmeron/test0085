@@ -4,7 +4,7 @@ import { Primitive, type PrimitiveProps } from 'radix-vue'
 import { buttonVariants, type ButtonVariants } from './buttonVariants'
 import styles from './Button.module.css'
 import { cn } from '../../../lib/utils'
-import { Search, ArrowRight } from 'lucide-vue-next'
+import { SearchIcon, ArrowRightIcon } from '../icon'
 
 interface Props extends PrimitiveProps {
   variant?: ButtonVariants['variant']
@@ -44,13 +44,13 @@ const iconClass = computed(() => {
     :class="computedClass"
   >
     <component
-      :is="resolveIcon(leadingIcon, Search)"
+      :is="resolveIcon(leadingIcon, SearchIcon)"
       v-if="leadingIcon"
       :class="iconClass"
     />
     <slot />
     <component
-      :is="resolveIcon(trailingIcon, ArrowRight)"
+      :is="resolveIcon(trailingIcon, ArrowRightIcon)"
       v-if="trailingIcon"
       :class="iconClass"
     />
