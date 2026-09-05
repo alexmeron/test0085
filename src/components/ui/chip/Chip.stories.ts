@@ -145,7 +145,7 @@ export const Icons: Story = {
     components: { Chip },
     setup() { return { args } },
     template: `
-      <div style="display: flex; gap: 12px; align-items: center;">
+      <div style="display: flex; gap: var(--spacing-6); align-items: center;">
         <Chip v-bind="args" :leading-icon="true" :trailing-icon="true" label="Both Icons" />
         <Chip v-bind="args" :leading-icon="true" :trailing-icon="false" label="Leading Icon" />
         <Chip v-bind="args" :leading-icon="false" :trailing-icon="true" label="Trailing Icon" />
@@ -162,7 +162,7 @@ export const Sizes: Story = {
     components: { Chip },
     setup() { return { args } },
     template: `
-      <div style="display: flex; align-items: center; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: var(--spacing-7);">
         <Chip v-bind="args" size="badge" label="1" :leading-icon="false" :trailing-icon="false" />
         <Chip v-bind="args" size="xs" label="Extra Small" />
         <Chip v-bind="args" size="sm" label="Small" />
@@ -180,7 +180,7 @@ export const AllStates: Story = {
     components: { Chip },
     setup() { return { args } },
     template: `
-      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+      <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-6); align-items: center;">
         <Chip v-bind="args" state="neutral" label="Neutral" />
         <Chip v-bind="args" state="info" label="Info" />
         <Chip v-bind="args" state="success" label="Success" />
@@ -200,7 +200,7 @@ export const AllVariants: Story = {
     components: { Chip },
     setup() { return { args } },
     template: `
-      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+      <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-6); align-items: center;">
         <Chip v-bind="args" variant="subtle" label="Subtle" />
         <Chip v-bind="args" variant="solid" label="Solid" />
         <Chip v-bind="args" variant="outline" label="Outline" />

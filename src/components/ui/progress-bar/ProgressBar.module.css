@@ -11,21 +11,21 @@
 .layout-hidden {
   flex-direction: row;
   align-items: center;
-  height: 6px;
+  height: var(--sizing-4); /* 6px */
 }
 
 .layout-right {
   flex-direction: row;
   align-items: center;
   gap: var(--spacing-4); /* 6px itemSpacing */
-  height: 16px;
+  height: var(--sizing-7); /* 16px */
 }
 
 .layout-bottom {
   flex-direction: column;
   justify-content: flex-start;
   gap: var(--spacing-4); /* 6px itemSpacing */
-  height: 28px;
+  height: calc(var(--sizing-7) + var(--sizing-6)); /* 28px */
 }
 
 /* ─── Track ───────────────────────────────────────────────────────────── */
@@ -33,7 +33,7 @@
   position: relative;
   flex: 1;
   width: 100%;
-  height: 6px;
+  height: var(--sizing-4); /* 6px */
   overflow: hidden;
   border-radius: var(--radius-full); /* 999px */
   transition: background-color 150ms ease;

@@ -59,8 +59,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: var(--sizing-7);
+  height: var(--sizing-7);
   color: var(--color-text-secondary);
   flex-shrink: 0;
 }
@@ -68,7 +68,7 @@
 .itemsContainer {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--spacing-2);
 }
 
 /* ─── Dropdown Item ─────────────────────────────────────────────────────── */

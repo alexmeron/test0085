@@ -115,7 +115,7 @@ Componente **Dialog / Drawer** mapeado 1:1 al componente de Figma. Estilizado co
     components: { Dialog },
     setup() { return { args } },
     template: `
-      <div style="background-color: var(--color-surface-subtle); padding: 40px; display: flex; justify-content: center;">
+      <div style="background-color: var(--color-surface-subtle); padding: var(--spacing-11); display: flex; justify-content: center;">
         <Dialog v-bind="args" />
       </div>
     `,
@@ -147,15 +147,15 @@ export const WithFormContent: Story = {
     components: { Dialog, Input },
     setup() { return { args } },
     template: `
-      <div style="background-color: var(--color-surface-subtle); padding: 40px; display: flex; justify-content: center;">
+      <div style="background-color: var(--color-surface-subtle); padding: var(--spacing-11); display: flex; justify-content: center;">
         <Dialog v-bind="args" title="Create project" description="Fill out the project details to continue.">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
             <div>
-              <label style="display: block; font-size: 12px; margin-bottom: 4px; color: var(--color-text-secondary);">Project name</label>
+              <label style="display: block; font-size: var(--font-size-caption-big); margin-bottom: var(--spacing-3); color: var(--color-text-secondary);">Project name</label>
               <Input placeholder="Enter project name..." />
             </div>
             <div>
-              <label style="display: block; font-size: 12px; margin-bottom: 4px; color: var(--color-text-secondary);">Description</label>
+              <label style="display: block; font-size: var(--font-size-caption-big); margin-bottom: var(--spacing-3); color: var(--color-text-secondary);">Description</label>
               <Input placeholder="Enter short description..." />
             </div>
           </div>
@@ -171,7 +171,7 @@ export const WithOverlayPreview: Story = {
     components: { Dialog, Overlay },
     setup() { return { args } },
     template: `
-      <div style="position: relative; width: 100%; min-height: 440px; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+      <div style="position: relative; width: 100%; min-height: 440px; border-radius: var(--radius-lg); overflow: hidden; display: flex; align-items: center; justify-content: center;">
         <Overlay position="absolute">
           <Dialog v-bind="args" />
         </Overlay>
@@ -189,9 +189,9 @@ export const InteractiveModal: Story = {
       return { isOpen }
     },
     template: `
-      <div style="padding: 40px; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;">
+      <div style="padding: var(--spacing-11); min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-6);">
         <Button variant="primary" @click="isOpen = true">Open Dialog Modal</Button>
-        <span style="font-size: 12px; color: var(--color-text-tertiary);">
+        <span style="font-size: var(--font-size-caption-big); color: var(--color-text-tertiary);">
           Opens an accessible full-screen modal using Teleport and the Overlay component
         </span>
         <Dialog

@@ -120,16 +120,16 @@ export const Sizes: Story = {
     components: { Checkbox },
     setup() { return { args } },
     template: `
-      <div style="display: flex; align-items: center; gap: 24px;">
-        <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: var(--spacing-9);">
+        <div style="display: flex; align-items: center; gap: var(--spacing-5);">
           <Checkbox v-bind="args" size="sm" id="c-sm" />
           <label for="c-sm" style="font-size: var(--font-size-caption-big); font-family: var(--font-family-body);">Small (14px)</label>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: var(--spacing-5);">
           <Checkbox v-bind="args" size="md" id="c-md" />
           <label for="c-md" style="font-size: var(--font-size-text-small); font-family: var(--font-family-body);">Medium (16px)</label>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: var(--spacing-5);">
           <Checkbox v-bind="args" size="lg" id="c-lg" />
           <label for="c-lg" style="font-size: var(--font-size-text-small); font-family: var(--font-family-body);">Large (20px)</label>
         </div>
@@ -157,16 +157,16 @@ export const Disabled: Story = {
     components: { Checkbox },
     setup() { return { args } },
     template: `
-      <div style="display: flex; align-items: center; gap: 24px;">
-        <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: var(--spacing-9);">
+        <div style="display: flex; align-items: center; gap: var(--spacing-5);">
           <Checkbox v-bind="args" :checked="false" disabled id="d-un" />
           <label for="d-un" style="font-size: var(--font-size-text-small); color: var(--color-text-disabled); font-family: var(--font-family-body);">Unchecked Disabled</label>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: var(--spacing-5);">
           <Checkbox v-bind="args" :checked="true" disabled id="d-chk" />
           <label for="d-chk" style="font-size: var(--font-size-text-small); color: var(--color-text-disabled); font-family: var(--font-family-body);">Checked Disabled</label>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: var(--spacing-5);">
           <Checkbox v-bind="args" checked="indeterminate" disabled id="d-ind" />
           <label for="d-ind" style="font-size: var(--font-size-text-small); color: var(--color-text-disabled); font-family: var(--font-family-body);">Indeterminate Disabled</label>
         </div>

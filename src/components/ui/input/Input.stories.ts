@@ -223,7 +223,7 @@ export const AllStates: Story = {
       return { Search }
     },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 400px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-8); max-width: 400px;">
         <Input
           label="Default State"
           isMandatory
@@ -285,9 +285,9 @@ export const Sizes: Story = {
       return { Search }
     },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 24px; max-width: 400px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-9); max-width: 400px;">
         <div>
-          <span style="font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; display: block; margin-bottom: 6px;">Small (24px field height)</span>
+          <span style="font-size: var(--font-size-caption-medium); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: var(--font-weight-semibold); display: block; margin-bottom: var(--spacing-4);">Small (24px field height)</span>
           <Input
             size="sm"
             label="Small Input"
@@ -297,7 +297,7 @@ export const Sizes: Story = {
           />
         </div>
         <div>
-          <span style="font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; display: block; margin-bottom: 6px;">Medium (32px field height) - Default</span>
+          <span style="font-size: var(--font-size-caption-medium); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: var(--font-weight-semibold); display: block; margin-bottom: var(--spacing-4);">Medium (32px field height) - Default</span>
           <Input
             size="md"
             label="Medium Input"
@@ -307,7 +307,7 @@ export const Sizes: Story = {
           />
         </div>
         <div>
-          <span style="font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; display: block; margin-bottom: 6px;">Large (40px field height)</span>
+          <span style="font-size: var(--font-size-caption-medium); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: var(--font-weight-semibold); display: block; margin-bottom: var(--spacing-4);">Large (40px field height)</span>
           <Input
             size="lg"
             label="Large Input"

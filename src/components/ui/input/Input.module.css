@@ -112,15 +112,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: var(--sizing-7);
+  height: var(--sizing-7);
   flex-shrink: 0;
   color: var(--color-text-secondary);
 }
 
 .icon svg {
-  width: 16px;
-  height: 16px;
+  width: var(--sizing-7);
+  height: var(--sizing-7);
 }
 
 /* ─── Interactive & Variant States ────────────────────────────────────── */
@@ -182,22 +182,22 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-4); /* 6px */
-  min-height: 16px;
+  min-height: var(--sizing-7);
 }
 
 .helperIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 12px;
-  height: 12px;
+  width: var(--sizing-6);
+  height: var(--sizing-6);
   flex-shrink: 0;
   color: var(--color-text-secondary);
 }
 
 .helperIcon svg {
-  width: 12px;
-  height: 12px;
+  width: var(--sizing-6);
+  height: var(--sizing-6);
 }
 
 .helperText {

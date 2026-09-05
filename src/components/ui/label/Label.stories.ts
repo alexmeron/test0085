@@ -110,7 +110,7 @@ export const CustomIcons: Story = {
       return { Info, HelpCircle }
     },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 320px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-8); max-width: 320px;">
         <Label
           label="Password"
           isMandatory

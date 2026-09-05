@@ -140,21 +140,21 @@ export const Interactive: Story = {
       return { uploadedFiles, onFiles, reset }
     },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 556px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-7); max-width: 556px;">
         <DragDrop @change="onFiles" />
 
-        <div v-if="uploadedFiles.length > 0" style="padding: 12px 16px; background: var(--color-surface-subtle); border-radius: var(--radius-md); border: 1px solid var(--color-border-default);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <span style="font-size: 12px; font-weight: 600; color: var(--color-text-primary);">Archivos seleccionados:</span>
+        <div v-if="uploadedFiles.length > 0" style="padding: var(--spacing-6) var(--spacing-7); background: var(--color-surface-subtle); border-radius: var(--radius-md); border: 1px solid var(--color-border-default);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-5);">
+            <span style="font-size: var(--font-size-caption-big); font-weight: var(--font-weight-semibold); color: var(--color-text-primary);">Archivos seleccionados:</span>
             <button
               type="button"
               @click="reset"
-              style="font-size: 12px; color: var(--color-destructive-text-default, red); background: none; border: none; cursor: pointer;"
+              style="font-size: var(--font-size-caption-big); color: var(--color-destructive-text-default); background: none; border: none; cursor: pointer;"
             >
               Eliminar
             </button>
           </div>
-          <ul style="margin: 0; padding-left: 20px; font-size: 12px; color: var(--color-text-secondary);">
+          <ul style="margin: 0; padding-left: var(--spacing-8); font-size: var(--font-size-caption-big); color: var(--color-text-secondary);">
             <li v-for="file in uploadedFiles" :key="file">{{ file }}</li>
           </ul>
         </div>

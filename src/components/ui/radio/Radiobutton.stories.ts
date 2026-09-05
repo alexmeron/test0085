@@ -118,7 +118,7 @@ export const Sizes: Story = {
     components: { Radiobutton },
     setup() { return { args } },
     template: `
-      <div style="display: flex; align-items: center; gap: 24px;">
+      <div style="display: flex; align-items: center; gap: var(--spacing-9);">
         <Radiobutton v-bind="args" size="sm" />
         <Radiobutton v-bind="args" size="md" />
         <Radiobutton v-bind="args" size="lg" />
@@ -142,7 +142,7 @@ export const Disabled: Story = {
     components: { Radiobutton },
     setup() { return { args } },
     template: `
-      <div style="display: flex; align-items: center; gap: 24px;">
+      <div style="display: flex; align-items: center; gap: var(--spacing-9);">
         <Radiobutton v-bind="args" :checked="false" disabled />
         <Radiobutton v-bind="args" :checked="true" disabled />
       </div>

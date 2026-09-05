@@ -111,7 +111,7 @@ export const Sizes: Story = {
     components: { Avatar },
     setup() { return { args } },
     template: `
-      <div style="display: flex; align-items: center; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: var(--spacing-7);">
         <Avatar v-bind="args" size="sm" />
         <Avatar v-bind="args" size="md" />
         <Avatar v-bind="args" size="lg" />

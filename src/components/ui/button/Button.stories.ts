@@ -162,7 +162,7 @@ export const Sizes: Story = {
     components: { Button },
     setup() { return { args } },
     template: `
-      <div style="display: flex; align-items: center; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: var(--spacing-7);">
         <Button v-bind="args" size="sm">Small</Button>
         <Button v-bind="args" size="md">Medium</Button>
         <Button v-bind="args" size="lg">Large</Button>

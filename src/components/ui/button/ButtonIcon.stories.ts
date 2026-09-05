@@ -137,7 +137,7 @@ export const Sizes: Story = {
     components: { ButtonIcon, Search },
     setup() { return { args } },
     template: `
-      <div style="display: flex; align-items: center; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: var(--spacing-7);">
         <ButtonIcon v-bind="args" size="sm"><Search style="width: 100%; height: 100%;" /></ButtonIcon>
         <ButtonIcon v-bind="args" size="md"><Search style="width: 100%; height: 100%;" /></ButtonIcon>
         <ButtonIcon v-bind="args" size="lg"><Search style="width: 100%; height: 100%;" /></ButtonIcon>

@@ -177,9 +177,9 @@ export const Sizes: Story = {
       return { selBig, selSmall, sampleItems }
     },
     template: `
-      <div style="display: flex; gap: 32px; padding: 24px; align-items: flex-start;">
+      <div style="display: flex; gap: var(--spacing-10); padding: var(--spacing-9); align-items: flex-start;">
         <div>
-          <p style="font-family: var(--font-family-body); font-size: 12px; color: var(--color-text-secondary); margin-bottom: 8px;">
+          <p style="font-family: var(--font-family-body); font-size: var(--font-size-caption-big); color: var(--color-text-secondary); margin-bottom: var(--spacing-5);">
             Size: Big (32px item height, 14px font)
           </p>
           <Dropdown
@@ -191,7 +191,7 @@ export const Sizes: Story = {
         </div>
 
         <div>
-          <p style="font-family: var(--font-family-body); font-size: 12px; color: var(--color-text-secondary); margin-bottom: 8px;">
+          <p style="font-family: var(--font-family-body); font-size: var(--font-size-caption-big); color: var(--color-text-secondary); margin-bottom: var(--spacing-5);">
             Size: Small (28px item height, 12px font)
           </p>
           <Dropdown
@@ -213,7 +213,7 @@ export const ItemStates: Story = {
       return {}
     },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 12px; padding: 24px; width: 220px; background: var(--color-surface-default); border: 1px solid var(--color-border-default); border-radius: 8px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-6); padding: var(--spacing-9); width: 220px; background: var(--color-surface-default); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg);">
         <DropdownItem label="Default state" state="default" />
         <DropdownItem label="Hovered state" state="hovered" />
         <DropdownItem label="Selected state" state="selected" />

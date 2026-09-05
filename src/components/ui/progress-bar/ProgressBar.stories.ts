@@ -122,25 +122,25 @@ export const AllStates: Story = {
   render: () => ({
     components: { ProgressBar },
     template: `
-      <div style="display: flex; flex-direction: column; gap: 24px; max-width: 400px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-9); max-width: 400px;">
         <div>
-          <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 6px; display: block;">Info</span>
+          <span style="font-size: var(--font-size-caption-medium); font-weight: var(--font-weight-semibold); text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: var(--spacing-4); display: block;">Info</span>
           <ProgressBar state="info" label="right" :modelValue="45" />
         </div>
         <div>
-          <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 6px; display: block;">Success</span>
+          <span style="font-size: var(--font-size-caption-medium); font-weight: var(--font-weight-semibold); text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: var(--spacing-4); display: block;">Success</span>
           <ProgressBar state="success" label="right" :modelValue="100" />
         </div>
         <div>
-          <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 6px; display: block;">Warning</span>
+          <span style="font-size: var(--font-size-caption-medium); font-weight: var(--font-weight-semibold); text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: var(--spacing-4); display: block;">Warning</span>
           <ProgressBar state="warning" label="right" :modelValue="75" />
         </div>
         <div>
-          <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 6px; display: block;">Danger</span>
+          <span style="font-size: var(--font-size-caption-medium); font-weight: var(--font-weight-semibold); text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: var(--spacing-4); display: block;">Danger</span>
           <ProgressBar state="danger" label="right" :modelValue="25" />
         </div>
         <div>
-          <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 6px; display: block;">Neutral</span>
+          <span style="font-size: var(--font-size-caption-medium); font-weight: var(--font-weight-semibold); text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: var(--spacing-4); display: block;">Neutral</span>
           <ProgressBar state="neutral" label="right" :modelValue="60" />
         </div>
       </div>
@@ -152,8 +152,8 @@ export const InverseMode: Story = {
   render: () => ({
     components: { ProgressBar },
     template: `
-      <div style="background-color: var(--color-wolf-950); padding: 24px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; max-width: 400px;">
-        <span style="color: var(--color-basic-white); font-size: 14px; font-weight: 500;">Modo Inverse (Fondo Oscuro)</span>
+      <div style="background-color: var(--color-wolf-950); padding: var(--spacing-9); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: var(--spacing-8); max-width: 400px;">
+        <span style="color: var(--color-basic-white); font-size: var(--font-size-text-small); font-weight: var(--font-weight-medium);">Modo Inverse (Fondo Oscuro)</span>
         <ProgressBar mode="inverse" state="info" label="right" :modelValue="36" />
         <ProgressBar mode="inverse" state="success" label="right" :modelValue="100" />
         <ProgressBar mode="inverse" state="warning" label="bottom" :modelValue="80" />

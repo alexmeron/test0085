@@ -45,15 +45,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: var(--sizing-7);
+  height: var(--sizing-7);
   flex-shrink: 0;
   color: var(--color-text-secondary);
 }
 
 .icon svg {
-  width: 16px;
-  height: 16px;
+  width: var(--sizing-7);
+  height: var(--sizing-7);
 }
 
 .hintText {
