@@ -20,8 +20,8 @@ import TabsContent from './TabsContent.vue'
  *
  * | Elemento | Altura | Padding | Radio de Borde | Tipografía / Gap |
  * |---|---|---|---|---|
- * | **TabsList (Contenedor)** | `--sizing-11` (40px) | `--spacing-3` (4px) | `--radius-lg` (8px) | Background `--color-surface-subtle` |
- * | **TabTrigger (Botón)** | `--sizing-10` (32px) | `--spacing-4` (6px) vert, `--spacing-6` (12px) horiz | `--radius-lg` (8px) | `--font-size-text-small` (14px), gap `--spacing-4` (6px) |
+ * | **TabsList (Contenedor)** | `--sizing-11` (40px) | `--spacing-3` (4px) | `--radius-xl` (10px) | Background `--color-surface-subtle`, gap `--spacing-0` (0px) |
+ * | **TabTrigger (Botón)** | `--sizing-10` (32px) | `--spacing-5` (8px) vert, `--spacing-6` (12px) horiz | `--radius-lg` (8px) | `--font-size-caption-big` (12px), gap `--spacing-4` (6px) |
  * | **Icono** | `--sizing-6` (12px) | - | - | Alineado al texto |
  * | **Badge (Chip)** | 20px | Sub-componente Chip `size="badge"` | `--radius-full` | Margen izquierdo `--spacing-1` |
  *
@@ -31,8 +31,8 @@ import TabsContent from './TabsContent.vue'
  *
  * | Estado | Fondo | Borde | Texto |
  * |---|---|---|---|
- * | **Default** | `transparent` | `transparent` | `--color-text-secondary` |
- * | **Hover** | `--color-wolf-100` | `transparent` | `--color-text-secondary` |
+ * | **Default** | `transparent` | `transparent` | `--color-text-tertiary` |
+ * | **Hover** | `--color-wolf-100` | `transparent` | `--color-text-tertiary` |
  * | **Pressed** | `--color-wolf-200` | `transparent` | `--color-text-primary` |
  * | **Focus** | `--color-surface-default` | `1px solid var(--color-border-default)` | `--color-text-primary`, outline `--color-border-focus` |
  * | **Current / Active** | `--color-surface-default` | `1px solid var(--color-border-default)` | `--color-text-primary`, weight `--font-weight-medium`, shadow `--shadow-elevation-sm` |

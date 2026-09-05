@@ -11,10 +11,10 @@
 .list {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: var(--spacing-0);
   height: var(--sizing-11); /* 40px */
   padding: var(--spacing-3); /* 4px */
-  border-radius: var(--radius-lg); /* 8px/10px */
+  border-radius: var(--radius-xl); /* 10px */
   background-color: var(--color-surface-subtle);
   box-sizing: border-box;
   width: fit-content;
@@ -26,13 +26,13 @@
   justify-content: center;
   gap: var(--spacing-4); /* 6px */
   height: var(--sizing-10); /* 32px */
-  padding: var(--spacing-4) var(--spacing-6); /* 6px 12px */
+  padding: var(--spacing-5) var(--spacing-6); /* 8px 12px */
   border-radius: var(--radius-lg); /* 8px */
   font-family: var(--font-family-body);
-  font-size: var(--font-size-text-small); /* 14px */
-  font-weight: var(--font-weight-regular);
-  line-height: var(--leading-20);
-  color: var(--color-text-secondary);
+  font-size: var(--font-size-caption-big); /* 12px */
+  font-weight: var(--font-weight-regular); /* 400 */
+  line-height: var(--leading-16); /* 16px */
+  color: var(--color-text-tertiary);
   cursor: pointer;
   border: 1px solid transparent;
   background-color: transparent;
@@ -44,7 +44,7 @@
 
 .trigger:hover:not([data-disabled]):not([data-state="active"]) {
   background-color: var(--color-wolf-100);
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
 }
 
 .trigger:active:not([data-disabled]):not([data-state="active"]) {
@@ -70,12 +70,12 @@
 /* ─── Specific state classes for storybook previews ──────────────────────── */
 .state-default {
   background-color: transparent;
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
 }
 
 .state-hover {
   background-color: var(--color-wolf-100);
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
 }
 
 .state-pressed {
@@ -86,6 +86,7 @@
 .state-focus {
   background-color: var(--color-surface-default);
   border-color: var(--color-border-default);
+  color: var(--color-text-primary);
   outline: 2px solid var(--color-border-focus);
   outline-offset: 1px;
 }
@@ -105,6 +106,8 @@
 }
 
 .chip {
+  display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
 }
 
@@ -113,3 +116,4 @@
   padding-top: var(--spacing-6);
   outline: none;
 }
+
