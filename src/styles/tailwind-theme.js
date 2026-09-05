@@ -564,6 +564,36 @@ export const figmaTheme = {
     "10": "var(--spacing-10)",
     "11": "var(--spacing-11)",
     "12": "var(--spacing-12)",
+    "sizing-0": "var(--sizing-0)",
+    "sizing-1": "var(--sizing-1)",
+    "sizing-2": "var(--sizing-2)",
+    "sizing-3": "var(--sizing-3)",
+    "sizing-4": "var(--sizing-4)",
+    "sizing-5": "var(--sizing-5)",
+    "sizing-6": "var(--sizing-6)",
+    "sizing-7": "var(--sizing-7)",
+    "sizing-8": "var(--sizing-8)",
+    "sizing-9": "var(--sizing-9)",
+    "sizing-10": "var(--sizing-10)",
+    "sizing-11": "var(--sizing-11)",
+    "sizing-12": "var(--sizing-12)",
+    "sizing-13": "var(--sizing-13)",
+    "sizing-14": "var(--sizing-14)",
+    "sizing-15": "var(--sizing-15)",
+    "sizing-16": "var(--sizing-16)",
+    "sizing-17": "var(--sizing-17)",
+    "sizing-18": "var(--sizing-18)",
+    "sizing-19": "var(--sizing-19)",
+    "sizing-20": "var(--sizing-20)",
+    "sizing-21": "var(--sizing-21)",
+    "sizing-22": "var(--sizing-22)",
+    "sizing-23": "var(--sizing-23)",
+    "sizing-24": "var(--sizing-24)",
+    "sizing-25": "var(--sizing-25)",
+    "sizing-26": "var(--sizing-26)",
+    "sizing-full": "var(--sizing-full)",
+    "sizing-4-5": "var(--sizing-4-5)",
+    "sizing-5-5": "var(--sizing-5-5)",
     "5-5": "var(--spacing-5-5)"
   },
   "borderRadius": {
@@ -580,12 +610,25 @@ export const figmaTheme = {
     "3xl": "var(--radius-3xl)"
   },
   "fontSize": {
-    "small": "var(--font-size-heading-small)",
-    "big": "var(--font-size-text-big)",
-    "medium": "var(--font-size-caption-medium)",
-    "large": "var(--font-size-heading-large)",
-    "tiny": "var(--font-size-heading-tiny)",
-    "giant": "var(--font-size-heading-giant)"
+    "caption": {
+      "small": "var(--font-size-caption-small)",
+      "big": "var(--font-size-caption-big)",
+      "medium": "var(--font-size-caption-medium)"
+    },
+    "text": {
+      "small": "var(--font-size-text-small)",
+      "medium": "var(--font-size-text-medium)",
+      "large": "var(--font-size-text-large)",
+      "big": "var(--font-size-text-big)"
+    },
+    "heading": {
+      "tiny": "var(--font-size-heading-tiny)",
+      "small": "var(--font-size-heading-small)",
+      "medium": "var(--font-size-heading-medium)",
+      "big": "var(--font-size-heading-big)",
+      "large": "var(--font-size-heading-large)",
+      "giant": "var(--font-size-heading-giant)"
+    }
   },
   "fontWeight": {
     "regular": "var(--font-weight-regular)",
@@ -597,7 +640,20 @@ export const figmaTheme = {
     "heading": "var(--font-family-heading)",
     "body": "var(--font-family-body)"
   },
-  "lineHeight": {},
+  "lineHeight": {
+    "14": "var(--leading-14)",
+    "16": "var(--leading-16)",
+    "20": "var(--leading-20)",
+    "24": "var(--leading-24)",
+    "26": "var(--leading-26)",
+    "28": "var(--leading-28)",
+    "32": "var(--leading-32)",
+    "40": "var(--leading-40)",
+    "48": "var(--leading-48)",
+    "56": "var(--leading-56)",
+    "64": "var(--leading-64)",
+    "76": "var(--leading-76)"
+  },
   "boxShadow": {
     "sm": "var(--shadow-elevation-sm)",
     "md": "var(--shadow-elevation-md)",

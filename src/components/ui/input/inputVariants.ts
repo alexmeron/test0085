@@ -1,27 +1,25 @@
 import { cva, type VariantProps } from 'class-variance-authority'
+
 export const inputVariants = cva(
-  'flex w-full rounded-radius-lg border bg-transparent font-body shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-text-placeholder focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50',
+  'flex w-full rounded-lg border bg-surface-default text-text-primary ring-offset-surface-default font-body file:border-0 file:bg-transparent file:text-text-medium file:font-medium placeholder:text-text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
-      state: {
-        default: 'border-border-default focus-visible:ring-border-focus',
-        hover: 'border-border-strong hover:border-border-focus',
-        focus: 'border-border-focus ring-1 ring-border-focus',
-        filled: 'border-border-default bg-surface-subtle',
-        disabled: 'border-border-disabled bg-surface-disabled text-text-disabled',
-        success: 'border-success-border-default text-success-text-default focus-visible:ring-success-border-strong',
-        destructive: 'border-destructive-border-default text-destructive-text-default focus-visible:ring-destructive-border-strong',
+      variant: {
+        default: 'border-border-default hover:border-border-strong',
+        error: 'border-destructive-border-default focus-visible:ring-destructive-border-focus',
+        success: 'border-brand-border-default focus-visible:ring-brand-border-focus',
       },
       size: {
-        sm: 'h-sizing-9 px-spacing-5 py-spacing-3 text-caption-big',
-        md: 'h-sizing-10 px-spacing-5 py-spacing-4 text-text-small',
-        lg: 'h-sizing-11 px-spacing-6 py-spacing-5-5 text-text-small',
+        sm: 'h-sizing-9 px-5 py-3 text-caption-big',
+        md: 'h-sizing-10 px-5 py-4 text-text-small',
+        lg: 'h-sizing-11 px-6 py-5-5 text-text-small',
       },
     },
     defaultVariants: {
-      state: 'default',
+      variant: 'default',
       size: 'md',
     },
   }
 )
+
 export type InputVariants = VariantProps<typeof inputVariants>

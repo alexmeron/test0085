@@ -40,7 +40,7 @@ for (const v of rawData.variables) {
   const modeKey = Object.keys(v.resolvedValuesByMode)[0];
   const resolved = v.resolvedValuesByMode[modeKey];
   
-  if (resolved && resolved.value !== undefined) {
+  if (resolved && (resolved.value !== undefined || resolved.aliasTo)) {
     let val = resolved.value;
     
     if (resolved.aliasTo) {

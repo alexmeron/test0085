@@ -24,25 +24,27 @@ for (const v of rawData.variables) {
   const parts = v.name.split('/');
   const cssVar = cssVarName(v.name);
   
-  if (parts[0] === 'color') {
-    let current = theme.colors;
+  let targetMap = null;
+  if (parts[0] === 'color') targetMap = theme.colors;
+  else if (parts[0] === 'spacing') targetMap = theme.spacing;
+  else if (parts[0] === 'sizing') {
+    let current = theme.spacing;
+    current['sizing-' + parts[parts.length - 1]] = cssVar;
+    continue;
+  }
+  else if (parts[0] === 'radius') targetMap = theme.borderRadius;
+  else if (parts[0] === 'font-family') targetMap = theme.fontFamily;
+  else if (parts[0] === 'font-size') targetMap = theme.fontSize;
+  else if (parts[0] === 'font-weight') targetMap = theme.fontWeight;
+  else if (parts[0] === 'line-height' || parts[0] === 'leading') targetMap = theme.lineHeight;
+  
+  if (targetMap) {
+    let current = targetMap;
     for (let i = 1; i < parts.length - 1; i++) {
       if (!current[parts[i]]) current[parts[i]] = {};
       current = current[parts[i]];
     }
     current[parts[parts.length - 1]] = cssVar;
-  } else if (parts[0] === 'spacing') {
-    theme.spacing[parts[parts.length - 1]] = cssVar;
-  } else if (parts[0] === 'radius') {
-    theme.borderRadius[parts[parts.length - 1]] = cssVar;
-  } else if (parts[0] === 'font-family') {
-    theme.fontFamily[parts[parts.length - 1]] = cssVar;
-  } else if (parts[0] === 'font-size') {
-    theme.fontSize[parts[parts.length - 1]] = cssVar;
-  } else if (parts[0] === 'font-weight') {
-    theme.fontWeight[parts[parts.length - 1]] = cssVar;
-  } else if (parts[0] === 'line-height') {
-    theme.lineHeight[parts[parts.length - 1]] = cssVar;
   }
 }
 
@@ -56,4 +58,4 @@ try {
 
 const output = `export const figmaTheme = ${JSON.stringify(theme, null, 2)};\n`;
 fs.writeFileSync(path.join(__dirname, '../src/styles/tailwind-theme.js'), output);
-console.log('Generated src/styles/tailwind-theme.js successfully with shadows mapped!');
+console.log('Generated src/styles/tailwind-theme.js successfully with nested properties!');

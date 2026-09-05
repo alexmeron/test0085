@@ -8,7 +8,7 @@ const props = defineProps<{
   defaultValue?: string | number
   modelValue?: string | number
   class?: string
-  state?: InputVariants['state']
+  variant?: InputVariants['variant']
   size?: InputVariants['size']
   placeholder?: string
   disabled?: boolean
@@ -25,7 +25,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 })
 
 const computedClass = computed(() => {
-  return cn(inputVariants({ state: props.state, size: props.size }), props.class)
+  return cn(inputVariants({ variant: props.variant, size: props.size }), props.class)
 })
 </script>
 
@@ -34,7 +34,7 @@ const computedClass = computed(() => {
     v-model="modelValue"
     :type="type"
     :placeholder="placeholder"
-    :disabled="disabled || state === 'disabled'"
+    :disabled="disabled"
     :class="computedClass"
   >
 </template>

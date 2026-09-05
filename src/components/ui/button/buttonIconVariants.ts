@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 
 export const buttonIconVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-radius-lg ring-offset-surface-default transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-lg ring-offset-surface-default transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -14,9 +14,9 @@ export const buttonIconVariants = cva(
         'on-inverse': 'bg-surface-inverse-default text-text-inverse-primary hover:bg-surface-inverse-subtle',
       },
       size: {
-        sm: 'h-sizing-9 w-sizing-9 p-spacing-3',
-        md: 'h-sizing-10 w-sizing-10 p-spacing-5',
-        lg: 'h-sizing-11 w-sizing-11 p-spacing-5-5',
+        sm: 'h-sizing-9 w-sizing-9 p-3',
+        md: 'h-sizing-10 w-sizing-10 p-5',
+        lg: 'h-sizing-11 w-sizing-11 p-5-5',
       },
     },
     defaultVariants: {

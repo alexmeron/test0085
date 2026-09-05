@@ -26,11 +26,11 @@ const props = withDefaults(defineProps<Props>(), {
       v-if="type === 'photo' && src" 
       :src="src" 
       :alt="alt" 
-      class="aspect-square h-full w-full object-cover rounded-radius-full overflow-hidden" 
+      class="aspect-square h-full w-full object-cover rounded-full overflow-hidden" 
     />
     <AvatarFallback 
       v-if="type === 'name' || !src"
-      class="flex h-full w-full items-center justify-center rounded-radius-full bg-surface-muted text-text-primary"
+      class="flex h-full w-full items-center justify-center rounded-full bg-surface-muted text-text-primary"
     >
       {{ label }}
     </AvatarFallback>
