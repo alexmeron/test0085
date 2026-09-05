@@ -4,7 +4,6 @@ import Table, { type TableColumn } from './Table.vue'
 import { Chip } from '../chip'
 import { Input } from '../input'
 import { Select } from '../select'
-import { Button } from '../button'
 
 // 6 columns matching Figma "columns=6, checkbox=true, actions=true"
 const figmaColumns6: TableColumn[] = [
@@ -69,90 +68,53 @@ const meta: Meta<typeof Table> = {
   component: Table,
   tags: ['autodocs'],
   argTypes: {
+    columns: {
+      control: 'select',
+      options: ['6', '5', '4', '3', '2', '1'],
+      description: 'Número de columnas (propiedad variant en Figma)',
+    },
     checkbox: {
       control: 'boolean',
-      description: 'Muestra columna de selección múltiple con Checkbox size="sm"',
+      description: 'Muestra la columna de selección con Checkbox (propiedad variant en Figma)',
     },
     actions: {
       control: 'boolean',
-      description: 'Muestra columna de acciones rápidas con ButtonIcon',
+      description: 'Muestra la columna de menú de opciones rápidas (propiedad variant en Figma)',
+    },
+    Top: {
+      control: 'boolean',
+      description: 'Muestra la barra superior Top con título y filtros (propiedad boolean en Figma)',
+    },
+    Bottom: {
+      control: 'boolean',
+      description: 'Muestra la barra inferior Bottom con paginación (propiedad boolean en Figma)',
     },
     title: {
       control: 'text',
-      description: 'Título superior de la tabla (Figma Top atom)',
-    },
-    showTitle: {
-      control: 'boolean',
-      description: 'Muestra el título en la barra superior',
-    },
-    showFilters: {
-      control: 'boolean',
-      description: 'Muestra los filtros integrados (Input y Selects)',
-    },
-    showTop: {
-      control: 'boolean',
-      description: 'Muestra el contenedor superior Top',
-    },
-    showBottom: {
-      control: 'boolean',
-      description: 'Muestra el contenedor inferior Bottom de paginación',
+      description: 'Título superior de la tabla',
     },
     paginationText: {
       control: 'text',
-      description: 'Texto resumen de la barra inferior de paginación',
-    },
-    page: {
-      control: 'number',
-      description: 'Página activa',
-    },
-    totalPages: {
-      control: 'number',
-      description: 'Número total de páginas',
-    },
-    totalItems: {
-      control: 'number',
-      description: 'Número total de elementos',
-    },
-    itemsPerPage: {
-      control: 'number',
-      description: 'Elementos mostrados por página',
+      description: 'Texto resumen de la barra de paginación',
     },
   },
   args: {
-    columns: figmaColumns6,
-    data: figmaRows10,
+    columns: '6',
     checkbox: true,
     actions: true,
+    Top: true,
+    Bottom: true,
     title: 'Solicitudes',
-    showTitle: true,
-    showFilters: true,
-    showTop: true,
-    showBottom: true,
     paginationText: 'Total: 110 resultados',
-    page: 1,
-    totalPages: 11,
-    totalItems: 110,
-    itemsPerPage: 10,
   },
   render: (args) => ({
-    components: { Table, Chip, Input, Select, Button },
+    components: { Table },
     setup() {
-      const selected = ref<number[]>([1])
-      return { args, selected }
+      return { args }
     },
     template: `
-      <div style="padding: var(--spacing-6); width: 100%; max-width: 1080px; margin: 0 auto;">
-        <Table v-bind="args" v-model:selected-rows="selected">
-          <template #cell-status="{ row }">
-            <Chip
-              size="sm"
-              :state="row.state"
-              variant="subtle"
-            >
-              {{ row.status }}
-            </Chip>
-          </template>
-        </Table>
+      <div style="padding: var(--spacing-6); width: 100%; max-width: 982px; margin: 0 auto;">
+        <Table v-bind="args" />
       </div>
     `,
   }),
@@ -162,146 +124,157 @@ export default meta
 type Story = StoryObj<typeof Table>
 
 /**
- * 🟢 Variante principal 1:1 de Figma: 6 columnas, checkbox activado, acciones activadas, Top y Bottom completos.
+ * 🟢 Variante principal 1:1 de Figma (node 4174:13333):
+ * columns=6, checkbox=true, actions=true, Top=true, Bottom=true
  */
 export const FigmaDefault: Story = {
-  name: 'Figma Default (Columns=6, Checkbox=true, Actions=true)',
+  name: 'columns=6, checkbox=true, actions=true',
   args: {
-    columns: figmaColumns6,
-    data: figmaRows10,
+    columns: '6',
     checkbox: true,
     actions: true,
-    title: 'Solicitudes',
-    showTop: true,
-    showBottom: true,
-    paginationText: 'Total: 110 resultados',
+    Top: true,
+    Bottom: true,
   },
 }
 
 /**
- * 5 Columnas (columns=5, checkbox=true, actions=true)
+ * columns=5, checkbox=true, actions=true
  */
 export const Columns5: Story = {
-  name: 'Columns: 5',
+  name: 'columns=5, checkbox=true, actions=true',
   args: {
-    columns: figmaColumns6.slice(0, 5),
-    data: figmaRows10,
+    columns: '5',
     checkbox: true,
     actions: true,
-    title: 'Solicitudes (5 columnas)',
+    Top: true,
+    Bottom: true,
   },
 }
 
 /**
- * 4 Columnas (columns=4, checkbox=true, actions=true)
+ * columns=4, checkbox=true, actions=true
  */
 export const Columns4: Story = {
-  name: 'Columns: 4',
+  name: 'columns=4, checkbox=true, actions=true',
   args: {
-    columns: figmaColumns6.slice(0, 4),
-    data: figmaRows10,
+    columns: '4',
     checkbox: true,
     actions: true,
-    title: 'Solicitudes (4 columnas)',
+    Top: true,
+    Bottom: true,
   },
 }
 
 /**
- * 3 Columnas (columns=3, checkbox=true, actions=true)
+ * columns=3, checkbox=true, actions=true
  */
 export const Columns3: Story = {
-  name: 'Columns: 3',
+  name: 'columns=3, checkbox=true, actions=true',
   args: {
-    columns: figmaColumns6.slice(0, 3),
-    data: figmaRows10,
+    columns: '3',
     checkbox: true,
     actions: true,
-    title: 'Solicitudes (3 columnas)',
+    Top: true,
+    Bottom: true,
   },
 }
 
 /**
- * 2 Columnas (columns=2, checkbox=true, actions=true)
+ * columns=2, checkbox=true, actions=true
  */
 export const Columns2: Story = {
-  name: 'Columns: 2',
+  name: 'columns=2, checkbox=true, actions=true',
   args: {
-    columns: figmaColumns6.slice(0, 2),
-    data: figmaRows10,
+    columns: '2',
     checkbox: true,
     actions: true,
-    title: 'Solicitudes (2 columnas)',
+    Top: true,
+    Bottom: true,
   },
 }
 
 /**
- * 1 Columna (columns=1, checkbox=true, actions=true)
+ * columns=1, checkbox=true, actions=true
  */
 export const Columns1: Story = {
-  name: 'Columns: 1',
+  name: 'columns=1, checkbox=true, actions=true',
   args: {
-    columns: figmaColumns6.slice(0, 1),
-    data: figmaRows10,
+    columns: '1',
     checkbox: true,
     actions: true,
-    title: 'Solicitudes (1 columna)',
+    Top: true,
+    Bottom: true,
   },
 }
 
 /**
- * Sin Checkbox (checkbox=false)
+ * columns=6, checkbox=false, actions=true
  */
 export const WithoutCheckbox: Story = {
-  name: 'Variant: Without Checkbox',
+  name: 'columns=6, checkbox=false, actions=true',
   args: {
-    columns: figmaColumns6,
-    data: figmaRows10,
+    columns: '6',
     checkbox: false,
     actions: true,
-    title: 'Solicitudes',
+    Top: true,
+    Bottom: true,
   },
 }
 
 /**
- * Sin Acciones (actions=false)
+ * columns=6, checkbox=true, actions=false
  */
 export const WithoutActions: Story = {
-  name: 'Variant: Without Actions',
+  name: 'columns=6, checkbox=true, actions=false',
   args: {
-    columns: figmaColumns6,
-    data: figmaRows10,
+    columns: '6',
     checkbox: true,
     actions: false,
-    title: 'Solicitudes',
+    Top: true,
+    Bottom: true,
   },
 }
 
 /**
- * Solo tabla de contenido sin Top
+ * columns=6, checkbox=false, actions=false
+ */
+export const Minimal: Story = {
+  name: 'columns=6, checkbox=false, actions=false',
+  args: {
+    columns: '6',
+    checkbox: false,
+    actions: false,
+    Top: true,
+    Bottom: true,
+  },
+}
+
+/**
+ * Top=false (solo contenido y paginación)
  */
 export const WithoutTop: Story = {
-  name: 'Variant: Without Top',
+  name: 'Top=false',
   args: {
-    columns: figmaColumns6,
-    data: figmaRows10,
-    showTop: false,
+    columns: '6',
     checkbox: true,
     actions: true,
+    Top: false,
+    Bottom: true,
   },
 }
 
 /**
- * Solo tabla sin Bottom (paginación)
+ * Bottom=false (solo título, filtros y tabla)
  */
 export const WithoutBottom: Story = {
-  name: 'Variant: Without Bottom',
+  name: 'Bottom=false',
   args: {
-    columns: figmaColumns6,
-    data: figmaRows10,
-    showBottom: false,
+    columns: '6',
     checkbox: true,
     actions: true,
-    title: 'Solicitudes',
+    Top: true,
+    Bottom: false,
   },
 }
 

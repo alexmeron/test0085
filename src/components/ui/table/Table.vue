@@ -20,44 +20,48 @@ export interface TableColumn {
 }
 
 interface Props {
-  columns?: TableColumn[]
+  columns?: string | number | TableColumn[]
   data?: Record<string, any>[]
   checkbox?: boolean
   actions?: boolean
-  selectedRows?: (string | number)[]
-  rowKey?: string
-  title?: string
-  showTitle?: boolean
-  showFilters?: boolean
+  Top?: boolean
+  Bottom?: boolean
   showTop?: boolean
   showBottom?: boolean
   showPagination?: boolean
-  paginationText?: string
+  title?: string
+  showTitle?: boolean
+  showFilters?: boolean
+  selectedRows?: (string | number)[]
+  rowKey?: string
   page?: number
   totalPages?: number
   totalItems?: number
   itemsPerPage?: number
+  paginationText?: string
   class?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  columns: () => [],
-  data: () => [],
+  columns: '6',
+  data: undefined,
   checkbox: true,
   actions: true,
-  selectedRows: () => [],
-  rowKey: 'id',
+  Top: true,
+  Bottom: true,
+  showTop: undefined,
+  showBottom: undefined,
+  showPagination: undefined,
   title: 'Solicitudes',
   showTitle: true,
   showFilters: true,
-  showTop: true,
-  showBottom: true,
-  showPagination: true,
-  paginationText: '',
+  selectedRows: () => [],
+  rowKey: 'id',
   page: 1,
-  totalPages: 1,
-  totalItems: 0,
+  totalPages: 11,
+  totalItems: 110,
   itemsPerPage: 10,
+  paginationText: 'Total: 110 resultados',
 })
 
 const emits = defineEmits<{
@@ -67,20 +71,56 @@ const emits = defineEmits<{
   (e: 'action', row: Record<string, any>): void
 }>()
 
+const resolvedTop = computed(() => {
+  if (props.showTop !== undefined) return props.showTop
+  return props.Top
+})
+
+const resolvedBottom = computed(() => {
+  if (props.showBottom !== undefined) return props.showBottom
+  if (props.showPagination !== undefined) return props.showPagination
+  return props.Bottom
+})
+
+const resolvedColumns = computed<TableColumn[]>(() => {
+  if (Array.isArray(props.columns)) {
+    return props.columns
+  }
+  const count = parseInt(String(props.columns), 10) || 6
+  return Array.from({ length: count }, (_, i) => ({
+    key: `col_${i + 1}`,
+    label: 'ESTADO',
+    sortable: true,
+  }))
+})
+
+const resolvedData = computed<Record<string, any>[]>(() => {
+  if (props.data && props.data.length > 0) {
+    return props.data
+  }
+  return Array.from({ length: 10 }, (_, rowIdx) => {
+    const row: Record<string, any> = { id: rowIdx + 1 }
+    resolvedColumns.value.forEach((col) => {
+      row[col.key] = 'Table item title'
+    })
+    return row
+  })
+})
+
 function getRowId(row: Record<string, any>, index: number) {
   return row[props.rowKey] !== undefined ? row[props.rowKey] : index
 }
 
 const isAllSelected = computed(() => {
-  if (props.data.length === 0) return false
-  return props.data.every((row, i) => props.selectedRows.includes(getRowId(row, i)))
+  if (resolvedData.value.length === 0) return false
+  return resolvedData.value.every((row, i) => props.selectedRows.includes(getRowId(row, i)))
 })
 
 function toggleSelectAll() {
   if (isAllSelected.value) {
     emits('update:selectedRows', [])
   } else {
-    const all = props.data.map((row, i) => getRowId(row, i))
+    const all = resolvedData.value.map((row, i) => getRowId(row, i))
     emits('update:selectedRows', all)
   }
 }
@@ -103,7 +143,7 @@ function toggleSelectRow(row: Record<string, any>, index: number) {
     <!-- Optional Top Bar (Figma Atom Top) -->
     <slot name="top">
       <TableTop
-        v-if="showTop"
+        v-if="resolvedTop"
         :title="title"
         :show-title="showTitle"
         :show-filters="showFilters"
@@ -136,7 +176,7 @@ function toggleSelectRow(row: Record<string, any>, index: number) {
 
               <!-- Column Headers -->
               <TableHead
-                v-for="col in columns"
+                v-for="col in resolvedColumns"
                 :key="col.key"
                 :sortable="col.sortable"
                 @sort="emits('sort', col.key)"
@@ -154,7 +194,7 @@ function toggleSelectRow(row: Record<string, any>, index: number) {
         <slot>
           <TableBody>
             <TableRow
-              v-for="(row, idx) in data"
+              v-for="(row, idx) in resolvedData"
               :key="getRowId(row, idx)"
               :selected="selectedRows.includes(getRowId(row, idx))"
             >
@@ -169,7 +209,7 @@ function toggleSelectRow(row: Record<string, any>, index: number) {
               </td>
 
               <!-- Data Cells -->
-              <TableCell v-for="col in columns" :key="col.key">
+              <TableCell v-for="col in resolvedColumns" :key="col.key">
                 <slot :name="`cell-${col.key}`" :row="row" :value="row[col.key]">
                   {{ row[col.key] }}
                 </slot>
@@ -197,7 +237,7 @@ function toggleSelectRow(row: Record<string, any>, index: number) {
     <!-- Optional Bottom Bar (Figma Atom Bottom) -->
     <slot name="bottom">
       <TablePagination
-        v-if="showBottom || showPagination"
+        v-if="resolvedBottom"
         :page="page"
         :total-pages="totalPages"
         :total-items="totalItems"
