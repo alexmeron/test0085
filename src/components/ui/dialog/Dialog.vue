@@ -58,7 +58,7 @@ const computedPanelClass = computed(() =>
 <template>
   <!-- Modal version with Overlay teleported to body -->
   <Teleport to="body" v-if="asModal">
-    <Overlay position="fixed" @click.self="emits('close')">
+    <Overlay :fixed="true" @click.self="emits('close')">
       <div :class="computedPanelClass" role="dialog" aria-modal="true">
         <!-- Header -->
         <div v-if="showHeader" :class="styles.header">

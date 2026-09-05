@@ -15,7 +15,7 @@ const meta: Meta<typeof Dialog> = {
         component: `
 Componente **Dialog / Drawer** mapeado 1:1 al componente de Figma. Estilizado con **CSS Modules**, **CSS Variables**, **Drop Shadows** exactos de Figma y respaldado por el componente **Overlay**.
 
-🔗 **[Ver Dialog en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4246-17453)** | 🔗 **[Ver Overlay en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=2052-759)**
+🔗 **[Ver Dialog en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4246-17453)** | 🔗 **[Ver Overlay en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=2019-11)**
 
 ---
 
