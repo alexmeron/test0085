@@ -13,17 +13,15 @@
 
 .variant-simple {
   width: 248px;
-  height: 340px;
 }
 
 .variant-range {
   width: 532px;
-  height: 364px;
 }
 
 .rangePanels {
   display: flex;
-  gap: var(--spacing-6); /* 12px gap between the two calendars */
+  gap: var(--spacing-6); /* 12px gap between the two calendars in Figma */
 }
 
 /* Single month panel in Simple variant */
@@ -31,7 +29,7 @@
   display: flex;
   flex-direction: column;
   width: 224px;
-  gap: var(--spacing-6); /* 12px gap between header and days */
+  gap: var(--spacing-6); /* 12px gap between head-datepicker and Calendar days */
 }
 
 /* Inner Calendar frame in Range variant (w=248 h=340, padding=12px in Figma) */
@@ -39,11 +37,10 @@
   display: flex;
   flex-direction: column;
   width: 248px;
-  height: 340px;
   padding: var(--spacing-6);
   border-radius: var(--radius-md);
   background-color: var(--color-surface-default);
-  gap: var(--spacing-6); /* 12px gap between header and days */
+  gap: var(--spacing-6); /* 12px gap between head-datepicker and Calendar days */
   box-sizing: border-box;
 }
 
@@ -67,11 +64,12 @@
   flex: 1;
 }
 
-/* Calendar days (w=224 h=272 in Figma) */
+/* Calendar days (w=224 h=272 in Figma: 7 rows of 32px + 6 gaps of 8px) */
 .calendarDays {
   display: flex;
   flex-direction: column;
   width: 224px;
+  gap: var(--spacing-5); /* 8px itemSpacing between weekdays row and day rows */
   flex-shrink: 0;
 }
 
@@ -79,6 +77,7 @@
   display: grid;
   grid-template-columns: repeat(7, 32px);
   gap: 0;
+  height: 32px;
 }
 
 .weekday {
@@ -97,7 +96,8 @@
   display: grid;
   grid-template-columns: repeat(7, 32px);
   grid-auto-rows: 32px;
-  gap: 0;
+  row-gap: var(--spacing-5); /* 8px row-gap between weeks matching Figma y=0,40,80,120,160,200,240 */
+  column-gap: 0;
 }
 
 /* _calenderCell: 32x32, radius=6px (radius/md), fills=color/surface/default */
