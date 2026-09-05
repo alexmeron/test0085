@@ -25,19 +25,19 @@
 
 /* ─── Sizes ─────────────────────────────────────────────────────────────── */
 .size-sm {
-  min-height: var(--sizing-9);
+  min-height: var(--sizing-9); /* 24px */
   padding: var(--spacing-3) var(--spacing-5);
   font-size: var(--font-size-caption-big);
 }
 
 .size-md {
-  min-height: var(--sizing-10);
+  min-height: var(--sizing-10); /* 32px */
   padding: var(--spacing-4) var(--spacing-5);
   font-size: var(--font-size-text-small);
 }
 
 .size-lg {
-  min-height: var(--sizing-11);
+  min-height: var(--sizing-11); /* 40px */
   padding: var(--spacing-5-5) var(--spacing-6);
   font-size: var(--font-size-text-small);
 }
@@ -97,10 +97,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--sizing-7);
-  height: var(--sizing-7);
+  width: var(--sizing-8); /* 20px in md/lg */
+  height: var(--sizing-8);
   color: var(--color-text-secondary);
   flex-shrink: 0;
+}
+
+.size-sm .leadingIcon {
+  width: var(--sizing-7); /* 16px in sm */
+  height: var(--sizing-7);
 }
 
 .inputText {
@@ -123,11 +128,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--sizing-7);
-  height: var(--sizing-7);
+  width: var(--sizing-8); /* 20px in md/lg */
+  height: var(--sizing-8);
   color: var(--color-text-secondary);
   flex-shrink: 0;
   transition: transform 150ms ease;
+}
+
+.size-sm .trailingIcon {
+  width: var(--sizing-7); /* 16px in sm */
+  height: var(--sizing-7);
 }
 
 .trailingIconOpen {

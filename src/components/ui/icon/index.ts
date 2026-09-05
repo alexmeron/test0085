@@ -14,7 +14,7 @@ export function createIconComponent(name: string) {
     props: {
       size: {
         type: [String, Number] as import('vue').PropType<IconSize>,
-        default: 'md',
+        default: undefined,
       },
       color: {
         type: String,

@@ -114,7 +114,7 @@ const progressState = computed(() => {
     <!-- Leading Status Icon -->
     <div v-if="showIcon" :class="styles.iconWrap">
       <slot name="icon">
-        <component :is="effectiveIcon" style="width: var(--sizing-8); height: var(--sizing-8);" />
+        <component :is="effectiveIcon" />
       </slot>
     </div>
 
@@ -156,7 +156,7 @@ const progressState = computed(() => {
       <!-- Optional Status Message -->
       <div v-if="showStatusMessage && (statusMessage || $slots['status-message'])" :class="styles.statusMessage">
         <span :class="styles.statusMessageIcon">
-          <CircleWarningIcon style="width: var(--sizing-7); height: var(--sizing-7);" />
+          <CircleWarningIcon />
         </span>
         <span>
           <slot name="status-message">{{ statusMessage }}</slot>
@@ -213,7 +213,7 @@ const progressState = computed(() => {
         aria-label="Minimize notification"
         @click="emits('minimize')"
       >
-        <RemoveMinusIcon style="width: var(--sizing-7); height: var(--sizing-7);" />
+        <RemoveMinusIcon />
       </button>
       <button
         v-if="showClose"
@@ -222,7 +222,7 @@ const progressState = computed(() => {
         aria-label="Close notification"
         @click="emits('close')"
       >
-        <CloseIcon style="width: var(--sizing-7); height: var(--sizing-7);" />
+        <CloseIcon />
       </button>
     </div>
   </div>

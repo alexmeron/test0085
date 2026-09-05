@@ -11,12 +11,7 @@ export interface IconProps {
   class?: string
 }
 
-const props = withDefaults(defineProps<IconProps>(), {
-  name: 'Search_Magnifying_Glass',
-  size: 'md',
-  color: undefined,
-  class: undefined,
-})
+const props = defineProps<IconProps>()
 
 const sizeTokens: Record<string, string> = {
   '2xs': 'var(--sizing-6, 12px)',
@@ -144,39 +139,53 @@ const resolvedSvg = computed(() => {
   return iconItem.value?.svg || ''
 })
 
-const computedSize = computed(() => {
-  if (typeof props.size === 'number') {
-    return `${props.size}px`
+const computedStyle = computed(() => {
+  const style: Record<string, string> = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: props.color || 'currentColor',
+    lineHeight: '0',
+    flexShrink: '0',
   }
-  if (props.size && sizeTokens[props.size]) {
-    return sizeTokens[props.size]
+
+  if (props.size !== undefined && props.size !== null && props.size !== '') {
+    if (typeof props.size === 'number') {
+      style.width = `${props.size}px`
+      style.height = `${props.size}px`
+    } else if (sizeTokens[props.size]) {
+      style.width = sizeTokens[props.size]
+      style.height = sizeTokens[props.size]
+    } else {
+      style.width = String(props.size)
+      style.height = String(props.size)
+    }
+  } else {
+    style.width = '100%'
+    style.height = '100%'
   }
-  return props.size || 'var(--sizing-9, 24px)'
+
+  return style
 })
 </script>
 
 <template>
   <span
     :class="['ds-icon', props.class]"
-    :style="{
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: computedSize,
-      height: computedSize,
-      minWidth: computedSize,
-      minHeight: computedSize,
-      color: props.color || 'currentColor',
-      lineHeight: '0',
-    }"
+    :style="computedStyle"
     v-html="resolvedSvg"
   />
 </template>
 
 <style scoped>
+.ds-icon {
+  vertical-align: middle;
+}
 .ds-icon :deep(svg) {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  max-height: 100%;
   display: block;
 }
 </style>
