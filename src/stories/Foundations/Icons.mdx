@@ -1,6 +1,7 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as IconStories from './Icons.stories';
 
-<Meta title="Foundations/Icons" />
+<Meta of={IconStories} />
 
 <style>{`
 .table-preview { border-collapse: collapse; width: 100%; margin-top: 1rem; margin-bottom: 2.5rem; }
@@ -214,3 +215,11 @@ Para mantener la coherencia visual, la escalabilidad y un enfoque de diseño cen
     </tr>
   </tbody>
 </table>
+
+---
+
+## Catálogo de Iconos con Buscador (456 Iconos de Figma)
+
+Explora todos los iconos oficiales del Design System extraídos directamente de Figma. Usa el buscador en tiempo real, filtra por categorías o cambia interactivamente el tamaño y el color. Haz click en cualquier tarjeta para copiar automáticamente el código en Vue o el nombre del icono.
+
+<Canvas of={IconStories.Catalogo} />

@@ -2,11 +2,9 @@
 import { computed } from 'vue'
 import {
   CircleCheckIcon,
-  TriangleWarningIcon,
   CircleWarningIcon,
   InfoIcon,
-  StarIcon,
-  BellIcon,
+  ArrowCircleUpIcon,
   CloseIcon,
   RemoveMinusIcon,
 } from '../icon'
@@ -43,22 +41,23 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   status: 'default',
   type: 'muted',
-  title: '',
-  description: '',
+  title: 'Título del alert',
+  description: 'Descripción del mensaje con información relevante para el usuario.',
   showDescription: true,
   showIcon: true,
+  icon: undefined,
   showClose: true,
   showMinimize: false,
   showActions: false,
   actionType: 'link',
-  primaryActionLabel: 'Aceptar',
-  secondaryActionLabel: 'Cancelar',
+  primaryActionLabel: 'Acción principal',
+  secondaryActionLabel: 'Descartar',
   showInlineAction: false,
-  inlineActionLabel: 'Acción',
+  inlineActionLabel: 'Cancelar',
   showProgress: false,
-  progress: 0,
+  progress: 45,
   showStatusMessage: false,
-  statusMessage: '',
+  statusMessage: 'Mensaje progress-bar',
 })
 
 const emits = defineEmits<{
@@ -69,26 +68,27 @@ const emits = defineEmits<{
   (e: 'inlineAction'): void
 }>()
 
+// Default icons strictly mapped from Figma instances (node 4237:123980)
 const defaultIcon = computed(() => {
   switch (props.status) {
     case 'success':
       return CircleCheckIcon
     case 'warning':
-      return TriangleWarningIcon
     case 'destructive':
       return CircleWarningIcon
     case 'info':
+    case 'default':
       return InfoIcon
     case 'ready':
-      return StarIcon
+      return ArrowCircleUpIcon
     default:
-      return BellIcon
+      return InfoIcon
   }
 })
 
 const effectiveIcon = computed(() => props.icon || defaultIcon.value)
 
-// Progress bar semantic mapping to status
+// Progress bar semantic state mapping
 const progressState = computed(() => {
   switch (props.status) {
     case 'destructive':
@@ -96,8 +96,8 @@ const progressState = computed(() => {
     case 'warning':
       return 'warning'
     case 'success':
-      return 'success'
     case 'ready':
+      return 'success'
     case 'info':
       return 'info'
     default:
@@ -111,16 +111,16 @@ const progressState = computed(() => {
     :class="cn(notificationVariants({ status, type }), props.class)"
     :role="status === 'destructive' || status === 'warning' ? 'alert' : 'status'"
   >
-    <!-- Leading Status Icon -->
+    <!-- Leading Status Icon (Figma Icon-Placeholder, size=sm, 20x20px) -->
     <div v-if="showIcon" :class="styles.iconWrap">
       <slot name="icon">
         <component :is="effectiveIcon" />
       </slot>
     </div>
 
-    <!-- Body -->
+    <!-- Body Container -->
     <div :class="styles.body">
-      <!-- Title & Description row -->
+      <!-- Title, Description & optional Inline Action -->
       <div :class="styles.topRow">
         <div :class="styles.titleWrap">
           <h4 v-if="title || $slots.title" :class="styles.title">
@@ -131,7 +131,7 @@ const progressState = computed(() => {
           </p>
         </div>
 
-        <!-- Optional Inline Action -->
+        <!-- Optional Inline Action (action-inline, 12px) -->
         <div v-if="showInlineAction" :class="styles.inlineAction">
           <Link
             :variant="status === 'destructive' ? 'danger' : 'brand'"
@@ -143,17 +143,17 @@ const progressState = computed(() => {
         </div>
       </div>
 
-      <!-- Optional Progress Bar -->
+      <!-- Optional Progress Bar (ProgressBar instance, 6px height) -->
       <div v-if="showProgress && status !== 'success' && status !== 'ready'" :class="styles.progressWrap">
         <ProgressBar
           :model-value="progress"
           :state="progressState"
           :mode="type === 'solid' ? 'inverse' : 'default'"
-          label="right"
+          label="hidden"
         />
       </div>
 
-      <!-- Optional Status Message -->
+      <!-- Optional Status Message (CircleWarningIcon + 12px text) -->
       <div v-if="showStatusMessage && (statusMessage || $slots['status-message'])" :class="styles.statusMessage">
         <span :class="styles.statusMessageIcon">
           <CircleWarningIcon />
@@ -163,13 +163,13 @@ const progressState = computed(() => {
         </span>
       </div>
 
-      <!-- Actions (button or link) -->
+      <!-- Actions (button or link, 1:1 with Figma) -->
       <div v-if="showActions" :class="styles.actionsRow">
         <slot name="actions">
           <template v-if="actionType === 'button'">
             <Button
               size="sm"
-              :variant="type === 'solid' ? 'secondary' : 'primary'"
+              :variant="type === 'solid' ? 'tertiary' : 'secondary'"
               @click="emits('primaryAction')"
             >
               {{ primaryActionLabel }}
@@ -177,7 +177,7 @@ const progressState = computed(() => {
             <Button
               v-if="secondaryActionLabel"
               size="sm"
-              variant="tertiary"
+              variant="ghost"
               @click="emits('secondaryAction')"
             >
               {{ secondaryActionLabel }}
@@ -210,7 +210,7 @@ const progressState = computed(() => {
         v-if="showMinimize"
         type="button"
         :class="styles.controlButton"
-        aria-label="Minimize notification"
+        aria-label="Minimizar notificación"
         @click="emits('minimize')"
       >
         <RemoveMinusIcon />
@@ -219,7 +219,7 @@ const progressState = computed(() => {
         v-if="showClose"
         type="button"
         :class="styles.controlButton"
-        aria-label="Close notification"
+        aria-label="Cerrar notificación"
         @click="emits('close')"
       >
         <CloseIcon />

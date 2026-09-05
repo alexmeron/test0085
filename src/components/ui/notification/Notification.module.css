@@ -1,17 +1,18 @@
 /* Notification Component Styles */
-/* Strictly mapped 1:1 to Figma node 4237:123980 */
+/* Strictly mapped 1:1 to Figma node 4237:123980 and 4237:124615 */
 
 .notification {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: var(--spacing-5);
-  padding: var(--spacing-6);
-  border-radius: var(--radius-lg);
+  gap: var(--spacing-5, 8px);
+  padding: var(--spacing-6, 12px);
+  border-radius: var(--radius-lg, 8px);
   border-width: 1px;
   border-style: solid;
   box-sizing: border-box;
   width: 100%;
+  max-width: 480px;
   font-family: var(--font-family-body);
   transition: all 150ms ease;
 }
@@ -20,16 +21,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--sizing-8); /* 20px in Figma */
-  height: var(--sizing-8);
+  width: var(--sizing-8, 20px);
+  height: var(--sizing-8, 20px);
   flex-shrink: 0;
+}
+
+.iconWrap svg {
+  width: 20px;
+  height: 20px;
 }
 
 .body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
+  gap: var(--spacing-2, 8px);
   min-width: 0;
 }
 
@@ -37,69 +43,72 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--spacing-7);
+  gap: var(--spacing-6, 12px);
 }
 
 .titleWrap {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
+  gap: var(--spacing-1, 4px);
   flex: 1;
 }
 
 .title {
-  font-size: var(--font-size-text-small);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--leading-20);
+  font-size: var(--font-size-text-small, 14px);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: var(--leading-20, 20px);
   margin: 0;
 }
 
 .description {
-  font-size: var(--font-size-text-small);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--leading-20);
+  font-size: var(--font-size-caption-big, 12px);
+  font-weight: var(--font-weight-medium, 500);
+  line-height: var(--leading-16, 16px);
   margin: 0;
 }
 
 .inlineAction {
   flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 .progressWrap {
   width: 100%;
-  margin-top: var(--spacing-4);
+  margin-top: 4px;
 }
 
 .statusMessage {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
-  font-size: var(--font-size-caption-big);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--leading-16);
-  margin-top: var(--spacing-3);
+  gap: 4px;
+  font-size: var(--font-size-caption-big, 12px);
+  font-weight: var(--font-weight-regular, 400);
+  line-height: var(--leading-16, 16px);
+  margin-top: 4px;
 }
 
 .statusMessageIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--sizing-7); /* 16px in Figma */
-  height: var(--sizing-7);
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
 }
 
 .actionsRow {
   display: flex;
   align-items: center;
-  gap: var(--spacing-7);
-  margin-top: var(--spacing-5);
+  gap: 8px;
+  margin-top: 8px;
 }
 
 .controls {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-3);
+  gap: 4px;
   flex-shrink: 0;
 }
 
@@ -107,13 +116,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--sizing-7); /* 16px in Figma */
-  height: var(--sizing-7);
+  width: 24px;
+  height: 24px;
   background: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm, 4px);
   color: inherit;
   opacity: 0.7;
   transition: opacity 150ms ease;
@@ -122,6 +131,11 @@
 
 .controlButton:hover {
   opacity: 1;
+}
+
+.controlButton svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* ─── Type: Muted ───────────────────────────────────────────────────────── */
@@ -137,10 +151,14 @@
   color: var(--color-text-secondary);
 }
 
-/* Muted statuses */
+.type-muted .controlButton {
+  color: var(--color-text-secondary);
+}
+
+/* Muted Statuses */
 .type-muted.status-default {
   background-color: var(--color-subtle-surface-default);
-  border-color: var(--color-subtle-border-default);
+  border-color: var(--color-border-default);
 }
 .type-muted.status-default .iconWrap {
   color: var(--color-subtle-icon-default);
@@ -192,7 +210,7 @@
 }
 
 .type-solid .title {
-  color: var(--color-basic-white);
+  color: var(--color-basic-white, #ffffff);
 }
 
 .type-solid .description {
@@ -200,13 +218,18 @@
 }
 
 .type-solid .iconWrap {
-  color: var(--color-basic-white);
+  color: var(--color-basic-white, #ffffff);
 }
 
 .type-solid .statusMessage {
   color: rgba(255, 255, 255, 0.9);
 }
 
+.type-solid .controlButton {
+  color: var(--color-basic-white, #ffffff);
+}
+
+/* Solid Statuses */
 .type-solid.status-default {
   background-color: var(--color-subtle-surface-strong);
 }
@@ -214,31 +237,59 @@
 .type-solid.status-success {
   background-color: var(--color-success-surface-strong);
 }
+.type-solid.status-success .iconWrap {
+  color: var(--color-success-icon-on-solid, #ffffff);
+}
+.type-solid.status-success .title {
+  color: var(--color-success-text-on-solid, #ffffff);
+}
 
 .type-solid.status-warning {
   background-color: var(--color-warning-surface-strong);
 }
 .type-solid.status-warning .title {
-  color: var(--color-wolf-950);
+  color: var(--color-warning-text-on-solid, var(--color-wolf-950));
 }
 .type-solid.status-warning .description {
   color: var(--color-wolf-800);
 }
 .type-solid.status-warning .iconWrap {
-  color: var(--color-wolf-950);
+  color: var(--color-warning-icon-on-solid, var(--color-wolf-950));
 }
 .type-solid.status-warning .statusMessage {
   color: var(--color-wolf-800);
 }
+.type-solid.status-warning .controlButton {
+  color: var(--color-wolf-950);
+}
 
 .type-solid.status-destructive {
-  background-color: var(--color-destructive-surface-strong);
+  background-color: var(--color-brooklyn-500, var(--color-destructive-surface-strong));
+}
+.type-solid.status-destructive .iconWrap {
+  color: var(--color-destructive-icon-on-solid, #ffffff);
+}
+.type-solid.status-destructive .title {
+  color: var(--color-destructive-text-on-solid, #ffffff);
 }
 
 .type-solid.status-info {
   background-color: var(--color-info-surface-strong);
 }
+.type-solid.status-info .iconWrap {
+  color: var(--color-info-icon-on-solid, #ffffff);
+}
+.type-solid.status-info .title {
+  color: var(--color-info-text-on-solid, #ffffff);
+}
 
 .type-solid.status-ready {
   background-color: var(--color-ready-surface-strong);
+  border-color: var(--color-ready-border-default);
+}
+.type-solid.status-ready .iconWrap {
+  color: var(--color-ready-icon-on-solid, #ffffff);
+}
+.type-solid.status-ready .title {
+  color: var(--color-ready-text-on-solid, #ffffff);
 }

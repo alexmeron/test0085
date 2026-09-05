@@ -9,27 +9,38 @@ import Notification from './Notification.vue'
  * - **Toast**: flotante, efímero con auto-dismiss.
  * - **Progress Alert**: inline con barra de progreso para procesos en curso.
  *
- * 🔗 **[Ver en Figma (node 4076:1416)](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4076-1416)**
+ * La variante se determina por la posición y comportamiento que el front-end le asigne, no por el componente en sí.
+ *
+ * 🔗 **[Ver Componente en Figma (node 4237:123980)](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4237-123980)**  
+ * 🔗 **[Ver Documentación Oficial en Figma (node 4237:124615)](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4237-124615)**
  *
  * ---
  *
- * ### 📐 Layout & Sizing
- * - **Padding interno**: `--spacing-6` (12px)
- * - **Border Radius**: `--radius-lg` (8px)
- * - **Gap entre elementos**: `--spacing-5` (8px)
- * - **Icono de estado**: 20×20px (`--sizing-8`)
- * - **Icono de cierre**: 16×16px (`--sizing-7`)
+ * ### 📐 Layout & Tokens de Diseño (Figma 4237:124615)
  *
- * ---
- *
- * ### 🎨 Tokens de Color
- * | Elemento | Muted | Solid |
+ * | Token | Valor | Uso |
  * |---|---|---|
- * | **Fondo** | `--color-{status}-surface-default` | `--color-{status}-surface-strong` |
- * | **Borde** | `1px solid var(--color-{status}-border-default)` | `transparent` |
- * | **Icono** | `--color-{status}-icon-default` | `--color-basic-white` |
- * | **Título** | `--color-text-primary` | `--color-basic-white` |
- * | **Descripción** | `--color-text-secondary` | `rgba(255, 255, 255, 0.9)` |
+ * | `color/{status}/surface` | Varía por status | Fondo de la Notification |
+ * | `color/{status}/border` | Varía por status | Borde de la Notification |
+ * | `color/{status}/icon` | Varía por status | Color del icono |
+ * | `color/{status}/text` | Varía por status | Título y descripción |
+ * | `spacing/spacing-4` | 16px | Padding interno (o 12px en variantes compactas) |
+ * | `spacing/spacing-3` | 12px | Gap entre icon, body y close |
+ * | `radius/radius-md` | 8px | Border radius del contenedor |
+ * | `color/link/brand/default` | `bronx/700` | Color de la acción primaria (link) |
+ * | `color/link/secondary/default` | `wolf/950` | Color de la acción secundaria (Descartar) |
+ * | `font-size/text-small` | 14px | Tamaño del título (font-weight: 600) |
+ * | `font-size/caption-big` | 12px | Tamaño de la descripción y status-message |
+ *
+ * ---
+ *
+ * ### 📋 Do's & Don'ts
+ * - **✓ Do**: Usar como Toast cuando el mensaje es respuesta directa a una acción del usuario y no requiere atención sostenida.
+ * - **✓ Do**: Usar como Alert cuando el estado persiste y el usuario necesita verlo mientras siga siendo relevante.
+ * - **✓ Do**: Usar Progress Alert con `show-progress=true` solo en status `default`, `info`, `warning` o `destructive` — nunca en `success` o `ready`.
+ * - **✓ Do**: Usar `action-type="button"` cuando la acción primaria tiene peso real (guardar, reintentar, confirmar).
+ * - **✕ Don't**: Activar `show-progress=true` en `success` o `ready` — el proceso ya terminó, no hay progreso que mostrar.
+ * - **✕ Don't**: Usar `status="destructive"` para mensajes puramente informativos o de éxito.
  */
 const meta: Meta<typeof Notification> = {
   title: 'Components/Notification',
@@ -44,15 +55,15 @@ const meta: Meta<typeof Notification> = {
     type: {
       control: 'select',
       options: ['muted', 'solid'],
-      description: 'Estilo visual de fondo (suave con borde o sólido)',
+      description: 'Estilo visual de fondo (suave con borde o sólido de alto contraste)',
     },
     title: {
       control: 'text',
-      description: 'Título de la notificación',
+      description: 'Título principal de la notificación',
     },
     description: {
       control: 'text',
-      description: 'Mensaje descriptivo',
+      description: 'Descripción detallada del mensaje',
     },
     showDescription: {
       control: 'boolean',
@@ -77,7 +88,7 @@ const meta: Meta<typeof Notification> = {
     actionType: {
       control: 'select',
       options: ['link', 'button'],
-      description: 'Tipo visual de las acciones (enlace o botón)',
+      description: 'Tipo de acción (enlace ligero o botón estructurado)',
     },
     primaryActionLabel: {
       control: 'text',
@@ -89,7 +100,7 @@ const meta: Meta<typeof Notification> = {
     },
     showInlineAction: {
       control: 'boolean',
-      description: 'Muestra una acción inline junto al título',
+      description: 'Muestra una acción inline alineada a la derecha del título',
     },
     inlineActionLabel: {
       control: 'text',
@@ -97,40 +108,41 @@ const meta: Meta<typeof Notification> = {
     },
     showProgress: {
       control: 'boolean',
-      description: 'Muestra una barra de progreso integrada',
+      description: 'Muestra la barra de progreso integrada',
     },
     progress: {
-      control: { type: 'range', min: 0, max: 100, step: 1 },
-      description: 'Progreso actual (0 a 100)',
+      control: { type: 'range', min: 0, max: 100, step: 5 },
+      description: 'Porcentaje de progreso (0–100)',
     },
     showStatusMessage: {
       control: 'boolean',
-      description: 'Muestra un mensaje de estado complementario',
+      description: 'Muestra el mensaje secundario debajo de la barra de progreso',
     },
     statusMessage: {
       control: 'text',
-      description: 'Texto del mensaje de estado complementario',
+      description: 'Texto del mensaje de estado del proceso',
     },
   },
   args: {
-    status: 'info',
+    status: 'default',
     type: 'muted',
-    title: 'Información del sistema',
-    description: 'Los cambios se guardarán automáticamente en segundo plano.',
+    title: 'Título del alert',
+    description: 'Descripción del mensaje con información relevante para el usuario.',
     showDescription: true,
     showIcon: true,
     showClose: true,
     showMinimize: false,
     showActions: false,
     actionType: 'link',
+    primaryActionLabel: 'Acción principal',
+    secondaryActionLabel: 'Descartar',
+    showInlineAction: false,
+    inlineActionLabel: 'Cancelar',
+    showProgress: false,
+    progress: 45,
+    showStatusMessage: false,
+    statusMessage: 'Mensaje progress-bar',
   },
-  render: (args) => ({
-    components: { Notification },
-    setup() {
-      return { args }
-    },
-    template: '<Notification v-bind="args" style="max-width: 520px;" />',
-  }),
 }
 
 export default meta
@@ -138,152 +150,146 @@ type Story = StoryObj<typeof Notification>
 
 export const Default: Story = {}
 
-export const AllStatusesMuted: Story = {
+/**
+ * Los 6 estados semánticos oficiales en variante suave (muted con borde).
+ */
+export const AllStatesMuted: Story = {
   render: () => ({
     components: { Notification },
     template: `
-      <div style="display: flex; flex-direction: column; gap: var(--spacing-6); max-width: 520px;">
-        <Notification
-          status="info"
-          type="muted"
-          title="Actualización disponible"
-          description="Una nueva versión de la aplicación está lista para instalar."
-        />
-        <Notification
-          status="success"
-          type="muted"
-          title="Cambios guardados con éxito"
-          description="Tu configuración ha sido actualizada correctamente."
-        />
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 500px;">
+        <Notification status="default" type="muted" title="Estado Default" description="Mensaje con información general para el usuario." />
+        <Notification status="success" type="muted" title="Operación Exitosa" description="Los cambios se han guardado correctamente." />
+        <Notification status="warning" type="muted" title="Advertencia de Sistema" description="Esta acción no se puede deshacer una vez confirmada." />
+        <Notification status="destructive" type="muted" title="Error Crítico" description="No se ha podido conectar con el servidor central." />
+        <Notification status="info" type="muted" title="Nueva Información" description="Hay una actualización disponible para esta sección." />
+        <Notification status="ready" type="muted" title="Listo para Ejecutar" description="Todos los requisitos han sido completados exitosamente." />
+      </div>
+    `,
+  }),
+}
+
+/**
+ * Los 6 estados semánticos oficiales en variante sólida de alto contraste.
+ */
+export const AllStatesSolid: Story = {
+  render: () => ({
+    components: { Notification },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 500px;">
+        <Notification status="default" type="solid" title="Estado Default Sólido" description="Mensaje general en fondo de alto contraste." />
+        <Notification status="success" type="solid" title="Completado con Éxito" description="El paciente ha sido registrado en la base de datos." />
+        <Notification status="warning" type="solid" title="Atención Requerida" description="Revisa los campos obligatorios antes de continuar." />
+        <Notification status="destructive" type="solid" title="Error de Autenticación" description="Tu sesión ha expirado. Inicia sesión nuevamente." />
+        <Notification status="info" type="solid" title="Aviso Informativo" description="El mantenimiento del sistema comenzará en 15 minutos." />
+        <Notification status="ready" type="solid" title="Planificación Lista" description="El caso OST-234985 está listo para ser planificado." />
+      </div>
+    `,
+  }),
+}
+
+/**
+ * Con botones de acción estructurados (actionType="button").
+ * En muted: botón secundario + botón ghost.
+ * En solid: botón terciario + botón ghost.
+ */
+export const WithButtonActions: Story = {
+  render: () => ({
+    components: { Notification },
+    template: `
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 500px;">
         <Notification
           status="warning"
           type="muted"
-          title="Conexión inestable"
-          description="Algunos servicios pueden tardar más de lo habitual en responder."
+          title="Cambios sin guardar"
+          description="Perderás los cambios no guardados si sales de esta pantalla."
+          :show-actions="true"
+          action-type="button"
+          primary-action-label="Guardar cambios"
+          secondary-action-label="Descartar"
         />
         <Notification
           status="destructive"
-          type="muted"
-          title="Error al procesar la solicitud"
-          description="No pudimos cargar los datos. Por favor, inténtalo de nuevo."
-        />
-        <Notification
-          status="ready"
-          type="muted"
-          title="Nuevas funciones listas"
-          description="Descubre las herramientas añadidas en esta versión."
-        />
-        <Notification
-          status="default"
-          type="muted"
-          title="Notificación general"
-          description="Este es un aviso informativo para el usuario."
+          type="solid"
+          title="Eliminar registro médico"
+          description="¿Estás seguro de que deseas eliminar permanentemente este caso?"
+          :show-actions="true"
+          action-type="button"
+          primary-action-label="Eliminar caso"
+          secondary-action-label="Cancelar"
         />
       </div>
     `,
   }),
 }
 
-export const AllStatusesSolid: Story = {
+/**
+ * Con enlaces de acción ligeros (actionType="link").
+ */
+export const WithLinkActions: Story = {
   render: () => ({
     components: { Notification },
     template: `
-      <div style="display: flex; flex-direction: column; gap: var(--spacing-6); max-width: 520px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-5); max-width: 500px;">
         <Notification
           status="info"
-          type="solid"
-          title="Actualización disponible"
-          description="Una nueva versión de la aplicación está lista para instalar."
-        />
-        <Notification
-          status="success"
-          type="solid"
-          title="Cambios guardados con éxito"
-          description="Tu configuración ha sido actualizada correctamente."
-        />
-        <Notification
-          status="warning"
-          type="solid"
-          title="Conexión inestable"
-          description="Algunos servicios pueden tardar más de lo habitual en responder."
-        />
-        <Notification
-          status="destructive"
-          type="solid"
-          title="Error crítico del sistema"
-          description="Se ha producido un fallo y no se pudo completar la operación."
-        />
-        <Notification
-          status="ready"
-          type="solid"
-          title="Nuevas funciones listas"
-          description="Descubre las herramientas añadidas en esta versión."
-        />
-        <Notification
-          status="default"
-          type="solid"
-          title="Notificación general"
-          description="Este es un aviso informativo para el usuario."
+          type="muted"
+          title="Actualización del protocolo"
+          description="Consulta las nuevas guías clínicas actualizadas para 2026."
+          :show-actions="true"
+          action-type="link"
+          primary-action-label="Ver guías clínicas"
+          secondary-action-label="Descartar"
         />
       </div>
     `,
   }),
 }
 
-export const WithActionsButton: Story = {
-  args: {
-    status: 'warning',
-    type: 'muted',
-    title: 'Cambios sin guardar',
-    description: 'Perderás los cambios no guardados si sales de esta página ahora.',
-    showActions: true,
-    actionType: 'button',
-    primaryActionLabel: 'Guardar cambios',
-    secondaryActionLabel: 'Descartar',
-  },
-}
-
-export const WithActionsLink: Story = {
+/**
+ * Con acción inline alineada a la derecha del título.
+ */
+export const WithInlineAction: Story = {
   args: {
     status: 'info',
     type: 'muted',
-    title: 'Nueva versión disponible',
-    description: 'Hemos renovado la interfaz con mejoras de rendimiento.',
-    showActions: true,
-    actionType: 'link',
-    primaryActionLabel: 'Ver novedades',
-    secondaryActionLabel: 'Descartar',
+    title: 'Sincronizando expedientes',
+    description: 'Se están descargando los últimos estudios radiológicos.',
+    showInlineAction: true,
+    inlineActionLabel: 'Cancelar',
   },
 }
 
+/**
+ * Progress Alert: inline con barra de progreso y mensaje de estado para procesos activos.
+ */
 export const ProgressAlert: Story = {
   args: {
     status: 'info',
     type: 'muted',
-    title: 'Cargando recursos del proyecto',
-    description: 'Sincronizando archivos con el servidor remoto...',
+    title: 'Importando archivos DICOM',
+    description: 'El proceso puede tardar unos minutos según el tamaño.',
     showProgress: true,
-    progress: 68,
-    showActions: true,
-    actionType: 'link',
-    primaryActionLabel: 'Cancelar',
-    secondaryActionLabel: '',
+    progress: 60,
+    showStatusMessage: true,
+    statusMessage: 'Procesando serie tomográfica (120 de 200 cortes)...',
+    showInlineAction: true,
+    inlineActionLabel: 'Cancelar',
+    showMinimize: true,
   },
 }
 
-export const WithStatusMessage: Story = {
+/**
+ * Variante Toast: flotante, efímera con botón de cierre.
+ */
+export const Toast: Story = {
   args: {
-    status: 'warning',
-    type: 'muted',
-    title: 'Procesando exportación',
-    description: 'El archivo es grande y tomará unos minutos.',
-    showProgress: true,
-    progress: 42,
-    showStatusMessage: true,
-    statusMessage: 'Conexión lenta detectada, continuando en segundo plano...',
-    showActions: true,
-    actionType: 'link',
-    primaryActionLabel: 'Cancelar proceso',
-    secondaryActionLabel: '',
+    status: 'success',
+    type: 'solid',
+    title: 'Solicitud creada con éxito',
+    description: 'Se ha asignado el identificador OST-234985.',
+    showClose: true,
+    showMinimize: false,
+    showActions: false,
   },
 }
