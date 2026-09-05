@@ -16,11 +16,11 @@ Componente **Radiobutton** basado en Radix Vue y Figma Design Tokens. Estilizado
 
 ### 📐 Layout & Sizing
 
-| Propiedad | Tamaño | Token / Figma Variable | CSS Variable | Valor |
+| Propiedad | Tamaño | Figma Variable | CSS Variable | Valor |
 |---|---|---|---|---|
-| **Width / Height** | sm | *(sin token en proyecto)* | — | 14×14px |
-| | md | \`sizing/7\` | \`--sizing-7\` | 16×16px |
-| | lg | \`sizing/8\` | \`--sizing-8\` | 20×20px |
+| **Width / Height** | sm | \`sizing/size-6-5\` | \`--sizing-6-5\` | 14×14px |
+| | md | \`sizing/sizing-7\` | \`--sizing-7\` | 16×16px |
+| | lg | \`sizing/sizing-8\` | \`--sizing-8\` | 20×20px |
 | **Gap (Grupo)** | todos | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
 
 ---
@@ -30,6 +30,7 @@ Componente **Radiobutton** basado en Radix Vue y Figma Design Tokens. Estilizado
 | Propiedad | Token / Figma Variable | CSS Variable | Valor |
 |---|---|---|---|
 | **Border Radius** | \`radius/full\` | \`--radius-full\` | 999px (circular) |
+| **Focus Ring Radius** | \`radius/full\` | \`--radius-full\` | 999px (circular) |
 
 ---
 
@@ -40,16 +41,16 @@ Componente **Radiobutton** basado en Radix Vue y Figma Design Tokens. Estilizado
 | **todos** | Unchecked Default | Background | \`color/surface/default\` | \`--color-surface-default\` |
 | | | Border | \`color/border/strong\` | \`--color-border-strong\` |
 | | Unchecked Hover | Border | \`color/border/strong\` | \`--color-border-strong\` |
-| **primary** | Checked Default | Border | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
-| | | Dot Fill | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
-| | Checked Hover | Border | \`color/brand/solid/hover\` | \`--color-brand-solid-hover\` |
-| | | Dot Fill | \`color/brand/solid/hover\` | \`--color-brand-solid-hover\` |
-| **secondary** | Checked Default | Border | \`color/secondary/solid/default\` | \`--color-secondary-solid-default\` |
-| | | Dot Fill | \`color/secondary/solid/default\` | \`--color-secondary-solid-default\` |
-| | Checked Hover | Border | \`color/secondary/solid/hover\` | \`--color-secondary-solid-hover\` |
-| | | Dot Fill | \`color/secondary/solid/hover\` | \`--color-secondary-solid-hover\` |
-| **todos** | Focus | Ring / Outline | \`color/border/focus\` | \`--color-border-focus\` |
-| **todos** | Disabled | Opacity | \`Opacity/disabled\` | 0.5 |
+| | Unchecked Focus | Border | \`color/border/subtle\` | \`--color-border-subtle\` |
+| | Focus Ring | Stroke | \`color/border/focus\` | \`--color-border-focus\` |
+| | Disabled | Opacity | \`Opacity/disabled\` | 0.5 |
+| **primary** | Checked Default | Border + Dot | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
+| | Checked Hover | Border + Dot | \`color/brand/solid/hover\` | \`--color-brand-solid-hover\` |
+| | Checked Disabled | Border + Dot | \`color/brand/solid-disabled\` | \`--color-brand-solid-disabled\` |
+| **secondary** | Checked Default | Border + Dot | \`color/secondary/solid/default\` | \`--color-secondary-solid-default\` |
+| | Checked Hover | Border + Dot | \`color/secondary/solid/hover\` | \`--color-secondary-solid-hover\` |
+| | Checked Focus | Border + Dot | \`color/secondary/solid/focus\` | \`--color-secondary-solid-focus\` |
+| | Checked Disabled | Border + Dot | \`color/secondary/solid/disabled\` | \`--color-secondary-solid-disabled\` |
 
 ---
 

@@ -15,11 +15,11 @@ Componente **Checkbox** basado en Radix Vue y Figma Design Tokens. Estilizado co
 
 ### 📐 Layout & Sizing
 
-| Propiedad | Tamaño | Token / Figma Variable | CSS Variable | Valor |
+| Propiedad | Tamaño | Figma Variable | CSS Variable | Valor |
 |---|---|---|---|---|
-| **Width / Height** | sm | *(sin token en proyecto)* | — | 14×14px |
-| | md | \`sizing/7\` | \`--sizing-7\` | 16×16px |
-| | lg | \`sizing/8\` | \`--sizing-8\` | 20×20px |
+| **Width / Height** | sm | \`sizing/size-6-5\` | \`--sizing-6-5\` | 14×14px |
+| | md | \`sizing/sizing-7\` | \`--sizing-7\` | 16×16px |
+| | lg | \`sizing/sizing-8\` | \`--sizing-8\` | 20×20px |
 
 ---
 
@@ -28,6 +28,7 @@ Componente **Checkbox** basado en Radix Vue y Figma Design Tokens. Estilizado co
 | Propiedad | Token / Figma Variable | CSS Variable | Valor |
 |---|---|---|---|
 | **Border Radius** | \`radius/radius-sm\` | \`--radius-sm\` | 4px |
+| **Focus Ring Radius** | \`radius/radius-md\` | \`--radius-md\` | 6px |
 
 ---
 
@@ -38,18 +39,17 @@ Componente **Checkbox** basado en Radix Vue y Figma Design Tokens. Estilizado co
 | **todos** | Unchecked Default | Background | \`color/surface/default\` | \`--color-surface-default\` |
 | | | Border | \`color/border/default\` | \`--color-border-default\` |
 | | Unchecked Hover | Border | \`color/border/strong\` | \`--color-border-strong\` |
-| **primary** | Checked Default | Background | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
-| | | Border | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
-| | | Icon | \`color/brand/text/on-solid\` | \`--color-brand-text-on-solid\` |
-| | Checked Hover | Background | \`color/brand/solid/hover\` | \`--color-brand-solid-hover\` |
-| | | Border | \`color/brand/solid/hover\` | \`--color-brand-solid-hover\` |
-| **secondary** | Checked Default | Background | \`color/secondary/solid/default\` | \`--color-secondary-solid-default\` |
-| | | Border | \`color/secondary/solid/default\` | \`--color-secondary-solid-default\` |
-| | | Icon | \`color/secondary/text/on-solid\` | \`--color-secondary-text-on-solid\` |
-| | Checked Hover | Background | \`color/secondary/solid/hover\` | \`--color-secondary-solid-hover\` |
-| | | Border | \`color/secondary/solid/hover\` | \`--color-secondary-solid-hover\` |
-| **todos** | Focus | Ring / Outline | \`color/border/focus\` | \`--color-border-focus\` |
-| **todos** | Disabled | Opacity | \`Opacity/disabled\` | 0.5 |
+| | Focus | Ring (outline) | \`color/border/focus\` | \`--color-border-focus\` |
+| | Disabled | Opacity | \`Opacity/disabled\` | 0.5 |
+| **primary** | Checked Default | Background + Border | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
+| | | Icon color | \`color/brand/text/on-solid\` | \`--color-brand-text-on-solid\` |
+| | Checked Hover | Background + Border | \`color/brand/solid/hover\` | \`--color-brand-solid-hover\` |
+| | Checked Focus | Background + Border | \`color/brand/solid/focus\` | \`--color-brand-solid-focus\` |
+| | Checked Disabled | Background + Border | \`color/brand/solid-disabled\` | \`--color-brand-solid-disabled\` |
+| **secondary** | Checked Default | Background + Border | \`color/secondary/solid/default\` | \`--color-secondary-solid-default\` |
+| | | Icon color | \`color/secondary/text/on-solid\` | \`--color-secondary-text-on-solid\` |
+| | Checked Hover | Background + Border | \`color/secondary/solid/hover\` | \`--color-secondary-solid-hover\` |
+| | Checked Focus | Background + Border | \`color/secondary/solid/focus\` | \`--color-secondary-solid-focus\` |
 
 ---
 

@@ -34,10 +34,10 @@
 
 /* ─── Sizes ────────────────────────────────────────────────────────────── */
 
-/* Size sm: 14px en Figma (no existe token sizing de 14px en el proyecto) */
+/* Size sm: sizing/size-6-5 = 14px */
 .size-sm {
-  width: 14px;
-  height: 14px;
+  width: var(--sizing-6-5);
+  height: var(--sizing-6-5);
 }
 
 .size-md {
@@ -63,6 +63,17 @@
   color: var(--color-brand-solid-hover);
 }
 
+.variant-primary[data-state="checked"]:focus-visible {
+  border-color: var(--color-brand-solid-default);
+  color: var(--color-brand-solid-default);
+}
+
+.variant-primary[data-state="checked"][data-disabled],
+.variant-primary[data-state="checked"]:disabled {
+  border-color: var(--color-brand-solid-disabled);
+  color: var(--color-brand-solid-disabled);
+}
+
 /* Secondary Variant */
 .variant-secondary[data-state="checked"] {
   border-color: var(--color-secondary-solid-default);
@@ -72,6 +83,22 @@
 .variant-secondary[data-state="checked"]:hover {
   border-color: var(--color-secondary-solid-hover);
   color: var(--color-secondary-solid-hover);
+}
+
+.variant-secondary[data-state="checked"]:focus-visible {
+  border-color: var(--color-secondary-solid-focus);
+  color: var(--color-secondary-solid-focus);
+}
+
+.variant-secondary[data-state="checked"][data-disabled],
+.variant-secondary[data-state="checked"]:disabled {
+  border-color: var(--color-secondary-solid-disabled);
+  color: var(--color-secondary-solid-disabled);
+}
+
+/* Unchecked focused state */
+.item:focus-visible:not([data-state="checked"]) {
+  border-color: var(--color-border-subtle);
 }
 
 /* ─── Indicator & Inner Dot ────────────────────────────────────────────── */

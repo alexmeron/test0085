@@ -399,6 +399,7 @@
   --spacing-4: var(--sizing-4);
   --spacing-5-5: var(--sizing-5-5);
   --spacing-5: var(--sizing-5);
+  --spacing-6-5: var(--sizing-6-5);
   --spacing-6: var(--sizing-6);
   --spacing-7: var(--sizing-7);
   --spacing-8: var(--sizing-8);
@@ -430,6 +431,7 @@
   --sizing-4: 6px;
   --sizing-5-5: 10px;
   --sizing-5: 8px;
+  --sizing-6-5: 14px;
   --sizing-6: 12px;
   --sizing-7: 16px;
   --sizing-8: 20px;
