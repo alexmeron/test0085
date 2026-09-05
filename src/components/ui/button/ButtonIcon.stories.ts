@@ -9,7 +9,22 @@ const meta: Meta<typeof ButtonIcon> = {
   parameters: {
     docs: {
       description: {
-        component: 'Botón de icono único (sin label). Mapeado 1:1 al componente Button-icon de Figma.',
+        component: `
+Botón de icono único (sin label). Mapeado 1:1 al componente **Button-icon** de Figma.
+
+### Token mapping
+
+| Propiedad | Figma variable | CSS variable | Tailwind class |
+|---|---|---|---|
+| Border radius | \`radius/radius-lg\` | \`--radius-lg\` | \`rounded-radius-lg\` |
+| Focus ring | \`color/border/focus\` | \`--color-border-focus\` | \`ring-border-focus\` |
+| **sm** height/width | \`sizing/sizing-9\` | \`--sizing-9\` | \`h-sizing-9 w-sizing-9\` |
+| **sm** padding | \`spacing/spacing-3\` | \`--spacing-3\` | \`p-spacing-3\` |
+| **md** height/width | \`sizing/sizing-10\` | \`--sizing-10\` | \`h-sizing-10 w-sizing-10\` |
+| **md** padding | \`spacing/spacing-5\` | \`--spacing-5\` | \`p-spacing-5\` |
+| **lg** height/width | \`sizing/sizing-11\` | \`--sizing-11\` | \`h-sizing-11 w-sizing-11\` |
+| **lg** padding | \`spacing/spacing-5-5\` | \`--spacing-5-5\` | \`p-spacing-5-5\` |
+        `,
       },
     },
   },
@@ -57,64 +72,22 @@ export const OnInverse: Story = {
   parameters: { backgrounds: { default: 'dark' } },
 }
 
-// ─── Sizes ──────────────────────────────────────────────────────────────────
+// ─── Sizes (agrupados sm, md, lg en una sola historia) ─────────────────────
 
-export const Small: Story = { args: { size: 'sm' } }
-export const Medium: Story = { args: { size: 'md' } }
-export const Large: Story = { args: { size: 'lg' } }
+export const Sizes: Story = {
+  render: (args) => ({
+    components: { ButtonIcon, Search },
+    setup() { return { args } },
+    template: `
+      <div class="flex items-center gap-4">
+        <ButtonIcon v-bind="args" size="sm"><Search class="w-full h-full" /></ButtonIcon>
+        <ButtonIcon v-bind="args" size="md"><Search class="w-full h-full" /></ButtonIcon>
+        <ButtonIcon v-bind="args" size="lg"><Search class="w-full h-full" /></ButtonIcon>
+      </div>
+    `,
+  }),
+}
 
 // ─── States ─────────────────────────────────────────────────────────────────
 
 export const Disabled: Story = { args: { disabled: true } }
-
-// ─── Token Map (separate tab) ────────────────────────────────────────────────
-
-export const TokenMap: Story = {
-  name: '📐 Token Map',
-  tags: ['!autodocs'],
-  parameters: {
-    docs: {
-      description: {
-        story: `
-## Button-icon — Figma → Token → Tailwind
-
-### Layout (todas las variantes)
-
-| Propiedad | Figma variable | CSS variable | Tailwind class |
-|---|---|---|---|
-| Border radius | \`radius/radius-lg\` | \`--radius-lg\` | \`rounded-radius-lg\` |
-| Focus ring | \`color/border/focus\` | \`--color-border-focus\` | \`ring-border-focus\` |
-
-### Sizes
-
-| Size | Propiedad | Figma variable | CSS variable | Tailwind class |
-|---|---|---|---|---|
-| **sm** | Height / Width | \`sizing/sizing-9\` | \`--sizing-9\` | \`h-sizing-9 w-sizing-9\` |
-| | Padding (todos) | \`spacing/spacing-3\` | \`--spacing-3\` | \`p-spacing-3\` |
-| **md** | Height / Width | \`sizing/sizing-10\` | \`--sizing-10\` | \`h-sizing-10 w-sizing-10\` |
-| | Padding (todos) | \`spacing/spacing-5\` | \`--spacing-5\` | \`p-spacing-5\` |
-| **lg** | Height / Width | \`sizing/sizing-11\` | \`--sizing-11\` | \`h-sizing-11 w-sizing-11\` |
-| | Padding (todos) | \`spacing/spacing-5-5\` | \`--spacing-5-5\` | \`p-spacing-5-5\` |
-
-### Colores por variante
-
-| Variant | Figma variable (bg) | Figma variable (icon color) |
-|---|---|---|
-| **primary** | \`color/brand/solid/default\` | \`color/brand/text/on-solid\` |
-| **secondary** | \`color/secondary/solid/default\` | \`color/secondary/text/on-solid\` |
-| **tertiary** | \`color/subtle/solid/default\` | \`color/subtle/text/on-solid\` |
-| **danger** | \`color/destructive/solid/default\` | \`color/destructive/text/on-solid\` |
-| **outlined** | transparent + \`color/subtle/border/default\` | \`color/subtle/text/on-solid\` |
-| **ghost** | transparent | \`color/subtle/text/on-solid\` |
-| **on-inverse** | \`color/secondary/solid/default\` | \`color/secondary/text/on-solid\` |
-        `,
-      },
-      canvas: { sourceState: 'none' },
-    },
-    controls: { disable: true },
-  },
-  render: () => ({
-    components: { ButtonIcon, Search },
-    template: `<ButtonIcon variant="primary" size="md"><Search class="w-full h-full" /></ButtonIcon>`,
-  }),
-}

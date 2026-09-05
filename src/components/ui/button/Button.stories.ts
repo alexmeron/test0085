@@ -8,7 +8,36 @@ const meta: Meta<typeof Button> = {
   parameters: {
     docs: {
       description: {
-        component: 'Botón de acción. Mapeado 1:1 al componente Button de Figma.',
+        component: `
+Botón de acción. Mapeado 1:1 al componente **Button** de Figma.
+
+### Token mapping
+
+| Propiedad | Figma variable | CSS variable | Tailwind class |
+|---|---|---|---|
+| Border radius | \`radius/radius-lg\` | \`--radius-lg\` | \`rounded-radius-lg\` |
+| Gap | \`spacing/spacing-3\` | \`--spacing-3\` | \`gap-spacing-3\` |
+| Font family | \`font-family/body\` | \`--font-family-body\` | \`font-body\` |
+| Font weight | \`font-weight/regular\` | \`--font-weight-regular\` | \`font-regular\` |
+| Focus ring | \`color/border/focus\` | \`--color-border-focus\` | \`ring-border-focus\` |
+| **sm** height | \`sizing/sizing-9\` | \`--sizing-9\` | \`h-sizing-9\` |
+| **sm** padding H | \`spacing/spacing-5\` | \`--spacing-5\` | \`px-spacing-5\` |
+| **sm** padding V | \`spacing/spacing-3\` | \`--spacing-3\` | \`py-spacing-3\` |
+| **sm** font size | \`font-size/caption/big\` | \`--font-size-caption-big\` | \`text-caption-big\` |
+| **sm** line height | \`line-height/leading-16\` | \`--leading-16\` | \`leading-leading-16\` |
+| **md** height | \`sizing/sizing-10\` | \`--sizing-10\` | \`h-sizing-10\` |
+| **md** padding H | \`spacing/spacing-5\` | \`--spacing-5\` | \`px-spacing-5\` |
+| **md** padding V | \`spacing/spacing-4\` | \`--spacing-4\` | \`py-spacing-4\` |
+| **md** font size | \`font-size/text/small\` | \`--font-size-text-small\` | \`text-text-small\` |
+| **md** line height | \`line-height/leading-20\` | \`--leading-20\` | \`leading-leading-20\` |
+| **lg** height | \`sizing/sizing-11\` | \`--sizing-11\` | \`h-sizing-11\` |
+| **lg** padding H | \`spacing/spacing-6\` | \`--spacing-6\` | \`px-spacing-6\` |
+| **lg** padding V | \`spacing/spacing-5-5\` | \`--spacing-5-5\` | \`py-spacing-5-5\` |
+| **lg** font size | \`font-size/text/small\` | \`--font-size-text-small\` | \`text-text-small\` |
+| **lg** line height | \`line-height/leading-20\` | \`--leading-20\` | \`leading-leading-20\` |
+| icon sm/md | \`sizing/sizing-7\` | \`--sizing-7\` | \`w-sizing-7 h-sizing-7\` |
+| icon lg | \`sizing/sizing-8\` | \`--sizing-8\` | \`w-sizing-8 h-sizing-8\` |
+        `,
       },
     },
   },
@@ -66,11 +95,21 @@ export const OnInverse: Story = {
   parameters: { backgrounds: { default: 'dark' } },
 }
 
-// ─── Sizes ──────────────────────────────────────────────────────────────────
+// ─── Sizes (agrupados sm, md, lg en una sola historia) ─────────────────────
 
-export const Small: Story = { args: { size: 'sm' } }
-export const Medium: Story = { args: { size: 'md' } }
-export const Large: Story = { args: { size: 'lg' } }
+export const Sizes: Story = {
+  render: (args) => ({
+    components: { Button },
+    setup() { return { args } },
+    template: `
+      <div class="flex items-center gap-4">
+        <Button v-bind="args" size="sm">Small</Button>
+        <Button v-bind="args" size="md">Medium</Button>
+        <Button v-bind="args" size="lg">Large</Button>
+      </div>
+    `,
+  }),
+}
 
 // ─── Icons ──────────────────────────────────────────────────────────────────
 
@@ -81,77 +120,3 @@ export const WithBothIcons: Story = { args: { leadingIcon: true, trailingIcon: t
 // ─── States ─────────────────────────────────────────────────────────────────
 
 export const Disabled: Story = { args: { disabled: true } }
-
-// ─── Token Map (separate tab) ────────────────────────────────────────────────
-
-export const TokenMap: Story = {
-  name: '📐 Token Map',
-  tags: ['!autodocs'],
-  parameters: {
-    docs: {
-      description: {
-        story: `
-## Button — Figma → Token → Tailwind
-
-### Layout (todas las variantes)
-
-| Propiedad | Figma variable | CSS variable | Tailwind class |
-|---|---|---|---|
-| Border radius | \`radius/radius-lg\` | \`--radius-lg\` | \`rounded-radius-lg\` |
-| Gap | \`spacing/spacing-3\` | \`--spacing-3\` | \`gap-spacing-3\` |
-| Font family | \`font-family/body\` | \`--font-family-body\` | \`font-body\` |
-| Font weight | \`font-weight/regular\` | \`--font-weight-regular\` | \`font-regular\` |
-| Focus ring | \`color/border/focus\` | \`--color-border-focus\` | \`ring-border-focus\` |
-
-### Sizes
-
-| Size | Propiedad | Figma variable | CSS variable | Tailwind class |
-|---|---|---|---|---|
-| **sm** | Height | \`sizing/sizing-9\` | \`--sizing-9\` | \`h-sizing-9\` |
-| | Padding H | \`spacing/spacing-5\` | \`--spacing-5\` | \`px-spacing-5\` |
-| | Padding V | \`spacing/spacing-3\` | \`--spacing-3\` | \`py-spacing-3\` |
-| | Font size | \`font-size/caption/big\` | \`--font-size-caption-big\` | \`text-caption-big\` |
-| | Line height | \`line-height/leading-16\` | \`--leading-16\` | \`leading-leading-16\` |
-| **md** | Height | \`sizing/sizing-10\` | \`--sizing-10\` | \`h-sizing-10\` |
-| | Padding H | \`spacing/spacing-5\` | \`--spacing-5\` | \`px-spacing-5\` |
-| | Padding V | \`spacing/spacing-4\` | \`--spacing-4\` | \`py-spacing-4\` |
-| | Font size | \`font-size/text/small\` | \`--font-size-text-small\` | \`text-text-small\` |
-| | Line height | \`line-height/leading-20\` | \`--leading-20\` | \`leading-leading-20\` |
-| **lg** | Height | \`sizing/sizing-11\` | \`--sizing-11\` | \`h-sizing-11\` |
-| | Padding H | \`spacing/spacing-6\` | \`--spacing-6\` | \`px-spacing-6\` |
-| | Padding V | \`spacing/spacing-5-5\` | \`--spacing-5-5\` | \`py-spacing-5-5\` |
-| | Font size | \`font-size/text/small\` | \`--font-size-text-small\` | \`text-text-small\` |
-| | Line height | \`line-height/leading-20\` | \`--leading-20\` | \`leading-leading-20\` |
-
-### Colores por variante
-
-| Variant | Estado | Figma variable (bg) | Figma variable (text) |
-|---|---|---|---|
-| **primary** | default | \`color/brand/solid/default\` | \`color/brand/text/on-solid\` |
-| | hover | \`color/brand/solid/hover\` | ← |
-| | pressed | \`color/brand/solid/pressed\` | ← |
-| **secondary** | default | \`color/secondary/solid/default\` | \`color/secondary/text/on-solid\` |
-| **tertiary** | default | \`color/subtle/solid/default\` | \`color/subtle/text/on-solid\` |
-| **danger** | default | \`color/destructive/solid/default\` | \`color/destructive/text/on-solid\` |
-| **outlined** | default | transparent | \`color/subtle/text/on-solid\` |
-| | border | \`color/subtle/border/default\` | — |
-| **ghost** | default | transparent | \`color/subtle/text/on-solid\` |
-| **on-inverse** | default | \`color/surface/default\` | \`color/text/primary\` |
-
-### Iconos
-
-| Size | Figma variable | CSS variable | Tailwind class |
-|---|---|---|---|
-| sm / md | \`sizing/sizing-7\` | \`--sizing-7\` | \`w-sizing-7 h-sizing-7\` |
-| lg | \`sizing/sizing-8\` | \`--sizing-8\` | \`w-sizing-8 h-sizing-8\` |
-        `,
-      },
-      canvas: { sourceState: 'none' },
-    },
-    controls: { disable: true },
-  },
-  render: () => ({
-    components: { Button },
-    template: '<Button variant="primary" size="md">Button</Button>',
-  }),
-}

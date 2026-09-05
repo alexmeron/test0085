@@ -22,6 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
   <Primitive
     :as="as"
     :as-child="asChild"
+    :disabled="disabled"
     :class="cn(buttonIconVariants({ variant, size }), props.class)"
   >
     <slot />
