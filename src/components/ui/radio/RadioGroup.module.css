@@ -34,7 +34,7 @@
 
 /* ─── Sizes ────────────────────────────────────────────────────────────── */
 
-/* MISSING TOKEN: Size/size-formControll-sm (14px) not present in Foundations */
+/* Size sm: 14px en Figma (no existe token sizing de 14px en el proyecto) */
 .size-sm {
   width: 14px;
   height: 14px;

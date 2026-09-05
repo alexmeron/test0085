@@ -18,9 +18,9 @@ Componente **Radiobutton** basado en Radix Vue y Figma Design Tokens. Estilizado
 
 | Propiedad | Tamaño | Token / Figma Variable | CSS Variable | Valor |
 |---|---|---|---|---|
-| **Width / Height** | sm | \`Size/size-formControll-sm\` | *Missing token* | 14×14px |
-| | md | \`Size/size-formControll-md\` / \`sizing/7\` | \`--sizing-7\` | 16×16px |
-| | lg | \`Size/size-formControll-lg\` / \`sizing/8\` | \`--sizing-8\` | 20×20px |
+| **Width / Height** | sm | *(sin token en proyecto)* | — | 14×14px |
+| | md | \`sizing/7\` | \`--sizing-7\` | 16×16px |
+| | lg | \`sizing/8\` | \`--sizing-8\` | 20×20px |
 | **Gap (Grupo)** | todos | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
 
 ---
