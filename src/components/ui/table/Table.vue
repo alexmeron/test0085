@@ -146,7 +146,6 @@ function toggleSelectRow(row: Record<string, any>, index: number) {
         v-if="resolvedTop"
         :title="title"
         :show-title="showTitle"
-        :show-filters="showFilters"
       >
         <template v-if="$slots.title" #title>
           <slot name="title" />

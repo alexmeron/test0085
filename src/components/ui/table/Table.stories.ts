@@ -1,40 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { ref, computed } from 'vue'
-import Table, { type TableColumn } from './Table.vue'
-import { Chip } from '../chip'
-import { Input } from '../input'
-import { Select } from '../select'
-
-// 6 columns matching Figma "columns=6, checkbox=true, actions=true"
-const figmaColumns6: TableColumn[] = [
-  { key: 'status', label: 'ESTADO', sortable: true },
-  { key: 'nhc', label: 'NHC / ID', sortable: true },
-  { key: 'patient', label: 'PACIENTE', sortable: true },
-  { key: 'specialty', label: 'ESPECIALIDAD', sortable: true },
-  { key: 'date', label: 'FECHA SOLICITUD', sortable: true },
-  { key: 'priority', label: 'PRIORIDAD', sortable: true },
-]
-
-// 10 sample rows matching Figma's 10 rows per page
-const figmaRows10 = [
-  { id: 1, status: 'Urgente', state: 'destructive', nhc: 'NHC-84920', patient: 'Elena García López', specialty: 'Cardiología', date: '04 Sep 2026', priority: 'Alta' },
-  { id: 2, status: 'Pendiente', state: 'warning', nhc: 'NHC-19482', patient: 'Carlos Morales Ruiz', specialty: 'Neurología', date: '03 Sep 2026', priority: 'Media' },
-  { id: 3, status: 'Completado', state: 'success', nhc: 'NHC-72819', patient: 'Sofía Romero Gómez', specialty: 'Traumatología', date: '02 Sep 2026', priority: 'Baja' },
-  { id: 4, status: 'En curso', state: 'info', nhc: 'NHC-39184', patient: 'David Navarro Sanz', specialty: 'Oftalmología', date: '01 Sep 2026', priority: 'Media' },
-  { id: 5, status: 'Urgente', state: 'destructive', nhc: 'NHC-50192', patient: 'Lucía Blanco Martín', specialty: 'Oncología', date: '31 Ago 2026', priority: 'Alta' },
-  { id: 6, status: 'Completado', state: 'success', nhc: 'NHC-66281', patient: 'Javier Castillo Pons', specialty: 'Dermatología', date: '30 Ago 2026', priority: 'Baja' },
-  { id: 7, status: 'Pendiente', state: 'warning', nhc: 'NHC-48192', patient: 'Marta Torres Gil', specialty: 'Pediatría', date: '29 Ago 2026', priority: 'Media' },
-  { id: 8, status: 'Borrador', state: 'neutral', nhc: 'NHC-10293', patient: 'Alejandro Vega Cano', specialty: 'Medicina Interna', date: '28 Ago 2026', priority: 'Baja' },
-  { id: 9, status: 'En curso', state: 'info', nhc: 'NHC-77291', patient: 'Beatriz Ortiz Ramos', specialty: 'Ginecología', date: '27 Ago 2026', priority: 'Media' },
-  { id: 10, status: 'Completado', state: 'success', nhc: 'NHC-91024', patient: 'Marcos Serrano Vidal', specialty: 'Urología', date: '26 Ago 2026', priority: 'Baja' },
-]
+import Table from './Table.vue'
 
 /**
  * ## Table Component
  *
  * Componente de tabla de datos estructurada, reactiva y accesible. Mapeado 1:1 a Figma.
  *
- * 🔗 **[Ver en Figma (node 4129:3958)](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4129-3958)**
+ * 🔗 **[Ver en Figma (node 4174:13333)](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4174-13333)**
  *
  * ---
  *
@@ -42,10 +14,6 @@ const figmaRows10 = [
  *
  * 1. **Top Bar (`Top`, 32px)**:
  *    - Título: `"Solicitudes"` (`16px`, `--font-weight-semibold`, `--color-text-primary`)
- *    - Filtros:
- *      - `Input`: Buscador `size="md"` con icono Search y placeholder `"Buscar por NHC, ID..."`
- *      - `Select`: Selector `size="md"` con `Chip` badge `1` para `"Estado"`
- *      - `Select`: Selector `size="md"` con `Chip` badge `1` para `"Fecha"`
  *
  * 2. **Header (`Header`, 28px)**:
  *    - Checkbox de selección completa `size="sm"`, `variant="primary"`
@@ -54,14 +22,11 @@ const figmaRows10 = [
  *
  * 3. **Rows (`_table-row`, 52px)**:
  *    - Checkbox individual `size="sm"`
- *    - Celdas con tipografía `14px` (`--font-size-text-small`, `--color-text-primary`) y soporte para `Chip`
+ *    - Celdas con tipografía `14px` (`--font-size-text-small`, `--color-text-primary`)
  *    - Celda de acción con botón `ButtonIcon` `variant="ghost"` `size="sm"` y `MoreVertical`
  *
  * 4. **Bottom Bar (`Bottom`, 32px)**:
  *    - Texto resumen: `"Total: 110 resultados"` (`12px`, `--color-text-secondary`)
- *    - Botones de paginación:
- *      - `Button` `variant="outlined"` `size="md"` con `ChevronLeft` ("Anterior")
- *      - `Button` `variant="outlined"` `size="md"` con `ChevronRight` ("Siguiente")
  */
 const meta: Meta<typeof Table> = {
   title: 'Components/Table',
@@ -83,11 +48,11 @@ const meta: Meta<typeof Table> = {
     },
     Top: {
       control: 'boolean',
-      description: 'Muestra la barra superior Top con título y filtros (propiedad boolean en Figma)',
+      description: 'Muestra la barra superior Top con título (propiedad boolean en Figma)',
     },
     Bottom: {
       control: 'boolean',
-      description: 'Muestra la barra inferior Bottom con paginación (propiedad boolean en Figma)',
+      description: 'Muestra la barra inferior Bottom con texto de resumen (propiedad boolean en Figma)',
     },
     title: {
       control: 'text',
@@ -95,7 +60,7 @@ const meta: Meta<typeof Table> = {
     },
     paginationText: {
       control: 'text',
-      description: 'Texto resumen de la barra de paginación',
+      description: 'Texto resumen de la barra inferior',
     },
   },
   args: {
@@ -265,7 +230,7 @@ export const WithoutTop: Story = {
 }
 
 /**
- * Bottom=false (solo título, filtros y tabla)
+ * Bottom=false (solo título y tabla)
  */
 export const WithoutBottom: Story = {
   name: 'Bottom=false',
@@ -278,79 +243,4 @@ export const WithoutBottom: Story = {
   },
 }
 
-/**
- * Ejemplo interactivo completo con búsqueda y filtrado en vivo usando Input y Select
- */
-export const Interactive: Story = {
-  name: 'Interactive Full Example',
-  render: () => ({
-    components: { Table, Chip, Input, Select },
-    setup() {
-      const selected = ref<number[]>([1, 2])
-      const search = ref('')
-      const statusFilter = ref('Estado')
-      const currentPage = ref(1)
-
-      const statusOptions = [
-        { label: 'Todos los estados', value: 'Estado' },
-        { label: 'Urgente', value: 'Urgente' },
-        { label: 'Pendiente', value: 'Pendiente' },
-        { label: 'En curso', value: 'En curso' },
-        { label: 'Completado', value: 'Completado' },
-        { label: 'Borrador', value: 'Borrador' },
-      ]
-
-      const filteredData = computed(() => {
-        return figmaRows10.filter((row) => {
-          const matchSearch =
-            !search.value ||
-            row.patient.toLowerCase().includes(search.value.toLowerCase()) ||
-            row.nhc.toLowerCase().includes(search.value.toLowerCase()) ||
-            row.specialty.toLowerCase().includes(search.value.toLowerCase())
-          const matchStatus = statusFilter.value === 'Estado' || row.status === statusFilter.value
-          return matchSearch && matchStatus
-        })
-      })
-
-      return {
-        columns: figmaColumns6,
-        filteredData,
-        selected,
-        search,
-        statusFilter,
-        statusOptions,
-        currentPage,
-      }
-    },
-    template: `
-      <div style="padding: var(--spacing-6); width: 100%; max-width: 1080px; margin: 0 auto;">
-        <Table
-          :columns="columns"
-          :data="filteredData"
-          :checkbox="true"
-          :actions="true"
-          title="Solicitudes"
-          :page="currentPage"
-          :total-pages="Math.ceil(filteredData.length / 5)"
-          :total-items="filteredData.length"
-          :items-per-page="5"
-          :pagination-text="'Total: ' + filteredData.length + ' resultados'"
-          v-model:selected-rows="selected"
-          @update:page="currentPage = $event"
-          @action="alert('Acción seleccionada para: ' + $event.patient)"
-        >
-          <template #cell-status="{ row }">
-            <Chip
-              size="sm"
-              :state="row.state"
-              variant="subtle"
-            >
-              {{ row.status }}
-            </Chip>
-          </template>
-        </Table>
-      </div>
-    `,
-  }),
-}
 
