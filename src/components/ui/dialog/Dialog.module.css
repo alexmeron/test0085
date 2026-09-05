@@ -1,0 +1,162 @@
+/* Dialog / Drawer Component Styles */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-surface-overlay);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel {
+  position: relative;
+  background-color: var(--color-surface-raised);
+  font-family: var(--font-family-body);
+  padding: var(--spacing-9); /* 24px */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Mode: Dialog ─────────────────────────────────────────────────────── */
+
+.mode-dialog {
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  border-radius: var(--radius-3xl); /* 16px */
+  gap: var(--spacing-9); /* 24px */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -4px rgba(16, 24, 40, 0.10);
+}
+
+/* ─── Mode: Drawer ─────────────────────────────────────────────────────── */
+
+.mode-drawer {
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  border-radius: var(--radius-sm); /* 4px */
+  gap: var(--spacing-6); /* 12px */
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08), 0 1px 4px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* ─── Header ───────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-6);
+  width: 100%;
+}
+
+.titleCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3); /* 4px */
+  flex: 1;
+}
+
+.title {
+  font-size: var(--font-size-text-big); /* 18px */
+  font-weight: var(--font-weight-semibold); /* 600 */
+  line-height: var(--leading-28); /* 28px */
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.description {
+  font-size: var(--font-size-text-small); /* 14px */
+  font-weight: var(--font-weight-regular); /* 400 */
+  line-height: var(--leading-20); /* 20px */
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: var(--spacing-3);
+  border-radius: var(--radius-lg);
+  border: none;
+  background: transparent;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition: color 150ms ease, background-color 150ms ease;
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  background-color: var(--color-surface-subtle);
+  color: var(--color-text-primary);
+}
+
+/* ─── Dividers ─────────────────────────────────────────────────────────── */
+
+.dividerWrapperTop {
+  width: 100%;
+  padding-top: var(--spacing-7); /* 16px */
+}
+
+.dividerWrapperBottom {
+  width: 100%;
+  padding-bottom: var(--spacing-7); /* 16px */
+}
+
+.dividerLine {
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-surface-muted);
+  border: none;
+  margin: 0;
+}
+
+/* ─── Body Slot ────────────────────────────────────────────────────────── */
+
+.body {
+  width: 100%;
+  font-size: var(--font-size-text-small);
+  line-height: var(--leading-20);
+  color: var(--color-text-secondary);
+}
+
+/* ─── Footer ───────────────────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 40px;
+}
+
+.statusContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-5); /* 8px */
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-success-solid-default);
+  flex-shrink: 0;
+}
+
+.statusText {
+  font-size: var(--font-size-caption-big); /* 12px */
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-16);
+  color: var(--color-text-tertiary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-5); /* 8px */
+  margin-left: auto;
+}

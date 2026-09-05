@@ -9,6 +9,7 @@
   font-family: var(--font-family-body);
   user-select: none;
   box-sizing: border-box;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.10);
 }
 
 .variant-simple {
