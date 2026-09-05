@@ -12,54 +12,108 @@
   border: 1px solid transparent;
 }
 
-/* ─── Sizes ────────────────────────────────────────────────────────────── */
+.label {
+  display: inline-flex;
+  align-items: center;
+}
 
+.iconLeading,
+.iconTrailing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── Sizes (exact Figma values and variable bindings) ─────────────────── */
+
+/* size=badge: w=21 h=20, padding [4, 8, 4, 8], font=10px, no icons */
 .size-badge {
   height: var(--sizing-8); /* 20px */
-  min-width: var(--sizing-8);
-  padding-inline: var(--spacing-3);
-  font-size: var(--font-size-caption-big);
-  line-height: var(--leading-16);
+  min-width: 21px;
+  padding-inline: var(--spacing-5); /* 8px */
+  padding-block: var(--spacing-3); /* 4px */
+  font-size: var(--font-size-caption-small); /* 10px */
+  line-height: var(--leading-14);
 }
 
+/* size=xs: w=71 h=20, padding [2, 4, 2, 2], gap=2px, font=11px, icon=16px */
 .size-xs {
   height: var(--sizing-8); /* 20px */
-  padding-inline: var(--spacing-5);
-  padding-block: var(--spacing-3);
-  font-size: var(--font-size-caption-big);
-  line-height: var(--leading-16);
+  padding-top: var(--spacing-2); /* 2px */
+  padding-bottom: var(--spacing-2); /* 2px */
+  padding-left: var(--spacing-2); /* 2px */
+  padding-right: var(--spacing-3); /* 4px */
+  gap: var(--spacing-2); /* 2px */
+  font-size: var(--font-size-caption-medium); /* 11px */
+  line-height: var(--leading-14); /* 14px */
 }
 
+.size-xs .iconLeading,
+.size-xs .iconTrailing {
+  width: 16px;
+  height: 16px;
+}
+
+/* size=sm: w=88 h=24, padding [4, 8, 4, 8], gap=4px, font=12px, icon=16px */
 .size-sm {
   height: var(--sizing-9); /* 24px */
-  padding-inline: var(--spacing-5);
-  padding-block: var(--spacing-3);
-  font-size: var(--font-size-text-small);
-  line-height: var(--leading-20);
+  padding-inline: var(--spacing-5); /* 8px */
+  padding-block: var(--spacing-3); /* 4px */
+  gap: var(--spacing-3); /* 4px */
+  font-size: var(--font-size-caption-big); /* 12px */
+  line-height: var(--leading-16); /* 16px */
 }
 
+.size-sm .iconLeading,
+.size-sm .iconTrailing {
+  width: 16px;
+  height: 16px;
+}
+
+/* size=md: w=93 h=32, padding [6, 8, 6, 8], gap=4px, font=14px, icon=16px */
 .size-md {
   height: var(--sizing-10); /* 32px */
-  padding-inline: var(--spacing-5-5);
-  padding-block: var(--spacing-4);
-  font-size: var(--font-size-text-small);
-  line-height: var(--leading-20);
+  padding-inline: var(--spacing-5); /* 8px */
+  padding-block: var(--spacing-4); /* 6px */
+  gap: var(--spacing-3); /* 4px */
+  font-size: var(--font-size-text-small); /* 14px */
+  line-height: var(--leading-20); /* 20px */
 }
 
+.size-md .iconLeading,
+.size-md .iconTrailing {
+  width: 16px;
+  height: 16px;
+}
+
+/* size=lg: w=109 h=40, padding [10, 12, 10, 12], gap=4px, font=14px, icon=20px */
 .size-lg {
   height: var(--sizing-11); /* 40px */
-  padding-inline: var(--spacing-6);
-  padding-block: var(--spacing-5);
-  font-size: var(--font-size-text-medium);
-  line-height: var(--leading-24);
+  padding-inline: var(--spacing-6); /* 12px */
+  padding-block: var(--spacing-5-5); /* 10px */
+  gap: var(--spacing-3); /* 4px */
+  font-size: var(--font-size-text-small); /* 14px */
+  line-height: var(--leading-20); /* 20px */
 }
 
-/* ─── Destructive ──────────────────────────────────────────────────────── */
+.size-lg .iconLeading,
+.size-lg .iconTrailing {
+  width: 20px;
+  height: 20px;
+}
 
+/* ─── Colors & States (exact Figma tokens) ──────────────────────────────── */
+
+/* Destructive */
 .state-destructive-subtle {
   background-color: var(--color-destructive-surface-default);
   color: var(--color-destructive-text-default);
   border-color: transparent;
+}
+.state-destructive-subtle .iconLeading,
+.state-destructive-subtle .iconTrailing {
+  color: var(--color-destructive-icon-muted);
 }
 
 .state-destructive-solid {
@@ -67,11 +121,19 @@
   color: var(--color-destructive-text-on-solid);
   border-color: transparent;
 }
+.state-destructive-solid .iconLeading,
+.state-destructive-solid .iconTrailing {
+  color: var(--color-destructive-icon-on-solid);
+}
 
 .state-destructive-outline {
   background-color: transparent;
   color: var(--color-destructive-text-default);
   border-color: var(--color-destructive-border-default);
+}
+.state-destructive-outline .iconLeading,
+.state-destructive-outline .iconTrailing {
+  color: var(--color-destructive-icon-muted);
 }
 
 .state-destructive-ghost {
@@ -79,19 +141,30 @@
   color: var(--color-destructive-text-default);
   border-color: transparent;
 }
+.state-destructive-ghost .iconLeading,
+.state-destructive-ghost .iconTrailing {
+  color: var(--color-destructive-icon-muted);
+}
 
-/* ─── Info ─────────────────────────────────────────────────────────────── */
-
+/* Info */
 .state-info-subtle {
   background-color: var(--color-info-surface-default);
   color: var(--color-info-text-default);
   border-color: transparent;
 }
+.state-info-subtle .iconLeading,
+.state-info-subtle .iconTrailing {
+  color: var(--color-info-icon-muted);
+}
 
 .state-info-solid {
-  background-color: var(--color-info-solid-default);
+  background-color: var(--color-tango-700);
   color: var(--color-info-text-on-solid);
   border-color: transparent;
+}
+.state-info-solid .iconLeading,
+.state-info-solid .iconTrailing {
+  color: var(--color-info-icon-on-solid);
 }
 
 .state-info-outline {
@@ -99,19 +172,30 @@
   color: var(--color-info-text-default);
   border-color: var(--color-info-border-default);
 }
+.state-info-outline .iconLeading,
+.state-info-outline .iconTrailing {
+  color: var(--color-info-icon-muted);
+}
 
 .state-info-ghost {
   background-color: transparent;
   color: var(--color-info-text-default);
   border-color: transparent;
 }
+.state-info-ghost .iconLeading,
+.state-info-ghost .iconTrailing {
+  color: var(--color-info-icon-muted);
+}
 
-/* ─── Ready ────────────────────────────────────────────────────────────── */
-
+/* Ready */
 .state-ready-subtle {
   background-color: var(--color-ready-surface-default);
   color: var(--color-ready-text-default);
   border-color: transparent;
+}
+.state-ready-subtle .iconLeading,
+.state-ready-subtle .iconTrailing {
+  color: var(--color-ready-icon-muted);
 }
 
 .state-ready-solid {
@@ -119,11 +203,19 @@
   color: var(--color-ready-text-on-solid);
   border-color: transparent;
 }
+.state-ready-solid .iconLeading,
+.state-ready-solid .iconTrailing {
+  color: var(--color-ready-icon-on-solid);
+}
 
 .state-ready-outline {
   background-color: transparent;
   color: var(--color-ready-text-default);
   border-color: var(--color-ready-border-default);
+}
+.state-ready-outline .iconLeading,
+.state-ready-outline .iconTrailing {
+  color: var(--color-ready-icon-muted);
 }
 
 .state-ready-ghost {
@@ -131,13 +223,20 @@
   color: var(--color-ready-text-default);
   border-color: transparent;
 }
+.state-ready-ghost .iconLeading,
+.state-ready-ghost .iconTrailing {
+  color: var(--color-ready-icon-muted);
+}
 
-/* ─── Warning ──────────────────────────────────────────────────────────── */
-
+/* Warning */
 .state-warning-subtle {
   background-color: var(--color-warning-surface-default);
   color: var(--color-warning-text-default);
   border-color: transparent;
+}
+.state-warning-subtle .iconLeading,
+.state-warning-subtle .iconTrailing {
+  color: var(--color-warning-icon-muted);
 }
 
 .state-warning-solid {
@@ -145,11 +244,19 @@
   color: var(--color-warning-text-on-solid);
   border-color: transparent;
 }
+.state-warning-solid .iconLeading,
+.state-warning-solid .iconTrailing {
+  color: var(--color-warning-icon-on-solid);
+}
 
 .state-warning-outline {
   background-color: transparent;
   color: var(--color-warning-text-default);
   border-color: var(--color-warning-border-default);
+}
+.state-warning-outline .iconLeading,
+.state-warning-outline .iconTrailing {
+  color: var(--color-warning-icon-muted);
 }
 
 .state-warning-ghost {
@@ -157,13 +264,20 @@
   color: var(--color-warning-text-default);
   border-color: transparent;
 }
+.state-warning-ghost .iconLeading,
+.state-warning-ghost .iconTrailing {
+  color: var(--color-warning-icon-muted);
+}
 
-/* ─── Success ──────────────────────────────────────────────────────────── */
-
+/* Success */
 .state-success-subtle {
   background-color: var(--color-success-surface-default);
   color: var(--color-success-text-default);
   border-color: transparent;
+}
+.state-success-subtle .iconLeading,
+.state-success-subtle .iconTrailing {
+  color: var(--color-success-icon-muted);
 }
 
 .state-success-solid {
@@ -171,11 +285,19 @@
   color: var(--color-success-text-on-solid);
   border-color: transparent;
 }
+.state-success-solid .iconLeading,
+.state-success-solid .iconTrailing {
+  color: var(--color-success-icon-on-solid);
+}
 
 .state-success-outline {
   background-color: transparent;
   color: var(--color-success-text-default);
   border-color: var(--color-success-border-default);
+}
+.state-success-outline .iconLeading,
+.state-success-outline .iconTrailing {
+  color: var(--color-success-icon-muted);
 }
 
 .state-success-ghost {
@@ -183,39 +305,61 @@
   color: var(--color-success-text-default);
   border-color: transparent;
 }
+.state-success-ghost .iconLeading,
+.state-success-ghost .iconTrailing {
+  color: var(--color-success-icon-muted);
+}
 
-/* ─── Neutral ──────────────────────────────────────────────────────────── */
-
+/* Neutral (mapped to color/subtle/* in Figma) */
 .state-neutral-subtle {
-  background-color: var(--color-secondary-surface-default);
-  color: var(--color-secondary-text-default);
+  background-color: var(--color-subtle-surface-default);
+  color: var(--color-subtle-text-default);
   border-color: transparent;
+}
+.state-neutral-subtle .iconLeading,
+.state-neutral-subtle .iconTrailing {
+  color: var(--color-subtle-icon-muted);
 }
 
 .state-neutral-solid {
-  background-color: var(--color-secondary-solid-default);
-  color: var(--color-secondary-text-on-solid);
+  background-color: var(--color-subtle-solid-default);
+  color: var(--color-subtle-text-on-solid);
   border-color: transparent;
+}
+.state-neutral-solid .iconLeading,
+.state-neutral-solid .iconTrailing {
+  color: var(--color-subtle-icon-default);
 }
 
 .state-neutral-outline {
   background-color: transparent;
-  color: var(--color-secondary-text-default);
-  border-color: var(--color-secondary-border-default);
+  color: var(--color-subtle-text-default);
+  border-color: var(--color-subtle-border-default);
+}
+.state-neutral-outline .iconLeading,
+.state-neutral-outline .iconTrailing {
+  color: var(--color-subtle-icon-muted);
 }
 
 .state-neutral-ghost {
   background-color: transparent;
-  color: var(--color-secondary-text-default);
+  color: var(--color-subtle-text-default);
   border-color: transparent;
 }
+.state-neutral-ghost .iconLeading,
+.state-neutral-ghost .iconTrailing {
+  color: var(--color-subtle-icon-muted);
+}
 
-/* ─── Ended ────────────────────────────────────────────────────────────── */
-
+/* Ended (mapped to color/subtle/* in Figma) */
 .state-ended-subtle {
   background-color: var(--color-subtle-surface-default);
   color: var(--color-subtle-text-default);
   border-color: transparent;
+}
+.state-ended-subtle .iconLeading,
+.state-ended-subtle .iconTrailing {
+  color: var(--color-subtle-icon-muted);
 }
 
 .state-ended-solid {
@@ -223,15 +367,27 @@
   color: var(--color-subtle-text-on-solid);
   border-color: transparent;
 }
+.state-ended-solid .iconLeading,
+.state-ended-solid .iconTrailing {
+  color: var(--color-subtle-icon-default);
+}
 
 .state-ended-outline {
   background-color: transparent;
   color: var(--color-subtle-text-default);
   border-color: var(--color-subtle-border-default);
 }
+.state-ended-outline .iconLeading,
+.state-ended-outline .iconTrailing {
+  color: var(--color-subtle-icon-muted);
+}
 
 .state-ended-ghost {
   background-color: transparent;
   color: var(--color-subtle-text-default);
   border-color: transparent;
+}
+.state-ended-ghost .iconLeading,
+.state-ended-ghost .iconTrailing {
+  color: var(--color-subtle-icon-muted);
 }

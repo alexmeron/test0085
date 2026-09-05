@@ -9,7 +9,7 @@ const meta: Meta<typeof Chip> = {
     docs: {
       description: {
         component: `
-Componente **Chip** (etiqueta o pill informativo) mapeado 1:1 al componente de Figma. Estilizado con **CSS Modules** y **CSS Variables**.
+Componente **Chip** mapeado 1:1 al componente de Figma. Estilizado con **CSS Modules** y **CSS Variables**.
 
 🔗 **[Ver en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4007-860)**
 
@@ -24,13 +24,15 @@ Componente **Chip** (etiqueta o pill informativo) mapeado 1:1 al componente de F
 | | sm | \`sizing/sizing-9\` | \`--sizing-9\` | 24px |
 | | md | \`sizing/sizing-10\` | \`--sizing-10\` | 32px |
 | | lg | \`sizing/sizing-11\` | \`--sizing-11\` | 40px |
-| **Padding Horizontal** | badge | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
-| | xs, sm | \`spacing/spacing-5\` | \`--spacing-5\` | 8px |
-| | md | \`spacing/spacing-5-5\` | \`--spacing-5-5\` | 10px |
-| | lg | \`spacing/spacing-6\` | \`--spacing-6\` | 12px |
-| **Padding Vertical** | xs, sm | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
-| | md | \`spacing/spacing-4\` | \`--spacing-4\` | 6px |
-| | lg | \`spacing/spacing-5\` | \`--spacing-5\` | 8px |
+| **Padding** | badge | \`spacing-3\` (vert), \`spacing-5\` (horiz) | \`--spacing-3\`, \`--spacing-5\` | 4px, 8px |
+| | xs | \`spacing-2\` (top, bot, left), \`spacing-3\` (right) | \`--spacing-2\`, \`--spacing-3\` | 2px 4px 2px 2px |
+| | sm | \`spacing-3\` (vert), \`spacing-5\` (horiz) | \`--spacing-3\`, \`--spacing-5\` | 4px, 8px |
+| | md | \`spacing-4\` (vert), \`spacing-5\` (horiz) | \`--spacing-4\`, \`--spacing-5\` | 6px, 8px |
+| | lg | \`spacing-5-5\` (vert), \`spacing-6\` (horiz) | \`--spacing-5-5\`, \`--spacing-6\` | 10px, 12px |
+| **Gap** | xs | \`spacing/spacing-2\` | \`--spacing-2\` | 2px |
+| | sm, md, lg | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
+| **Icon Size** | xs, sm, md | — | — | 16×16px |
+| | lg | — | — | 20×20px |
 
 ---
 
@@ -48,44 +50,41 @@ Componente **Chip** (etiqueta o pill informativo) mapeado 1:1 al componente de F
 |---|---|---|---|---|
 | **Font Family** | todos | \`font-family/body\` | \`--font-family-body\` | "Inter", sans-serif |
 | **Font Weight** | todos | \`font-weight/medium\` | \`--font-weight-medium\` | 500 |
-| **Font Size** | badge, xs | \`font-size/caption/big\` | \`--font-size-caption-big\` | 12px |
-| | sm, md | \`font-size/text/small\` | \`--font-size-text-small\` | 14px |
-| | lg | \`font-size/text/medium\` | \`--font-size-text-medium\` | 16px |
+| **Font Size** | badge | \`font-size/caption/small\` | \`--font-size-caption-small\` | 10px |
+| | xs | \`font-size/caption/medium\` | \`--font-size-caption-medium\` | 11px |
+| | sm | \`font-size/caption/big\` | \`--font-size-caption-big\` | 12px |
+| | md, lg | \`font-size/text/small\` | \`--font-size-text-small\` | 14px |
 
 ---
 
 ### 🎨 Colors & States
 
-| Estado (State) | Variante | Background | Border | Text |
-|---|---|---|---|---|
-| **destructive** | subtle | \`--color-destructive-surface-default\` | transparent | \`--color-destructive-text-default\` |
-| | solid | \`--color-destructive-solid-default\` | transparent | \`--color-destructive-text-on-solid\` |
-| | outline | transparent | \`--color-destructive-border-default\` | \`--color-destructive-text-default\` |
-| | ghost | transparent | transparent | \`--color-destructive-text-default\` |
-| **info** | subtle | \`--color-info-surface-default\` | transparent | \`--color-info-text-default\` |
-| | solid | \`--color-info-solid-default\` | transparent | \`--color-info-text-on-solid\` |
-| | outline | transparent | \`--color-info-border-default\` | \`--color-info-text-default\` |
-| | ghost | transparent | transparent | \`--color-info-text-default\` |
-| **ready** | subtle | \`--color-ready-surface-default\` | transparent | \`--color-ready-text-default\` |
-| | solid | \`--color-ready-solid-default\` | transparent | \`--color-ready-text-on-solid\` |
-| | outline | transparent | \`--color-ready-border-default\` | \`--color-ready-text-default\` |
-| | ghost | transparent | transparent | \`--color-ready-text-default\` |
-| **warning** | subtle | \`--color-warning-surface-default\` | transparent | \`--color-warning-text-default\` |
-| | solid | \`--color-warning-solid-default\` | transparent | \`--color-warning-text-on-solid\` |
-| | outline | transparent | \`--color-warning-border-default\` | \`--color-warning-text-default\` |
-| | ghost | transparent | transparent | \`--color-warning-text-default\` |
-| **success** | subtle | \`--color-success-surface-default\` | transparent | \`--color-success-text-default\` |
-| | solid | \`--color-success-solid-default\` | transparent | \`--color-success-text-on-solid\` |
-| | outline | transparent | \`--color-success-border-default\` | \`--color-success-text-default\` |
-| | ghost | transparent | transparent | \`--color-success-text-default\` |
-| **neutral** | subtle | \`--color-secondary-surface-default\` | transparent | \`--color-secondary-text-default\` |
-| | solid | \`--color-secondary-solid-default\` | transparent | \`--color-secondary-text-on-solid\` |
-| | outline | transparent | \`--color-secondary-border-default\` | \`--color-secondary-text-default\` |
-| | ghost | transparent | transparent | \`--color-secondary-text-default\` |
-| **ended** | subtle | \`--color-subtle-surface-default\` | transparent | \`--color-subtle-text-default\` |
-| | solid | \`--color-subtle-solid-default\` | transparent | \`--color-subtle-text-on-solid\` |
-| | outline | transparent | \`--color-subtle-border-default\` | \`--color-subtle-text-default\` |
-| | ghost | transparent | transparent | \`--color-subtle-text-default\` |
+| Estado (State) | Variante | Background | Border | Text | Icon |
+|---|---|---|---|---|---|
+| **destructive** | subtle | \`color/destructive/surface/default\` | transparent | \`color/destructive/text/default\` | \`color/destructive/icon-muted\` |
+| | solid | \`color/destructive/solid/default\` | transparent | \`color/destructive/text/on-solid\` | \`color/destructive/icon/on-solid\` |
+| | outline | transparent | \`color/destructive/border/default\` | \`color/destructive/text/default\` | \`color/destructive/icon-muted\` |
+| | ghost | transparent | transparent | \`color/destructive/text/default\` | \`color/destructive/icon-muted\` |
+| **info** | subtle | \`color/info/surface/default\` | transparent | \`color/info/text/default\` | \`color/info/icon-muted\` |
+| | solid | \`color/tango/700\` | transparent | \`color/info/text/on-solid\` | \`color/info/icon/on-solid\` |
+| | outline | transparent | \`color/info/border/default\` | \`color/info/text/default\` | \`color/info/icon-muted\` |
+| | ghost | transparent | transparent | \`color/info/text/default\` | \`color/info/icon-muted\` |
+| **ready** | subtle | \`color/ready/surface/default\` | transparent | \`color/ready/text/default\` | \`color/ready/icon-muted\` |
+| | solid | \`color/ready/solid/default\` | transparent | \`color/ready/text/on-solid\` | \`color/ready/icon/on-solid\` |
+| | outline | transparent | \`color/ready/border/default\` | \`color/ready/text/default\` | \`color/ready/icon-muted\` |
+| | ghost | transparent | transparent | \`color/ready/text/default\` | \`color/ready/icon-muted\` |
+| **warning** | subtle | \`color/warning/surface/default\` | transparent | \`color/warning/text/default\` | \`color/warning/icon-muted\` |
+| | solid | \`color/warning/solid/default\` | transparent | \`color/warning/text/on-solid\` | \`color/warning/icon/on-solid\` |
+| | outline | transparent | \`color/warning/border/default\` | \`color/warning/text/default\` | \`color/warning/icon-muted\` |
+| | ghost | transparent | transparent | \`color/warning/text/default\` | \`color/warning/icon-muted\` |
+| **success** | subtle | \`color/success/surface/default\` | transparent | \`color/success/text/default\` | \`color/success/icon-muted\` |
+| | solid | \`color/success/solid/default\` | transparent | \`color/success/text/on-solid\` | \`color/success/icon/on-solid\` |
+| | outline | transparent | \`color/success/border/default\` | \`color/success/text/default\` | \`color/success/icon-muted\` |
+| | ghost | transparent | transparent | \`color/success/text/default\` | \`color/success/icon-muted\` |
+| **neutral / ended** | subtle | \`color/subtle/surface/default\` | transparent | \`color/subtle/text/default\` | \`color/subtle/icon/muted\` |
+| | solid | \`color/subtle/solid/default\` | transparent | \`color/subtle/text/on-solid\` | \`color/subtle/icon/default\` |
+| | outline | transparent | \`color/subtle/border/default\` | \`color/subtle/text/default\` | \`color/subtle/icon/muted\` |
+| | ghost | transparent | transparent | \`color/subtle/text/default\` | \`color/subtle/icon/muted\` |
         `,
       },
     },
@@ -94,28 +93,38 @@ Componente **Chip** (etiqueta o pill informativo) mapeado 1:1 al componente de F
     state: {
       control: 'select',
       options: ['destructive', 'info', 'ready', 'warning', 'success', 'neutral', 'ended'],
-      description: 'Figma prop: **State**',
+      description: 'Figma prop: **state**',
     },
     variant: {
       control: 'select',
       options: ['subtle', 'solid', 'outline', 'ghost'],
-      description: 'Figma prop: **Variant**',
+      description: 'Figma prop: **variant**',
     },
     size: {
       control: 'select',
       options: ['badge', 'xs', 'sm', 'md', 'lg'],
-      description: 'Figma prop: **Size**',
+      description: 'Figma prop: **size**',
     },
     label: {
       control: 'text',
-      description: 'Texto interior del chip',
+      description: 'Figma prop: **Label**',
+    },
+    leadingIcon: {
+      control: 'boolean',
+      description: 'Figma prop: **leading-icon**',
+    },
+    trailingIcon: {
+      control: 'boolean',
+      description: 'Figma prop: **trailing-icon**',
     },
   },
   args: {
     state: 'neutral',
     variant: 'subtle',
     size: 'md',
-    label: 'Chip text',
+    label: 'Label',
+    leadingIcon: true,
+    trailingIcon: true,
   },
   render: (args) => ({
     components: { Chip },
@@ -128,6 +137,41 @@ export default meta
 type Story = StoryObj<typeof Chip>
 
 export const Default: Story = {}
+
+// ─── With and Without Icons ─────────────────────────────────────────────────
+
+export const Icons: Story = {
+  render: (args) => ({
+    components: { Chip },
+    setup() { return { args } },
+    template: `
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <Chip v-bind="args" :leading-icon="true" :trailing-icon="true" label="Both Icons" />
+        <Chip v-bind="args" :leading-icon="true" :trailing-icon="false" label="Leading Icon" />
+        <Chip v-bind="args" :leading-icon="false" :trailing-icon="true" label="Trailing Icon" />
+        <Chip v-bind="args" :leading-icon="false" :trailing-icon="false" label="No Icons" />
+      </div>
+    `,
+  }),
+}
+
+// ─── Sizes (agrupados en una sola story) ────────────────────────────────────
+
+export const Sizes: Story = {
+  render: (args) => ({
+    components: { Chip },
+    setup() { return { args } },
+    template: `
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <Chip v-bind="args" size="badge" label="1" :leading-icon="false" :trailing-icon="false" />
+        <Chip v-bind="args" size="xs" label="Extra Small" />
+        <Chip v-bind="args" size="sm" label="Small" />
+        <Chip v-bind="args" size="md" label="Medium" />
+        <Chip v-bind="args" size="lg" label="Large" />
+      </div>
+    `,
+  }),
+}
 
 // ─── All States ─────────────────────────────────────────────────────────────
 
@@ -164,48 +208,4 @@ export const AllVariants: Story = {
       </div>
     `,
   }),
-}
-
-// ─── Sizes (agrupados en una sola story) ────────────────────────────────────
-
-export const Sizes: Story = {
-  render: (args) => ({
-    components: { Chip },
-    setup() { return { args } },
-    template: `
-      <div style="display: flex; align-items: center; gap: 16px;">
-        <Chip v-bind="args" size="badge" label="1" />
-        <Chip v-bind="args" size="xs" label="Extra Small" />
-        <Chip v-bind="args" size="sm" label="Small" />
-        <Chip v-bind="args" size="md" label="Medium" />
-        <Chip v-bind="args" size="lg" label="Large" />
-      </div>
-    `,
-  }),
-}
-
-// ─── Individual States ──────────────────────────────────────────────────────
-
-export const Destructive: Story = {
-  args: { state: 'destructive', label: 'Destructive' },
-}
-
-export const Info: Story = {
-  args: { state: 'info', label: 'Information' },
-}
-
-export const Success: Story = {
-  args: { state: 'success', label: 'Success' },
-}
-
-export const Warning: Story = {
-  args: { state: 'warning', label: 'Warning' },
-}
-
-export const Ready: Story = {
-  args: { state: 'ready', label: 'Ready' },
-}
-
-export const Ended: Story = {
-  args: { state: 'ended', label: 'Ended' },
 }

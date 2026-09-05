@@ -9,7 +9,7 @@ const meta: Meta<typeof Datepicker> = {
     docs: {
       description: {
         component: `
-Componente **Datepicker** (selector de fecha y rango) mapeado 1:1 al componente de Figma. Estilizado con **CSS Modules** y **CSS Variables**.
+Componente **Datepicker** (selector de fecha y rango) mapeado 1:1 a Figma. Estilizado con **CSS Modules** y **CSS Variables**, utilizando el componente **ButtonIcon** integrado para la navegación.
 
 🔗 **[Ver en Figma](https://www.figma.com/design/O9JvjR2KKZusf3BxImqWuq/Components?node-id=4124-3793)**
 
@@ -22,9 +22,10 @@ Componente **Datepicker** (selector de fecha y rango) mapeado 1:1 al componente 
 | **Width** | simple | — | — | 248px |
 | | range | — | — | 532px |
 | **Padding Contenedor** | ambos | \`spacing/spacing-6\` | \`--spacing-6\` | 12px |
-| **Cabecera (Header)** | ambos | \`sizing/sizing-11\` | \`--sizing-11\` | 40px (altura) |
-| **Celda Día (Cell)** | ambos | \`sizing/sizing-10\` | \`--sizing-10\` | 32×32px |
-| **Gap Meses (Range)** | range | \`spacing/spacing-6\` | \`--spacing-6\` | 12px |
+| **Cabecera (\`head-datepicker\`)** | ambos | — | — | 224×32px |
+| **Botón Navegación** | ambos | \`Button-icon (outlined, md)\` | — | 32×32px |
+| **Celda Día (\`_calenderCell\`)** | ambos | — | — | 32×32px |
+| **Gap Paneles (Range)** | range | \`spacing/spacing-6\` | \`--spacing-6\` | 12px |
 
 ---
 
@@ -32,9 +33,9 @@ Componente **Datepicker** (selector de fecha y rango) mapeado 1:1 al componente 
 
 | Propiedad | Token / Figma Variable | CSS Variable | Valor |
 |---|---|---|---|
-| **Border Radius Contenedor** | \`radius/radius-sm\` | \`--radius-sm\` | 4px |
-| **Border Radius Celda** | \`radius/radius-md\` | \`--radius-md\` | 6px |
-| **Border Radius Botón Nav** | \`radius/radius-md\` | \`--radius-md\` | 6px |
+| **Border Radius Contenedor** | \`radius/sm\` | \`--radius-sm\` | 4px |
+| **Border Radius Celda** | \`radius/md\` | \`--radius-md\` | 6px |
+| **Border Radius ButtonIcon** | \`radius/radius-lg\` | \`--radius-lg\` | 8px |
 
 ---
 
@@ -43,7 +44,7 @@ Componente **Datepicker** (selector de fecha y rango) mapeado 1:1 al componente 
 | Elemento | Token / Figma Variable | CSS Variable | Valor |
 |---|---|---|---|
 | **Font Family** | \`font-family/body\` | \`--font-family-body\` | "Inter", sans-serif |
-| **Título Mes/Año** | \`font-size/text/small\` | \`--font-size-text-small\` | 14px (500) |
+| **Título Mes** | \`font-size/text-small\` | \`--font-size-text-small\` | 14px (500) |
 | **Día de la semana** | \`font-size/caption/big\` | \`--font-size-caption-big\` | 12px (500) |
 | **Número de día** | \`font-size/caption/big\` | \`--font-size-caption-big\` | 12px (400) |
 
@@ -55,12 +56,15 @@ Componente **Datepicker** (selector de fecha y rango) mapeado 1:1 al componente 
 |---|---|---|---|---|
 | **Contenedor** | Default | Background | \`color/surface/default\` | \`--color-surface-default\` |
 | | | Border | \`color/border/default\` | \`--color-border-default\` |
-| **Celda Día** | Default | Text | \`color/text/primary\` | \`--color-text-primary\` |
-| | Hover | Background | \`color/surface/subtle\` | \`--color-surface-subtle\` |
-| | Selected | Background | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
+| **ButtonIcon (Nav)** | Default | Variant | \`outlined\`, \`size="md"\` | — |
+| | | Stroke | \`color/subtle/border/default\` | \`--color-subtle-border-default\` |
+| **Celda Día** | Default | Background | \`color/surface/default\` | \`--color-surface-default\` |
+| | | Text | \`color/text/primary\` | \`--color-text-primary\` |
+| | Hover | Background | \`color/surface/muted\` | \`--color-surface-muted\` |
+| | Selected / Range Start & End | Background | \`color/brand/solid/default\` | \`--color-brand-solid-default\` |
 | | | Text | \`color/brand/text/on-solid\` | \`--color-brand-text-on-solid\` |
-| | In Range (Between) | Background | \`color/brand/surface/default\` | \`--color-brand-surface-default\` |
-| | | Text | \`color/brand/text/default\` | \`--color-brand-text-default\` |
+| | **Rango Intermedio (Range Between)** | **Background** | **\`color/surface/muted\`** | **\`--color-surface-muted\`** |
+| | | Text | \`color/text/primary\` | \`--color-text-primary\` |
 | | Mes ajeno (Outside) | Text | \`color/text/disabled\` | \`--color-text-disabled\` |
 | **Día Actual (Today)** | Default | Border | \`color/border/strong\` | \`--color-border-strong\` |
 | **Deshabilitado** | Disabled | Opacity | \`Opacity/disabled\` | 0.5 |

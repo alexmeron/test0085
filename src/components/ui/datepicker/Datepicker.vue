@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import ButtonIcon from '../button/ButtonIcon.vue'
 import styles from './Datepicker.module.css'
 import { cn } from '../../../lib/utils'
 
@@ -49,7 +50,7 @@ function nextMonth() {
   viewDate.value = new Date(currentYear.value, currentMonth.value + 1, 1)
 }
 
-// Generate days for a month
+// Generate days for a month (42 cells: 6 rows x 7 days)
 interface DayItem {
   date: Date
   day: number
@@ -63,7 +64,6 @@ function getDaysForMonth(year: number, month: number): DayItem[] {
   today.setHours(0, 0, 0, 0)
 
   const firstDay = new Date(year, month, 1)
-  // Monday is 1, Sunday is 0 -> adjust so Monday is 0, Sunday is 6
   let startOffset = firstDay.getDay() - 1
   if (startOffset < 0) startOffset = 6
 
@@ -93,7 +93,7 @@ function getDaysForMonth(year: number, month: number): DayItem[] {
     })
   }
 
-  // Days for next month to complete rows
+  // Days for next month to complete 42 cells
   const remaining = 42 - days.length
   for (let i = 1; i <= remaining; i++) {
     const d = new Date(year, month + 1, i)
@@ -117,10 +117,10 @@ const selectedDate = ref<Date | null>(
   props.modelValue ? new Date(props.modelValue) : new Date(2026, 4, 15)
 )
 const rangeStart = ref<Date | null>(
-  props.startDate ? new Date(props.startDate) : new Date(2026, 4, 10)
+  props.startDate ? new Date(props.startDate) : new Date(2026, 4, 23)
 )
 const rangeEnd = ref<Date | null>(
-  props.endDate ? new Date(props.endDate) : new Date(2026, 4, 22)
+  props.endDate ? new Date(props.endDate) : new Date(2026, 5, 12)
 )
 
 function isSameDay(d1: Date | null, d2: Date | null) {
@@ -194,27 +194,28 @@ function getCellClasses(day: DayItem) {
   >
     <!-- Simple Variant (Single Month) -->
     <template v-if="variant === 'simple'">
-      <div :class="styles.panel">
+      <div :class={panel:styles.panel}>
+        <!-- head-datepicker using ButtonIcon variant="outlined" size="md" -->
         <div :class="styles.header">
-          <button
-            type="button"
-            :class="styles.navButton"
+          <ButtonIcon
+            variant="outlined"
+            size="md"
             :disabled="disabled"
             aria-label="Mes anterior"
             @click="prevMonth"
           >
             <ChevronLeft style="width: 16px; height: 16px;" />
-          </button>
-          <span :class="styles.title">{{ monthNames[currentMonth] }} {{ currentYear }}</span>
-          <button
-            type="button"
-            :class="styles.navButton"
+          </ButtonIcon>
+          <span :class="styles.title">{{ monthNames[currentMonth] }}</span>
+          <ButtonIcon
+            variant="outlined"
+            size="md"
             :disabled="disabled"
             aria-label="Mes siguiente"
             @click="nextMonth"
           >
             <ChevronRight style="width: 16px; height: 16px;" />
-          </button>
+          </ButtonIcon>
         </div>
 
         <div :class="styles.weekdays">
@@ -242,17 +243,25 @@ function getCellClasses(day: DayItem) {
         <!-- Left Month -->
         <div :class="styles.panel">
           <div :class="styles.header">
-            <button
-              type="button"
-              :class="styles.navButton"
+            <ButtonIcon
+              variant="outlined"
+              size="md"
               :disabled="disabled"
               aria-label="Mes anterior"
               @click="prevMonth"
             >
               <ChevronLeft style="width: 16px; height: 16px;" />
-            </button>
-            <span :class="styles.title">{{ monthNames[currentMonth] }} {{ currentYear }}</span>
-            <div style="width: 32px;" />
+            </ButtonIcon>
+            <span :class="styles.title">{{ monthNames[currentMonth] }}</span>
+            <ButtonIcon
+              variant="outlined"
+              size="md"
+              :disabled="disabled"
+              aria-label="Mes siguiente"
+              @click="nextMonth"
+            >
+              <ChevronRight style="width: 16px; height: 16px;" />
+            </ButtonIcon>
           </div>
 
           <div :class="styles.weekdays">
@@ -276,19 +285,25 @@ function getCellClasses(day: DayItem) {
         <!-- Right Month -->
         <div :class="styles.panel">
           <div :class="styles.header">
-            <div style="width: 32px;" />
-            <span :class="styles.title">
-              {{ monthNames[nextMonthDate.getMonth()] }} {{ nextMonthDate.getFullYear() }}
-            </span>
-            <button
-              type="button"
-              :class="styles.navButton"
+            <ButtonIcon
+              variant="outlined"
+              size="md"
+              :disabled="disabled"
+              aria-label="Mes anterior"
+              @click="prevMonth"
+            >
+              <ChevronLeft style="width: 16px; height: 16px;" />
+            </ButtonIcon>
+            <span :class="styles.title">{{ monthNames[nextMonthDate.getMonth()] }}</span>
+            <ButtonIcon
+              variant="outlined"
+              size="md"
               :disabled="disabled"
               aria-label="Mes siguiente"
               @click="nextMonth"
             >
               <ChevronRight style="width: 16px; height: 16px;" />
-            </button>
+            </ButtonIcon>
           </div>
 
           <div :class="styles.weekdays">
