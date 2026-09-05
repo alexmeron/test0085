@@ -1,0 +1,112 @@
+.dragDrop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 556px;
+  min-height: 204px;
+  padding-block: var(--spacing-10); /* 32px */
+  padding-inline: var(--spacing-7); /* 16px */
+  border-radius: var(--radius-xl); /* 10px */
+  border: 1px dashed var(--color-border-default);
+  box-sizing: border-box;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  transition: background-color 150ms ease, border-color 150ms ease;
+  font-family: var(--font-family-body);
+}
+
+.stripePattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -65deg,
+    rgba(255, 255, 255, 0.45) 0px,
+    rgba(255, 255, 255, 0.45) 36px,
+    transparent 36px,
+    transparent 72px
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-7); /* 16px */
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 69px;
+  flex-shrink: 0;
+}
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3); /* 4px */
+}
+
+.title {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-text-small); /* 14px */
+  font-weight: 600;
+  line-height: var(--leading-20);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-caption-big); /* 12px */
+  line-height: var(--leading-16);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.linkText {
+  color: var(--color-brand-link-default);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.caption {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-caption-big); /* 12px */
+  line-height: var(--leading-16);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.fileInput {
+  display: none;
+}
+
+/* States */
+.state-default {
+  background-color: var(--color-surface-subtle);
+  border-color: var(--color-border-default);
+}
+
+.state-hover,
+.dragDrop:hover:not(.state-disabled) {
+  background-color: var(--color-brand-surface-muted);
+  border-color: var(--color-brand-solid-default);
+}
+
+.state-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
