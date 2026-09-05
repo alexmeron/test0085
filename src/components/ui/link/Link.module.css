@@ -1,0 +1,208 @@
+/* Link Component Styles */
+/* Strictly mapped 1:1 to Figma Link component (node 4244:275) */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-regular);
+  text-decoration: underline;
+  padding: var(--spacing-2);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  box-sizing: border-box;
+  transition: color 150ms ease, outline 150ms ease;
+  outline: none;
+}
+
+/* ─── Sizes ─────────────────────────────────────────────────────────────── */
+.size-sm {
+  font-size: var(--font-size-text-small);
+  line-height: var(--leading-20);
+  min-height: var(--sizing-9);
+}
+
+.size-md {
+  font-size: var(--font-size-text-medium);
+  line-height: var(--leading-24);
+  min-height: calc(var(--sizing-7) + var(--sizing-6));
+}
+
+.size-lg {
+  font-size: var(--font-size-text-large);
+  line-height: var(--leading-28);
+  min-height: var(--sizing-10);
+}
+
+/* ─── Focus & Disabled Base ────────────────────────────────────────────── */
+.link:focus-visible,
+.state-focus {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: var(--spacing-2);
+}
+
+.link:disabled,
+.link[aria-disabled="true"],
+.state-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ─── Variant: brand ───────────────────────────────────────────────────── */
+.variant-brand {
+  color: var(--color-brand-link-default);
+}
+
+.variant-brand:hover:not(:disabled):not([aria-disabled="true"]),
+.variant-brand.state-hover {
+  color: var(--color-brand-link-hover);
+}
+
+.variant-brand:active:not(:disabled):not([aria-disabled="true"]),
+.variant-brand.state-pressed {
+  color: var(--color-brand-link-pressed);
+}
+
+.variant-brand:focus-visible,
+.variant-brand.state-focus {
+  color: var(--color-brand-link-focus);
+}
+
+.variant-brand:disabled,
+.variant-brand[aria-disabled="true"],
+.variant-brand.state-disabled {
+  color: var(--color-brand-link-disabled);
+}
+
+/* ─── Variant: secondary ───────────────────────────────────────────────── */
+.variant-secondary {
+  color: var(--color-secondary-link-default);
+}
+
+.variant-secondary:hover:not(:disabled):not([aria-disabled="true"]),
+.variant-secondary.state-hover {
+  color: var(--color-secondary-link-hover);
+}
+
+.variant-secondary:active:not(:disabled):not([aria-disabled="true"]),
+.variant-secondary.state-pressed {
+  color: var(--color-secondary-link-pressed);
+}
+
+.variant-secondary:focus-visible,
+.variant-secondary.state-focus {
+  color: var(--color-secondary-link-focus);
+}
+
+.variant-secondary:disabled,
+.variant-secondary[aria-disabled="true"],
+.variant-secondary.state-disabled {
+  color: var(--color-secondary-link-disabled);
+}
+
+/* ─── Variant: subtle ──────────────────────────────────────────────────── */
+.variant-subtle {
+  color: var(--color-subtle-link-default);
+}
+
+.variant-subtle:hover:not(:disabled):not([aria-disabled="true"]),
+.variant-subtle.state-hover {
+  color: var(--color-subtle-link-hover);
+}
+
+.variant-subtle:active:not(:disabled):not([aria-disabled="true"]),
+.variant-subtle.state-pressed {
+  color: var(--color-subtle-link-pressed);
+}
+
+.variant-subtle:focus-visible,
+.variant-subtle.state-focus {
+  color: var(--color-subtle-link-focus);
+}
+
+.variant-subtle:disabled,
+.variant-subtle[aria-disabled="true"],
+.variant-subtle.state-disabled {
+  color: var(--color-subtle-link-disabled);
+}
+
+/* ─── Variant: danger ──────────────────────────────────────────────────── */
+.variant-danger {
+  color: var(--color-destructive-link-default);
+}
+
+.variant-danger:hover:not(:disabled):not([aria-disabled="true"]),
+.variant-danger.state-hover {
+  color: var(--color-destructive-link-hover);
+}
+
+.variant-danger:active:not(:disabled):not([aria-disabled="true"]),
+.variant-danger.state-pressed {
+  color: var(--color-destructive-link-pressed);
+}
+
+.variant-danger:focus-visible,
+.variant-danger.state-focus {
+  color: var(--color-destructive-link-focus);
+}
+
+.variant-danger:disabled,
+.variant-danger[aria-disabled="true"],
+.variant-danger.state-disabled {
+  color: var(--color-destructive-link-disabled);
+}
+
+/* ─── Variant: success ─────────────────────────────────────────────────── */
+.variant-success {
+  color: var(--color-success-link-default);
+}
+
+.variant-success:hover:not(:disabled):not([aria-disabled="true"]),
+.variant-success.state-hover {
+  color: var(--color-success-link-hover);
+}
+
+.variant-success:active:not(:disabled):not([aria-disabled="true"]),
+.variant-success.state-pressed {
+  color: var(--color-success-link-pressed);
+}
+
+.variant-success:focus-visible,
+.variant-success.state-focus {
+  color: var(--color-success-link-focus);
+}
+
+.variant-success:disabled,
+.variant-success[aria-disabled="true"],
+.variant-success.state-disabled {
+  color: var(--color-success-link-disabled);
+}
+
+/* ─── Variant: ready ───────────────────────────────────────────────────── */
+.variant-ready {
+  color: var(--color-ready-link-default);
+}
+
+.variant-ready:hover:not(:disabled):not([aria-disabled="true"]),
+.variant-ready.state-hover {
+  color: var(--color-ready-link-hover);
+}
+
+.variant-ready:active:not(:disabled):not([aria-disabled="true"]),
+.variant-ready.state-pressed {
+  color: var(--color-ready-link-pressed);
+}
+
+.variant-ready:focus-visible,
+.variant-ready.state-focus {
+  color: var(--color-ready-link-focus);
+}
+
+.variant-ready:disabled,
+.variant-ready[aria-disabled="true"],
+.variant-ready.state-disabled {
+  color: var(--color-ready-link-disabled);
+}
