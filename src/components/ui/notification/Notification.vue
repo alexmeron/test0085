@@ -5,8 +5,6 @@ import {
   CircleWarningIcon,
   InfoIcon,
   ArrowCircleUpIcon,
-  CloseIcon,
-  RemoveMinusIcon,
 } from '../icon'
 import { notificationVariants, type NotificationVariants } from './notificationVariants'
 import { ProgressBar } from '../progress-bar'
@@ -198,10 +196,10 @@ const primaryButtonVariant = computed(() => {
     :class="cn(notificationVariants({ status, type }), props.class)"
     :role="status === 'destructive' || status === 'warning' ? 'alert' : 'status'"
   >
-    <!-- Leading Status Icon (Figma Icon-Placeholder, size=sm, 20x20px) -->
+    <!-- Leading Status Icon (Figma Icon-Placeholder, size=sm, 20x20px, vector 16.25x16.25px) -->
     <div v-if="showIcon" :class="styles.iconWrap">
       <slot name="icon">
-        <component :is="effectiveIcon" />
+        <component :is="effectiveIcon" size="sm" />
       </slot>
     </div>
 
@@ -246,7 +244,7 @@ const primaryButtonVariant = computed(() => {
       <!-- status-message (Figma status-message, height: 20px, controlled by showStatusMessage) -->
       <div v-if="showStatusMessage && (statusMessage || $slots['status-message'])" :class="styles.statusMessage">
         <span :class="styles.statusMessageIcon">
-          <CircleWarningIcon />
+          <CircleWarningIcon size="xs" />
         </span>
         <span>
           <slot name="status-message">{{ statusMessage }}</slot>
@@ -309,7 +307,7 @@ const primaryButtonVariant = computed(() => {
       </div>
     </div>
 
-    <!-- Header Controls (Figma Minimize & Close button-icons, 24x24) -->
+    <!-- Header Controls (Figma Minimize & Close button-icons: 24x24 container, 1:1 Figma vector paths) -->
     <div v-if="showMinimize || showClose" :class="styles.controls">
       <button
         v-if="showMinimize"
@@ -318,7 +316,9 @@ const primaryButtonVariant = computed(() => {
         aria-label="Minimizar notificación"
         @click="emits('minimize')"
       >
-        <RemoveMinusIcon />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 11.5C16.2761 11.5 16.5 11.7239 16.5 12C16.5 12.2761 16.2761 12.5 16 12.5H8C7.72386 12.5 7.5 12.2761 7.5 12C7.5 11.7239 7.72386 11.5 8 11.5H16Z" fill="currentColor"/>
+        </svg>
       </button>
       <button
         v-if="showClose"
@@ -327,7 +327,9 @@ const primaryButtonVariant = computed(() => {
         aria-label="Cerrar notificación"
         @click="emits('close')"
       >
-        <CloseIcon />
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.6465 7.64645C15.8417 7.45119 16.1582 7.4512 16.3535 7.64645C16.5488 7.84171 16.5488 8.15822 16.3535 8.35348L12.707 12L16.3535 15.6464L16.388 15.6842C16.5482 15.8806 16.5366 16.1704 16.3535 16.3535C16.1704 16.5365 15.8806 16.5482 15.6842 16.388L15.6465 16.3535L12 12.707L8.35351 16.3535C8.15825 16.5487 7.84174 16.5487 7.64648 16.3535C7.45123 16.1582 7.45122 15.8417 7.64648 15.6464L11.293 12L7.64648 8.35348C7.45121 8.15822 7.45121 7.84171 7.64648 7.64645C7.84174 7.45118 8.15825 7.45118 8.35351 7.64645L12 11.2929L15.6465 7.64645Z" fill="currentColor"/>
+        </svg>
       </button>
     </div>
   </div>
