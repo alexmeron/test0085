@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import ButtonIcon from './ButtonIcon.vue'
-import { SearchIcon } from '../icon'
 
 const meta: Meta<typeof ButtonIcon> = {
   title: 'Components/Button-icon',
@@ -76,12 +75,13 @@ Botón de icono único (sin label). Mapeado 1:1 al componente **Button-icon** de
 ---
 
 ### 🔘 Icons
+El icono por defecto en Figma corresponde a \`Media/Image_01\` (Placeholder).
 
-| Tamaño Contenedor | Padding | Área Neta Icono | Token de Icono Equivalente |
-|---|---|---|---|
-| sm (24×24px) | 4px | 16×16px | \`sizing/sizing-7\` |
-| md (32×32px) | 8px | 16×16px | \`sizing/sizing-7\` |
-| lg (40×40px) | 10px | 20×20px | \`sizing/sizing-8\` |
+| Tamaño Contenedor | Padding | Icono (Figma) | Área Neta Icono | Token de Icono Equivalente |
+|---|---|---|---|---|
+| sm (24×24px) | 4px | \`Media/Image_01\` | 16×16px | \`sizing/sizing-7\` (\`--sizing-7\`) |
+| md (32×32px) | 8px | \`Media/Image_01\` | 16×16px | \`sizing/sizing-7\` (\`--sizing-7\`) |
+| lg (40×40px) | 10px | \`Media/Image_01\` | 20×20px | \`sizing/sizing-8\` (\`--sizing-8\`) |
         `,
       },
     },
@@ -108,9 +108,9 @@ Botón de icono único (sin label). Mapeado 1:1 al componente **Button-icon** de
     disabled: false,
   },
   render: (args) => ({
-    components: { ButtonIcon, SearchIcon },
+    components: { ButtonIcon },
     setup() { return { args } },
-    template: `<ButtonIcon v-bind="args"><SearchIcon style="width: 100%; height: 100%;" /></ButtonIcon>`,
+    template: `<ButtonIcon v-bind="args" />`,
   }),
 }
 
@@ -134,13 +134,13 @@ export const OnInverse: Story = {
 
 export const Sizes: Story = {
   render: (args) => ({
-    components: { ButtonIcon, SearchIcon },
+    components: { ButtonIcon },
     setup() { return { args } },
     template: `
       <div style="display: flex; align-items: center; gap: var(--spacing-7);">
-        <ButtonIcon v-bind="args" size="sm"><SearchIcon style="width: 100%; height: 100%;" /></ButtonIcon>
-        <ButtonIcon v-bind="args" size="md"><SearchIcon style="width: 100%; height: 100%;" /></ButtonIcon>
-        <ButtonIcon v-bind="args" size="lg"><SearchIcon style="width: 100%; height: 100%;" /></ButtonIcon>
+        <ButtonIcon v-bind="args" size="sm" />
+        <ButtonIcon v-bind="args" size="md" />
+        <ButtonIcon v-bind="args" size="lg" />
       </div>
     `,
   }),

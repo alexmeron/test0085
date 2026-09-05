@@ -92,11 +92,14 @@ Botón de acción. Mapeado 1:1 al componente **Button** de Figma. Estilizado con
 ---
 
 ### 🔘 Icons
+Los iconos por defecto en Figma corresponden a \`Media/Image_01\` (Placeholder).
 
-| Tamaño | Token / Figma Variable | CSS Variable | Valor |
-|---|---|---|---|
-| sm, md | \`sizing/sizing-7\` | \`--sizing-7\` | 16×16px |
-| lg | \`sizing/sizing-8\` | \`--sizing-8\` | 20×20px |
+| Propiedad / Ubicación | Tamaño | Icono por Defecto (Figma) | Token / CSS Variable | Valor |
+|---|---|---|---|---|
+| **leading-icon** | sm, md | \`Media/Image_01\` | \`sizing/sizing-7\` (\`--sizing-7\`) | 16×16px |
+| | lg | \`Media/Image_01\` | \`sizing/sizing-8\` (\`--sizing-8\`) | 20×20px |
+| **trailing-icon** | sm, md | \`Media/Image_01\` | \`sizing/sizing-7\` (\`--sizing-7\`) | 16×16px |
+| | lg | \`Media/Image_01\` | \`sizing/sizing-8\` (\`--sizing-8\`) | 20×20px |
         `,
       },
     },

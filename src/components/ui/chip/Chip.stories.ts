@@ -31,8 +31,25 @@ Componente **Chip** mapeado 1:1 al componente de Figma. Estilizado con **CSS Mod
 | | lg | \`spacing-5-5\` (vert), \`spacing-6\` (horiz) | \`--spacing-5-5\`, \`--spacing-6\` | 10px, 12px |
 | **Gap** | xs | \`spacing/spacing-2\` | \`--spacing-2\` | 2px |
 | | sm, md, lg | \`spacing/spacing-3\` | \`--spacing-3\` | 4px |
-| **Icon Size** | xs, sm, md | — | — | 16×16px |
-| | lg | — | — | 20×20px |
+| **Icon Size** | xs, sm, md | \`sizing/sizing-7\` | \`--sizing-7\` | 16×16px |
+| | lg | \`sizing/sizing-8\` | \`--sizing-8\` | 20×20px |
+| | badge | — | — | Sin iconos |
+
+---
+
+### 🔘 Icons
+Los iconos por defecto en Figma corresponden a iconos específicos según el estado (**state**):
+
+| Propiedad / Ubicación | Estado (State) | Icono Exacto en Figma | Tamaño (xs, sm, md) | Tamaño (lg) | Tamaño (badge) |
+|---|---|---|---|---|---|
+| **leading-icon** | \`destructive\` | \`Warning/Circle_Warning\` | 16×16px (\`--sizing-7\`) | 20×20px (\`--sizing-8\`) | Sin icono |
+| | \`info\` | \`status/wip\` | 16×16px (\`--sizing-7\`) | 20×20px (\`--sizing-8\`) | Sin icono |
+| | \`ready\` | \`Arrow/Arrow_Circle_Up\` | 16×16px (\`--sizing-7\`) | 20×20px (\`--sizing-8\`) | Sin icono |
+| | \`warning\` | \`status/advanced\` | 16×16px (\`--sizing-7\`) | 20×20px (\`--sizing-8\`) | Sin icono |
+| | \`success\` | \`Warning/Circle_Check\` | 16×16px (\`--sizing-7\`) | 20×20px (\`--sizing-8\`) | Sin icono |
+| | \`neutral\` | \`Warning/Stop_Sign\` | 16×16px (\`--sizing-7\`) | 20×20px (\`--sizing-8\`) | Sin icono |
+| | \`ended\` | — (sólo en tamaño badge) | — | — | Sin icono |
+| **trailing-icon** | Todos | \`Menu/Close_SM\` | 16×16px (\`--sizing-7\`) | 20×20px (\`--sizing-8\`) | Sin icono |
 
 ---
 
@@ -187,7 +204,7 @@ export const AllStates: Story = {
         <Chip v-bind="args" state="warning" label="Warning" />
         <Chip v-bind="args" state="destructive" label="Destructive" />
         <Chip v-bind="args" state="ready" label="Ready" />
-        <Chip v-bind="args" state="ended" label="Ended" />
+        <Chip v-bind="args" state="ended" size="badge" label="1" />
       </div>
     `,
   }),

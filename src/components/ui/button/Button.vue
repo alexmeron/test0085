@@ -4,7 +4,7 @@ import { Primitive, type PrimitiveProps } from 'radix-vue'
 import { buttonVariants, type ButtonVariants } from './buttonVariants'
 import styles from './Button.module.css'
 import { cn } from '../../../lib/utils'
-import { SearchIcon, ArrowRightIcon } from '../icon'
+import { Image01Icon } from '../icon'
 
 interface Props extends PrimitiveProps {
   variant?: ButtonVariants['variant']
@@ -28,9 +28,12 @@ const computedClass = computed(() =>
 const resolveIcon = (icon: boolean | any, fallback: any) =>
   icon === true ? fallback : icon
 
-const iconClass = computed(() => {
+const iconWrapperClass = computed(() => {
   if (props.size === 'lg') {
     return `${styles.icon} ${styles['icon-lg']}`
+  }
+  if (props.size === 'sm') {
+    return `${styles.icon} ${styles['icon-sm']}`
   }
   return `${styles.icon} ${styles['icon-md']}`
 })
@@ -43,16 +46,22 @@ const iconClass = computed(() => {
     :disabled="disabled"
     :class="computedClass"
   >
-    <component
-      :is="resolveIcon(leadingIcon, SearchIcon)"
-      v-if="leadingIcon"
-      :class="iconClass"
-    />
+    <span v-if="leadingIcon" :class="iconWrapperClass">
+      <slot name="leading">
+        <component
+          :is="resolveIcon(leadingIcon, Image01Icon)"
+          style="width: 100%; height: 100%;"
+        />
+      </slot>
+    </span>
     <slot />
-    <component
-      :is="resolveIcon(trailingIcon, ArrowRightIcon)"
-      v-if="trailingIcon"
-      :class="iconClass"
-    />
+    <span v-if="trailingIcon" :class="iconWrapperClass">
+      <slot name="trailing">
+        <component
+          :is="resolveIcon(trailingIcon, Image01Icon)"
+          style="width: 100%; height: 100%;"
+        />
+      </slot>
+    </span>
   </Primitive>
 </template>

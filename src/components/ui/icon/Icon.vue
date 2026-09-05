@@ -119,6 +119,18 @@ const aliasMap: Record<string, string> = {
   'Mail': 'Mail',
   'eye': 'Search_Magnifying_Glass',
   'Eye': 'Search_Magnifying_Glass',
+  'image': 'Image_01',
+  'image-01': 'Image_01',
+  'Image_01': 'Image_01',
+  'placeholder': 'Image_01',
+  'wip': 'wip',
+  'status/wip': 'wip',
+  'advanced': 'advanced',
+  'status/advanced': 'advanced',
+  'stop-sign': 'Stop_Sign',
+  'Stop_Sign': 'Stop_Sign',
+  'arrow-circle-up': 'Arrow_Circle_Up',
+  'Arrow_Circle_Up': 'Arrow_Circle_Up',
 }
 
 const iconItem = computed(() => {

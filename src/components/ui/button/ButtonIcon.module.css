@@ -135,3 +135,23 @@
   height: var(--sizing-11);
   padding: var(--spacing-5-5);
 }
+
+/* ─── Icons ────────────────────────────────────────────────────────────── */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-sm,
+.icon-md {
+  width: var(--sizing-7);
+  height: var(--sizing-7);
+}
+
+.icon-lg {
+  width: var(--sizing-8);
+  height: var(--sizing-8);
+}
