@@ -192,9 +192,9 @@ function getCellClasses(day: DayItem) {
       props.class
     )"
   >
-    <!-- Simple Variant (Single Month) -->
+    <!-- Simple Variant (Single Month: w=224 inside 248 container) -->
     <template v-if="variant === 'simple'">
-      <div :class={panel:styles.panel}>
+      <div :class="styles.simplePanel">
         <!-- head-datepicker using ButtonIcon variant="outlined" size="md" -->
         <div :class="styles.header">
           <ButtonIcon
@@ -218,30 +218,32 @@ function getCellClasses(day: DayItem) {
           </ButtonIcon>
         </div>
 
-        <div :class="styles.weekdays">
-          <span v-for="wd in weekdays" :key="wd" :class="styles.weekday">{{ wd }}</span>
-        </div>
+        <div :class="styles.calendarDays">
+          <div :class="styles.weekdays">
+            <span v-for="wd in weekdays" :key="wd" :class="styles.weekday">{{ wd }}</span>
+          </div>
 
-        <div :class="styles.daysGrid">
-          <button
-            v-for="(item, idx) in leftMonthDays"
-            :key="idx"
-            type="button"
-            :disabled="disabled"
-            :class="getCellClasses(item)"
-            @click="handleDayClick(item)"
-          >
-            {{ item.day }}
-          </button>
+          <div :class="styles.daysGrid">
+            <button
+              v-for="(item, idx) in leftMonthDays"
+              :key="idx"
+              type="button"
+              :disabled="disabled"
+              :class="getCellClasses(item)"
+              @click="handleDayClick(item)"
+            >
+              {{ item.day }}
+            </button>
+          </div>
         </div>
       </div>
     </template>
 
-    <!-- Range Variant (Two Months side-by-side) -->
+    <!-- Range Variant (Two Calendar panels side-by-side: 248 + 12 + 248 + 24 = 532px) -->
     <template v-else>
       <div :class="styles.rangePanels">
-        <!-- Left Month -->
-        <div :class="styles.panel">
+        <!-- Left Month Calendar Panel -->
+        <div :class="styles.calendarPanel">
           <div :class="styles.header">
             <ButtonIcon
               variant="outlined"
@@ -264,26 +266,28 @@ function getCellClasses(day: DayItem) {
             </ButtonIcon>
           </div>
 
-          <div :class="styles.weekdays">
-            <span v-for="wd in weekdays" :key="wd" :class="styles.weekday">{{ wd }}</span>
-          </div>
+          <div :class="styles.calendarDays">
+            <div :class="styles.weekdays">
+              <span v-for="wd in weekdays" :key="wd" :class="styles.weekday">{{ wd }}</span>
+            </div>
 
-          <div :class="styles.daysGrid">
-            <button
-              v-for="(item, idx) in leftMonthDays"
-              :key="idx"
-              type="button"
-              :disabled="disabled"
-              :class="getCellClasses(item)"
-              @click="handleDayClick(item)"
-            >
-              {{ item.day }}
-            </button>
+            <div :class="styles.daysGrid">
+              <button
+                v-for="(item, idx) in leftMonthDays"
+                :key="idx"
+                type="button"
+                :disabled="disabled"
+                :class="getCellClasses(item)"
+                @click="handleDayClick(item)"
+              >
+                {{ item.day }}
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Right Month -->
-        <div :class="styles.panel">
+        <!-- Right Month Calendar Panel -->
+        <div :class="styles.calendarPanel">
           <div :class="styles.header">
             <ButtonIcon
               variant="outlined"
@@ -306,21 +310,23 @@ function getCellClasses(day: DayItem) {
             </ButtonIcon>
           </div>
 
-          <div :class="styles.weekdays">
-            <span v-for="wd in weekdays" :key="wd" :class="styles.weekday">{{ wd }}</span>
-          </div>
+          <div :class="styles.calendarDays">
+            <div :class="styles.weekdays">
+              <span v-for="wd in weekdays" :key="wd" :class="styles.weekday">{{ wd }}</span>
+            </div>
 
-          <div :class="styles.daysGrid">
-            <button
-              v-for="(item, idx) in rightMonthDays"
-              :key="idx"
-              type="button"
-              :disabled="disabled"
-              :class="getCellClasses(item)"
-              @click="handleDayClick(item)"
-            >
-              {{ item.day }}
-            </button>
+            <div :class="styles.daysGrid">
+              <button
+                v-for="(item, idx) in rightMonthDays"
+                :key="idx"
+                type="button"
+                :disabled="disabled"
+                :class="getCellClasses(item)"
+                @click="handleDayClick(item)"
+              >
+                {{ item.day }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
