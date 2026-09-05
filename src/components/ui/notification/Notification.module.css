@@ -1,28 +1,29 @@
-/* Notification Component Styles */
-/* Strictly mapped 1:1 to Figma node 4237:123980 and 4237:124615 */
+/* Notification Component Styles - 1:1 Figma node 4237:123980 */
 
 .notification {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: var(--spacing-5, 8px);
-  padding: var(--spacing-6, 12px);
-  border-radius: var(--radius-lg, 8px);
+  gap: 8px; /* Figma: itemSpacing: 8 */
+  padding: 12px; /* Figma: padding: 12px */
+  border-radius: 8px; /* Figma: cornerRadius: 8 */
   border-width: 1px;
   border-style: solid;
   box-sizing: border-box;
   width: 100%;
-  max-width: 480px;
+  max-width: 480px; /* Figma: width: 480 */
   font-family: var(--font-family-body);
   transition: all 150ms ease;
+  position: relative;
 }
 
+/* Icon-Placeholder (20x20) */
 .iconWrap {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--sizing-8, 20px);
-  height: var(--sizing-8, 20px);
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
@@ -31,62 +32,86 @@
   height: 20px;
 }
 
+/* Body Container (width: 364, gap: 4) */
 .body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2, 8px);
+  gap: 4px; /* Figma: itemSpacing: 4 */
   min-width: 0;
 }
 
-.topRow {
+/* top+progress (gap: 12) */
+.topPlusProgress {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Figma: itemSpacing: 12 */
+  width: 100%;
+}
+
+/* top-body (gap: 20) */
+.topBody {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--spacing-6, 12px);
+  gap: 20px; /* Figma: itemSpacing: 20 */
+  width: 100%;
 }
 
+/* title-wrap (gap: 4) */
 .titleWrap {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-1, 4px);
+  gap: 4px; /* Figma: itemSpacing: 4 */
   flex: 1;
+  min-width: 0;
 }
 
 .title {
-  font-size: var(--font-size-text-small, 14px);
-  font-weight: var(--font-weight-semibold, 600);
-  line-height: var(--leading-20, 20px);
+  font-size: 14px; /* Figma: 14px */
+  font-weight: 600; /* Figma: Semi Bold 600 */
+  line-height: 20px; /* Figma: lineHeight: 20px */
   margin: 0;
 }
 
 .description {
-  font-size: var(--font-size-caption-big, 12px);
-  font-weight: var(--font-weight-medium, 500);
-  line-height: var(--leading-16, 16px);
+  font-size: 12px; /* Figma: 12px */
+  font-weight: 500; /* Figma: Medium 500 */
+  line-height: 16px; /* Figma: lineHeight: 16px */
   margin: 0;
 }
 
-.inlineAction {
-  flex-shrink: 0;
+/* action-inline */
+.actionInline {
   font-size: 12px;
   font-weight: 500;
+  line-height: 16px;
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
+.actionInline:hover {
+  text-decoration: underline;
+}
+
+/* progress-bar (height: 6) */
 .progressWrap {
   width: 100%;
-  margin-top: 4px;
+  height: 6px;
 }
 
+/* status-message (padding-top: 4, gap: 4) */
 .statusMessage {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: var(--font-size-caption-big, 12px);
-  font-weight: var(--font-weight-regular, 400);
-  line-height: var(--leading-16, 16px);
-  margin-top: 4px;
+  padding-top: 4px;
+  font-size: 12px;
+  font-weight: 400; /* Figma: Regular 400 */
+  line-height: 16px;
 }
 
 .statusMessageIcon {
@@ -98,13 +123,39 @@
   flex-shrink: 0;
 }
 
-.actionsRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
+.statusMessageIcon svg {
+  width: 16px;
+  height: 16px;
 }
 
+/* two-actions (padding-top: 8, gap: 16) */
+.twoActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+/* one-action (padding-top: 8) */
+.oneAction {
+  padding-top: 8px;
+}
+
+.actionSecondary {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.actionSecondary:hover {
+  text-decoration: underline;
+}
+
+/* Header Controls: Minimize & Close (24x24 each, gap: 4) */
 .controls {
   display: inline-flex;
   align-items: center;
@@ -122,20 +173,14 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  border-radius: var(--radius-sm, 4px);
+  border-radius: 4px;
   color: inherit;
-  opacity: 0.7;
   transition: opacity 150ms ease;
   flex-shrink: 0;
 }
 
 .controlButton:hover {
-  opacity: 1;
-}
-
-.controlButton svg {
-  width: 14px;
-  height: 14px;
+  opacity: 0.75;
 }
 
 /* ─── Type: Muted ───────────────────────────────────────────────────────── */
@@ -147,12 +192,24 @@
   color: var(--color-text-secondary);
 }
 
+.type-muted .actionInline {
+  color: var(--color-text-primary);
+}
+
 .type-muted .statusMessage {
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+}
+
+.type-muted .statusMessageIcon {
+  color: var(--color-text-primary);
+}
+
+.type-muted .actionSecondary {
+  color: var(--color-text-primary);
 }
 
 .type-muted .controlButton {
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 }
 
 /* Muted Statuses */
@@ -217,12 +274,20 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-.type-solid .iconWrap {
+.type-solid .actionInline {
   color: var(--color-basic-white, #ffffff);
 }
 
 .type-solid .statusMessage {
   color: rgba(255, 255, 255, 0.9);
+}
+
+.type-solid .statusMessageIcon {
+  color: var(--color-basic-white, #ffffff);
+}
+
+.type-solid .actionSecondary {
+  color: var(--color-basic-white, #ffffff);
 }
 
 .type-solid .controlButton {
@@ -232,6 +297,12 @@
 /* Solid Statuses */
 .type-solid.status-default {
   background-color: var(--color-subtle-surface-strong);
+}
+.type-solid.status-default .iconWrap {
+  color: var(--color-subtle-icon-inverse, #ffffff);
+}
+.type-solid.status-default .title {
+  color: var(--color-text-inverse-primary, #ffffff);
 }
 
 .type-solid.status-success {
@@ -253,11 +324,20 @@
 .type-solid.status-warning .description {
   color: var(--color-wolf-800);
 }
+.type-solid.status-warning .actionInline {
+  color: var(--color-wolf-950);
+}
 .type-solid.status-warning .iconWrap {
   color: var(--color-warning-icon-on-solid, var(--color-wolf-950));
 }
 .type-solid.status-warning .statusMessage {
   color: var(--color-wolf-800);
+}
+.type-solid.status-warning .statusMessageIcon {
+  color: var(--color-wolf-950);
+}
+.type-solid.status-warning .actionSecondary {
+  color: var(--color-wolf-950);
 }
 .type-solid.status-warning .controlButton {
   color: var(--color-wolf-950);
